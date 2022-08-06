@@ -1,0 +1,8 @@
+{
+    "name": "Chromatic Arsenal",
+    "landing_text": "A guide to the items in the mod.",
+    "version": 1,
+	"show_progress": false,
+	"model": "chromaticarsenal:ca_book",
+	"book_texture": "chromaticarsenal:textures/gui/book_chroma.png"
+}

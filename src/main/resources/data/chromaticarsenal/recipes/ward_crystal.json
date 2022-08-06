@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DGD",
+    "GEG",
+    "DGD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:fermented_spider_eye"
+    },
+    "G": {
+      "item": "minecraft:slime_ball"
+    },
+	"E": {
+      "item": "chromaticarsenal:chroma_shard"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:ward_crystal"
+  }
+}

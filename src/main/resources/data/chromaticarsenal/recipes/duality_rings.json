@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AWM",
+    "WCB",
+    "MBA"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:white_wool"
+    },
+	"C": {
+      "item": "chromaticarsenal:chroma_shard"
+    },
+	"A": {
+      "item": "minecraft:arrow"
+    },
+	"B": {
+      "item": "minecraft:black_wool"
+    },
+	"M": {
+      "item": "chromaticarsenal:magic_garlic_bread"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:duality_rings"
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "name": "Magic Garlic Bread",
+    "icon": "chromaticarsenal:magic_garlic_bread",
+    "category": "misc",
+    "pages": [
+        {
+            "type": "crafting",
+            "text": "Magic Garlic Bread is a food which restores half the hunger bar and a moderate amount of saturation. If the player is wearing the Duality Rings, they will also receive $(4)Health Boost III$() and $(6)Saturation I$().",
+			"recipe": "chromaticarsenal:magic_garlic_bread"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "name": "Golden Heart",
+    "icon": "chromaticarsenal:golden_heart",
+    "category": "main",
+    "pages": [
+        {
+            "type": "text",
+            "text": "The Golden Heart grants the player the Absorption effect. When the effect is about to run out, it is applied again, resetting the amount of remaining absorption hearts. This item will not make piglins like you."
+        },
+		{
+            "type": "text",
+            "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+4$() Max Health"
+        },
+		{
+            "type": "crafting",
+            "text": "$(o)Don't tell the piglins about it.",
+			"recipe": "chromaticarsenal:golden_heart"
+        }
+    ]
+}

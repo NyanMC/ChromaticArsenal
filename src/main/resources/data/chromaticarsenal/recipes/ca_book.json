@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "chromaticarsenal:chroma_shard"
+    },
+    {
+      "item": "minecraft:book"
+    }
+  ],
+  "result": {
+    "item": "patchouli:guide_book",
+	"nbt": {
+		"patchouli:book": "chromaticarsenal:guide"
+	}
+  }
+}

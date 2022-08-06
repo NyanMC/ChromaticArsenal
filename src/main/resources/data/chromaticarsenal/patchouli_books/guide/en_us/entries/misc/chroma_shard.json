@@ -1,0 +1,12 @@
+{
+    "name": "Chroma Shard",
+    "icon": "chromaticarsenal:chroma_shard",
+    "category": "misc",
+    "pages": [
+        {
+            "type": "crafting",
+            "text": "The Chroma Shard is a basic item in the mod, used to make most of the other items.",
+			"recipe": "chromaticarsenal:chroma_shard"
+        }
+    ]
+}

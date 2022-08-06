@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DGD",
+    "GEG",
+    "DGD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:black_wool"
+    },
+    "G": {
+      "item": "minecraft:ender_pearl"
+    },
+	"E": {
+      "item": "chromaticarsenal:chroma_shard"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:shadow_treads"
+  }
+}
