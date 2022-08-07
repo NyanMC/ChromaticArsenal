@@ -1,4 +1,4 @@
-# ChromaticArsenal
+# Chromatic Arsenal
 
 This is the Chromatic Arsenal source.
 
