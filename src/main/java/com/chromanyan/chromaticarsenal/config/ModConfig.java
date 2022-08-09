@@ -32,6 +32,9 @@ public class ModConfig {
 		public final IntValue levitationDuration;
 		public final IntValue levitationPotency;
 		
+		public final IntValue fracturedDuration;
+		public final IntValue fracturedPotency;
+		
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("GoldenHeartSettings");
 			maxHealthBoost = builder
@@ -101,6 +104,15 @@ public class ModConfig {
 			levitationPotency = builder
 					.comment("The level of the levitation effect. 0 is equivalent to effect level 1.")
 					.defineInRange("levitationPotency", 2, 0, 255);
+			builder.pop();
+			
+			builder.push("SuperGoldenHeartSettings");
+			fracturedDuration = builder
+					.comment("The duration of the Fractured effect, in ticks.")
+					.defineInRange("fracturedDuration", 6000, 1, Integer.MAX_VALUE);
+			fracturedPotency = builder
+					.comment("The level of the Fractured effect. Each level is 10% of max health lost.")
+					.defineInRange("fracturedPotency", 4, 0, 255);
 			builder.pop();
 		}
 		

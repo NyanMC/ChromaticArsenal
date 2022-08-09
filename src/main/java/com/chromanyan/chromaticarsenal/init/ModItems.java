@@ -1,7 +1,9 @@
 package com.chromanyan.chromaticarsenal.init;
 
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.items.curios.CurioGlassShield;
 import com.chromanyan.chromaticarsenal.items.curios.CurioGoldenHeart;
 import com.chromanyan.chromaticarsenal.items.curios.CurioLunarCrystal;
@@ -9,7 +11,6 @@ import com.chromanyan.chromaticarsenal.items.curios.CurioShadowTreads;
 import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,6 +19,7 @@ public class ModItems {
 	public static final DeferredRegister<Item> ITEMS_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MODID);
 	
 	public static final RegistryObject<Item> CHROMA_SHARD = genericItem("chroma_shard");
+	public static final RegistryObject<Item> ASCENSION_ESSENCE = genericItem("ascension_essence");
 	
 	public static final RegistryObject<Item> GOLDEN_HEART = modItem("golden_heart", new CurioGoldenHeart());
 	public static final RegistryObject<Item> GLASS_SHIELD = modItem("glass_shield", new CurioGlassShield());
@@ -26,10 +28,13 @@ public class ModItems {
 	public static final RegistryObject<Item> DUALITY_RINGS = modItem("duality_rings", new BaseCurioItem());
 	public static final RegistryObject<Item> LUNAR_CRYSTAL = modItem("lunar_crystal", new CurioLunarCrystal());
 	
+	public static final RegistryObject<Item> SUPER_GOLDEN_HEART = modItem("super_golden_heart", new BaseSuperCurio(ModItems.GOLDEN_HEART));
+	public static final RegistryObject<Item> SUPER_WARD_CRYSTAL = modItem("super_ward_crystal", new BaseSuperCurio(ModItems.WARD_CRYSTAL));
+	
 	public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = modItem("magic_garlic_bread", new MagicGarlicBread());
 
     private static RegistryObject<Item> genericItem(String name) {
-        return ITEMS_REGISTRY.register(name, () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MATERIALS)));
+        return ITEMS_REGISTRY.register(name, () -> new Item(new Item.Properties().tab(ChromaticArsenal.GROUP)));
     }
 
     private static RegistryObject<Item> modItem(String name, Item item) {

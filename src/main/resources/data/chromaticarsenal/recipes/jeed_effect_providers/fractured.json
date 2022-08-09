@@ -1,0 +1,11 @@
+{
+  "type": "jeed:effect_provider",
+  "effect":{
+    "id": "chromaticarsenal:fractured"
+  },
+  "providers": [
+    {
+      "item": "chromaticarsenal:super_golden_heart"
+    }
+  ]
+}

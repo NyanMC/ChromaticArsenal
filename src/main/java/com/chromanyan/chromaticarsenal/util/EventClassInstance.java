@@ -8,6 +8,7 @@ import org.apache.commons.lang3.tuple.ImmutableTriple;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
+import com.chromanyan.chromaticarsenal.init.ModPotions;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -18,15 +19,21 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent;
+import net.minecraftforge.event.entity.living.PotionEvent.PotionRemoveEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class EventClassInstance {
+	// this is a mess
+	
 	Random rand = new Random();
 	Common config = ModConfig.COMMON;
+	
 	@SubscribeEvent
 	public void playerAttackedEvent(LivingHurtEvent event) {
 		LivingEntity player = event.getEntityLiving();
@@ -46,23 +53,29 @@ public class EventClassInstance {
 				}
 			}
 			
-			// dispel gel: reduce incoming damage
+			// (super) dispel gel: reduce incoming damage
 			Optional<ImmutableTriple<String, Integer, ItemStack>> crystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.WARD_CRYSTAL.get(), player);
-			if (event.getSource().isMagic() && crystal.isPresent() && !event.getSource().isBypassInvul()) {
+			Optional<ImmutableTriple<String, Integer, ItemStack>> superCrystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.SUPER_WARD_CRYSTAL.get(), player);
+			if (event.getSource().isMagic() && (crystal.isPresent() || superCrystal.isPresent()) && !event.getSource().isBypassInvul()) {
 				event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierIncoming.get()));
 			}
+			
+			// attacker events
 			Entity possibleAttacker = event.getSource().getEntity();
 			if (possibleAttacker != null && possibleAttacker instanceof LivingEntity) { // you can never be too safe
-				// dispel gel: reduce outgoing damage
+				// (super) dispel gel: reduce outgoing damage
 				Optional<ImmutableTriple<String, Integer, ItemStack>> attackerCrystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.WARD_CRYSTAL.get(), (LivingEntity) possibleAttacker);
-				if (event.getSource().isMagic() && attackerCrystal.isPresent()) {
+				Optional<ImmutableTriple<String, Integer, ItemStack>> attackerSuperCrystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.SUPER_WARD_CRYSTAL.get(), (LivingEntity) possibleAttacker);
+				if (event.getSource().isMagic() && (attackerCrystal.isPresent() || attackerSuperCrystal.isPresent())) {
 					event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierOutgoing.get()));
 				}
+				
 				// duality rings: increase projectile damage
 				Optional<ImmutableTriple<String, Integer, ItemStack>> attackerRings = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.DUALITY_RINGS.get(), (LivingEntity) possibleAttacker);
 				if (event.getSource().isProjectile() && attackerRings.isPresent()) {
 					event.setAmount((float) (event.getAmount() * config.aroOfClubsMultiplier.get()));
 				}
+				
 				// lunar crystal: apply levitation
 				Optional<ImmutableTriple<String, Integer, ItemStack>> attackerLCrystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.LUNAR_CRYSTAL.get(), (LivingEntity) possibleAttacker);
 				int randresult = rand.nextInt(config.levitationChance.get() - 1);
@@ -73,17 +86,53 @@ public class EventClassInstance {
 		}
 	}
 	
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void potionImmunityEvent(PotionApplicableEvent event) {
 		LivingEntity player = event.getEntityLiving();
 		if (!player.getCommandSenderWorld().isClientSide()) {
+			
 			Optional<ImmutableTriple<String, Integer, ItemStack>> treads = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.SHADOW_TREADS.get(), player);
 			if (treads.isPresent() && event.getPotionEffect().getEffect() == Effects.MOVEMENT_SLOWDOWN) {
 				event.setResult(Result.DENY);
 			}
+			
 			Optional<ImmutableTriple<String, Integer, ItemStack>> lcrystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.LUNAR_CRYSTAL.get(), player);
 			if (lcrystal.isPresent() && event.getPotionEffect().getEffect() == Effects.LEVITATION) {
 				event.setResult(Result.DENY);
+			}
+			
+			Optional<ImmutableTriple<String, Integer, ItemStack>> superCrystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.SUPER_WARD_CRYSTAL.get(), player);
+			if (superCrystal.isPresent()) {
+				event.setResult(Result.DENY);
+			}
+			
+			if (event.getPotionEffect().getEffect() == ModPotions.FRACTURED.get()) {
+				event.setResult(Result.ALLOW); // effectively, fractured can't be prevented on accident
+			}
+		}
+	}
+	
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public void potionLingerEvent(PotionRemoveEvent event) {
+		if (event.getPotion() == ModPotions.FRACTURED.get()) {
+			event.setCanceled(true); // if other mods won't play nice, i'll MAKE them play nice
+		}
+	}
+	
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public void playerDeathEvent(LivingDeathEvent event) {
+		if (event.isCanceled()) {
+			return;
+		}
+		LivingEntity player = event.getEntityLiving();
+		Optional<ImmutableTriple<String, Integer, ItemStack>> diamondHeart = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.SUPER_GOLDEN_HEART.get(), player);
+		if (diamondHeart.isPresent() && !player.hasEffect(ModPotions.FRACTURED.get())) {
+			if (!event.getSource().isBypassInvul()) {
+				event.setCanceled(true);
+				player.setHealth(player.getMaxHealth());
+				player.addEffect(new EffectInstance(ModPotions.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()));
+				player.setHealth(player.getMaxHealth()); // lazy max health correction, just set the value twice lol
+				player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundCategory.PLAYERS, 0.5F, 1.0F);
 			}
 		}
 	}

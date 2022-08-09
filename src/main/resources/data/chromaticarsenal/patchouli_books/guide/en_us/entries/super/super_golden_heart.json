@@ -1,0 +1,16 @@
+{
+    "name": "Diamond Heart",
+    "icon": "chromaticarsenal:super_golden_heart",
+    "category": "super_curios",
+    "pages": [
+        {
+            "type": "text",
+            "text": "The Diamond Heart saves the wearer from certain death. Upon being revived, the wearer receives the Fractured potion effect, reducing max health and preventing the wearer from being saved from certain death again until the effect wears off. The Fractured effect cannot be prevented in all but the most exceptional of cases."
+        },
+		{
+            "type": "crafting",
+            "text": "$(o)It's not over till it's over.",
+			"recipe": "chromaticarsenal:super_golden_heart"
+        }
+    ]
+}

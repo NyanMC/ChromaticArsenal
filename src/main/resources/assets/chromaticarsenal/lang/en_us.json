@@ -1,5 +1,6 @@
 {
 	"item.chromaticarsenal.chroma_shard": "Chroma Shard",
+	"item.chromaticarsenal.ascension_essence": "Essence of Ascension",
 	"item.chromaticarsenal.golden_heart": "Golden Heart",
 	"item.chromaticarsenal.glass_shield": "Glass Shield",
 	"item.chromaticarsenal.ward_crystal": "Ward Crystal",
@@ -7,5 +8,15 @@
 	"item.chromaticarsenal.duality_rings": "Duality Rings",
 	"item.chromaticarsenal.magic_garlic_bread": "Magic Garlic Bread",
 	"item.chromaticarsenal.lunar_crystal": "Lunar Crystal",
-	"item.chromaticarsenal.lunar_crystal.luna": "Luna's Crystal"
+	"item.chromaticarsenal.lunar_crystal.luna": "Luna's Crystal",
+	
+	"curios.identifier.super_curio": "Super Curio",
+	"curios.modifiers.super_curio": "When worn as super curio:",
+	"item.chromaticarsenal.super_golden_heart": "Diamond Heart",
+	"item.chromaticarsenal.super_ward_crystal": "Dispelling Crystal",
+	
+	"effect.chromaticarsenal.fractured": "Fractured",
+	"effect.chromaticarsenal.fractured.description": "Max health is reduced by 10% per level, unable to revive with the Diamond Heart",
+	
+	"itemGroup.chromaticarsenal": "Chromatic Arsenal"
 }

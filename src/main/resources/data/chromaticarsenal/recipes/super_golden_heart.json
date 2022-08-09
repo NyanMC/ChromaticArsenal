@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DGD",
+    "GAG",
+    "DGD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "A": {
+      "item": "chromaticarsenal:ascension_essence"
+    },
+	"G": {
+      "item": "chromaticarsenal:golden_heart"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:super_golden_heart"
+  }
+}

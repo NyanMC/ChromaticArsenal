@@ -1,0 +1,16 @@
+{
+    "name": "Dispelling Crystal",
+    "icon": "chromaticarsenal:super_ward_crystal",
+    "category": "super_curios",
+    "pages": [
+        {
+            "type": "text",
+            "text": "The Dispelling Crystal inherits the abilities of the Ward Crystal, as well as negating all potion effects, both positive and negative. Almost. It does not protect against Fractured."
+        },
+		{
+            "type": "crafting",
+            "text": "$(o)It all starts with this...$(br)A jewel containing the ultimate power...",
+			"recipe": "chromaticarsenal:super_ward_crystal"
+        }
+    ]
+}

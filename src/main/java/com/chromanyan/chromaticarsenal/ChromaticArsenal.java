@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,6 +23,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
+import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.util.EventClassInstance;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -30,6 +32,7 @@ public class ChromaticArsenal
 {
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
+    public static final ItemGroup GROUP = new CAGroup(Reference.MODID);
 
     public ChromaticArsenal() {
         final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -43,6 +46,7 @@ public class ChromaticArsenal
         bus.addListener(this::doClientStuff);
 
         ModItems.ITEMS_REGISTRY.register(bus);
+        ModPotions.EFFECTS_REGISTRY.register(bus);
         ModLoadingContext.get().registerConfig(Type.COMMON, ModConfig.commonSpec);
         bus.register(ModConfig.class);
 
@@ -68,6 +72,7 @@ public class ChromaticArsenal
     	InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("body").size(1).build());
     	InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("charm").size(1).build());
     	InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("ring").size(1).build());
+    	InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("super_curio").size(1).build());
         // some example code to dispatch IMC to another mod
         //InterModComms.sendTo("chromaticarsenal", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
