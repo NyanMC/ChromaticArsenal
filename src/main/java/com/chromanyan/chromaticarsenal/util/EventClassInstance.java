@@ -22,9 +22,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent;
-import net.minecraftforge.event.entity.living.PotionEvent.PotionRemoveEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -86,7 +84,7 @@ public class EventClassInstance {
 		}
 	}
 	
-	@SubscribeEvent(priority = EventPriority.LOWEST)
+	@SubscribeEvent
 	public void potionImmunityEvent(PotionApplicableEvent event) {
 		LivingEntity player = event.getEntityLiving();
 		if (!player.getCommandSenderWorld().isClientSide()) {
@@ -105,21 +103,10 @@ public class EventClassInstance {
 			if (superCrystal.isPresent()) {
 				event.setResult(Result.DENY);
 			}
-			
-			if (event.getPotionEffect().getEffect() == ModPotions.FRACTURED.get()) {
-				event.setResult(Result.ALLOW); // effectively, fractured can't be prevented on accident
-			}
 		}
 	}
 	
-	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public void potionLingerEvent(PotionRemoveEvent event) {
-		if (event.getPotion() == ModPotions.FRACTURED.get()) {
-			event.setCanceled(true); // if other mods won't play nice, i'll MAKE them play nice
-		}
-	}
-	
-	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	@SubscribeEvent
 	public void playerDeathEvent(LivingDeathEvent event) {
 		if (event.isCanceled()) {
 			return;
@@ -128,11 +115,16 @@ public class EventClassInstance {
 		Optional<ImmutableTriple<String, Integer, ItemStack>> diamondHeart = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.SUPER_GOLDEN_HEART.get(), player);
 		if (diamondHeart.isPresent() && !player.hasEffect(ModPotions.FRACTURED.get())) {
 			if (!event.getSource().isBypassInvul()) {
-				event.setCanceled(true);
-				player.setHealth(player.getMaxHealth());
-				player.addEffect(new EffectInstance(ModPotions.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()));
-				player.setHealth(player.getMaxHealth()); // lazy max health correction, just set the value twice lol
-				player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundCategory.PLAYERS, 0.5F, 1.0F);
+				ItemStack stack = diamondHeart.get().getRight();
+				CompoundNBT nbt = stack.getOrCreateTag();
+				if (!(nbt.contains("counter") && nbt.getInt("counter") > 0)) {
+					nbt.putInt("counter", config.revivalCooldown.get());
+					event.setCanceled(true);
+					player.setHealth(player.getMaxHealth());
+					player.addEffect(new EffectInstance(ModPotions.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()));
+					player.setHealth(player.getMaxHealth()); // lazy max health correction, just set the value twice lol
+					player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundCategory.PLAYERS, 0.5F, 1.0F);
+				}
 			}
 		}
 	}

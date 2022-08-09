@@ -16,7 +16,8 @@
 	"item.chromaticarsenal.super_ward_crystal": "Dispelling Crystal",
 	
 	"effect.chromaticarsenal.fractured": "Fractured",
-	"effect.chromaticarsenal.fractured.description": "Max health is reduced by 10% per level, unable to revive with the Diamond Heart",
+	"effect.chromaticarsenal.fractured.description": "Max health is reduced by 10% per level",
+	"message.chromaticarsenal.revival_cooldown_finished": "§6The Diamond Heart revival cooldown has finished.",
 	
 	"itemGroup.chromaticarsenal": "Chromatic Arsenal"
 }

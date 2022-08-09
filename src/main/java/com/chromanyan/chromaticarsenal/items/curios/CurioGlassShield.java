@@ -13,6 +13,9 @@ public class CurioGlassShield extends BaseCurioItem {
 	
 	@Override
 	public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
+		if (livingEntity.level.isClientSide) {
+			return;
+		}
 		CompoundNBT nbt = stack.getOrCreateTag();
 		if (nbt.contains("counter") && nbt.getInt("counter") > 0) {
 			nbt.putInt("counter", nbt.getInt("counter") - 1);

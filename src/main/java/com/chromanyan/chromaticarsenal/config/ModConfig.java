@@ -34,6 +34,7 @@ public class ModConfig {
 		
 		public final IntValue fracturedDuration;
 		public final IntValue fracturedPotency;
+		public final IntValue revivalCooldown;
 		
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("GoldenHeartSettings");
@@ -113,6 +114,9 @@ public class ModConfig {
 			fracturedPotency = builder
 					.comment("The level of the Fractured effect. Each level is 10% of max health lost.")
 					.defineInRange("fracturedPotency", 4, 0, 255);
+			revivalCooldown = builder
+					.comment("The cooldown of the diamond heart before you are allowed to revive again. This is in ticks. Extremely low values effectively make you unable to die.")
+					.defineInRange("revivalCooldown", 6000, 0, Integer.MAX_VALUE);
 			builder.pop();
 		}
 		

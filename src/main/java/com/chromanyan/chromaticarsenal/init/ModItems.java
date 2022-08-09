@@ -8,6 +8,7 @@ import com.chromanyan.chromaticarsenal.items.curios.CurioGlassShield;
 import com.chromanyan.chromaticarsenal.items.curios.CurioGoldenHeart;
 import com.chromanyan.chromaticarsenal.items.curios.CurioLunarCrystal;
 import com.chromanyan.chromaticarsenal.items.curios.CurioShadowTreads;
+import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioDiamondHeart;
 import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
 
 import net.minecraft.item.Item;
@@ -28,7 +29,7 @@ public class ModItems {
 	public static final RegistryObject<Item> DUALITY_RINGS = modItem("duality_rings", new BaseCurioItem());
 	public static final RegistryObject<Item> LUNAR_CRYSTAL = modItem("lunar_crystal", new CurioLunarCrystal());
 	
-	public static final RegistryObject<Item> SUPER_GOLDEN_HEART = modItem("super_golden_heart", new BaseSuperCurio(ModItems.GOLDEN_HEART));
+	public static final RegistryObject<Item> SUPER_GOLDEN_HEART = modItem("super_golden_heart", new CurioDiamondHeart());
 	public static final RegistryObject<Item> SUPER_WARD_CRYSTAL = modItem("super_ward_crystal", new BaseSuperCurio(ModItems.WARD_CRYSTAL));
 	
 	public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = modItem("magic_garlic_bread", new MagicGarlicBread());

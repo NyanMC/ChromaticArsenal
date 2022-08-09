@@ -5,7 +5,7 @@
     "pages": [
         {
             "type": "text",
-            "text": "The Diamond Heart saves the wearer from certain death. Upon being revived, the wearer receives the Fractured potion effect, reducing max health and preventing the wearer from being saved from certain death again until the effect wears off. The Fractured effect cannot be prevented in all but the most exceptional of cases."
+            "text": "The Diamond Heart saves the wearer from certain death. Upon being revived, the wearer receives the Fractured potion effect, reducing max health. The player cannot revive again until the diamond heart finishes a revival cooldown, which is separate from the potion effect."
         },
 		{
             "type": "crafting",
