@@ -10,6 +10,8 @@ import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -45,8 +47,12 @@ public class EventClassInstance {
 			if (shield.isPresent() && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
 				ItemStack stack = shield.get().getRight();
 				CompoundNBT nbt = stack.getOrCreateTag();
+				int savedTicks = 0;
+				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) > 0) {
+					savedTicks = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) * config.enchantmentCooldownReduction.get();
+				}
 				if (!(nbt.contains("counter") && nbt.getInt("counter") > 0)) {
-					nbt.putInt("counter", config.cooldownDuration.get());
+					nbt.putInt("counter", config.cooldownDuration.get() - savedTicks);
 					event.setAmount(0);
 					player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundCategory.PLAYERS, 0.5F, 1.0F);
 					

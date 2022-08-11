@@ -10,7 +10,7 @@
         },
 		{
             "type": "text",
-            "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+4$() Max Health"
+            "text": "The Golden Heart supports the following enchantments:$(br2)$(l)Protection$(): Max health given by this curio is increased slightly per level"
         }
     ]
 }

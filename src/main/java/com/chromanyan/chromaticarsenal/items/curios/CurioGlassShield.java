@@ -2,6 +2,8 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -22,6 +24,15 @@ public class CurioGlassShield extends BaseCurioItem {
 			if (nbt.getInt("counter") == 0) {
 				livingEntity.getCommandSenderWorld().playSound((PlayerEntity)null, livingEntity.blockPosition(), SoundEvents.GLASS_PLACE, SoundCategory.PLAYERS, 0.5F, 1.0F);
 			}
+		}
+	}
+	
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		if (enchantment == Enchantments.UNBREAKING) {
+			return true;
+		} else {
+			return super.canApplyAtEnchantingTable(stack, enchantment);
 		}
 	}
 

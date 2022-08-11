@@ -9,6 +9,9 @@ import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -45,7 +48,11 @@ public class CurioGoldenHeart extends BaseCurioItem {
 	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid,
 			ItemStack stack) {
 		Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-		atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, Reference.MODID + ":health_bonus", config.maxHealthBoost.get(), AttributeModifier.Operation.fromValue(config.maxHealthBoostOperation.get())));
+		double attModBonus = 0.0;
+		if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, stack) > 0) {
+			attModBonus = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, stack) * config.enchantmentMaxHealthIncrease.get();
+		}
+		atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, Reference.MODID + ":health_bonus", config.maxHealthBoost.get() + attModBonus, AttributeModifier.Operation.fromValue(config.maxHealthBoostOperation.get())));
 		return atts;
 	}
 	
@@ -57,6 +64,15 @@ public class CurioGoldenHeart extends BaseCurioItem {
 	@Override
 	public boolean isPiglinCurrency(ItemStack stack) {
 		return true;
+	}
+	
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		if (enchantment == Enchantments.ALL_DAMAGE_PROTECTION) {
+			return true;
+		} else {
+			return super.canApplyAtEnchantingTable(stack, enchantment);
+		}
 	}
 
 }

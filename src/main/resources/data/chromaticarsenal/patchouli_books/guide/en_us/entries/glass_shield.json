@@ -8,6 +8,10 @@
             "text": "The Glass Shield fully protects against a single attack, and then shatters. It regenerates after a cooldown period."
         },
 		{
+            "type": "text",
+            "text": "The Glass Shield supports the following enchantments:$(br2)$(l)Unbreaking$(): The duration it takes for the curio to recharge is decreased slightly per level"
+        },
+		{
             "type": "crafting",
             "text": "$(o)Don't try this at home!",
 			"recipe": "chromaticarsenal:glass_shield"

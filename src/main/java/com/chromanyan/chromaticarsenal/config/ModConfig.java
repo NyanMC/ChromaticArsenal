@@ -15,13 +15,16 @@ public class ModConfig {
 		public final IntValue maxHealthBoostOperation;
 		public final IntValue absorptionLevel;
 		public final IntValue absorptionDuration;
+		public final DoubleValue enchantmentMaxHealthIncrease;
 		
 		public final IntValue cooldownDuration;
+		public final IntValue enchantmentCooldownReduction;
 		
 		public final DoubleValue antiMagicMultiplierIncoming;
 		public final DoubleValue antiMagicMultiplierOutgoing;
 		
 		public final IntValue darkspeedPotency;
+		public final DoubleValue enchantmentSpeedMultiplier;
 		
 		public final DoubleValue aroOfClubsMultiplier;
 		public final IntValue saturationLevel;
@@ -57,12 +60,19 @@ public class ModConfig {
 			absorptionDuration = builder
 					.comment("The duration of the absorption effect, in ticks. When this hits zero, the effect is re-applied.")
 					.defineInRange("absorptionDuration", 400, 1, Integer.MAX_VALUE);
+			
+			enchantmentMaxHealthIncrease = builder
+					.comment("The extra max health gained per level of Protection on the Golden Heart. This obeys the operation, so if you set maxHealthBoostOperation to either 1 or 2, it's recommended to keep this at 0.1 at most.")
+					.defineInRange("enchantmentMaxHealthIncrease", 1.0, Double.MIN_VALUE, Double.MAX_VALUE);
 			builder.pop();
 			
 			builder.push("GlassShieldSettings");
 			cooldownDuration = builder
 					.comment("The duration, in ticks, for the Glass Shield to recharge after it blocks a hit. Extremely low values effectively make you invincible.")
 					.defineInRange("cooldownDuration", 400, 0, Integer.MAX_VALUE);
+			enchantmentCooldownReduction = builder
+					.comment("The amount of ticks to remove from the Glass Shield cooldown for each level of Unbreaking.")
+					.defineInRange("enchantmentCooldownReduction", 20, 0, Integer.MAX_VALUE);
 			builder.pop();
 			
 			builder.push("WardCrystalSettings");
@@ -79,6 +89,9 @@ public class ModConfig {
 			darkspeedPotency = builder
 					.comment("The level of the speed effect applied to the player while in darkness. 0 is equivalent to effect level 1.")
 					.defineInRange("darkspeedPotency", 0, 0, 255);
+			enchantmentSpeedMultiplier = builder
+					.comment("The amount of passive speed granted by each level of Soul Speed.")
+					.defineInRange("enchantmentSpeedMultiplier", 0.05, Double.MIN_VALUE, Double.MAX_VALUE);
 			builder.pop();
 			
 			builder.push("DualityRingsSettings");

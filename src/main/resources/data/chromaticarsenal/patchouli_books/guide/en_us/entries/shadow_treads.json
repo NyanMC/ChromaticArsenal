@@ -8,6 +8,10 @@
             "text": "The Shadow Charm grants the Speed potion effect when in a light level in which monsters can spawn (7 or less) and when little sky light can reach the user (even at night). Additionally, it grants immunity to Slowness."
         },
 		{
+            "type": "text",
+            "text": "The Shadow Charm supports the following enchantments:$(br2)$(l)Soul Speed$(): Grants an additional passive speed boost per level"
+        },
+		{
             "type": "crafting",
             "text": "$(o)I found you, faker!",
 			"recipe": "chromaticarsenal:shadow_treads"
