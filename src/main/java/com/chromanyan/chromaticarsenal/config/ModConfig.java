@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.config;
 import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 
@@ -36,7 +37,10 @@ public class ModConfig {
 		public final IntValue fracturedPotency;
 		public final IntValue revivalCooldown;
 		
+		public final BooleanValue lootTableInsertion;
+		
 		Common(ForgeConfigSpec.Builder builder) {
+			builder.push("CurioSettings");
 			builder.push("GoldenHeartSettings");
 			maxHealthBoost = builder
 					.comment("The max health granted when the player equips a golden heart.")
@@ -106,7 +110,9 @@ public class ModConfig {
 					.comment("The level of the levitation effect. 0 is equivalent to effect level 1.")
 					.defineInRange("levitationPotency", 2, 0, 255);
 			builder.pop();
+			builder.pop();
 			
+			builder.push("SuperCurioSettings");
 			builder.push("SuperGoldenHeartSettings");
 			fracturedDuration = builder
 					.comment("The duration of the Fractured effect, in ticks.")
@@ -118,6 +124,11 @@ public class ModConfig {
 					.comment("The cooldown of the diamond heart before you are allowed to revive again. This is in ticks. Extremely low values effectively make you unable to die.")
 					.defineInRange("revivalCooldown", 6000, 0, Integer.MAX_VALUE);
 			builder.pop();
+			builder.pop();
+			
+			lootTableInsertion = builder
+					.comment("Set to false to prevent Chromatic Arsenal from injecting its own items into loot chests. This will cause items only found in loot chests to become uncraftable.")
+					.define("lootTableInsertion", true);
 		}
 		
 	}

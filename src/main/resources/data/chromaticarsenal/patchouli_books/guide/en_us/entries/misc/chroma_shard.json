@@ -4,9 +4,9 @@
     "category": "misc",
     "pages": [
         {
-            "type": "crafting",
-            "text": "The Chroma Shard is a basic item in the mod, used to make most of the other items.",
-			"recipe": "chromaticarsenal:chroma_shard"
+            "type": "spotlight",
+            "text": "The Chroma Shard is a basic item in the mod, used to make most of the other items. It can be found in a majority of both vanilla and modded loot chests.",
+			"item": "chromaticarsenal:chroma_shard"
         },
 		{
             "type": "crafting",

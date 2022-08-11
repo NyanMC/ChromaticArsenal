@@ -4,13 +4,9 @@
     "category": "main",
     "pages": [
         {
-            "type": "text",
-            "text": "The Lunar Crystal makes its wearer immune to Levitation. By default, hitting a mob has a 10% chance to inflict Levitation III to the target for 3 seconds."
-        },
-		{
-            "type": "crafting",
-            "text": "$(o)I've come to make an announcement.",
-			"recipe": "chromaticarsenal:lunar_crystal"
+            "type": "spotlight",
+            "text": "The Lunar Crystal makes its wearer immune to Levitation. By default, hitting a mob has a 10% chance to inflict Levitation III to the target for 3 seconds. This curio can (rarely) be found in end city chests.",
+			"item": "chromaticarsenal:lunar_crystal"
         }
     ]
 }

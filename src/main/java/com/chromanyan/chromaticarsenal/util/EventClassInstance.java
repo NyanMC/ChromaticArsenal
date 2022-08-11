@@ -14,11 +14,15 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.ItemLootEntry;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.RandomValueRange;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent;
@@ -126,6 +130,40 @@ public class EventClassInstance {
 					player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundCategory.PLAYERS, 0.5F, 1.0F);
 				}
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void insertLoot(LootTableLoadEvent event) {
+		if(!config.lootTableInsertion.get()) {
+			return;
+		}
+		
+		LootPool.Builder builder = LootPool.lootPool().setRolls(RandomValueRange.between(-5, 1)).name("chromaticarsenal_rare_loot");
+		LootPool.Builder builder2 = LootPool.lootPool().setRolls(RandomValueRange.between(-1, 2)).name("chromaticarsenal_common_loot");
+		boolean pool1HasLoot = false;
+		boolean pool2HasLoot = false;
+		if(event.getName().getPath().contains("chests/bastion_treasure")) { // so == doesn't work, but .contains() does. sure, i guess.
+			builder.add(ItemLootEntry.lootTableItem(() -> ModItems.GOLDEN_HEART.get()));
+			pool1HasLoot = true;
+		}
+		
+		if(event.getName().getPath().contains("chests/end_city_treasure")) {
+			builder.add(ItemLootEntry.lootTableItem(() -> ModItems.LUNAR_CRYSTAL.get()));
+			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.MAGIC_GARLIC_BREAD.get()));
+			pool1HasLoot = true;
+			pool2HasLoot = true;
+		}
+		if(event.getName().getPath().contains("chests")) {
+			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.CHROMA_SHARD.get()));
+			pool2HasLoot = true;
+		}
+		
+		if(pool1HasLoot) {
+			event.getTable().addPool(builder.build());
+		}
+		if(pool2HasLoot) {
+			event.getTable().addPool(builder2.build());
 		}
 	}
 	
