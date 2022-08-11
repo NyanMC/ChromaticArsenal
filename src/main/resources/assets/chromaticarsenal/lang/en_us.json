@@ -10,6 +10,8 @@
 	"item.chromaticarsenal.lunar_crystal": "Lunar Crystal",
 	"item.chromaticarsenal.lunar_crystal.luna": "Luna's Crystal",
 	
+	"block.chromaticarsenal.chroma_block": "Chroma Block",
+	
 	"curios.identifier.super_curio": "Super Curio",
 	"curios.modifiers.super_curio": "When worn as super curio:",
 	"item.chromaticarsenal.super_golden_heart": "Diamond Heart",
@@ -18,6 +20,11 @@
 	"effect.chromaticarsenal.fractured": "Fractured",
 	"effect.chromaticarsenal.fractured.description": "Max health is reduced by 10% per level",
 	"message.chromaticarsenal.revival_cooldown_finished": "§6The Diamond Heart revival cooldown has finished.",
+	
+	"advancements.nether.obtain_chroma_shard.title": "It All Starts With This...",
+	"advancements.nether.obtain_chroma_shard.description": "Acquire your first Chroma Shard",
+	"advancements.nether.obtain_ascension_essence.title": "Even Crazier Space Dust",
+	"advancements.nether.obtain_ascension_essence.description": "Acquire some Essence of Ascension",
 	
 	"itemGroup.chromaticarsenal": "Chromatic Arsenal"
 }

@@ -11,7 +11,10 @@ import com.chromanyan.chromaticarsenal.items.curios.CurioShadowTreads;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioDiamondHeart;
 import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Rarity;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -19,8 +22,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModItems {
 	public static final DeferredRegister<Item> ITEMS_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MODID);
 	
-	public static final RegistryObject<Item> CHROMA_SHARD = genericItem("chroma_shard");
-	public static final RegistryObject<Item> ASCENSION_ESSENCE = genericItem("ascension_essence");
+	public static final RegistryObject<Item> CHROMA_SHARD = genericItem("chroma_shard", new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON));
+	public static final RegistryObject<Item> ASCENSION_ESSENCE = genericItem("ascension_essence", new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.RARE));
 	
 	public static final RegistryObject<Item> GOLDEN_HEART = modItem("golden_heart", new CurioGoldenHeart());
 	public static final RegistryObject<Item> GLASS_SHIELD = modItem("glass_shield", new CurioGlassShield());
@@ -33,12 +36,19 @@ public class ModItems {
 	public static final RegistryObject<Item> SUPER_WARD_CRYSTAL = modItem("super_ward_crystal", new BaseSuperCurio(ModItems.WARD_CRYSTAL));
 	
 	public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = modItem("magic_garlic_bread", new MagicGarlicBread());
-
-    private static RegistryObject<Item> genericItem(String name) {
-        return ITEMS_REGISTRY.register(name, () -> new Item(new Item.Properties().tab(ChromaticArsenal.GROUP)));
+	
+	public static final RegistryObject<BlockItem> CHROMA_BLOCK_ITEM = blockItem("chroma_block", ModBlocks.CHROMA_BLOCK, new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON));
+	
+	//TODO add properties parameter to genericItem and blockItem
+    private static RegistryObject<Item> genericItem(String name, Item.Properties prop) {
+        return ITEMS_REGISTRY.register(name, () -> new Item(prop));
     }
 
     private static RegistryObject<Item> modItem(String name, Item item) {
         return ITEMS_REGISTRY.register(name, () -> item);
+    }
+    
+    private static RegistryObject<BlockItem> blockItem(String name, RegistryObject<Block> block, Item.Properties prop) {
+    	return ITEMS_REGISTRY.register(name, () -> new BlockItem(block.get(), prop));
     }
 }

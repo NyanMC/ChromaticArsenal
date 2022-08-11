@@ -9,7 +9,7 @@
         },
 		{
             "type": "crafting",
-            "text": "$(o)It all starts with this...$(br)A jewel containing the ultimate power...",
+            "text": "$(o)Off-brand Ankh Shield",
 			"recipe": "chromaticarsenal:super_ward_crystal"
         }
     ]
