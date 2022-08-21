@@ -12,7 +12,7 @@ import net.minecraft.potion.EffectType;
 public class EffectFractured extends Effect {
 
 	public EffectFractured() {
-		super(EffectType.HARMFUL, 0x3C0000);
+		super(EffectType.HARMFUL, 0x00003C);
 		this.addAttributeModifier(Attributes.MAX_HEALTH, "69d353d6-f113-41ce-a437-35095cb2cae8", -0.1, AttributeModifier.Operation.MULTIPLY_TOTAL);
 	}
 	

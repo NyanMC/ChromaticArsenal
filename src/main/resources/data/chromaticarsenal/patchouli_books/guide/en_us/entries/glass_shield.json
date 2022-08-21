@@ -9,7 +9,7 @@
         },
 		{
             "type": "text",
-            "text": "The Glass Shield supports the following enchantments:$(br2)$(l)Unbreaking$(): The duration it takes for the curio to recharge is decreased slightly per level"
+            "text": "The Glass Shield supports the following enchantments:$(br2)$(l)Mending$(): Decreases the duration it takes for the curio to recharge$(br)$(l)Unbreaking$(): Grants a (small) chance to prevent the curio from shattering when blocking a hit"
         },
 		{
             "type": "crafting",

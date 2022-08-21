@@ -19,6 +19,7 @@ public class ModConfig {
 		
 		public final IntValue cooldownDuration;
 		public final IntValue enchantmentCooldownReduction;
+		public final DoubleValue enchantmentFreeBlockChance;
 		
 		public final DoubleValue antiMagicMultiplierIncoming;
 		public final DoubleValue antiMagicMultiplierOutgoing;
@@ -39,6 +40,10 @@ public class ModConfig {
 		public final IntValue fracturedDuration;
 		public final IntValue fracturedPotency;
 		public final IntValue revivalCooldown;
+		
+		public final IntValue revivalLimit;
+		public final IntValue shatterRevivalCooldown;
+		public final DoubleValue healthTradeoff;
 		
 		public final BooleanValue lootTableInsertion;
 		
@@ -68,11 +73,14 @@ public class ModConfig {
 			
 			builder.push("GlassShieldSettings");
 			cooldownDuration = builder
-					.comment("The duration, in ticks, for the Glass Shield to recharge after it blocks a hit. Extremely low values effectively make you invincible.")
+					.comment("The duration, in ticks, for the Glass Shield to recharge after it blocks a hit. Extremely low values effectively make you invincible. It is recommended to make this greater than enchantmentCooldownReduction, unless mending is unobtainable in your modpack.")
 					.defineInRange("cooldownDuration", 400, 0, Integer.MAX_VALUE);
 			enchantmentCooldownReduction = builder
-					.comment("The amount of ticks to remove from the Glass Shield cooldown for each level of Unbreaking.")
-					.defineInRange("enchantmentCooldownReduction", 20, 0, Integer.MAX_VALUE);
+					.comment("The amount of ticks to remove from the Glass Shield cooldown if Mending is applied. Note that if another mod changes Mending to have multiple levels, this will be multiplied by the level of the enchant.")
+					.defineInRange("enchantmentCooldownReduction", 100, 0, Integer.MAX_VALUE);
+			enchantmentFreeBlockChance = builder
+					.comment("The percent chance per level of Unbreaking to prevent the Glass Shield from shattering after blocking a hit. This is rounded up to the nearest whole number in-game. If your modpack has the ability to grant you outrageous levels of unbreaking, this should be set to a low value.")
+					.defineInRange("enchantmentFreeBlockChance", 2D, 0D, Double.MAX_VALUE);
 			builder.pop();
 			
 			builder.push("WardCrystalSettings");
@@ -136,6 +144,17 @@ public class ModConfig {
 			revivalCooldown = builder
 					.comment("The cooldown of the diamond heart before you are allowed to revive again. This is in ticks. Extremely low values effectively make you unable to die.")
 					.defineInRange("revivalCooldown", 6000, 0, Integer.MAX_VALUE);
+			builder.pop();
+			builder.push("SuperGlassShieldSettings");
+			revivalLimit = builder
+					.comment("Once this amount of ticks is exceeded, the next fatal blow will kill the wearer.")
+					.defineInRange("revivalLimit", 3600, 0, Integer.MAX_VALUE);
+			shatterRevivalCooldown = builder
+					.comment("The amount of ticks added each time the Shield of Undying sustains a fatal blow. This stacks.")
+					.defineInRange("shatterRevivalCooldown", 1200, 0, Integer.MAX_VALUE);
+			healthTradeoff = builder
+					.comment("The operation 2 modifier given to the player wearing this shield. This should be negative or zero.")
+					.defineInRange("healthTradeoff", -0.8D, -1.0D, 0.0D);
 			builder.pop();
 			builder.pop();
 			

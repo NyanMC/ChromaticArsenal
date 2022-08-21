@@ -20,6 +20,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
 	
 	@Override
 	public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
+		super.curioTick(identifier, index, livingEntity, stack);
 		CompoundNBT nbt = stack.getOrCreateTag();
 		if (livingEntity.level.isClientSide) {
 			if (nbt.contains("counter") && nbt.getInt("counter") == 1) {

@@ -9,6 +9,8 @@ import com.chromanyan.chromaticarsenal.items.curios.CurioGoldenHeart;
 import com.chromanyan.chromaticarsenal.items.curios.CurioLunarCrystal;
 import com.chromanyan.chromaticarsenal.items.curios.CurioShadowTreads;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioDiamondHeart;
+import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioShieldOfUndying;
+import com.chromanyan.chromaticarsenal.items.food.Cosmicola;
 import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
 
 import net.minecraft.block.Block;
@@ -33,9 +35,11 @@ public class ModItems {
 	public static final RegistryObject<Item> LUNAR_CRYSTAL = modItem("lunar_crystal", new CurioLunarCrystal());
 	
 	public static final RegistryObject<Item> SUPER_GOLDEN_HEART = modItem("super_golden_heart", new CurioDiamondHeart());
+	public static final RegistryObject<Item> SUPER_GLASS_SHIELD = modItem("super_glass_shield", new CurioShieldOfUndying());
 	public static final RegistryObject<Item> SUPER_WARD_CRYSTAL = modItem("super_ward_crystal", new BaseSuperCurio(ModItems.WARD_CRYSTAL));
 	
 	public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = modItem("magic_garlic_bread", new MagicGarlicBread());
+	public static final RegistryObject<Item> COSMICOLA = modItem("cosmicola", new Cosmicola());
 	
 	public static final RegistryObject<BlockItem> CHROMA_BLOCK_ITEM = blockItem("chroma_block", ModBlocks.CHROMA_BLOCK, new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON));
 	
