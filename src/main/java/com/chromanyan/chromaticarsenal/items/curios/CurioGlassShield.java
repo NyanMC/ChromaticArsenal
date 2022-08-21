@@ -29,7 +29,7 @@ public class CurioGlassShield extends BaseCurioItem {
 	
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		if (enchantment == Enchantments.UNBREAKING) {
+		if (enchantment == Enchantments.UNBREAKING || enchantment == Enchantments.MENDING) {
 			return true;
 		} else {
 			return super.canApplyAtEnchantingTable(stack, enchantment);

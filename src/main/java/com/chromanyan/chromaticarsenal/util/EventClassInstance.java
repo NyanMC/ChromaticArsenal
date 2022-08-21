@@ -22,6 +22,7 @@ import net.minecraft.loot.RandomValueRange;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.LootTableLoadEvent;
@@ -42,19 +43,37 @@ public class EventClassInstance {
 	public void playerAttackedEvent(LivingHurtEvent event) {
 		LivingEntity player = event.getEntityLiving();
 		if (!player.getCommandSenderWorld().isClientSide()) {
+			// spatial: block fall damage
+			if (player.hasEffect(ModPotions.SPATIAL.get()) && event.getSource() == DamageSource.FALL) {
+				event.setAmount(0); // just in case, you know?
+				event.setCanceled(true);
+			}
+			if (event.isCanceled()) {
+				return; // the rest of the effects should only fire if they're even applicable
+			}
 			// glass shield: block hits
 			Optional<ImmutableTriple<String, Integer, ItemStack>> shield = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.GLASS_SHIELD.get(), player);
 			if (shield.isPresent() && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
 				ItemStack stack = shield.get().getRight();
 				CompoundNBT nbt = stack.getOrCreateTag();
 				int savedTicks = 0;
+				int freeBlockChance = 0;
+				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MENDING, stack) > 0) {
+					savedTicks = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MENDING, stack) * config.enchantmentCooldownReduction.get(); // i doubt this will ever be > 1, but maybe some mod uses mixins to increase it. i want to be ready for that.
+				}
 				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) > 0) {
-					savedTicks = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) * config.enchantmentCooldownReduction.get();
+					freeBlockChance = (int) Math.ceil(EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) * config.enchantmentFreeBlockChance.get());
 				}
 				if (!(nbt.contains("counter") && nbt.getInt("counter") > 0)) {
-					nbt.putInt("counter", config.cooldownDuration.get() - savedTicks);
+					int randBlock = rand.nextInt(99);
+					if (randBlock < freeBlockChance) { // not <= because rand.nextInt is always one less than i want it to be
+						player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 1.0F);
+						player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundCategory.PLAYERS, 0.5F, 1.0F);
+					} else {
+						nbt.putInt("counter", config.cooldownDuration.get() - savedTicks);
+						player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundCategory.PLAYERS, 0.5F, 1.0F);
+					}
 					event.setAmount(0);
-					player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundCategory.PLAYERS, 0.5F, 1.0F);
 					
 				} else {
 					// ChromaticArsenal.LOGGER.info("DEBUG: Attempted to block damage, but player had " + nbt.getInt("counter") + "ticks of cooldown remaining");
@@ -137,6 +156,26 @@ public class EventClassInstance {
 				}
 			}
 		}
+		Optional<ImmutableTriple<String, Integer, ItemStack>> undyingShield = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.SUPER_GLASS_SHIELD.get(), player);
+		if (undyingShield.isPresent()) {
+			if (!event.getSource().isBypassInvul()) {
+				ItemStack stack = undyingShield.get().getRight();
+				CompoundNBT nbt = stack.getOrCreateTag();
+				if (!(nbt.contains("counter") && nbt.getInt("counter") > config.revivalLimit.get())) {
+					int existingDuration = 0;
+					if (nbt.contains("counter")) {
+						existingDuration = nbt.getInt("counter"); // i know this setup is a bit strange but i wanted to make 1000% sure counter isn't getting read from when it doesn't exist in the first place
+					}
+					nbt.putInt("counter", existingDuration + config.shatterRevivalCooldown.get());
+					event.setCanceled(true);
+					player.setHealth(player.getMaxHealth());
+					player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundCategory.PLAYERS, 0.5F, 1.0F);
+					if (nbt.getInt("counter") < config.revivalLimit.get()) {
+						player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 1.0F); // player has minimum one more revive left, let them know that
+					}
+				}
+			}
+		}
 	}
 	
 	@SubscribeEvent
@@ -157,6 +196,7 @@ public class EventClassInstance {
 		if(event.getName().getPath().contains("chests/end_city_treasure")) {
 			builder.add(ItemLootEntry.lootTableItem(() -> ModItems.LUNAR_CRYSTAL.get()));
 			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.MAGIC_GARLIC_BREAD.get()));
+			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.COSMICOLA.get()));
 			pool1HasLoot = true;
 			pool2HasLoot = true;
 		}
