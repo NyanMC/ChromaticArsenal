@@ -26,7 +26,7 @@ apply plugin: 'maven-publish'
 //    add sourceSets.main, "chromaticarsenal.refmap.json"
 //}
 
-version = '1.0'
+version = '1.3.0'
 group = 'com.chromanyan.chromaticarsenal' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'chromaticarsenal'
 
