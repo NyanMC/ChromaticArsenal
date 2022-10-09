@@ -21,6 +21,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+@SuppressWarnings("all")
 public class ModItems {
 	public static final DeferredRegister<Item> ITEMS_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MODID);
 	
@@ -42,8 +43,7 @@ public class ModItems {
 	public static final RegistryObject<Item> COSMICOLA = modItem("cosmicola", new Cosmicola());
 	
 	public static final RegistryObject<BlockItem> CHROMA_BLOCK_ITEM = blockItem("chroma_block", ModBlocks.CHROMA_BLOCK, new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON));
-	
-	//TODO add properties parameter to genericItem and blockItem
+
     private static RegistryObject<Item> genericItem(String name, Item.Properties prop) {
         return ITEMS_REGISTRY.register(name, () -> new Item(prop));
     }

@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
-
+@SuppressWarnings("all")
 public class CurioGlassShield extends BaseCurioItem {
 	
 	@Override
@@ -21,9 +21,8 @@ public class CurioGlassShield extends BaseCurioItem {
 		CompoundNBT nbt = stack.getOrCreateTag();
 		if (nbt.contains("counter") && nbt.getInt("counter") > 0) {
 			nbt.putInt("counter", nbt.getInt("counter") - 1);
-			if (nbt.getInt("counter") == 0) {
-				livingEntity.getCommandSenderWorld().playSound((PlayerEntity)null, livingEntity.blockPosition(), SoundEvents.GLASS_PLACE, SoundCategory.PLAYERS, 0.5F, 1.0F);
-			}
+			if (nbt.getInt("counter") == 0)
+				livingEntity.getCommandSenderWorld().playSound((PlayerEntity) null, livingEntity.blockPosition(), SoundEvents.GLASS_PLACE, SoundCategory.PLAYERS, 0.5F, 1.0F);
 		}
 	}
 	

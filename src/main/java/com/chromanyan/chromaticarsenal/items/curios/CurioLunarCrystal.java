@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-
+@SuppressWarnings("all")
 public class CurioLunarCrystal extends BaseCurioItem {
 	@Override
 	public ITextComponent getName(ItemStack stack) {

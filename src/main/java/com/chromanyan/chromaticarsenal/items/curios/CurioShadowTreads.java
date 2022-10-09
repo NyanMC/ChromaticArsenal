@@ -22,7 +22,8 @@ import net.minecraft.world.World;
 import top.theillusivec4.curios.api.SlotContext;
 
 public class CurioShadowTreads extends BaseCurioItem {
-	
+
+	@SuppressWarnings("all")
 	@Override
 	public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
 		World world = livingEntity.getCommandSenderWorld();

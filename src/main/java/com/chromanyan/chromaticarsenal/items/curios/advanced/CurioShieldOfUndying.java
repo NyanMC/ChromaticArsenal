@@ -24,9 +24,9 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
 
 	public CurioShieldOfUndying() {
 		super(ModItems.GLASS_SHIELD);
-		// TODO Auto-generated constructor stub
 	}
-	
+
+	@SuppressWarnings("all")
 	@Override
 	public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
 		if (livingEntity.level.isClientSide) {

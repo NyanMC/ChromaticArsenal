@@ -32,7 +32,7 @@ import net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import top.theillusivec4.curios.api.CuriosApi;
-
+@SuppressWarnings("all") //temporary, don't feel like fixing my warning checking
 public class EventClassInstance {
 	// this is a mess
 	

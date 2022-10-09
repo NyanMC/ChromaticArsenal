@@ -23,7 +23,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 public class CurioGoldenHeart extends BaseCurioItem {
 	
-	Common config = ModConfig.COMMON;
+	final Common config = ModConfig.COMMON;
 	
 	@Override
 	public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {

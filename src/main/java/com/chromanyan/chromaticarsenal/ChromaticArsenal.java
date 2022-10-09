@@ -32,6 +32,7 @@ import com.chromanyan.chromaticarsenal.util.EventClassInstance;
 public class ChromaticArsenal
 {
     // Directly reference a log4j logger.
+    @SuppressWarnings("all")
     public static final Logger LOGGER = LogManager.getLogger();
     public static final ItemGroup GROUP = new CAGroup(Reference.MODID);
 

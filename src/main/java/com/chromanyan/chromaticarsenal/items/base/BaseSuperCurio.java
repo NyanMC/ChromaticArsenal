@@ -16,14 +16,18 @@ import net.minecraft.item.Rarity;
 import net.minecraftforge.fml.RegistryObject;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
-
+@SuppressWarnings("unused")
 public class BaseSuperCurio extends Item implements ICurioItem {
 	
-	private RegistryObject<Item> inferiorVariant;
+	private final RegistryObject<Item> inferiorVariant;
 	
 	public BaseSuperCurio(RegistryObject<Item> upgradeTo) {
 		super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.EPIC).defaultDurability(0));
 		this.inferiorVariant = upgradeTo;
+	}
+
+	public RegistryObject<Item> getInferiorVariant() {
+		return inferiorVariant;
 	}
 	
 	@Override
@@ -49,13 +53,11 @@ public class BaseSuperCurio extends Item implements ICurioItem {
 	
 	@Override
 	public boolean isEnchantable(ItemStack p_77616_1_) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	
 	@Override
 	public int getItemEnchantability(ItemStack stack) {
-		// TODO Auto-generated method stub
 		return 1;
 	}
 	

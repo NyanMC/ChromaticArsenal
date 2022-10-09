@@ -15,9 +15,9 @@ public class CurioDiamondHeart extends BaseSuperCurio {
 
 	public CurioDiamondHeart() {
 		super(ModItems.GOLDEN_HEART);
-		// TODO Auto-generated constructor stub
 	}
-	
+
+	@SuppressWarnings("all")
 	@Override
 	public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
 		super.curioTick(identifier, index, livingEntity, stack);

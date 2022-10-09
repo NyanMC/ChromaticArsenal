@@ -15,7 +15,6 @@ public class BaseCurioItem extends Item implements ICurioItem {
 
 	public BaseCurioItem() {
 		super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(0));
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
@@ -25,13 +24,11 @@ public class BaseCurioItem extends Item implements ICurioItem {
 	
 	@Override
 	public boolean isEnchantable(ItemStack p_77616_1_) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	
 	@Override
 	public int getItemEnchantability(ItemStack stack) {
-		// TODO Auto-generated method stub
 		return 1;
 	}
 	

@@ -18,8 +18,9 @@ public class EffectFractured extends Effect {
 	
 	@Override
 	public List<ItemStack> getCurativeItems() {
-		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		return ret; // in other words, not curable
+		// ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+		// return ret;
+		return new ArrayList<ItemStack>(); // in other words, not curable
 	}
 
 }

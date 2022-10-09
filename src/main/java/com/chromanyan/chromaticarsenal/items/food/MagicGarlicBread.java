@@ -20,12 +20,12 @@ import net.minecraft.world.World;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class MagicGarlicBread extends Item {
-	Common config = ModConfig.COMMON;
+	final Common config = ModConfig.COMMON;
 	public MagicGarlicBread() {
 		super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(64).rarity(Rarity.RARE).food(new Food.Builder().nutrition(10).saturationMod(0.7F).alwaysEat().build()));
-		// TODO Auto-generated constructor stub
 	}
-	
+
+	@SuppressWarnings("all")
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity player) {
 		if (!world.isClientSide) {

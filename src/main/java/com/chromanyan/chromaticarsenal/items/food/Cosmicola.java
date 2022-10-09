@@ -27,7 +27,6 @@ public class Cosmicola extends Item {
 	
 	@Override
 	public SoundEvent getEatingSound() {
-		// TODO Auto-generated method stub
 		return SoundEvents.GENERIC_DRINK;
 	}
 }

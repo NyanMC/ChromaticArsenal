@@ -1,7 +1,16 @@
 {
   "variants": {
-    "": {
+	"axis=x": {
+	  "model": "chromaticarsenal:block/chroma_block_horizontal",
+	  "x": 90,
+	  "y": 90
+	},
+    "axis=y": {
       "model": "chromaticarsenal:block/chroma_block"
-    }
+    },
+	"axis=z": {
+	  "model": "chromaticarsenal:block/chroma_block_horizontal",
+	  "x": 90
+	}
   }
 }
