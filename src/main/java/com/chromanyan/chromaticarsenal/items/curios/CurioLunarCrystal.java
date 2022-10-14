@@ -2,14 +2,22 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import java.util.UUID;
 
+import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeMod;
+import top.theillusivec4.curios.api.SlotContext;
+
 @SuppressWarnings("all")
 public class CurioLunarCrystal extends BaseCurioItem {
 	@Override
@@ -35,5 +43,12 @@ public class CurioLunarCrystal extends BaseCurioItem {
 				stack.getOrCreateTag().putString("crafter.name", player.getDisplayName().getString());
 			}
 		}
+	}
+
+	@Override
+	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+		Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
+		atts.put(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(uuid, Reference.MODID + ":defy_gravity", -0.25, AttributeModifier.Operation.MULTIPLY_TOTAL));
+		return atts;
 	}
 }

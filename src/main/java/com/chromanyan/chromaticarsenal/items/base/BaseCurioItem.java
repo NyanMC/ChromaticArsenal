@@ -16,6 +16,10 @@ public class BaseCurioItem extends Item implements ICurioItem {
 	public BaseCurioItem() {
 		super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(0));
 	}
+
+	public BaseCurioItem(Item.Properties properties) {
+		super(properties);
+	}
 	
 	@Override
 	public boolean canEquip(String identifier, LivingEntity livingEntity, ItemStack stack) {
@@ -34,7 +38,7 @@ public class BaseCurioItem extends Item implements ICurioItem {
 	
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		if (enchantment == Enchantments.BINDING_CURSE || enchantment == Enchantments.VANISHING_CURSE) {
+		if (enchantment == Enchantments.BINDING_CURSE || enchantment == Enchantments.VANISHING_CURSE) { // for some reason this doesn't happen unless a curio has durability
 			return true;
 		} else {
 			return super.canApplyAtEnchantingTable(stack, enchantment);

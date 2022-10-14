@@ -12,6 +12,11 @@
             "type": "crafting",
             "text": "The Essence of Ascension is used to convert your standard arsenal into Super Curios.",
 			"recipe": "chromaticarsenal:ascension_essence"
+        },
+        {
+          "type": "spotlight",
+          "text": "Spicy Coal is an item rarely found in ruined portal chests. It can be used to smelt a lot of items in a furnace, or to craft a Friendly Fire Flower.",
+          "item": "chromaticarsenal:spicy_coal"
         }
     ]
 }

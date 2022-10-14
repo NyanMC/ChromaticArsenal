@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SFS",
+    "ACA",
+    "SFS"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:red_tulip"
+    },
+	"C": {
+      "item": "chromaticarsenal:chroma_shard"
+    },
+	"A": {
+      "item": "minecraft:arrow"
+    },
+	"S": {
+      "item": "chromaticarsenal:spicy_coal"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:friendly_fire_flower"
+  }
+}

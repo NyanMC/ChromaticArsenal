@@ -2,12 +2,10 @@ package com.chromanyan.chromaticarsenal.init;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.Reference;
+import com.chromanyan.chromaticarsenal.items.SpicyCoal;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
-import com.chromanyan.chromaticarsenal.items.curios.CurioGlassShield;
-import com.chromanyan.chromaticarsenal.items.curios.CurioGoldenHeart;
-import com.chromanyan.chromaticarsenal.items.curios.CurioLunarCrystal;
-import com.chromanyan.chromaticarsenal.items.curios.CurioShadowTreads;
+import com.chromanyan.chromaticarsenal.items.curios.*;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioDiamondHeart;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioShieldOfUndying;
 import com.chromanyan.chromaticarsenal.items.food.Cosmicola;
@@ -27,12 +25,14 @@ public class ModItems {
 	
 	public static final RegistryObject<Item> CHROMA_SHARD = genericItem("chroma_shard", new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON));
 	public static final RegistryObject<Item> ASCENSION_ESSENCE = genericItem("ascension_essence", new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.RARE));
+	public static final RegistryObject<Item> SPICY_COAL = modItem("spicy_coal", new SpicyCoal());
 	
 	public static final RegistryObject<Item> GOLDEN_HEART = modItem("golden_heart", new CurioGoldenHeart());
 	public static final RegistryObject<Item> GLASS_SHIELD = modItem("glass_shield", new CurioGlassShield());
 	public static final RegistryObject<Item> WARD_CRYSTAL = modItem("ward_crystal", new BaseCurioItem());
 	public static final RegistryObject<Item> SHADOW_TREADS = modItem("shadow_treads", new CurioShadowTreads());
 	public static final RegistryObject<Item> DUALITY_RINGS = modItem("duality_rings", new BaseCurioItem());
+	public static final RegistryObject<Item> FRIENDLY_FIRE_FLOWER = modItem("friendly_fire_flower", new CurioFriendlyFireFlower());
 	public static final RegistryObject<Item> LUNAR_CRYSTAL = modItem("lunar_crystal", new CurioLunarCrystal());
 	
 	public static final RegistryObject<Item> SUPER_GOLDEN_HEART = modItem("super_golden_heart", new CurioDiamondHeart());

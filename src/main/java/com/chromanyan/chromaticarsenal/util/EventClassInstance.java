@@ -102,6 +102,12 @@ public class EventClassInstance {
 				if (event.getSource().isProjectile() && attackerRings.isPresent()) {
 					event.setAmount((float) (event.getAmount() * config.aroOfClubsMultiplier.get()));
 				}
+
+				// duality rings: increase projectile damage
+				Optional<ImmutableTriple<String, Integer, ItemStack>> friendlyFlower = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.FRIENDLY_FIRE_FLOWER.get(), (LivingEntity) possibleAttacker);
+				if (possibleAttacker == player && friendlyFlower.isPresent()) {
+					event.setAmount(0);
+				}
 				
 				// lunar crystal: apply levitation
 				Optional<ImmutableTriple<String, Integer, ItemStack>> attackerLCrystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.LUNAR_CRYSTAL.get(), (LivingEntity) possibleAttacker);
@@ -200,6 +206,12 @@ public class EventClassInstance {
 			pool1HasLoot = true;
 			pool2HasLoot = true;
 		}
+
+		if(event.getName().getPath().contains("chests/ruined_portal")) {
+			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.SPICY_COAL.get()));
+			pool2HasLoot = true;
+		}
+
 		if(event.getName().getPath().contains("chests")) {
 			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.CHROMA_SHARD.get()));
 			pool2HasLoot = true;
