@@ -3,12 +3,13 @@ package com.chromanyan.chromaticarsenal.items.food;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
-import net.minecraft.item.Rarity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import org.jetbrains.annotations.NotNull;
 
 public class Cosmicola extends Item {
 
@@ -17,16 +18,16 @@ public class Cosmicola extends Item {
 				.tab(ChromaticArsenal.GROUP)
 				.stacksTo(16)
 				.rarity(Rarity.EPIC)
-				.food(new Food.Builder()
+				.food(new FoodProperties.Builder()
 						.nutrition(15)
 						.saturationMod(0.7F)
 						.alwaysEat()
-						.effect(()-> new EffectInstance(ModPotions.SPATIAL.get(), 3600, 0), 1.0F)
+						.effect(()-> new MobEffectInstance(ModPotions.SPATIAL.get(), 3600, 0), 1.0F)
 						.build()));
 	}
 	
 	@Override
-	public SoundEvent getEatingSound() {
+	public @NotNull SoundEvent getEatingSound() {
 		return SoundEvents.GENERIC_DRINK;
 	}
 }

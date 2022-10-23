@@ -2,10 +2,10 @@ package com.chromanyan.chromaticarsenal;
 
 import com.chromanyan.chromaticarsenal.init.ModItems;
 
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
-public class CAGroup extends ItemGroup {
+public class CAGroup extends CreativeModeTab {
 
 	public CAGroup(String label) {
 		super(label);

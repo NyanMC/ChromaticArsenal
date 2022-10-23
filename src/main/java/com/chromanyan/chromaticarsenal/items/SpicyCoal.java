@@ -1,10 +1,10 @@
 package com.chromanyan.chromaticarsenal.items;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.crafting.RecipeType;
 
 import javax.annotation.Nullable;
 
@@ -22,7 +22,7 @@ public class SpicyCoal extends Item {
     }
 
     @Override
-    public int getBurnTime(ItemStack itemStack, @Nullable IRecipeType<?> recipeType) {
+    public int getBurnTime(ItemStack itemStack, @org.jetbrains.annotations.Nullable RecipeType<?> recipeType) {
         return 12800;
     }
 }

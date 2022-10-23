@@ -1,11 +1,11 @@
 package com.chromanyan.chromaticarsenal.effects;
 
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectType;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 
-public class EffectSpatial extends Effect {
+public class EffectSpatial extends MobEffect {
 	public EffectSpatial() {
-		super(EffectType.NEUTRAL, 0x000088);
+		super(MobEffectCategory.BENEFICIAL, 0x000088);
 	}
 
 }

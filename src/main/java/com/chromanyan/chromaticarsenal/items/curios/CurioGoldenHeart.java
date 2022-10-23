@@ -9,16 +9,16 @@ import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import top.theillusivec4.curios.api.SlotContext;
 
 public class CurioGoldenHeart extends BaseCurioItem {
@@ -27,28 +27,33 @@ public class CurioGoldenHeart extends BaseCurioItem {
 	
 	@Override
 	public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
-		if (!slotContext.getWearer().getCommandSenderWorld().isClientSide) {
-			slotContext.getWearer().addEffect(new EffectInstance(Effects.ABSORPTION, (config.absorptionDuration.get() + 5), config.absorptionLevel.get(), true, true));
+		if (!slotContext.entity().getCommandSenderWorld().isClientSide) {
+			slotContext.entity().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (config.absorptionDuration.get() + 5), config.absorptionLevel.get(), true, true));
 	    }
 	}
 	
 	@Override
-	public void curioTick(String identifier, int index, LivingEntity living, ItemStack stack) {
+	public void curioTick(SlotContext context, ItemStack stack) {
+		LivingEntity living = context.entity();
 		if (!living.getCommandSenderWorld().isClientSide && living.tickCount % config.absorptionDuration.get() == 0) {
-	    	living.addEffect(new EffectInstance(Effects.ABSORPTION, (config.absorptionDuration.get() + 5), config.absorptionLevel.get(), true, true));
+	    	living.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (config.absorptionDuration.get() + 5), config.absorptionLevel.get(), true, true));
 	    }
 	}
 	
 	@Override
 	public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-		slotContext.getWearer().removeEffect(Effects.ABSORPTION);
+		LivingEntity entity = slotContext.entity();
+		entity.removeEffect(MobEffects.ABSORPTION);
+		if (entity.getHealth() > entity.getMaxHealth()) {
+			entity.setHealth(entity.getMaxHealth()); // to be honest i have no clue if this will even do anything, depends on if onUnequip processes before or after attribute changes
+		}
 	}
 	
 	@Override
 	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid,
-			ItemStack stack) {
+																		ItemStack stack) {
 		Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-		double attModBonus = 0.0;
+		double attModBonus = 0;
 		if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, stack) > 0) {
 			attModBonus = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, stack) * config.enchantmentMaxHealthIncrease.get();
 		}

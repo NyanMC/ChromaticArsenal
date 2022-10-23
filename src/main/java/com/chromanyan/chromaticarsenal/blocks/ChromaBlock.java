@@ -1,19 +1,23 @@
 package com.chromanyan.chromaticarsenal.blocks;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 
 public class ChromaBlock extends RotatedPillarBlock {
 
 	public ChromaBlock() {
-		super(AbstractBlock.Properties.copy(Blocks.DIAMOND_BLOCK));
+		super(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.DIAMOND).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL));
 	}
 
-	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+	@Override
+	public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
 		return 15;
 	}
 

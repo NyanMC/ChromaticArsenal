@@ -7,38 +7,38 @@ import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import top.theillusivec4.curios.api.SlotContext;
 
 @SuppressWarnings("all")
 public class CurioLunarCrystal extends BaseCurioItem {
 	@Override
-	public ITextComponent getName(ItemStack stack) {
+	public Component getName(ItemStack stack) {
 		if (stack.getOrCreateTag().getString("crafter.id").equalsIgnoreCase("854adc0b-ae55-48d6-b7ba-e641a1eebf42")) {
-			return new TranslationTextComponent(this.getDescriptionId(stack) + ".luna");
+			return new TranslatableComponent(this.getDescriptionId(stack) + ".luna");
 		}
 		return super.getName(stack);
 	}
 	
 	@Override
-	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+	public void inventoryTick(ItemStack stack, Level world, Entity entity, int itemSlot, boolean isSelected) {
 		super.inventoryTick(stack, world, entity, itemSlot, isSelected);
 		if (stack.getOrCreateTag().getString("crafter.id").isEmpty()) {
-			if (entity instanceof PlayerEntity) {
-				if (((PlayerEntity) entity).getUUID() != null) {
-					stack.getOrCreateTag().putString("crafter.id", ((PlayerEntity) entity).getUUID().toString());
+			if (entity instanceof Player) {
+				if (((Player) entity).getUUID() != null) {
+					stack.getOrCreateTag().putString("crafter.id", ((Player) entity).getUUID().toString());
 				}
 			}
 		} else {
-			final PlayerEntity player = entity.level.getPlayerByUUID(UUID.fromString(stack.getOrCreateTag().getString("crafter.id")));
+			final Player player = entity.level.getPlayerByUUID(UUID.fromString(stack.getOrCreateTag().getString("crafter.id")));
 			if ((player != null) && stack.getOrCreateTag().getString("crafter.name").isEmpty()) {
 				stack.getOrCreateTag().putString("crafter.name", player.getDisplayName().getString());
 			}

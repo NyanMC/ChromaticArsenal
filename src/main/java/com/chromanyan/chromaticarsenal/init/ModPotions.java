@@ -4,18 +4,15 @@ import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.effects.EffectFractured;
 import com.chromanyan.chromaticarsenal.effects.EffectSpatial;
 
-import net.minecraft.potion.Effect;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModPotions {
-	public static final DeferredRegister<Effect> EFFECTS_REGISTRY = DeferredRegister.create(ForgeRegistries.POTIONS, Reference.MODID);
+	public static final DeferredRegister<MobEffect> EFFECTS_REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, Reference.MODID);
 	
-	public static final RegistryObject<Effect> FRACTURED = modEffect("fractured", new EffectFractured());
-	public static final RegistryObject<Effect> SPATIAL = modEffect("spatial", new EffectSpatial());
-	
-	private static RegistryObject<Effect> modEffect(String name, Effect effect) {
-		return EFFECTS_REGISTRY.register(name, () -> effect);
-	}
+	public static final RegistryObject<MobEffect> FRACTURED = EFFECTS_REGISTRY.register("fractured", EffectFractured::new);
+	public static final RegistryObject<MobEffect> SPATIAL = EFFECTS_REGISTRY.register("spatial", EffectSpatial::new);
+
 }

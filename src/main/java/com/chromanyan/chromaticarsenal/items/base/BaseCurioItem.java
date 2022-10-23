@@ -2,13 +2,14 @@ package com.chromanyan.chromaticarsenal.items.base;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 public class BaseCurioItem extends Item implements ICurioItem {
@@ -20,10 +21,10 @@ public class BaseCurioItem extends Item implements ICurioItem {
 	public BaseCurioItem(Item.Properties properties) {
 		super(properties);
 	}
-	
+
 	@Override
-	public boolean canEquip(String identifier, LivingEntity livingEntity, ItemStack stack) {
-		return !CuriosApi.getCuriosHelper().findEquippedCurio(this, livingEntity).isPresent();
+	public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+		return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty();
 	}
 	
 	@Override

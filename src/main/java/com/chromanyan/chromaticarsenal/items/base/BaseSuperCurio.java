@@ -1,21 +1,20 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
-import java.util.Optional;
-
-import org.apache.commons.lang3.tuple.ImmutableTriple;
-
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraftforge.registries.RegistryObject;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.SlotResult;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
+
+import java.util.Optional;
 @SuppressWarnings("unused")
 public class BaseSuperCurio extends Item implements ICurioItem {
 	
@@ -31,20 +30,21 @@ public class BaseSuperCurio extends Item implements ICurioItem {
 	}
 	
 	@Override
-	public boolean canEquip(String identifier, LivingEntity livingEntity, ItemStack stack) {
-		return !CuriosApi.getCuriosHelper().findEquippedCurio(this, livingEntity).isPresent();
+	public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+		return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty();
 	}
 	
 	@Override
-	public void curioTick(String identifier, int index, LivingEntity livingEntity, ItemStack stack) {
+	public void curioTick(SlotContext context, ItemStack stack) {
+		LivingEntity livingEntity = context.entity();
 		if (livingEntity.level.isClientSide) {
 			return;
 		}
-		Optional<ImmutableTriple<String, Integer, ItemStack>> inferiorInstance = CuriosApi.getCuriosHelper().findEquippedCurio(inferiorVariant.get(), livingEntity);
+		Optional<SlotResult> inferiorInstance = CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, inferiorVariant.get());
 		if (inferiorInstance.isPresent()) {
-			ItemStack s = inferiorInstance.get().getRight();
-			if (livingEntity instanceof PlayerEntity) {
-				PlayerEntity player = (PlayerEntity) livingEntity;
+			ItemStack s = inferiorInstance.get().stack();
+			if (livingEntity instanceof Player) {
+				Player player = (Player) livingEntity;
 				player.drop(s.copy(), true);
 				s.setCount(0);
 			}

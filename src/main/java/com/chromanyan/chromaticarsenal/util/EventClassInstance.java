@@ -3,6 +3,21 @@ package com.chromanyan.chromaticarsenal.util;
 import java.util.Optional;
 import java.util.Random;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
@@ -10,21 +25,6 @@ import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.ItemLootEntry;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.RandomValueRange;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -55,7 +55,7 @@ public class EventClassInstance {
 			Optional<ImmutableTriple<String, Integer, ItemStack>> shield = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.GLASS_SHIELD.get(), player);
 			if (shield.isPresent() && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
 				ItemStack stack = shield.get().getRight();
-				CompoundNBT nbt = stack.getOrCreateTag();
+				CompoundTag nbt = stack.getOrCreateTag();
 				int savedTicks = 0;
 				int freeBlockChance = 0;
 				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MENDING, stack) > 0) {
@@ -67,11 +67,11 @@ public class EventClassInstance {
 				if (!(nbt.contains("counter") && nbt.getInt("counter") > 0)) {
 					int randBlock = rand.nextInt(99);
 					if (randBlock < freeBlockChance) { // not <= because rand.nextInt is always one less than i want it to be
-						player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 1.0F);
-						player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundCategory.PLAYERS, 0.5F, 1.0F);
+						player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F);
+						player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
 					} else {
 						nbt.putInt("counter", config.cooldownDuration.get() - savedTicks);
-						player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundCategory.PLAYERS, 0.5F, 1.0F);
+						player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
 					}
 					event.setAmount(0);
 					
@@ -113,7 +113,7 @@ public class EventClassInstance {
 				Optional<ImmutableTriple<String, Integer, ItemStack>> attackerLCrystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.LUNAR_CRYSTAL.get(), (LivingEntity) possibleAttacker);
 				int randresult = rand.nextInt(config.levitationChance.get() - 1);
 				if (attackerLCrystal.isPresent() && randresult == 0) {
-					player.addEffect(new EffectInstance(Effects.LEVITATION, config.levitationDuration.get(), config.levitationPotency.get()));
+					player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, config.levitationDuration.get(), config.levitationPotency.get()));
 				}
 			}
 		}
@@ -125,12 +125,12 @@ public class EventClassInstance {
 		if (!player.getCommandSenderWorld().isClientSide()) {
 			
 			Optional<ImmutableTriple<String, Integer, ItemStack>> treads = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.SHADOW_TREADS.get(), player);
-			if (treads.isPresent() && event.getPotionEffect().getEffect() == Effects.MOVEMENT_SLOWDOWN) {
+			if (treads.isPresent() && event.getPotionEffect().getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
 				event.setResult(Result.DENY);
 			}
 			
 			Optional<ImmutableTriple<String, Integer, ItemStack>> lcrystal = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.LUNAR_CRYSTAL.get(), player);
-			if (lcrystal.isPresent() && event.getPotionEffect().getEffect() == Effects.LEVITATION) {
+			if (lcrystal.isPresent() && event.getPotionEffect().getEffect() == MobEffects.LEVITATION) {
 				event.setResult(Result.DENY);
 			}
 			
@@ -151,14 +151,14 @@ public class EventClassInstance {
 		if (diamondHeart.isPresent() && !player.hasEffect(ModPotions.FRACTURED.get())) {
 			if (!event.getSource().isBypassInvul()) {
 				ItemStack stack = diamondHeart.get().getRight();
-				CompoundNBT nbt = stack.getOrCreateTag();
+				CompoundTag nbt = stack.getOrCreateTag();
 				if (!(nbt.contains("counter") && nbt.getInt("counter") > 0)) {
 					nbt.putInt("counter", config.revivalCooldown.get());
 					event.setCanceled(true);
 					player.setHealth(player.getMaxHealth());
-					player.addEffect(new EffectInstance(ModPotions.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()));
+					player.addEffect(new MobEffectInstance(ModPotions.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()));
 					player.setHealth(player.getMaxHealth()); // lazy max health correction, just set the value twice lol
-					player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundCategory.PLAYERS, 0.5F, 1.0F);
+					player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundSource.PLAYERS, 0.5F, 1.0F);
 				}
 			}
 		}
@@ -166,7 +166,7 @@ public class EventClassInstance {
 		if (undyingShield.isPresent()) {
 			if (!event.getSource().isBypassInvul()) {
 				ItemStack stack = undyingShield.get().getRight();
-				CompoundNBT nbt = stack.getOrCreateTag();
+				CompoundTag nbt = stack.getOrCreateTag();
 				if (!(nbt.contains("counter") && nbt.getInt("counter") > config.revivalLimit.get())) {
 					int existingDuration = 0;
 					if (nbt.contains("counter")) {
@@ -175,9 +175,9 @@ public class EventClassInstance {
 					nbt.putInt("counter", existingDuration + config.shatterRevivalCooldown.get());
 					event.setCanceled(true);
 					player.setHealth(player.getMaxHealth());
-					player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundCategory.PLAYERS, 0.5F, 1.0F);
+					player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
 					if (nbt.getInt("counter") < config.revivalLimit.get()) {
-						player.getCommandSenderWorld().playSound((PlayerEntity)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, 1.0F); // player has minimum one more revive left, let them know that
+						player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F); // player has minimum one more revive left, let them know that
 					}
 				}
 			}
@@ -190,30 +190,30 @@ public class EventClassInstance {
 			return;
 		}
 		
-		LootPool.Builder builder = LootPool.lootPool().setRolls(RandomValueRange.between(-5, 1)).name("chromaticarsenal_rare_loot");
-		LootPool.Builder builder2 = LootPool.lootPool().setRolls(RandomValueRange.between(-1, 2)).name("chromaticarsenal_common_loot");
+		LootPool.Builder builder = LootPool.lootPool().setRolls(UniformGenerator.between(-5, 1)).name("chromaticarsenal_rare_loot");
+		LootPool.Builder builder2 = LootPool.lootPool().setRolls(UniformGenerator.between(-1, 2)).name("chromaticarsenal_common_loot");
 		boolean pool1HasLoot = false;
 		boolean pool2HasLoot = false;
 		if(event.getName().getPath().contains("chests/bastion_treasure")) { // so == doesn't work, but .contains() does. sure, i guess.
-			builder.add(ItemLootEntry.lootTableItem(() -> ModItems.GOLDEN_HEART.get()));
+			builder.add(LootItem.lootTableItem(() -> ModItems.GOLDEN_HEART.get()));
 			pool1HasLoot = true;
 		}
 		
 		if(event.getName().getPath().contains("chests/end_city_treasure")) {
-			builder.add(ItemLootEntry.lootTableItem(() -> ModItems.LUNAR_CRYSTAL.get()));
-			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.MAGIC_GARLIC_BREAD.get()));
-			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.COSMICOLA.get()));
+			builder.add(LootItem.lootTableItem(() -> ModItems.LUNAR_CRYSTAL.get()));
+			builder2.add(LootItem.lootTableItem(() -> ModItems.MAGIC_GARLIC_BREAD.get()));
+			builder2.add(LootItem.lootTableItem(() -> ModItems.COSMICOLA.get()));
 			pool1HasLoot = true;
 			pool2HasLoot = true;
 		}
 
 		if(event.getName().getPath().contains("chests/ruined_portal")) {
-			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.SPICY_COAL.get()));
+			builder2.add(LootItem.lootTableItem(() -> ModItems.SPICY_COAL.get()));
 			pool2HasLoot = true;
 		}
 
 		if(event.getName().getPath().contains("chests")) {
-			builder2.add(ItemLootEntry.lootTableItem(() -> ModItems.CHROMA_SHARD.get()));
+			builder2.add(LootItem.lootTableItem(() -> ModItems.CHROMA_SHARD.get()));
 			pool2HasLoot = true;
 		}
 		
