@@ -1,0 +1,16 @@
+{
+    "name": "Shield of Undying",
+    "icon": "chromaticarsenal:super_glass_shield",
+    "category": "chromaticarsenal:super_curios",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The Shield of Undying reduces the health of its wearer dramatically, however allows them to escape death multiple times in a row. Each death adds one minute to a timer within the item, and once this timer hits over 3 minutes exactly, the item will lose its revival capabilities until the timer goes under 3 minutes."
+        },
+		{
+            "type": "patchouli:crafting",
+            "text": "$(o)You're gonna have to try a little harder than THAT.",
+			"recipe": "chromaticarsenal:super_glass_shield"
+        }
+    ]
+}

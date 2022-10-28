@@ -1,0 +1,16 @@
+{
+    "name": "Duality Rings",
+    "icon": "chromaticarsenal:duality_rings",
+    "category": "chromaticarsenal:main",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The Duality Rings have two effects:$(br2)$(2)All arrow damage is increased.$(br2)$(5)Consuming Magic Garlic Bread grants Health Boost and Saturation."
+        },
+		{
+            "type": "patchouli:crafting",
+            "text": "$(o)If you know, then you know.",
+			"recipe": "chromaticarsenal:duality_rings"
+        }
+    ]
+}

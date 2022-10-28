@@ -36,6 +36,9 @@ public class ModConfig {
 		public final IntValue levitationChance;
 		public final IntValue levitationDuration;
 		public final IntValue levitationPotency;
+		public final DoubleValue gravityModifier;
+		public final BooleanValue everyoneIsLuna;
+		public final DoubleValue fallDamageReduction;
 		
 		public final IntValue fracturedDuration;
 		public final IntValue fracturedPotency;
@@ -79,7 +82,7 @@ public class ModConfig {
 					.comment("The amount of ticks to remove from the Glass Shield cooldown if Mending is applied. Note that if another mod changes Mending to have multiple levels, this will be multiplied by the level of the enchant.")
 					.defineInRange("enchantmentCooldownReduction", 100, 0, Integer.MAX_VALUE);
 			enchantmentFreeBlockChance = builder
-					.comment("The percent chance per level of Unbreaking to prevent the Glass Shield from shattering after blocking a hit. This is rounded up to the nearest whole number in-game. If your modpack has the ability to grant you outrageous levels of unbreaking, this should be set to a low value.")
+					.comment("The percent chance per level of Unbreaking to prevent the Glass Shield from shattering after blocking a hit. This is rounded up to the nearest whole number in-game. If your modpack has the ability to grant you outrageous levels of unbreaking (looking at you, Apotheosis), this should be set to a low value or kept at the default.")
 					.defineInRange("enchantmentFreeBlockChance", 2D, 0D, Double.MAX_VALUE);
 			builder.pop();
 			
@@ -130,6 +133,15 @@ public class ModConfig {
 			levitationPotency = builder
 					.comment("The level of the levitation effect. 0 is equivalent to effect level 1.")
 					.defineInRange("levitationPotency", 2, 0, 255);
+			gravityModifier = builder
+					.comment("The percentage in which the player's gravity is changed while the Lunar Crystal is equipped. Negative values reduce gravity, positive values increase it. -1 is not recommended, unless your planet needs you.")
+					.defineInRange("gravityModifier", -0.25, -1, Double.MAX_VALUE);
+			everyoneIsLuna = builder
+					.comment("Set this to true to make my UUID exclusive easter egg apply to all players of the current modpack. Recommended for people named Luna playing singleplayer on a private modpack. Not so recommended in most other cases.")
+					.define("everyoneIsLuna", false);
+			fallDamageReduction = builder
+					.comment("The percentage of fall damage reduced per level of feather falling on this item. Set to 0 to effectively disable this feature.")
+					.defineInRange("fallDamageReduction", 0.05, 0, 1);
 			builder.pop();
 			builder.pop();
 			

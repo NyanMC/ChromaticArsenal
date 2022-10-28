@@ -1,0 +1,20 @@
+{
+    "name": "Lunar Crystal",
+    "icon": "chromaticarsenal:lunar_crystal",
+    "category": "chromaticarsenal:main",
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "text": "The Lunar Crystal makes its wearer immune to Levitation. By default, hitting a mob has a 10% chance to inflict Levitation III to the target for 3 seconds. This curio can (rarely) be found in end city chests.",
+			"item": "chromaticarsenal:lunar_crystal"
+        },
+		{
+            "type": "patchouli:text",
+            "text": "$(l)Default Attribute modifiers:$()$(br)$(2)-25%$() Entity Gravity$(br)"
+        },
+		{
+            "type": "patchouli:text",
+            "text": "The Lunar Crystal supports the following enchantments:$(br2)$(l)Feather Falling$(): Fall damage is reduced slightly per level (stacks with boots)"
+        }
+    ]
+}

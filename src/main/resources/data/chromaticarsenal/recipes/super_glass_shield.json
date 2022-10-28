@@ -7,7 +7,7 @@
   ],
   "key": {
     "G": {
-      "tag": "forge:glass"
+      "item": "minecraft:tinted_glass"
     },
 	"C": {
       "item": "chromaticarsenal:glass_shield"
