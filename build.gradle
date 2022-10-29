@@ -17,7 +17,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.4.1'
+version = '1.5.0'
 group = 'com.chromanyan.chromaticarsenal' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'chromaticarsenal'
 
@@ -213,7 +213,7 @@ jar {
         attributes([
                 "Specification-Title"     : "chromaticarsenal",
                 "Specification-Vendor"    : "chromanyan",
-                "Specification-Version"   : "1.4.1", // We are version 1 of ourselves
+                "Specification-Version"   : "1.5.0", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "chromanyan",
