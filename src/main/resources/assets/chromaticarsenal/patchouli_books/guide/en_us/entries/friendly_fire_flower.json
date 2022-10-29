@@ -9,7 +9,7 @@
         },
 		{
             "type": "patchouli:text",
-            "text": "The Friendly Fire Flower supports the following enchantments:$(br2)$(l)Mending$(): Vanilla effect$(br)$(l)Unbreaking$(): Vanilla effect"
+            "text": "The Friendly Fire Flower supports the following enchantments:$(br2)$(l)Mending$(): Vanilla effect$(br)$(l)Unbreaking$(): Vanilla effect$(br)$(l)Fire Protection$(): Increases the duration of the Fire Resistance effect given"
         },
 		{
             "type": "patchouli:crafting",

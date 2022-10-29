@@ -14,7 +14,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -33,6 +32,8 @@ import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
+
+import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
 public class EventClassInstance {
 	// clean up this mess
@@ -64,11 +65,11 @@ public class EventClassInstance {
 				CompoundTag nbt = stack.getOrCreateTag();
 				int savedTicks = 0;
 				int freeBlockChance = 0;
-				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MENDING, stack) > 0) {
-					savedTicks = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MENDING, stack) * config.enchantmentCooldownReduction.get(); // i doubt this will ever be > 1, but maybe some mod uses mixins to increase it. i want to be ready for that.
+				if (getItemEnchantmentLevel(Enchantments.MENDING, stack) > 0) {
+					savedTicks = getItemEnchantmentLevel(Enchantments.MENDING, stack) * config.enchantmentCooldownReduction.get(); // i doubt this will ever be > 1, but maybe some mod uses mixins to increase it. i want to be ready for that.
 				}
-				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) > 0) {
-					freeBlockChance = (int) Math.ceil(EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) * config.enchantmentFreeBlockChance.get());
+				if (getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) > 0) {
+					freeBlockChance = (int) Math.ceil(getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) * config.enchantmentFreeBlockChance.get());
 				}
 				if (!(nbt.contains("counter") && nbt.getInt("counter") > 0)) {
 					int randBlock = rand.nextInt(99);
@@ -93,7 +94,7 @@ public class EventClassInstance {
 
 			Optional<SlotResult> lCrystal = getCurio(player, ModItems.LUNAR_CRYSTAL.get());
 			if (event.getSource() == DamageSource.FALL && lCrystal.isPresent()) {
-				int fallEnchantLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FALL_PROTECTION, lCrystal.get().stack());
+				int fallEnchantLevel = getItemEnchantmentLevel(Enchantments.FALL_PROTECTION, lCrystal.get().stack());
 				if (fallEnchantLevel > 0) {
 					float percentage = (float) (1 - (fallEnchantLevel * config.fallDamageReduction.get()));
 					if (percentage < 0) percentage = 0;

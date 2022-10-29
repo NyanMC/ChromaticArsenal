@@ -132,7 +132,7 @@ public class ModConfig {
 
 			builder.push("FriendlyFireFlowerSettings");
 			fireResistanceDuration = builder
-					.comment("The duration of Fire Resistance granted after taking fire damage, in ticks.")
+					.comment("The duration of Fire Resistance granted after taking fire damage, in ticks. This is multiplied by the level of Fire Protection on the item, +1.")
 					.defineInRange("fireResistanceDuration", 200, 1, Integer.MAX_VALUE);
 			canBeDamaged = builder
 					.comment("If set to false, prevents the Friendly Fire Flower from being damaged when granting Fire Resistance to the wearer. Note that this will not remove durability values from flowers, and existing damaged flowers will still show as damaged.")

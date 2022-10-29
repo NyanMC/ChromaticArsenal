@@ -9,8 +9,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
+
+import static net.minecraft.world.item.enchantment.EnchantmentHelper.*;
 
 public class CurioFriendlyFireFlower extends BaseCurioItem {
 
@@ -24,10 +28,20 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity living = context.entity();
         if (!living.getCommandSenderWorld().isClientSide && living.isOnFire() && !living.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-            living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, config.fireResistanceDuration.get(), 0, true, true));
+            int fireResistanceBonus = 1 + getItemEnchantmentLevel(Enchantments.FIRE_PROTECTION, stack);
+            living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, config.fireResistanceDuration.get() * fireResistanceBonus, 0, true, true));
             if(config.canBeDamaged.get()) {
                 stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
             }
+        }
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        if (enchantment == Enchantments.FIRE_PROTECTION) {
+            return true;
+        } else {
+            return super.canApplyAtEnchantingTable(stack, enchantment);
         }
     }
 }
