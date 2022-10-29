@@ -12,6 +12,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -32,19 +33,20 @@ import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
-import top.theillusivec4.curios.api.type.util.ICuriosHelper;
 
-@SuppressWarnings("all") //temporary, don't feel like fixing my warning checking
 public class EventClassInstance {
-	// this is a mess that worsens over time
+	// clean up this mess
 	
 	Random rand = new Random();
 	Common config = ModConfig.COMMON;
 
+	// method to make changes to the curios api easier to bear in the future
+	Optional<SlotResult> getCurio(LivingEntity livingEntity, Item item) {
+		return CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, item);
+	}
 	
 	@SubscribeEvent
 	public void playerAttackedEvent(LivingHurtEvent event) {
-		final ICuriosHelper curiosHelper = CuriosApi.getCuriosHelper();
 		LivingEntity player = event.getEntityLiving();
 		if (!player.getCommandSenderWorld().isClientSide()) {
 			// spatial: block fall damage
@@ -56,7 +58,7 @@ public class EventClassInstance {
 				return; // the rest of the effects should only fire if they're even applicable
 			}
 			// glass shield: block hits
-			Optional<SlotResult> shield = curiosHelper.findFirstCurio(player, ModItems.GLASS_SHIELD.get());
+			Optional<SlotResult> shield = getCurio(player, ModItems.GLASS_SHIELD.get());
 			if (shield.isPresent() && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
 				ItemStack stack = shield.get().stack();
 				CompoundTag nbt = stack.getOrCreateTag();
@@ -79,20 +81,18 @@ public class EventClassInstance {
 					}
 					event.setAmount(0);
 					
-				} else {
-					// ChromaticArsenal.LOGGER.info("DEBUG: Attempted to block damage, but player had " + nbt.getInt("counter") + "ticks of cooldown remaining");
 				}
 			}
 			
 			// (super) dispel gel: reduce incoming damage
-			Optional<SlotResult> crystal = curiosHelper.findFirstCurio(player, ModItems.WARD_CRYSTAL.get());
-			Optional<SlotResult> superCrystal = curiosHelper.findFirstCurio(player, ModItems.SUPER_WARD_CRYSTAL.get());
+			Optional<SlotResult> crystal = getCurio(player, ModItems.WARD_CRYSTAL.get());
+			Optional<SlotResult> superCrystal = getCurio(player, ModItems.SUPER_WARD_CRYSTAL.get());
 			if (event.getSource().isMagic() && (crystal.isPresent() || superCrystal.isPresent()) && !event.getSource().isBypassInvul()) {
 				event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierIncoming.get()));
 			}
 
-			Optional<SlotResult> lCrystal = curiosHelper.findFirstCurio(player, ModItems.LUNAR_CRYSTAL.get());
-			if (event.getSource() == DamageSource.FALL) {
+			Optional<SlotResult> lCrystal = getCurio(player, ModItems.LUNAR_CRYSTAL.get());
+			if (event.getSource() == DamageSource.FALL && lCrystal.isPresent()) {
 				int fallEnchantLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FALL_PROTECTION, lCrystal.get().stack());
 				if (fallEnchantLevel > 0) {
 					float percentage = (float) (1 - (fallEnchantLevel * config.fallDamageReduction.get()));
@@ -103,29 +103,28 @@ public class EventClassInstance {
 			
 			// attacker events
 			Entity possibleAttacker = event.getSource().getEntity();
-			if (possibleAttacker != null && possibleAttacker instanceof LivingEntity) { // you can never be too safe
-				LivingEntity livingAttacker = (LivingEntity) possibleAttacker;
+			if (possibleAttacker instanceof LivingEntity livingAttacker) { // you can never be too safe
 				// (super) dispel gel: reduce outgoing damage
-				Optional<SlotResult> attackerCrystal = curiosHelper.findFirstCurio(livingAttacker, ModItems.WARD_CRYSTAL.get());
-				Optional<SlotResult> attackerSuperCrystal = curiosHelper.findFirstCurio(livingAttacker, ModItems.SUPER_WARD_CRYSTAL.get());
+				Optional<SlotResult> attackerCrystal = getCurio(livingAttacker, ModItems.WARD_CRYSTAL.get());
+				Optional<SlotResult> attackerSuperCrystal = getCurio(livingAttacker, ModItems.SUPER_WARD_CRYSTAL.get());
 				if (event.getSource().isMagic() && (attackerCrystal.isPresent() || attackerSuperCrystal.isPresent())) {
 					event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierOutgoing.get()));
 				}
 				
 				// duality rings: increase projectile damage
-				Optional<SlotResult> attackerRings = curiosHelper.findFirstCurio(livingAttacker, ModItems.DUALITY_RINGS.get());
+				Optional<SlotResult> attackerRings = getCurio(livingAttacker, ModItems.DUALITY_RINGS.get());
 				if (event.getSource().isProjectile() && attackerRings.isPresent()) {
 					event.setAmount((float) (event.getAmount() * config.aroOfClubsMultiplier.get()));
 				}
 
 				// friendly fire flower: negate self-damage
-				Optional<SlotResult> friendlyFlower = curiosHelper.findFirstCurio(livingAttacker, ModItems.FRIENDLY_FIRE_FLOWER.get());
+				Optional<SlotResult> friendlyFlower = getCurio(livingAttacker, ModItems.FRIENDLY_FIRE_FLOWER.get());
 				if (possibleAttacker == player && friendlyFlower.isPresent()) {
 					event.setAmount(0);
 				}
 				
 				// lunar crystal: apply levitation
-				Optional<SlotResult> attackerLCrystal = curiosHelper.findFirstCurio(livingAttacker, ModItems.LUNAR_CRYSTAL.get());
+				Optional<SlotResult> attackerLCrystal = getCurio(livingAttacker, ModItems.LUNAR_CRYSTAL.get());
 				int randresult = rand.nextInt(config.levitationChance.get() - 1);
 				if (attackerLCrystal.isPresent() && randresult == 0) {
 					player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, config.levitationDuration.get(), config.levitationPotency.get()));
@@ -136,21 +135,20 @@ public class EventClassInstance {
 	
 	@SubscribeEvent
 	public void potionImmunityEvent(PotionApplicableEvent event) {
-		final ICuriosHelper curiosHelper = CuriosApi.getCuriosHelper();
 		LivingEntity player = event.getEntityLiving();
 		if (!player.getCommandSenderWorld().isClientSide()) {
 			
-			Optional<SlotResult> treads = curiosHelper.findFirstCurio(player, ModItems.SHADOW_TREADS.get());
+			Optional<SlotResult> treads = getCurio(player, ModItems.SHADOW_TREADS.get());
 			if (treads.isPresent() && event.getPotionEffect().getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
 				event.setResult(Result.DENY);
 			}
 			
-			Optional<SlotResult> lcrystal = curiosHelper.findFirstCurio(player, ModItems.LUNAR_CRYSTAL.get());
+			Optional<SlotResult> lcrystal = getCurio(player, ModItems.LUNAR_CRYSTAL.get());
 			if (lcrystal.isPresent() && event.getPotionEffect().getEffect() == MobEffects.LEVITATION) {
 				event.setResult(Result.DENY);
 			}
 			
-			Optional<SlotResult> superCrystal = curiosHelper.findFirstCurio(player, ModItems.SUPER_WARD_CRYSTAL.get());
+			Optional<SlotResult> superCrystal = getCurio(player, ModItems.SUPER_WARD_CRYSTAL.get());
 			if (superCrystal.isPresent()) {
 				event.setResult(Result.DENY);
 			}
@@ -159,12 +157,11 @@ public class EventClassInstance {
 	
 	@SubscribeEvent
 	public void playerDeathEvent(LivingDeathEvent event) {
-		final ICuriosHelper curiosHelper = CuriosApi.getCuriosHelper();
 		if (event.isCanceled()) {
 			return;
 		}
 		LivingEntity player = event.getEntityLiving();
-		Optional<SlotResult> diamondHeart = curiosHelper.findFirstCurio(player, ModItems.SUPER_GOLDEN_HEART.get());
+		Optional<SlotResult> diamondHeart = getCurio(player, ModItems.SUPER_GOLDEN_HEART.get());
 		if (diamondHeart.isPresent() && !player.hasEffect(ModPotions.FRACTURED.get())) {
 			if (!event.getSource().isBypassInvul()) {
 				ItemStack stack = diamondHeart.get().stack();
@@ -179,7 +176,7 @@ public class EventClassInstance {
 				}
 			}
 		}
-		Optional<SlotResult> undyingShield = curiosHelper.findFirstCurio(player, ModItems.SUPER_GLASS_SHIELD.get());
+		Optional<SlotResult> undyingShield = getCurio(player, ModItems.SUPER_GLASS_SHIELD.get());
 		if (undyingShield.isPresent()) {
 			if (!event.getSource().isBypassInvul()) {
 				ItemStack stack = undyingShield.get().stack();
@@ -200,7 +197,7 @@ public class EventClassInstance {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void insertLoot(LootTableLoadEvent event) {
 		if(!config.lootTableInsertion.get()) {
@@ -212,25 +209,25 @@ public class EventClassInstance {
 		boolean pool1HasLoot = false;
 		boolean pool2HasLoot = false;
 		if(event.getName().getPath().contains("chests/bastion_treasure")) { // so == doesn't work, but .contains() does. sure, i guess.
-			builder.add(LootItem.lootTableItem(() -> ModItems.GOLDEN_HEART.get()));
+			builder.add(LootItem.lootTableItem(ModItems.GOLDEN_HEART::get));
 			pool1HasLoot = true;
 		}
 		
 		if(event.getName().getPath().contains("chests/end_city_treasure")) {
-			builder.add(LootItem.lootTableItem(() -> ModItems.LUNAR_CRYSTAL.get()));
-			builder2.add(LootItem.lootTableItem(() -> ModItems.MAGIC_GARLIC_BREAD.get()));
-			builder2.add(LootItem.lootTableItem(() -> ModItems.COSMICOLA.get()));
+			builder.add(LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL::get));
+			builder2.add(LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD::get));
+			builder2.add(LootItem.lootTableItem(ModItems.COSMICOLA::get));
 			pool1HasLoot = true;
 			pool2HasLoot = true;
 		}
 
 		if(event.getName().getPath().contains("chests/ruined_portal")) {
-			builder2.add(LootItem.lootTableItem(() -> ModItems.SPICY_COAL.get()));
+			builder2.add(LootItem.lootTableItem(ModItems.SPICY_COAL::get));
 			pool2HasLoot = true;
 		}
 
 		if(event.getName().getPath().contains("chests")) {
-			builder2.add(LootItem.lootTableItem(() -> ModItems.CHROMA_SHARD.get()));
+			builder2.add(LootItem.lootTableItem(ModItems.CHROMA_SHARD::get));
 			pool2HasLoot = true;
 		}
 		
