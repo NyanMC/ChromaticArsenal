@@ -108,8 +108,8 @@ public class ModConfig {
 					.comment("The amount of passive speed granted by each level of Soul Speed.")
 					.defineInRange("enchantmentSpeedMultiplier", 0.05, Double.MIN_VALUE, Double.MAX_VALUE);
 			maxLightLevel = builder
-					.comment("The maximum light level in which the Shadow Charm takes effect. Default goes by vanilla 1.18 monster spawning rules. It is recommended to change this if monsters can spawn above light level 0.")
-					.defineInRange("maxLightLevel", 0, 0, 15);
+					.comment("The maximum light level in which the Shadow Charm takes effect. Values below 4 are not recommended, as sky light causes the minimum light value to always be 4 on the surface, even at midnight.")
+					.defineInRange("maxLightLevel", 7, 0, 15);
 			builder.pop();
 			
 			builder.push("DualityRingsSettings");

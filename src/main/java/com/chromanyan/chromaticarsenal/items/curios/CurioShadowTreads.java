@@ -20,7 +20,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
 import top.theillusivec4.curios.api.SlotContext;
 
 public class CurioShadowTreads extends BaseCurioItem {
@@ -32,7 +31,7 @@ public class CurioShadowTreads extends BaseCurioItem {
 		LivingEntity livingEntity = context.entity();
 		Level world = livingEntity.getCommandSenderWorld();
 		if (world != null && !world.isClientSide()) {
-			if (world.getBrightness(LightLayer.BLOCK, livingEntity.blockPosition()) <= config.maxLightLevel.get()) { // thanks juanmuscaria
+			if (world.getMaxLocalRawBrightness(livingEntity.blockPosition()) <= config.maxLightLevel.get()) { // thanks juanmuscaria
 				livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, config.darkspeedPotency.get(), true, true));
 			}
 		}
