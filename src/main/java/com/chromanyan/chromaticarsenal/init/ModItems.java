@@ -25,6 +25,7 @@ public class ModItems {
 	public static final RegistryObject<Item> CHROMA_SHARD = ITEMS_REGISTRY.register("chroma_shard", () -> new Item(new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> ASCENSION_ESSENCE = ITEMS_REGISTRY.register("ascension_essence", () -> new Item(new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.RARE)));
 	public static final RegistryObject<Item> SPICY_COAL = ITEMS_REGISTRY.register("spicy_coal", () -> new SpicyCoal());
+	public static final RegistryObject<Item> MAGMATIC_SCRAP = ITEMS_REGISTRY.register("magmatic_scrap", () -> new Item(new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON).fireResistant()));
 	
 	public static final RegistryObject<Item> GOLDEN_HEART = ITEMS_REGISTRY.register("golden_heart", () -> new CurioGoldenHeart());
 	public static final RegistryObject<Item> GLASS_SHIELD = ITEMS_REGISTRY.register("glass_shield", () -> new CurioGlassShield());

@@ -9,6 +9,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.SlotResult;
@@ -43,8 +44,7 @@ public class BaseSuperCurio extends Item implements ICurioItem {
 		Optional<SlotResult> inferiorInstance = CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, inferiorVariant.get());
 		if (inferiorInstance.isPresent()) {
 			ItemStack s = inferiorInstance.get().stack();
-			if (livingEntity instanceof Player) {
-				Player player = (Player) livingEntity;
+			if (livingEntity instanceof Player player) {
 				player.drop(s.copy(), true);
 				s.setCount(0);
 			}
@@ -52,7 +52,7 @@ public class BaseSuperCurio extends Item implements ICurioItem {
 	}
 	
 	@Override
-	public boolean isEnchantable(ItemStack p_77616_1_) {
+	public boolean isEnchantable(@NotNull ItemStack p_77616_1_) {
 		return true;
 	}
 	

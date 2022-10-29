@@ -6,8 +6,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.crafting.RecipeType;
 
-import javax.annotation.Nullable;
-
 public class SpicyCoal extends Item {
     /*
     in memory of my first ever mod

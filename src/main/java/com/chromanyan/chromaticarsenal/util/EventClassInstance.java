@@ -37,8 +37,8 @@ import top.theillusivec4.curios.api.SlotResult;
 public class EventClassInstance {
 	// clean up this mess
 	
-	Random rand = new Random();
-	Common config = ModConfig.COMMON;
+	final Random rand = new Random();
+	final Common config = ModConfig.COMMON;
 
 	// method to make changes to the curios api easier to bear in the future
 	Optional<SlotResult> getCurio(LivingEntity livingEntity, Item item) {

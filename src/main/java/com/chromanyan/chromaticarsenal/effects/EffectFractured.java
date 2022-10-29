@@ -18,9 +18,7 @@ public class EffectFractured extends MobEffect {
 	
 	@Override
 	public List<ItemStack> getCurativeItems() {
-		// ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		// return ret;
-		return new ArrayList<ItemStack>(); // in other words, not curable
+		return new ArrayList<>(); // in other words, not curable
 	}
 
 }
