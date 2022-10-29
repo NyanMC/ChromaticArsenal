@@ -5,7 +5,7 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "The Shadow Charm grants the Speed potion effect when in a light level in which monsters can spawn (7 or less) and when little sky light can reach the user (even at night). Additionally, it grants immunity to Slowness."
+            "text": "The Shadow Charm grants the Speed potion effect when in a light level in which monsters can spawn (By default, 0, but your modpack may change it). Additionally, it grants immunity to Slowness."
         },
 		{
             "type": "patchouli:text",
