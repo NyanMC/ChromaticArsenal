@@ -31,7 +31,7 @@ public class CurioShadowTreads extends BaseCurioItem {
 		LivingEntity livingEntity = context.entity();
 		Level world = livingEntity.getCommandSenderWorld();
 		if (world != null && !world.isClientSide()) {
-			if (world.getMaxLocalRawBrightness(livingEntity.blockPosition()) <= config.maxLightLevel.get()) { // thanks juanmuscaria
+			if (world.getMaxLocalRawBrightness(livingEntity.blockPosition()) <= config.maxLightLevel.get()) {
 				livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, config.darkspeedPotency.get(), true, true));
 			}
 		}
