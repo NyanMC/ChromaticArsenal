@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "modid": "tconstruct",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "cast": {
+    "item": "minecraft:netherite_scrap"
+  },
+  "fluid": {
+    "tag": "tconstruct:blazing_blood",
+    "amount": 200
+  },
+  "result": "chromaticarsenal:magmatic_scrap",
+  "cooling_time": 240
+}

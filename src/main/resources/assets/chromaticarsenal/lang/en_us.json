@@ -36,5 +36,9 @@
 	"advancements.nether.obtain_ascension_essence.title": "Even Crazier Space Dust",
 	"advancements.nether.obtain_ascension_essence.description": "Acquire some Essence of Ascension",
 	
-	"itemGroup.chromaticarsenal": "Chromatic Arsenal"
+	"itemGroup.chromaticarsenal": "Chromatic Arsenal",
+
+	"modifier.chromaticarsenal.antigravity": "Antigravity",
+	"modifier.chromaticarsenal.antigravity.flavor": "Fly me to the moon...",
+	"modifier.chromaticarsenal.antigravity.description": "Reduces the influence of gravity on you"
 }

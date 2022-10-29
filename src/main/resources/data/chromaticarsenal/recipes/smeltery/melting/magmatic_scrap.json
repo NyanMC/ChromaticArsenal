@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "modid": "tconstruct",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "chromaticarsenal:magmatic_scrap"
+  },
+  "result": {
+    "fluid": "tconstruct:blazing_blood",
+    "amount": 200
+  },
+  "temperature": 1250,
+  "time": 200,
+  "byproducts": [
+    {
+      "fluid": "tconstruct:molten_debris",
+      "amount": 90
+    }
+  ]
+}

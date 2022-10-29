@@ -1,0 +1,21 @@
+{
+    "type": "tconstruct:stat_boost",
+    "conditions": [
+      {
+        "modid": "tconstruct",
+        "type": "forge:mod_loaded"
+      }
+    ],
+    "level_display": "tconstruct:default",
+    "attributes": [
+      {
+        "unique": "tconstruct.modifier.entity_gravity",
+        "attribute": "forge:entity_gravity",
+        "operation": "multiply_base",
+        "amount": -0.25,
+        "slots": [
+          "feet"
+        ]
+      }
+    ]
+  }

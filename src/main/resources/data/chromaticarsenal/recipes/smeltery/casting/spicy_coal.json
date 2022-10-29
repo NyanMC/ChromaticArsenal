@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "modid": "tconstruct",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "cast": {
+    "item": "minecraft:coal"
+  },
+  "fluid": {
+    "tag": "tconstruct:blazing_blood",
+    "amount": 200
+  },
+  "result": "chromaticarsenal:spicy_coal",
+  "cooling_time": 160
+}

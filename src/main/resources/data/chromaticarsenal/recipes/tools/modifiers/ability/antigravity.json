@@ -1,0 +1,25 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "tconstruct",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "chromaticarsenal:lunar_crystal"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/boots"
+  },
+  "slots": {
+    "abilities": 1
+  },
+  "result": {
+    "name": "chromaticarsenal:antigravity",
+    "level": 1
+  },
+  "max_level": 3
+}
