@@ -1,5 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "modid": "patchouli",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "ingredients": [
     {
       "item": "chromaticarsenal:chroma_shard"
