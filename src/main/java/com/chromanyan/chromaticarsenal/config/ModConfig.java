@@ -32,6 +32,9 @@ public class ModConfig {
 		public final IntValue saturationDuration;
 		public final IntValue healthBoostLevel;
 		public final IntValue healthBoostDuration;
+
+		public final IntValue fireResistanceDuration;
+		public final BooleanValue canBeDamaged;
 		
 		public final IntValue levitationChance;
 		public final IntValue levitationDuration;
@@ -121,6 +124,15 @@ public class ModConfig {
 			healthBoostDuration = builder
 					.comment("The duration of the health boost effect, in ticks.")
 					.defineInRange("healthBoostDuration", 2400, 1, Integer.MAX_VALUE);
+			builder.pop();
+
+			builder.push("FriendlyFireFlowerSettings");
+			fireResistanceDuration = builder
+					.comment("The duration of Fire Resistance granted after taking fire damage, in ticks.")
+					.defineInRange("fireResistanceDuration", 200, 1, Integer.MAX_VALUE);
+			canBeDamaged = builder
+					.comment("If set to false, prevents the Friendly Fire Flower from being damaged when granting Fire Resistance to the wearer. Note that this will not remove durability values from flowers, and existing damaged flowers will still show as damaged.")
+					.define("canBeDamaged", true);
 			builder.pop();
 			
 			builder.push("LunarCrystalSettings");
