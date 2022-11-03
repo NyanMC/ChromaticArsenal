@@ -87,7 +87,7 @@ public class ModConfig {
 					.defineInRange("enchantmentCooldownReduction", 100, 0, Integer.MAX_VALUE);
 			enchantmentFreeBlockChance = builder
 					.comment("The percent chance per level of Unbreaking to prevent the Glass Shield from shattering after blocking a hit. This is rounded up to the nearest whole number in-game. If your modpack has the ability to grant you outrageous levels of unbreaking (looking at you, Apotheosis), this should be set to a low value or kept at the default.")
-					.defineInRange("enchantmentFreeBlockChance", 2D, 0D, Double.MAX_VALUE);
+					.defineInRange("enchantmentFreeBlockChance", 2D, 0D, 100D);
 			builder.pop();
 			
 			builder.push("WardCrystalSettings");
@@ -167,8 +167,8 @@ public class ModConfig {
 					.comment("The duration of the Fractured effect, in ticks.")
 					.defineInRange("fracturedDuration", 6000, 1, Integer.MAX_VALUE);
 			fracturedPotency = builder
-					.comment("The level of the Fractured effect. Each level is 10% of max health lost.")
-					.defineInRange("fracturedPotency", 4, 0, 255);
+					.comment("The level of the Fractured effect. Each level is 10% of max health lost. 0 is equal to level 1.")
+					.defineInRange("fracturedPotency", 2, 0, 8);
 			revivalCooldown = builder
 					.comment("The cooldown of the diamond heart before you are allowed to revive again. This is in ticks. Extremely low values effectively make you unable to die.")
 					.defineInRange("revivalCooldown", 6000, 0, Integer.MAX_VALUE);
