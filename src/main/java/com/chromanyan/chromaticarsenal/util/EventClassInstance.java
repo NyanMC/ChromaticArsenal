@@ -29,6 +29,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
@@ -155,8 +156,8 @@ public class EventClassInstance {
 			}
 		}
 	}
-	
-	@SubscribeEvent
+
+	@SubscribeEvent(priority = EventPriority.LOW) // CA revives should take effect after most other revivals to avoid diamond heart anti-synergy, but shouldn't take effect last either
 	public void playerDeathEvent(LivingDeathEvent event) {
 		if (event.isCanceled()) {
 			return;
