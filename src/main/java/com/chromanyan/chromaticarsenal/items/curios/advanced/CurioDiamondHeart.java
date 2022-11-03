@@ -3,10 +3,10 @@ package com.chromanyan.chromaticarsenal.items.curios.advanced;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 
+import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -32,12 +32,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
 				}
 			}
 		} else {
-			if (nbt.contains("counter") && nbt.getInt("counter") > 0) {
-				nbt.putInt("counter", nbt.getInt("counter") - 1);
-				if (nbt.getInt("counter") == 0) {
-					livingEntity.getCommandSenderWorld().playSound((Player)null, livingEntity.blockPosition(), SoundEvents.IRON_GOLEM_REPAIR, SoundSource.PLAYERS, 0.5F, 1.0F);
-				}
-			}
+			CooldownHelper.tickCounter(nbt, SoundEvents.IRON_GOLEM_REPAIR, livingEntity);
 		}
 	}
 

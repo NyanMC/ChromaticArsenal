@@ -6,17 +6,16 @@ import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
+import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 
@@ -34,13 +33,7 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
 			return;
 		}
 		CompoundTag nbt = stack.getOrCreateTag();
-		if (nbt.contains("counter") && nbt.getInt("counter") > 0) {
-			nbt.putInt("counter", nbt.getInt("counter") - 1);
-			if (nbt.getInt("counter") == 0) {
-				livingEntity.getCommandSenderWorld().playSound((Player)null, livingEntity.blockPosition(), SoundEvents.GLASS_PLACE, SoundSource.PLAYERS, 0.5F, 1.0F);
-				livingEntity.getCommandSenderWorld().playSound((Player)null, livingEntity.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F);
-			}
-		}
+		CooldownHelper.tickCounter(nbt, SoundEvents.GLASS_PLACE, livingEntity);
 	}
 
 	@Override

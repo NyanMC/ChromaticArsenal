@@ -23,7 +23,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModBlocks;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
-import com.chromanyan.chromaticarsenal.util.EventClassInstance;
+import com.chromanyan.chromaticarsenal.events.EventClassInstance;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Reference.MODID)
