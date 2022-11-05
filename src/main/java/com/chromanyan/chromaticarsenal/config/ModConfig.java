@@ -187,7 +187,7 @@ public class ModConfig {
 			builder.pop();
 			
 			lootTableInsertion = builder
-					.comment("Set to false to prevent Chromatic Arsenal from injecting its own items into loot chests. This will cause items only found in loot chests to become uncraftable.")
+					.comment("Set to false to prevent Chromatic Arsenal from injecting its own items into loot tables. This will cause items only found as loot (such as the Golden Heart) to become unobtainable, and it will be up to the modpack to add a method to obtain them.")
 					.define("lootTableInsertion", true);
 		}
 		
