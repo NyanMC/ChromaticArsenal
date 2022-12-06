@@ -1,3 +1,3 @@
 {
-    "chromaticarsenal:antigravity": "chromaticarsenal:gui/modifiers/armor/antigravity"
+    "chromaticarsenal:antigravity": ["chromaticarsenal:items/lunar_crystal", "tconstruct:gui/modifiers/book"]
 }
