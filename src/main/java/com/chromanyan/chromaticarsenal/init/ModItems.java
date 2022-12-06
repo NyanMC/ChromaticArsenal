@@ -34,6 +34,7 @@ public class ModItems {
 	public static final RegistryObject<Item> DUALITY_RINGS = ITEMS_REGISTRY.register("duality_rings", () -> new BaseCurioItem());
 	public static final RegistryObject<Item> FRIENDLY_FIRE_FLOWER = ITEMS_REGISTRY.register("friendly_fire_flower", () -> new CurioFriendlyFireFlower());
 	public static final RegistryObject<Item> LUNAR_CRYSTAL = ITEMS_REGISTRY.register("lunar_crystal", () -> new CurioLunarCrystal());
+	public static final RegistryObject<Item> HARPY_FEATHER = ITEMS_REGISTRY.register("harpy_feather", () -> new CurioHarpyFeather());
 	
 	public static final RegistryObject<Item> SUPER_GOLDEN_HEART = ITEMS_REGISTRY.register("super_golden_heart", () -> new CurioDiamondHeart());
 	public static final RegistryObject<Item> SUPER_GLASS_SHIELD = ITEMS_REGISTRY.register("super_glass_shield", () -> new CurioShieldOfUndying());
