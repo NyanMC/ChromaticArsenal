@@ -16,6 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -26,6 +27,7 @@ import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 
 import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.event.VanillaGameEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent;
@@ -198,6 +200,22 @@ public class EventClassInstance {
 	}
 
 	@SubscribeEvent
+	public void vanillaEvent(VanillaGameEvent event) {
+		if (event.isCanceled()) {
+			return;
+		}
+		if (event.getVanillaEvent() == GameEvent.STEP || event.getVanillaEvent() == GameEvent.HIT_GROUND) {
+			Entity cause = event.getCause();
+			if (cause instanceof LivingEntity entity) {
+				Optional<SlotResult> treads = getCurio(entity, ModItems.SHADOW_TREADS.get());
+				if (treads.isPresent() && entity.fallDistance < 3.0F && !entity.isSprinting()) {
+					event.setCanceled(true);
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
 	public void insertLoot(LootTableLoadEvent event) {
 		if(!config.lootTableInsertion.get()) {
 			return;
@@ -207,7 +225,7 @@ public class EventClassInstance {
 		LootPool.Builder builder2 = LootPool.lootPool().setRolls(UniformGenerator.between(-1, 2)).name("chromaticarsenal_common_loot");
 		boolean pool1HasLoot = false;
 		boolean pool2HasLoot = false;
-		if(event.getName().getPath().contains("chests/bastion_treasure")) { // so == doesn't work, but .contains() does. sure, i guess.
+		if(event.getName().getPath().contains("chests/bastion_treasure")) {
 			builder.add(LootItem.lootTableItem(ModItems.GOLDEN_HEART::get));
 			pool1HasLoot = true;
 		}
