@@ -15,7 +15,11 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 public class BaseCurioItem extends Item implements ICurioItem {
 
 	public BaseCurioItem() {
-		super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(0));
+		super(new Item.Properties()
+				.tab(ChromaticArsenal.GROUP)
+				.stacksTo(1)
+				.rarity(Rarity.RARE)
+				.defaultDurability(0));
 	}
 
 	public BaseCurioItem(Item.Properties properties) {

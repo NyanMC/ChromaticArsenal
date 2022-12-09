@@ -25,7 +25,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
 		super.curioTick(context, stack);
 		CompoundTag nbt = stack.getOrCreateTag();
 		if (livingEntity.level.isClientSide) {
-			if (nbt.contains("counter") && nbt.getInt("counter") == 1) {
+			if (CooldownHelper.getCounter(nbt) == 1) {
 				if (livingEntity instanceof Player) {
 					Player playerEntity = (Player) livingEntity;
 					playerEntity.displayClientMessage(new TranslatableComponent("message.chromaticarsenal.revival_cooldown_finished"), false);
