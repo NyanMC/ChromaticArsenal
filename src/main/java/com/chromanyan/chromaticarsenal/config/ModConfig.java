@@ -75,7 +75,7 @@ public class ModConfig {
 			
 			enchantmentMaxHealthIncrease = builder
 					.comment("The extra max health gained per level of Protection on the Golden Heart. This obeys the operation, so if you set maxHealthBoostOperation to either 1 or 2, it's recommended to keep this at 0.1 at most.")
-					.defineInRange("enchantmentMaxHealthIncrease", 1.0, Double.MIN_VALUE, Double.MAX_VALUE);
+					.defineInRange("enchantmentMaxHealthIncrease", 1.0, 0.0, Double.MAX_VALUE);
 			builder.pop();
 			
 			builder.push("GlassShieldSettings");
@@ -106,7 +106,7 @@ public class ModConfig {
 					.defineInRange("darkspeedPotency", 0, 0, 255);
 			enchantmentSpeedMultiplier = builder
 					.comment("The amount of passive speed granted by each level of Soul Speed.")
-					.defineInRange("enchantmentSpeedMultiplier", 0.05, Double.MIN_VALUE, Double.MAX_VALUE);
+					.defineInRange("enchantmentSpeedMultiplier", 0.05, 0.0, Double.MAX_VALUE);
 			maxLightLevel = builder
 					.comment("The maximum light level in which the Shadow Charm takes effect. Values below 4 are not recommended, as sky light causes the minimum light value to always be 4 on the surface, even at midnight.")
 					.defineInRange("maxLightLevel", 7, 0, 15);
@@ -175,10 +175,10 @@ public class ModConfig {
 			builder.pop();
 			builder.push("SuperGlassShieldSettings");
 			revivalLimit = builder
-					.comment("Once this amount of ticks is exceeded, the next fatal blow will kill the wearer.")
+					.comment("Once this amount of ticks is exceeded, the next fatal blow will kill the wearer. At the default value, this will allow for four revives, unless somehow the wearer miraculously gets killed three times in a single tick.")
 					.defineInRange("revivalLimit", 3600, 0, Integer.MAX_VALUE);
 			shatterRevivalCooldown = builder
-					.comment("The amount of ticks added each time the Shield of Undying sustains a fatal blow. This stacks.")
+					.comment("The amount of ticks added each time the Shield of Undying sustains a fatal blow. This stacks until it reaches the value defined in revivalLimit, in which the next fatal blow will kill the wearer.")
 					.defineInRange("shatterRevivalCooldown", 1200, 0, Integer.MAX_VALUE);
 			healthTradeoff = builder
 					.comment("The operation 2 modifier given to the player wearing this shield. This should be negative or zero.")
