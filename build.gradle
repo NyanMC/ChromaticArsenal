@@ -17,7 +17,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.5.2'
+version = '1.5.3'
 group = 'com.chromanyan.chromaticarsenal' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'chromaticarsenal'
 
@@ -203,8 +203,8 @@ dependencies {
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1")
 
     // i don't actually want mantle or tcon at compiletime as i don't want to accidentally use either's api...yet. don't want any accidental required dependencies
-    runtimeOnly fg.deobf("curse.maven:mantle-74924:4072436")
-    runtimeOnly fg.deobf("curse.maven:tinkers-construct-74072:4109804")
+    runtimeOnly fg.deobf("curse.maven:mantle-74924:4353120")
+    runtimeOnly fg.deobf("curse.maven:tinkers-construct-74072:4360093")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
