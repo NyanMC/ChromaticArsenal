@@ -1,0 +1,30 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "tconstruct",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "chromaticarsenal:super_ward_crystal"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/armor"
+  },
+  "requirements": {
+    "name": "chromaticarsenal:warded",
+    "level": 1,
+    "error": "modifier.chromaticarsenal.warded.error_level_req"
+  },
+  "slots": {
+    "abilities": 1
+  },
+  "result": {
+    "name": "chromaticarsenal:warded",
+    "level": 1
+  },
+  "max_level": 2
+}

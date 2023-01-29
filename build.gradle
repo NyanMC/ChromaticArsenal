@@ -202,7 +202,9 @@ dependencies {
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.18.2-71.1")
 
-    // i don't actually want mantle or tcon at compiletime as i don't want to accidentally use either's api...yet. don't want any accidental required dependencies
+    compileOnly fg.deobf("curse.maven:mantle-74924:4353120")
+    compileOnly fg.deobf("curse.maven:tinkers-construct-74072:4360093")
+
     runtimeOnly fg.deobf("curse.maven:mantle-74924:4353120")
     runtimeOnly fg.deobf("curse.maven:tinkers-construct-74072:4360093")
 }

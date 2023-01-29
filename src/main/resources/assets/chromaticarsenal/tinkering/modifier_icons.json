@@ -1,3 +1,4 @@
 {
-    "chromaticarsenal:antigravity": ["chromaticarsenal:items/lunar_crystal", "tconstruct:gui/modifiers/book"]
+    "chromaticarsenal:antigravity": ["chromaticarsenal:items/lunar_crystal", "tconstruct:gui/modifiers/book"],
+    "chromaticarsenal:warded": ["chromaticarsenal:items/ward_crystal", "tconstruct:gui/modifiers/plus"]
 }

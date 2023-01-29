@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:extra_slot",
+  "level_display": {
+    "type": "tconstruct:unique",
+    "unique_until": 2
+  },
+  "always_show": false,
+  "slots": {
+    "defense": 1
+  }
+}
