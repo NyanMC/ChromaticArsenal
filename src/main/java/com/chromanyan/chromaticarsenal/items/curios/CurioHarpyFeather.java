@@ -21,7 +21,11 @@ public class CurioHarpyFeather extends BaseCurioItem {
             player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 0.8f, 5f);
         }
         Vec3 vec3 = player.getDeltaMovement();
-        player.setDeltaMovement(vec3.x, 0.42D, vec3.z);
+        if (player.getVehicle() != null) {
+            player.getVehicle().setDeltaMovement(vec3.x, 0.42D, vec3.z);
+        } else {
+            player.setDeltaMovement(vec3.x, 0.42D, vec3.z);
+        }
         return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
     }
 }

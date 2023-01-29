@@ -5,7 +5,7 @@
     "pages": [
         {
             "type": "patchouli:crafting",
-            "text": "The Harpy Feather is a tool which causes the user to jump into the air upon right clicking with the feather in either hand. This jump works (and is intended to be used) in midair, and has the height of a regular jump ignoring jump height bonuses. This item also resets fall damage, and when timed right can completely nullify fall damage entirely.",
+            "text": "The Harpy Feather is a tool which causes the user to jump into the air upon right clicking with the feather in either hand. This jump works (and is intended to be used) in midair, and has the height of a regular jump ignoring jump height bonuses. This item also resets fall damage, and when timed right can completely nullify it.",
 			"recipe": "chromaticarsenal:harpy_feather"
         }
     ]
