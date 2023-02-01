@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "chromaticarsenal:spicy_coal"
+    }
+
+  ],
+  "result": {
+    "item": "minecraft:fire_charge",
+    "count": 24
+  }
+}

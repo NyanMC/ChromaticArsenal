@@ -222,7 +222,7 @@ public class EventClassInstance {
 		}
 		
 		LootPool.Builder builder = LootPool.lootPool().setRolls(UniformGenerator.between(-5, 1)).name("chromaticarsenal_rare_loot");
-		LootPool.Builder builder2 = LootPool.lootPool().setRolls(UniformGenerator.between(-1, 2)).name("chromaticarsenal_common_loot");
+		LootPool.Builder builder2 = LootPool.lootPool().setRolls(UniformGenerator.between(-3, 2)).name("chromaticarsenal_common_loot");
 		boolean pool1HasLoot = false;
 		boolean pool2HasLoot = false;
 		if(event.getName().getPath().contains("chests/bastion_treasure")) {
