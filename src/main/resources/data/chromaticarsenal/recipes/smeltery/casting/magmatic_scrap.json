@@ -9,6 +9,7 @@
   "cast": {
     "item": "minecraft:netherite_scrap"
   },
+  "cast_consumed": true,
   "fluid": {
     "tag": "tconstruct:blazing_blood",
     "amount": 200

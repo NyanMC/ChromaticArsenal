@@ -9,6 +9,7 @@
   "cast": {
     "item": "minecraft:coal"
   },
+  "cast_consumed": true,
   "fluid": {
     "tag": "tconstruct:blazing_blood",
     "amount": 200
