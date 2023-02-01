@@ -25,19 +25,23 @@ import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnch
 public class CurioGoldenHeart extends BaseCurioItem {
 	
 	final Common config = ModConfig.COMMON;
+
+	public int getEffectCooldown(ItemStack stack) {
+		return Math.max(1, config.absorptionDuration.get() - (getItemEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY, stack) * config.enchantmentAbsorptionReduction.get()));
+	}
 	
 	@Override
 	public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
 		if (!slotContext.entity().getCommandSenderWorld().isClientSide) {
-			slotContext.entity().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (config.absorptionDuration.get() + 5), config.absorptionLevel.get(), true, true));
+			slotContext.entity().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (getEffectCooldown(stack) + 5), config.absorptionLevel.get(), true, true));
 	    }
 	}
 	
 	@Override
 	public void curioTick(SlotContext context, ItemStack stack) {
 		LivingEntity living = context.entity();
-		if (!living.getCommandSenderWorld().isClientSide && living.tickCount % config.absorptionDuration.get() == 0) {
-	    	living.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (config.absorptionDuration.get() + 5), config.absorptionLevel.get(), true, true));
+		if (!living.getCommandSenderWorld().isClientSide && living.tickCount % getEffectCooldown(stack) == 0) {
+	    	living.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (getEffectCooldown(stack) + 5), config.absorptionLevel.get(), true, true));
 	    }
 	}
 	
@@ -74,7 +78,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
 	
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		if (enchantment == Enchantments.ALL_DAMAGE_PROTECTION) {
+		if (enchantment == Enchantments.ALL_DAMAGE_PROTECTION || enchantment == Enchantments.BLOCK_EFFICIENCY) {
 			return true;
 		} else {
 			return super.canApplyAtEnchantingTable(stack, enchantment);

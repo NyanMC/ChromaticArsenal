@@ -16,6 +16,7 @@ public class ModConfig {
 		public final IntValue absorptionLevel;
 		public final IntValue absorptionDuration;
 		public final DoubleValue enchantmentMaxHealthIncrease;
+		public final IntValue enchantmentAbsorptionReduction;
 		
 		public final IntValue cooldownDuration;
 		public final IntValue enchantmentCooldownReduction;
@@ -76,6 +77,9 @@ public class ModConfig {
 			enchantmentMaxHealthIncrease = builder
 					.comment("The extra max health gained per level of Protection on the Golden Heart. This obeys the operation, so if you set maxHealthBoostOperation to either 1 or 2, it's recommended to keep this at 0.1 at most.")
 					.defineInRange("enchantmentMaxHealthIncrease", 1.0, 0.0, Double.MAX_VALUE);
+			enchantmentAbsorptionReduction = builder
+					.comment("The amount in which the duration of the absorption effect is reduced, in ticks. This allows for faster reapplication of the effect.")
+					.defineInRange("enchantmentAbsorptionReduction", 20, 0, Integer.MAX_VALUE);
 			builder.pop();
 			
 			builder.push("GlassShieldSettings");

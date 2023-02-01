@@ -85,7 +85,7 @@ public class EventClassInstance {
 						player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
 					}
 					event.setAmount(0);
-					
+					event.setCanceled(true);
 				}
 			}
 			
