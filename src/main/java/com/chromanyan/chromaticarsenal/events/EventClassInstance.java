@@ -26,11 +26,13 @@ import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 
+import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.VanillaGameEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.PotionEvent.PotionApplicableEvent;
+import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -222,25 +224,26 @@ public class EventClassInstance {
 		}
 		
 		LootPool.Builder builder = LootPool.lootPool().setRolls(UniformGenerator.between(-5, 1)).name("chromaticarsenal_rare_loot");
-		LootPool.Builder builder2 = LootPool.lootPool().setRolls(UniformGenerator.between(-3, 2)).name("chromaticarsenal_common_loot");
+		LootPool.Builder builder2 = LootPool.lootPool().setRolls(UniformGenerator.between(-4, 2)).name("chromaticarsenal_common_loot");
 		boolean pool1HasLoot = false;
 		boolean pool2HasLoot = false;
-		if(event.getName().getPath().contains("chests/bastion_treasure")) {
-			builder.add(LootItem.lootTableItem(ModItems.GOLDEN_HEART::get));
-			pool1HasLoot = true;
-		}
-		
-		if(event.getName().getPath().contains("chests/end_city_treasure")) {
-			builder.add(LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL::get));
-			builder2.add(LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD::get));
-			builder2.add(LootItem.lootTableItem(ModItems.COSMICOLA::get));
-			pool1HasLoot = true;
-			pool2HasLoot = true;
-		}
 
-		if(event.getName().getPath().contains("chests/ruined_portal")) {
-			builder2.add(LootItem.lootTableItem(ModItems.SPICY_COAL::get));
-			pool2HasLoot = true;
+		switch (event.getName().getPath()) {
+			case "chests/bastion_treasure" -> {
+				builder.add(LootItem.lootTableItem(ModItems.GOLDEN_HEART::get));
+				pool1HasLoot = true;
+			}
+			case "chests/end_city_treasure" -> {
+				builder.add(LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL::get));
+				builder2.add(LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD::get));
+				builder2.add(LootItem.lootTableItem(ModItems.COSMICOLA::get));
+				pool1HasLoot = true;
+				pool2HasLoot = true;
+			}
+			case "chests/ruined_portal" -> {
+				builder2.add(LootItem.lootTableItem(ModItems.SPICY_COAL::get));
+				pool2HasLoot = true;
+			}
 		}
 
 		if(event.getName().getPath().contains("chests")) {
@@ -254,6 +257,16 @@ public class EventClassInstance {
 		if(pool2HasLoot) {
 			event.getTable().addPool(builder2.build());
 		}
+	}
+
+	@SubscribeEvent
+	public void onWandererTrades(WandererTradesEvent event) {
+		event.getRareTrades().add(new BasicItemListing(
+				rand.nextInt(16, 24),
+				new ItemStack(ModItems.CHROMA_SHARD.get()),
+				1,
+				3
+		));
 	}
 	
 }
