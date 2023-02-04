@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.events;
 
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.Random;
 
@@ -19,7 +20,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
@@ -217,50 +218,45 @@ public class EventClassInstance {
 		}
 	}
 
+	@SuppressWarnings("all")
+	private static void injectInto(LootTableLoadEvent event, String poolName, LootPoolEntryContainer... entries) {
+		LootPool pool = event.getTable().getPool(poolName);
+		//noinspection ConstantConditions method is annotated wrongly
+		if (pool != null) {
+			int oldLength = pool.entries.length;
+			pool.entries = Arrays.copyOf(pool.entries, oldLength + entries.length);
+			System.arraycopy(entries, 0, pool.entries, oldLength, entries.length);
+		}
+	}
+	@SuppressWarnings("all")
 	@SubscribeEvent
 	public void insertLoot(LootTableLoadEvent event) {
 		if(!config.lootTableInsertion.get()) {
 			return;
 		}
-		
-		LootPool.Builder builder = LootPool.lootPool().setRolls(UniformGenerator.between(-5, 1)).name("chromaticarsenal_rare_loot");
-		LootPool.Builder builder2 = LootPool.lootPool().setRolls(UniformGenerator.between(-4, 2)).name("chromaticarsenal_common_loot");
-		boolean pool1HasLoot = false;
-		boolean pool2HasLoot = false;
 
 		switch (event.getName().getPath()) {
-			case "chests/bastion_treasure" -> {
-				builder.add(LootItem.lootTableItem(ModItems.GOLDEN_HEART::get));
-				pool1HasLoot = true;
-			}
+			case "chests/bastion_treasure", "gameplay/piglin_bartering" -> injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(4).build());
 			case "chests/end_city_treasure" -> {
-				builder.add(LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL::get));
-				builder2.add(LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD::get));
-				builder2.add(LootItem.lootTableItem(ModItems.COSMICOLA::get));
-				pool1HasLoot = true;
-				pool2HasLoot = true;
+				injectInto(event, "main", LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL.get()).setWeight(2).build());
+				injectInto(event, "main", LootItem.lootTableItem(ModItems.COSMICOLA.get()).setWeight(5).build());
+				injectInto(event, "main", LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD.get()).setWeight(10).build());
 			}
-			case "chests/ruined_portal" -> {
-				builder2.add(LootItem.lootTableItem(ModItems.SPICY_COAL::get));
-				pool2HasLoot = true;
-			}
+			case "chests/ruined_portal" -> injectInto(event, "main", LootItem.lootTableItem(ModItems.SPICY_COAL.get()).setWeight(8).build());
 		}
 
 		if(event.getName().getPath().contains("chests")) {
-			builder2.add(LootItem.lootTableItem(ModItems.CHROMA_SHARD::get));
-			pool2HasLoot = true;
-		}
-		
-		if(pool1HasLoot) {
-			event.getTable().addPool(builder.build());
-		}
-		if(pool2HasLoot) {
-			event.getTable().addPool(builder2.build());
+			if (event.getTable().getPool("main") != null) {
+				injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMA_SHARD.get()).setWeight(4).build());
+			}
 		}
 	}
 
 	@SubscribeEvent
 	public void onWandererTrades(WandererTradesEvent event) {
+		if(!config.lootTableInsertion.get()) {
+			return;
+		}
 		event.getRareTrades().add(new BasicItemListing(
 				rand.nextInt(16, 24),
 				new ItemStack(ModItems.CHROMA_SHARD.get()),

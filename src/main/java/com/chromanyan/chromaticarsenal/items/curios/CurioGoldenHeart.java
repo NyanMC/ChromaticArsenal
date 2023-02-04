@@ -72,11 +72,6 @@ public class CurioGoldenHeart extends BaseCurioItem {
 	}
 	
 	@Override
-	public boolean isPiglinCurrency(ItemStack stack) {
-		return true;
-	}
-	
-	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		if (enchantment == Enchantments.ALL_DAMAGE_PROTECTION || enchantment == Enchantments.BLOCK_EFFICIENCY) {
 			return true;
