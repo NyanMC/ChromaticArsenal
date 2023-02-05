@@ -8,7 +8,19 @@
   ],
   "inputs": [
     {
+      "item": "chromaticarsenal:chroma_shard"
+    },
+    {
       "item": "chromaticarsenal:ward_crystal"
+    },
+    {
+      "item": "chromaticarsenal:chroma_shard"
+    },
+    {
+      "item": "chromaticarsenal:chroma_shard"
+    },
+    {
+      "item": "chromaticarsenal:chroma_shard"
     }
   ],
   "tools": {

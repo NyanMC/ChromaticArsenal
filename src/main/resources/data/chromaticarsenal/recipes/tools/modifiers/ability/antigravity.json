@@ -8,7 +8,19 @@
   ],
   "inputs": [
     {
+      "item": "chromaticarsenal:cosmicola"
+    },
+    {
       "item": "chromaticarsenal:lunar_crystal"
+    },
+    {
+      "item": "chromaticarsenal:cosmicola"
+    },
+    {
+      "item": "chromaticarsenal:chroma_shard"
+    },
+    {
+      "item": "chromaticarsenal:chroma_shard"
     }
   ],
   "tools": {
