@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:diamond"
+    },
+    "b": {
+      "item": "chromaticarsenal:golden_heart"
+    },
+    "c": {
+      "tag": "forge:dusts/ascension"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:super_golden_heart"
+  }
+}

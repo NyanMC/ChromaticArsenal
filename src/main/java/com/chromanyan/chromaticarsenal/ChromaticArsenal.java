@@ -1,19 +1,20 @@
 package com.chromanyan.chromaticarsenal;
 
+import com.chromanyan.chromaticarsenal.datagen.CAModels;
+import com.chromanyan.chromaticarsenal.datagen.CARecipes;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 
 import org.apache.logging.log4j.LogManager;
@@ -40,10 +41,7 @@ public class ChromaticArsenal
         bus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
         bus.addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
-        bus.addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
-        bus.addListener(this::doClientStuff);
+        bus.addListener(this::gatherData);
 
         ModBlocks.BLOCKS_REGISTRY.register(bus);
         ModItems.ITEMS_REGISTRY.register(bus);
@@ -55,14 +53,21 @@ public class ChromaticArsenal
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    @SubscribeEvent
+    public void gatherData(final GatherDataEvent event) {
+        DataGenerator gen = event.getGenerator();
+        if (event.includeClient()) {
+            gen.addProvider(new CAModels(gen, event.getExistingFileHelper()));
+        }
+        if (event.includeServer()) {
+            gen.addProvider(new CARecipes(gen));
+        }
+    }
+
     private void setup(final FMLCommonSetupEvent event)
     {
     	MinecraftForge.EVENT_BUS.register(new EventClassInstance());
         // some preinit code
-    }
-
-    private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
@@ -73,13 +78,5 @@ public class ChromaticArsenal
     	InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("super_curio").size(1).build());
     }
 
-    private void processIMC(final InterModProcessEvent event)
-    {
-        // some example code to receive and process InterModComms from other mods
-    }
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        // do something when the server starts
-    }
+
 }

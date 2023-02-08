@@ -1,13 +1,11 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "chromaticarsenal:chroma_shard"
-    },
-    {
-      "item": "minecraft:feather"
-    }
-  ],
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:feather"
+  },
+  "addition": {
+    "item": "chromaticarsenal:chroma_shard"
+  },
   "result": {
     "item": "chromaticarsenal:harpy_feather"
   }

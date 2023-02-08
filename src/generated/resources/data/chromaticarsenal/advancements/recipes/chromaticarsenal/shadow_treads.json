@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "chromaticarsenal:shadow_treads"
+    ]
+  },
+  "criteria": {
+    "has_chroma_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/chroma"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "chromaticarsenal:shadow_treads"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chroma_shard",
+      "has_the_recipe"
+    ]
+  ]
+}

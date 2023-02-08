@@ -28,3 +28,4 @@ forge*changelog.txt
 /README.txt
 /changelog.txt
 /.gitattributes
+/src/generated/resources/.cache/cache

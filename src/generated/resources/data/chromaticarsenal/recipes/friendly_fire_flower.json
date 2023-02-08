@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "chromaticarsenal:magmatic_scrap"
+    },
+    "b": {
+      "item": "minecraft:orange_tulip"
+    },
+    "c": {
+      "tag": "forge:gems/chroma"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:friendly_fire_flower"
+  }
+}

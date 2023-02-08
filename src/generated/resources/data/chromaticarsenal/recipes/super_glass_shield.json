@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gcg",
+    "gag",
+    " g "
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:tinted_glass"
+    },
+    "a": {
+      "tag": "forge:dusts/ascension"
+    },
+    "c": {
+      "item": "chromaticarsenal:glass_shield"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:super_glass_shield"
+  }
+}
