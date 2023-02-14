@@ -59,9 +59,6 @@ public class CurioGoldenHeart extends BaseCurioItem {
 																		ItemStack stack) {
 		Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
 		double attModBonus = getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, stack) * config.enchantmentMaxHealthIncrease.get();
-/*		if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, stack) > 0) {
-			attModBonus = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, stack) * config.enchantmentMaxHealthIncrease.get();
-		}*/
 		atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, Reference.MODID + ":health_bonus", config.maxHealthBoost.get() + attModBonus, AttributeModifier.Operation.fromValue(config.maxHealthBoostOperation.get())));
 		return atts;
 	}
