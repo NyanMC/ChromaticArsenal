@@ -1,7 +1,12 @@
 package com.chromanyan.chromaticarsenal;
 
+import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.datagen.CAModels;
 import com.chromanyan.chromaticarsenal.datagen.CARecipes;
+import com.chromanyan.chromaticarsenal.events.EventClassInstance;
+import com.chromanyan.chromaticarsenal.init.ModBlocks;
+import com.chromanyan.chromaticarsenal.init.ModItems;
+import com.chromanyan.chromaticarsenal.init.ModPotions;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.common.MinecraftForge;
@@ -15,16 +20,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
-import top.theillusivec4.curios.api.SlotTypeMessage;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.init.ModBlocks;
-import com.chromanyan.chromaticarsenal.init.ModItems;
-import com.chromanyan.chromaticarsenal.init.ModPotions;
-import com.chromanyan.chromaticarsenal.events.EventClassInstance;
+import top.theillusivec4.curios.api.SlotTypeMessage;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Reference.MODID)

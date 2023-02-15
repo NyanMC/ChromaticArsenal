@@ -1,11 +1,10 @@
 package com.chromanyan.chromaticarsenal.config;
 
-import org.apache.commons.lang3.tuple.Pair;
-
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class ModConfig {
 	
@@ -44,6 +43,9 @@ public class ModConfig {
 		public final DoubleValue gravityModifier;
 		public final BooleanValue everyoneIsLuna;
 		public final DoubleValue fallDamageReduction;
+
+		public final IntValue jumpCooldown;
+		public final DoubleValue jumpForce;
 		
 		public final IntValue fracturedDuration;
 		public final IntValue fracturedPotency;
@@ -163,6 +165,15 @@ public class ModConfig {
 					.comment("The percentage of fall damage reduced per level of feather falling on this item. Set to 0 to effectively disable this feature.")
 					.defineInRange("fallDamageReduction", 0.05, 0, 1);
 			builder.pop();
+			builder.push("HarpyFeatherSettings");
+
+			builder.pop();
+			jumpCooldown = builder
+					.comment("The cooldown between Harpy Feather jumps, in ticks.")
+					.defineInRange("jumpCooldown", 60, 0, Integer.MAX_VALUE);
+			jumpForce = builder
+					.comment("The force of the Harpy Feather jump. This goes by internal values, so tweaking may be required.")
+					.defineInRange("jumpForce", 0.42D, 0, Double.MAX_VALUE);
 			builder.pop();
 			
 			builder.push("SuperCurioSettings");

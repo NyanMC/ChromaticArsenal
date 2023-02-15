@@ -1,11 +1,8 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
-import java.util.UUID;
-
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
-
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -20,6 +17,8 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import top.theillusivec4.curios.api.SlotContext;
+
+import java.util.UUID;
 
 @SuppressWarnings("all")
 public class CurioLunarCrystal extends BaseCurioItem {

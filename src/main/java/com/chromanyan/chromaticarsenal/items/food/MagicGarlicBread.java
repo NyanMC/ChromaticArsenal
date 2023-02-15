@@ -1,7 +1,9 @@
 package com.chromanyan.chromaticarsenal.items.food;
 
-import java.util.Optional;
-
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
+import com.chromanyan.chromaticarsenal.init.ModItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,13 +13,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
-
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
-import com.chromanyan.chromaticarsenal.init.ModItems;
-
 import top.theillusivec4.curios.api.CuriosApi;
+
+import java.util.Optional;
 
 public class MagicGarlicBread extends Item {
 	final Common config = ModConfig.COMMON;

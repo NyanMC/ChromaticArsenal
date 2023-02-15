@@ -10,7 +10,6 @@ import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioDiamondHeart;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioShieldOfUndying;
 import com.chromanyan.chromaticarsenal.items.food.Cosmicola;
 import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
-
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;

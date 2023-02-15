@@ -2,7 +2,6 @@ package com.chromanyan.chromaticarsenal.init;
 
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.blocks.ChromaBlock;
-
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

@@ -14,7 +14,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 
-import static net.minecraft.world.item.enchantment.EnchantmentHelper.*;
+import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
 public class CurioFriendlyFireFlower extends BaseCurioItem {
 

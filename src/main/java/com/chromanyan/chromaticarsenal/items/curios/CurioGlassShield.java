@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
-
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;

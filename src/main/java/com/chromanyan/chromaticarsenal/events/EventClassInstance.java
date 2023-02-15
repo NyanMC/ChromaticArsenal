@@ -1,9 +1,9 @@
 package com.chromanyan.chromaticarsenal.events;
 
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Random;
-
+import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
+import com.chromanyan.chromaticarsenal.init.ModItems;
+import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
@@ -21,12 +21,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-
-import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
-import com.chromanyan.chromaticarsenal.init.ModItems;
-import com.chromanyan.chromaticarsenal.init.ModPotions;
-
 import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.VanillaGameEvent;
@@ -39,6 +33,10 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
+
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.Random;
 
 import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 

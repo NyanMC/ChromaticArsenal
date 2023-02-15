@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
