@@ -14,7 +14,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -31,7 +30,6 @@ import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Arrays;
@@ -40,16 +38,13 @@ import java.util.Random;
 
 import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
+import static com.chromanyan.chromaticarsenal.util.ChromaCurioHelper.getCurio;
+
 public class EventClassInstance {
 	// clean up this mess
 	
-	final Random rand = new Random();
-	final Common config = ModConfig.COMMON;
-
-	// method to make changes to the curios api easier to bear in the future
-	Optional<SlotResult> getCurio(LivingEntity livingEntity, Item item) {
-		return CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, item);
-	}
+	private final Random rand = new Random();
+	private final Common config = ModConfig.COMMON;
 	
 	@SubscribeEvent
 	public void playerAttackedEvent(LivingHurtEvent event) {

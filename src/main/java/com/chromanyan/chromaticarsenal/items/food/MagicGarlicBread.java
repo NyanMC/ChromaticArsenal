@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,8 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
-import org.apache.commons.lang3.tuple.ImmutableTriple;
-import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Optional;
 
@@ -27,7 +27,7 @@ public class MagicGarlicBread extends Item {
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity player) {
 		if (!world.isClientSide) {
-			Optional<ImmutableTriple<String, Integer, ItemStack>> rings = CuriosApi.getCuriosHelper().findEquippedCurio(ModItems.DUALITY_RINGS.get(), (LivingEntity) player);
+			Optional<SlotResult> rings = ChromaCurioHelper.getCurio(player, ModItems.DUALITY_RINGS.get());
 			if (rings.isPresent()) {
 				player.addEffect(new MobEffectInstance(MobEffects.SATURATION, config.saturationDuration.get(), config.saturationLevel.get(), true, true));
 				player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, config.healthBoostDuration.get(), config.healthBoostLevel.get(), true, true));

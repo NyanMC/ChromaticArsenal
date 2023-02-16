@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -10,11 +11,10 @@ import net.minecraftforge.registries.RegistryObject;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.SlotResult;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.Optional;
 @SuppressWarnings("unused")
-public class BaseSuperCurio extends BaseCurioItem implements ICurioItem {
+public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
 	
 	private final RegistryObject<Item> inferiorVariant;
 	
