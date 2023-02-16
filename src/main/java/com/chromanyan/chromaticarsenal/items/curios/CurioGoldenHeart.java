@@ -61,12 +61,12 @@ public class CurioGoldenHeart extends BaseCurioItem {
 		atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, Reference.MODID + ":health_bonus", config.maxHealthBoost.get() + attModBonus, AttributeModifier.Operation.fromValue(config.maxHealthBoostOperation.get())));
 		return atts;
 	}
-	
+
 	@Override
-	public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-		return true; // doesn't work, but i can dream can't i
+	public boolean makesPiglinsNeutral(SlotContext slotContext, ItemStack stack) {
+		return true; // i dreamed hard, and now it works
 	}
-	
+
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		if (enchantment == Enchantments.ALL_DAMAGE_PROTECTION || enchantment == Enchantments.BLOCK_EFFICIENCY) {
