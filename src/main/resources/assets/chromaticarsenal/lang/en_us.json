@@ -30,12 +30,7 @@
 	"message.chromaticarsenal.revival_cooldown_finished": "§6The Diamond Heart revival cooldown has finished.",
 	
 	"effect.chromaticarsenal.spatial": "Spatial",
-	"effect.chromaticarsenal.spatial.description": "Grants immunity to Fall Damage",
-	
-	"advancements.nether.obtain_chroma_shard.title": "It All Starts With This...",
-	"advancements.nether.obtain_chroma_shard.description": "Acquire your first Chroma Shard",
-	"advancements.nether.obtain_ascension_essence.title": "Even Crazier Space Dust",
-	"advancements.nether.obtain_ascension_essence.description": "Acquire some Essence of Ascension",
+	"effect.chromaticarsenal.spatial.description": "Reduces player gravity, grants immunity to Fall Damage",
 	
 	"itemGroup.chromaticarsenal": "Chromatic Arsenal",
 

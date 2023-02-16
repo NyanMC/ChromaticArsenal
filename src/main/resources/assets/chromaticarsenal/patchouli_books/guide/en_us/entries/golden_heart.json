@@ -5,7 +5,7 @@
     "pages": [
         {
             "type": "patchouli:spotlight",
-            "text": "The Golden Heart grants the player the Absorption effect. When the effect is about to run out, it is applied again, resetting the amount of remaining absorption hearts. This curio can (rarely) be found in bastion treasure chests.",
+            "text": "The Golden Heart grants the player the Absorption effect. When the effect is about to run out, it is applied again, resetting the amount of remaining absorption hearts. It has a side-effect of making piglins neutral. This curio can (rarely) be found in bastion treasure chests.",
 			"item": "chromaticarsenal:golden_heart"
         },
 		{
