@@ -29,8 +29,8 @@ public class ModConfig {
 		public final IntValue maxLightLevel;
 		
 		public final DoubleValue aroOfClubsMultiplier;
-		public final IntValue saturationLevel;
-		public final IntValue saturationDuration;
+		public final IntValue strengthLevel;
+		public final IntValue strengthDuration;
 		public final IntValue healthBoostLevel;
 		public final IntValue healthBoostDuration;
 
@@ -122,12 +122,12 @@ public class ModConfig {
 			aroOfClubsMultiplier = builder
 					.comment("The damage multiplier of arrow projectiles while the Duality Rings are equipped. Values above 1.0 increase the damage, while values below 1.0 decrease the damage.")
 					.defineInRange("aroOfClubsMultiplier", 1.25, 0.0, Double.MAX_VALUE);
-			saturationLevel = builder
-					.comment("The level of the saturation effect applied to the player when consuming Magic Garlic Bread while the Duality Rings are equipped.")
-					.defineInRange("saturationLevel", 0, 0, 255);
-			saturationDuration = builder
-					.comment("The duration of the saturation effect, in ticks.")
-					.defineInRange("saturationDuration", 200, 1, Integer.MAX_VALUE);
+			strengthLevel = builder
+					.comment("The level of the strength effect applied to the player when consuming Magic Garlic Bread while the Duality Rings are equipped.")
+					.defineInRange("strengthLevel", 0, 0, 255);
+			strengthDuration = builder
+					.comment("The duration of the strength effect, in ticks.")
+					.defineInRange("strengthDuration", 2400, 1, Integer.MAX_VALUE);
 			healthBoostLevel = builder
 					.comment("The level of the health boost effect applied to the player when consuming Magic Garlic Bread while the Duality Rings are equipped.")
 					.defineInRange("healthBoostLevel", 2, 0, 255);

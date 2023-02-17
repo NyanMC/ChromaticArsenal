@@ -29,7 +29,7 @@ public class MagicGarlicBread extends Item {
 		if (!world.isClientSide) {
 			Optional<SlotResult> rings = ChromaCurioHelper.getCurio(player, ModItems.DUALITY_RINGS.get());
 			if (rings.isPresent()) {
-				player.addEffect(new MobEffectInstance(MobEffects.SATURATION, config.saturationDuration.get(), config.saturationLevel.get(), true, true));
+				player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, config.strengthDuration.get(), config.strengthLevel.get(), true, true));
 				player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, config.healthBoostDuration.get(), config.healthBoostLevel.get(), true, true));
 			}
 		}
