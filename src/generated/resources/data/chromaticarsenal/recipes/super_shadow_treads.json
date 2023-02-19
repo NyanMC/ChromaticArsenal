@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "chromaticarsenal:spicy_coal"
+    },
+    "b": {
+      "item": "chromaticarsenal:shadow_treads"
+    },
+    "c": {
+      "tag": "forge:dusts/ascension"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:super_shadow_treads"
+  }
+}
