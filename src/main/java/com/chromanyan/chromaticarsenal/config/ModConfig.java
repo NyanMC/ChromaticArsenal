@@ -54,6 +54,9 @@ public class ModConfig {
 		public final IntValue revivalLimit;
 		public final IntValue shatterRevivalCooldown;
 		public final DoubleValue healthTradeoff;
+
+		public final DoubleValue damageModifierMax;
+		public final DoubleValue speedModifierMax;
 		
 		public final BooleanValue lootTableInsertion;
 		
@@ -198,6 +201,14 @@ public class ModConfig {
 			healthTradeoff = builder
 					.comment("The operation 2 modifier given to the player wearing this shield. This should be negative or zero.")
 					.defineInRange("healthTradeoff", -0.8D, -1.0D, 0.0D);
+			builder.pop();
+			builder.push("SuperShadowTreadsSettings");
+			damageModifierMax = builder
+					.comment("The damage boost applied at noon (time 6000). This is always operation 2.")
+					.defineInRange("damageModifierMax", 0.2D, 0D, Double.MAX_VALUE);
+			speedModifierMax = builder
+					.comment("The speed boost applied at midnight (time 18000). This is always operation 2.")
+					.defineInRange("speedModifierMax", 0.2D, 0D, Double.MAX_VALUE);
 			builder.pop();
 			builder.pop();
 			

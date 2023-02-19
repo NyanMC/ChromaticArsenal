@@ -85,5 +85,6 @@ public class CARecipes extends RecipeProvider {
                 .save(consumer, new ResourceLocation(Reference.MODID, "super_glass_shield"));
 
         nyanPatternRecipe(consumer, ModItems.SUPER_WARD_CRYSTAL.get(), Items.FERMENTED_SPIDER_EYE, ModItems.WARD_CRYSTAL.get(), ASCENSION_ESSENCE, "super_ward_crystal");
+        nyanPatternRecipe(consumer, ModItems.SUPER_SHADOW_TREADS.get(), ModItems.SPICY_COAL.get(), ModItems.SHADOW_TREADS.get(), ASCENSION_ESSENCE, "super_shadow_treads");
     }
 }

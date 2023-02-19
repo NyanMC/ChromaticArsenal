@@ -240,7 +240,7 @@ public class EventClassInstance {
 
 		if(event.getName().getPath().contains("chests")) {
 			if (event.getTable().getPool("main") != null) {
-				injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMA_SHARD.get()).setWeight(4).build());
+				injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMA_SHARD.get()).setWeight(2).build());
 			}
 		}
 	}
