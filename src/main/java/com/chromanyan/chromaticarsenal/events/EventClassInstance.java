@@ -101,6 +101,11 @@ public class EventClassInstance {
 					event.setAmount(event.getAmount() * percentage);
 				}
 			}
+
+			Optional<SlotResult> aStar = getCurio(player, ModItems.ASCENDED_STAR.get());
+			if (aStar.isPresent()) {
+				event.setAmount((float) (event.getAmount() * config.damageMultiplier.get()));
+			}
 			
 			// attacker events
 			Entity possibleAttacker = event.getSource().getEntity();

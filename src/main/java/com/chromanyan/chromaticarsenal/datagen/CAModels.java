@@ -38,6 +38,8 @@ public class CAModels extends ItemModelProvider {
         basicModel("lunar_crystal");
         basicModel("harpy_feather");
 
+        basicModel("ascended_star");
+
         basicModel("magic_garlic_bread");
         basicModel("cosmicola");
     }

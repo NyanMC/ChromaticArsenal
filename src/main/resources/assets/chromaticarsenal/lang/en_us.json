@@ -25,6 +25,8 @@
 	"item.chromaticarsenal.super_glass_shield": "Shield of Undying",
 	"item.chromaticarsenal.super_ward_crystal": "Dispelling Crystal",
 	"item.chromaticarsenal.super_shadow_treads": "Celestial Charm",
+
+	"item.chromaticarsenal.ascended_star": "Ascended Star",
 	
 	"effect.chromaticarsenal.fractured": "Fractured",
 	"effect.chromaticarsenal.fractured.description": "Max health is reduced by 10% per level",
@@ -44,5 +46,8 @@
 	"modifier.chromaticarsenal.warded.2": "Dispelled",
 	"modifier.chromaticarsenal.warded.flavor": "Begone, magic!",
 	"modifier.chromaticarsenal.warded.description": "Banishes the magic of an ability slot in exchange for a defense slot",
-	"modifier.chromaticarsenal.warded.error_level_req": "Dispelled requires a different recipe for the first level"
+	"modifier.chromaticarsenal.warded.error_level_req": "Dispelled requires a different recipe for the first level",
+
+	"tooltip.chromaticarsenal.cursed": "§4Once equipped, this curio will persist with you forever.",
+	"tooltip.chromaticarsenal.worthit": "Contains drastic negative side effects. Is this item really worth it?"
 }

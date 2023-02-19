@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " g ",
+    "uad",
+    " c "
+  ],
+  "key": {
+    "g": {
+      "item": "chromaticarsenal:super_golden_heart"
+    },
+    "a": {
+      "tag": "forge:dusts/ascension"
+    },
+    "u": {
+      "item": "chromaticarsenal:super_glass_shield"
+    },
+    "d": {
+      "item": "chromaticarsenal:super_ward_crystal"
+    },
+    "c": {
+      "item": "chromaticarsenal:super_shadow_treads"
+    }
+  },
+  "result": {
+    "item": "chromaticarsenal:ascended_star"
+  }
+}

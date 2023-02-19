@@ -57,6 +57,11 @@ public class ModConfig {
 
 		public final DoubleValue damageModifierMax;
 		public final DoubleValue speedModifierMax;
+
+		public final IntValue bonusSlots;
+		public final DoubleValue damageMultiplier;
+		public final IntValue bonusLooting;
+		public final IntValue bonusFortune;
 		
 		public final BooleanValue lootTableInsertion;
 		
@@ -209,6 +214,20 @@ public class ModConfig {
 			speedModifierMax = builder
 					.comment("The speed boost applied at midnight (time 18000). This is always operation 2.")
 					.defineInRange("speedModifierMax", 0.2D, 0D, Double.MAX_VALUE);
+			builder.pop();
+			builder.push("AscendedStarSettings");
+			bonusSlots = builder
+					.comment("The amount of additional slots granted upon equipping the star.")
+					.defineInRange("bonusSlots", 1, 0, 3);
+			damageMultiplier = builder
+					.comment("The multiplier to all incoming damage the player receives.")
+					.defineInRange("damageMultiplier", 3, 1, Double.MAX_VALUE);
+			bonusFortune = builder
+					.comment("The amount of additional fortune levels granted upon equipping the star.")
+					.defineInRange("bonusFortune", 1, 0, Integer.MAX_VALUE);
+			bonusLooting = builder
+					.comment("The amount of additional looting levels granted upon equipping the star.")
+					.defineInRange("bonusLooting", 1, 0, Integer.MAX_VALUE);
 			builder.pop();
 			builder.pop();
 			

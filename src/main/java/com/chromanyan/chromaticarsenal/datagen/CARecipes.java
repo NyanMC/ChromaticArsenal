@@ -86,5 +86,17 @@ public class CARecipes extends RecipeProvider {
 
         nyanPatternRecipe(consumer, ModItems.SUPER_WARD_CRYSTAL.get(), Items.FERMENTED_SPIDER_EYE, ModItems.WARD_CRYSTAL.get(), ASCENSION_ESSENCE, "super_ward_crystal");
         nyanPatternRecipe(consumer, ModItems.SUPER_SHADOW_TREADS.get(), ModItems.SPICY_COAL.get(), ModItems.SHADOW_TREADS.get(), ASCENSION_ESSENCE, "super_shadow_treads");
+
+        ShapedRecipeBuilder.shaped(ModItems.ASCENDED_STAR.get(), 1)
+                .pattern(" g ")
+                .pattern("uad")
+                .pattern(" c ")
+                .define('g', ModItems.SUPER_GOLDEN_HEART.get())
+                .define('a', ASCENSION_ESSENCE)
+                .define('u', ModItems.SUPER_GLASS_SHIELD.get())
+                .define('d', ModItems.SUPER_WARD_CRYSTAL.get())
+                .define('c', ModItems.SUPER_SHADOW_TREADS.get())
+                .unlockedBy("has_chroma_shard", has(ASCENSION_ESSENCE))
+                .save(consumer, new ResourceLocation(Reference.MODID, "ascended_star"));
     }
 }

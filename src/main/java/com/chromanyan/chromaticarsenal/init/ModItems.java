@@ -8,6 +8,7 @@ import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.items.curios.*;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioCelestialCharm;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioDiamondHeart;
+import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioLimitBreak;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioShieldOfUndying;
 import com.chromanyan.chromaticarsenal.items.food.Cosmicola;
 import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
@@ -40,6 +41,8 @@ public class ModItems {
 	public static final RegistryObject<Item> SUPER_GLASS_SHIELD = ITEMS_REGISTRY.register("super_glass_shield", CurioShieldOfUndying::new);
 	public static final RegistryObject<Item> SUPER_WARD_CRYSTAL = ITEMS_REGISTRY.register("super_ward_crystal", () -> new BaseSuperCurio(ModItems.WARD_CRYSTAL));
 	public static final RegistryObject<Item> SUPER_SHADOW_TREADS = ITEMS_REGISTRY.register("super_shadow_treads", CurioCelestialCharm::new);
+
+	public static final RegistryObject<Item> ASCENDED_STAR = ITEMS_REGISTRY.register("ascended_star", CurioLimitBreak::new);
 	
 	public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = ITEMS_REGISTRY.register("magic_garlic_bread", MagicGarlicBread::new);
 	public static final RegistryObject<Item> COSMICOLA = ITEMS_REGISTRY.register("cosmicola", Cosmicola::new);
