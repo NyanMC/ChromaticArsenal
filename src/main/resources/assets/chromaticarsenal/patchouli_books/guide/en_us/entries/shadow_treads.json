@@ -1,20 +1,20 @@
 {
-    "name": "Shadow Charm",
-    "icon": "chromaticarsenal:shadow_treads",
-    "category": "chromaticarsenal:main",
-    "pages": [
-        {
-            "type": "patchouli:text",
-            "text": "The Shadow Charm grants the Speed potion effect when in a light level below 7 (though your modpack may change this). Additionally, this item also grants immunity to Slowness and prevents sculk sensors from triggering when walking or falling from short distances, but not when sprinting. You can even walk directly on top of sculk sensors."
-        },
-		{
-            "type": "patchouli:text",
-            "text": "The Shadow Charm supports the following enchantments:$(br2)$(l)Soul Speed$(): Grants an additional passive speed boost per level"
-        },
-		{
-            "type": "patchouli:crafting",
-            "text": "$(o)I found you, faker!",
-			"recipe": "chromaticarsenal:shadow_treads"
-        }
-    ]
+  "name": "Shadow Charm",
+  "icon": "chromaticarsenal:shadow_treads",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Shadow Charm grants the Speed potion effect when in a light level below 7 (though your modpack may change this). Additionally, this item also grants immunity to Slowness and prevents sculk sensors from triggering when walking or falling from short distances, but not when sprinting. You can even walk directly on top of sculk sensors."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Shadow Charm supports the following enchantments:$(br2)$(l)Soul Speed$(): Grants an additional passive speed boost per level"
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)I found you, faker!",
+      "recipe": "chromaticarsenal:shadow_treads"
+    }
+  ]
 }

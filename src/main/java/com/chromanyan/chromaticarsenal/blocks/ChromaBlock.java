@@ -11,13 +11,13 @@ import net.minecraft.world.level.material.MaterialColor;
 
 public class ChromaBlock extends RotatedPillarBlock {
 
-	public ChromaBlock() {
-		super(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.DIAMOND).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL));
-	}
+    public ChromaBlock() {
+        super(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.DIAMOND).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL));
+    }
 
-	@Override
-	public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
-		return 15;
-	}
+    @Override
+    public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
+        return 15;
+    }
 
 }

@@ -6,7 +6,7 @@
       "type": "forge:mod_loaded"
     }
   ],
-  "effect":{
+  "effect": {
     "id": "chromaticarsenal:fractured"
   },
   "providers": [

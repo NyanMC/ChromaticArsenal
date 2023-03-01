@@ -1,20 +1,20 @@
 {
-    "name": "Ascended Star",
-    "icon": "chromaticarsenal:ascended_star",
-    "category": "chromaticarsenal:main",
-    "pages": [
-        {
-            "type": "patchouli:text",
-            "text": "The Ascended Star is an item which punishes the hasty and foolish that equip it without first learning its side effects. It grants an additional fortune and looting level, and the ability to use a second super curio, but multiplies received damage by huge amounts."
-        },
-        {
-            "type": "patchouli:text",
-            "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+1$() Looting Level$(br)$(2)+1$() Fortune Level$(br)$(2)+1$() Super Curio Slot$(br)$(4)+200%$() Damage Taken$(br)"
-        },
-        {
-            "type": "patchouli:crafting",
-            "text": "$(o)You sense a malovent magic lurking within this item.",
-            "recipe": "chromaticarsenal:ascended_star"
-        }
-    ]
+  "name": "Ascended Star",
+  "icon": "chromaticarsenal:ascended_star",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Ascended Star is an item which punishes the hasty and foolish that equip it without first learning its side effects. It grants an additional fortune and looting level, and the ability to use a second super curio, but multiplies received damage by huge amounts."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+1$() Looting Level$(br)$(2)+1$() Fortune Level$(br)$(2)+1$() Super Curio Slot$(br)$(4)+200%$() Damage Taken$(br)"
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)You sense a malovent magic lurking within this item.",
+      "recipe": "chromaticarsenal:ascended_star"
+    }
+  ]
 }

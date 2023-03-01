@@ -31,7 +31,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
         if (!living.getCommandSenderWorld().isClientSide && living.isOnFire() && !living.hasEffect(MobEffects.FIRE_RESISTANCE)) {
             int fireResistanceBonus = 1 + getItemEnchantmentLevel(Enchantments.FIRE_PROTECTION, stack);
             living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, config.fireResistanceDuration.get() * fireResistanceBonus, 0, true, true));
-            if(config.canBeDamaged.get()) {
+            if (config.canBeDamaged.get()) {
                 stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
             }
         }

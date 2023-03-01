@@ -1,6 +1,6 @@
 {
-    "pack": {
-      "pack_format": 8,
-      "description": "Developer textures from early TrinkPlus versions (built-in)"
-    }
+  "pack": {
+    "pack_format": 8,
+    "description": "Developer textures from early TrinkPlus versions (built-in)"
   }
+}

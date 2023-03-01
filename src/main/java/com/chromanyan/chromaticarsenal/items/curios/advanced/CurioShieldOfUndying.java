@@ -23,52 +23,52 @@ import java.util.UUID;
 
 public class CurioShieldOfUndying extends BaseSuperCurio {
 
-	private final ModConfig.Common config = ModConfig.COMMON;
+    private final ModConfig.Common config = ModConfig.COMMON;
 
-	public CurioShieldOfUndying() {
-		super(ModItems.GLASS_SHIELD);
-	}
+    public CurioShieldOfUndying() {
+        super(ModItems.GLASS_SHIELD);
+    }
 
-	@SuppressWarnings("all")
-	@Override
-	public void curioTick(SlotContext context, ItemStack stack) {
-		LivingEntity livingEntity = context.entity();
-		if (livingEntity.level.isClientSide) {
-			return;
-		}
-		CompoundTag nbt = stack.getOrCreateTag();
-		CooldownHelper.tickCounter(nbt, SoundEvents.GLASS_PLACE, livingEntity);
-	}
+    @SuppressWarnings("all")
+    @Override
+    public void curioTick(SlotContext context, ItemStack stack) {
+        LivingEntity livingEntity = context.entity();
+        if (livingEntity.level.isClientSide) {
+            return;
+        }
+        CompoundTag nbt = stack.getOrCreateTag();
+        CooldownHelper.tickCounter(nbt, SoundEvents.GLASS_PLACE, livingEntity);
+    }
 
-	@Override
-	public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-		LivingEntity entity = slotContext.entity();
-		if (entity.getHealth() > entity.getMaxHealth()) {
-			entity.setHealth(entity.getMaxHealth()); // to be honest i have no clue if this will even do anything, depends on if onUnequip processes before or after attribute changes
-		}
-	}
-	
-	@Override
-	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid,
-																		ItemStack stack) {
-		Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-		atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, Reference.MODID + ":undying_health_tradeoff", ModConfig.COMMON.healthTradeoff.get(), AttributeModifier.Operation.fromValue(2)));
-		return atts;
-	}
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+        if (entity.getHealth() > entity.getMaxHealth()) {
+            entity.setHealth(entity.getMaxHealth()); // to be honest i have no clue if this will even do anything, depends on if onUnequip processes before or after attribute changes
+        }
+    }
 
-	@Override
-	public void onWearerDied(LivingDeathEvent event, ItemStack stack, LivingEntity player) {
-		if (!event.getSource().isBypassInvul()) {
-			CompoundTag nbt = stack.getOrCreateTag();
-			if (CooldownHelper.getCounter(nbt) < config.revivalLimit.get()) {
-				CooldownHelper.addToCounter(nbt, config.shatterRevivalCooldown.get());
-				event.setCanceled(true);
-				player.setHealth(player.getMaxHealth());
-				player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
-				if (CooldownHelper.getCounter(nbt) < config.revivalLimit.get()) {
-					player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F); // player has minimum one more revive left, let them know that
-				}
-			}
-		}
-	}
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid,
+                                                                        ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
+        atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, Reference.MODID + ":undying_health_tradeoff", ModConfig.COMMON.healthTradeoff.get(), AttributeModifier.Operation.fromValue(2)));
+        return atts;
+    }
+
+    @Override
+    public void onWearerDied(LivingDeathEvent event, ItemStack stack, LivingEntity player) {
+        if (!event.getSource().isBypassInvul()) {
+            CompoundTag nbt = stack.getOrCreateTag();
+            if (CooldownHelper.getCounter(nbt) < config.revivalLimit.get()) {
+                CooldownHelper.addToCounter(nbt, config.shatterRevivalCooldown.get());
+                event.setCanceled(true);
+                player.setHealth(player.getMaxHealth());
+                player.getCommandSenderWorld().playSound((Player) null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
+                if (CooldownHelper.getCounter(nbt) < config.revivalLimit.get()) {
+                    player.getCommandSenderWorld().playSound((Player) null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F); // player has minimum one more revive left, let them know that
+                }
+            }
+        }
+    }
 }

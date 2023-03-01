@@ -1,20 +1,20 @@
 {
-    "name": "Golden Heart",
-    "icon": "chromaticarsenal:golden_heart",
-    "category": "chromaticarsenal:main",
-    "pages": [
-        {
-            "type": "patchouli:spotlight",
-            "text": "The Golden Heart grants the player the Absorption effect. When the effect is about to run out, it is applied again, resetting the amount of remaining absorption hearts. It has a side-effect of making piglins neutral. This curio can (rarely) be found in bastion treasure chests.",
-			"item": "chromaticarsenal:golden_heart"
-        },
-		{
-            "type": "patchouli:text",
-            "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+4$() Max Health$(br)"
-        },
-		{
-            "type": "patchouli:text",
-            "text": "The Golden Heart supports the following enchantments:$(br2)$(l)Protection$(): Max health given by this curio is increased slightly per level$(br2)$(l)Efficiency$(): Absorption hearts take slightly less time to regenerate per level"
-        }
-    ]
+  "name": "Golden Heart",
+  "icon": "chromaticarsenal:golden_heart",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Golden Heart grants the player the Absorption effect. When the effect is about to run out, it is applied again, resetting the amount of remaining absorption hearts. It has a side-effect of making piglins neutral. This curio can (rarely) be found in bastion treasure chests.",
+      "item": "chromaticarsenal:golden_heart"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+4$() Max Health$(br)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Golden Heart supports the following enchantments:$(br2)$(l)Protection$(): Max health given by this curio is increased slightly per level$(br2)$(l)Efficiency$(): Absorption hearts take slightly less time to regenerate per level"
+    }
+  ]
 }

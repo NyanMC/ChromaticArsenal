@@ -1,22 +1,22 @@
 {
-    "name": "Crafting Materials",
-    "icon": "chromaticarsenal:chroma_shard",
-    "category": "chromaticarsenal:misc",
-    "pages": [
-        {
-            "type": "patchouli:spotlight",
-            "text": "The Chroma Shard is a basic item in the mod, used to make most of the other items. It can be found in a majority of both vanilla and modded loot chests.",
-			"item": "chromaticarsenal:chroma_shard"
-        },
-		{
-            "type": "patchouli:crafting",
-            "text": "The Essence of Ascension is used to convert your standard arsenal into Super Curios.",
-			"recipe": "chromaticarsenal:ascension_essence"
-        },
-        {
-            "type": "patchouli:spotlight",
-            "text": "Spicy Coal is an item rarely found in ruined portal chests. It can be used to smelt a lot of items in a furnace, or can be combined with Netherite Scrap to create Magmatic Scrap, a crafting material. Can be melted into Blazing Blood if Tinkers Construct is installed.",
-            "item": "chromaticarsenal:spicy_coal"
-        }
-    ]
+  "name": "Crafting Materials",
+  "icon": "chromaticarsenal:chroma_shard",
+  "category": "chromaticarsenal:misc",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Chroma Shard is a basic item in the mod, used to make most of the other items. It can be found in a majority of both vanilla and modded loot chests.",
+      "item": "chromaticarsenal:chroma_shard"
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "The Essence of Ascension is used to convert your standard arsenal into Super Curios.",
+      "recipe": "chromaticarsenal:ascension_essence"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "text": "Spicy Coal is an item rarely found in ruined portal chests. It can be used to smelt a lot of items in a furnace, or can be combined with Netherite Scrap to create Magmatic Scrap, a crafting material. Can be melted into Blazing Blood if Tinkers Construct is installed.",
+      "item": "chromaticarsenal:spicy_coal"
+    }
+  ]
 }

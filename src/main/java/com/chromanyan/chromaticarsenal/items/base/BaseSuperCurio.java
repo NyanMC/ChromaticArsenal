@@ -13,38 +13,39 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Optional;
+
 @SuppressWarnings("unused")
 public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
-	
-	private final RegistryObject<Item> inferiorVariant;
-	
-	public BaseSuperCurio(RegistryObject<Item> upgradeTo) {
-		super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.EPIC).defaultDurability(0));
-		this.inferiorVariant = upgradeTo;
-	}
 
-	public RegistryObject<Item> getInferiorVariant() {
-		return inferiorVariant;
-	}
-	
-	@Override
-	public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-		return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty();
-	}
-	
-	@Override
-	public void curioTick(SlotContext context, ItemStack stack) {
-		LivingEntity livingEntity = context.entity();
-		if (livingEntity.level.isClientSide) {
-			return;
-		}
-		Optional<SlotResult> inferiorInstance = CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, inferiorVariant.get());
-		if (inferiorInstance.isPresent()) {
-			ItemStack s = inferiorInstance.get().stack();
-			if (livingEntity instanceof Player player) {
-				player.drop(s.copy(), true);
-				s.setCount(0);
-			}
-		}
-	}
+    private final RegistryObject<Item> inferiorVariant;
+
+    public BaseSuperCurio(RegistryObject<Item> upgradeTo) {
+        super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.EPIC).defaultDurability(0));
+        this.inferiorVariant = upgradeTo;
+    }
+
+    public RegistryObject<Item> getInferiorVariant() {
+        return inferiorVariant;
+    }
+
+    @Override
+    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+        return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty();
+    }
+
+    @Override
+    public void curioTick(SlotContext context, ItemStack stack) {
+        LivingEntity livingEntity = context.entity();
+        if (livingEntity.level.isClientSide) {
+            return;
+        }
+        Optional<SlotResult> inferiorInstance = CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, inferiorVariant.get());
+        if (inferiorInstance.isPresent()) {
+            ItemStack s = inferiorInstance.get().stack();
+            if (livingEntity instanceof Player player) {
+                player.drop(s.copy(), true);
+                s.setCount(0);
+            }
+        }
+    }
 }

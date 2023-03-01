@@ -1,12 +1,12 @@
 {
-    "name": "What are super curios?",
-    "icon": "chromaticarsenal:ascension_essence",
-    "category": "chromaticarsenal:super_curios",
-	"priority": true,
-    "pages": [
-        {
-            "type": "patchouli:text",
-            "text": "Super curios are ascended versions of your existing arsenal, upgraded using a new material known as Essence of Ascension. These curios have their own designated slot, and you can only have one equipped at a time. Additionally, do not attempt to equip a super curio alongside its inferior variant. It will not go well."
-        }
-    ]
+  "name": "What are super curios?",
+  "icon": "chromaticarsenal:ascension_essence",
+  "category": "chromaticarsenal:super_curios",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Super curios are ascended versions of your existing arsenal, upgraded using a new material known as Essence of Ascension. These curios have their own designated slot, and you can only have one equipped at a time. Additionally, do not attempt to equip a super curio alongside its inferior variant. It will not go well."
+    }
+  ]
 }

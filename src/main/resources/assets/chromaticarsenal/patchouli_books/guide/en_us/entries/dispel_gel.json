@@ -1,20 +1,20 @@
 {
-    "name": "Ward Crystal",
-    "icon": "chromaticarsenal:ward_crystal",
-    "category": "chromaticarsenal:main",
-    "pages": [
-        {
-            "type": "patchouli:text",
-            "text": "The Ward Crystal protects you from magic damage, but also reduces the magic damage you deal."
-        },
-		{
-            "type": "patchouli:text",
-            "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+75%$() Magic Damage Reduction$(br)$(4)-75%$() Magic Damage$(br)"
-        },
-		{
-            "type": "patchouli:crafting",
-            "text": "$(o)It looks like an amethyst, but is in fact just some crystallized sunscreen with an added dose of Fermented Spider Eye.",
-			"recipe": "chromaticarsenal:ward_crystal"
-        }
-    ]
+  "name": "Ward Crystal",
+  "icon": "chromaticarsenal:ward_crystal",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Ward Crystal protects you from magic damage, but also reduces the magic damage you deal."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+75%$() Magic Damage Reduction$(br)$(4)-75%$() Magic Damage$(br)"
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)It looks like an amethyst, but is in fact just some crystallized sunscreen with an added dose of Fermented Spider Eye.",
+      "recipe": "chromaticarsenal:ward_crystal"
+    }
+  ]
 }

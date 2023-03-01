@@ -1,7 +1,7 @@
 {
-    "parent": "block/cube_column_horizontal",
-    "textures": {
-        "end": "chromaticarsenal:blocks/chroma_block_front",
-        "side": "chromaticarsenal:blocks/chroma_block_side"
-    }
+  "parent": "block/cube_column_horizontal",
+  "textures": {
+    "end": "chromaticarsenal:blocks/chroma_block_front",
+    "side": "chromaticarsenal:blocks/chroma_block_side"
+  }
 }

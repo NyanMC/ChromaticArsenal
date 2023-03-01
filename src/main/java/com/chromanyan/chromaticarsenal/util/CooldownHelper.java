@@ -15,8 +15,9 @@ public class CooldownHelper {
     /**
      * Gets the value of the "counter" tag on an item.
      * If this tag does not exist, it will be created with a default value of zero.
-     * @param nbt   the CompoundTag of the item to get the cooldown for
-     * @return      the value of counter
+     *
+     * @param nbt the CompoundTag of the item to get the cooldown for
+     * @return the value of counter
      */
     public static int getCounter(CompoundTag nbt) {
         if (!nbt.contains("counter")) {
@@ -33,8 +34,9 @@ public class CooldownHelper {
      * Decrements the "counter" tag by 1.
      * If this causes the counter to reach zero, this method returns true.
      * Otherwise, it will return false.
-     * @param nbt   the CompoundTag of the item to be ticked
-     * @return      a boolean for if the counter was finished this tick
+     *
+     * @param nbt the CompoundTag of the item to be ticked
+     * @return a boolean for if the counter was finished this tick
      */
     public static boolean tickCounter(CompoundTag nbt) {
         if (!isCooldownFinished(nbt)) {
@@ -46,10 +48,11 @@ public class CooldownHelper {
 
     /**
      * Identical to tickCounter(CompoundTag), but also plays a sound effect at the entity if the cooldown reached zero this tick.
-     * @param nbt           the CompoundTag of the item to be ticked
-     * @param sound         the SoundEvent to play if the cooldown finishes
-     * @param livingEntity  the LivingEntity to play the sound at if the cooldown finishes
-     * @return              a boolean for if the counter was finished this tick
+     *
+     * @param nbt          the CompoundTag of the item to be ticked
+     * @param sound        the SoundEvent to play if the cooldown finishes
+     * @param livingEntity the LivingEntity to play the sound at if the cooldown finishes
+     * @return a boolean for if the counter was finished this tick
      */
     public static boolean tickCounter(CompoundTag nbt, SoundEvent sound, LivingEntity livingEntity) {
         if (tickCounter(nbt)) {

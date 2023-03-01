@@ -1,16 +1,16 @@
 {
-    "name": "Dispelling Crystal",
-    "icon": "chromaticarsenal:super_ward_crystal",
-    "category": "chromaticarsenal:super_curios",
-    "pages": [
-        {
-            "type": "patchouli:text",
-            "text": "The Dispelling Crystal inherits the abilities of the Ward Crystal, as well as negating all potion effects, both positive and negative."
-        },
-		{
-            "type": "patchouli:crafting",
-            "text": "$(o)Off-brand Ankh Shield",
-			"recipe": "chromaticarsenal:super_ward_crystal"
-        }
-    ]
+  "name": "Dispelling Crystal",
+  "icon": "chromaticarsenal:super_ward_crystal",
+  "category": "chromaticarsenal:super_curios",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Dispelling Crystal inherits the abilities of the Ward Crystal, as well as negating all potion effects, both positive and negative."
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)Off-brand Ankh Shield",
+      "recipe": "chromaticarsenal:super_ward_crystal"
+    }
+  ]
 }

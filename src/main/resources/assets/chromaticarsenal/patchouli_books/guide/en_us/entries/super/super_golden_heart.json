@@ -1,16 +1,16 @@
 {
-    "name": "Diamond Heart",
-    "icon": "chromaticarsenal:super_golden_heart",
-    "category": "chromaticarsenal:super_curios",
-    "pages": [
-        {
-            "type": "patchouli:text",
-            "text": "The Diamond Heart saves the wearer from certain death. Upon being revived, the wearer receives the Fractured potion effect, reducing max health. The player cannot revive again until the diamond heart finishes a revival cooldown, which is separate from the potion effect."
-        },
-		{
-            "type": "patchouli:crafting",
-            "text": "$(o)It's not over till it's over.",
-			"recipe": "chromaticarsenal:super_golden_heart"
-        }
-    ]
+  "name": "Diamond Heart",
+  "icon": "chromaticarsenal:super_golden_heart",
+  "category": "chromaticarsenal:super_curios",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Diamond Heart saves the wearer from certain death. Upon being revived, the wearer receives the Fractured potion effect, reducing max health. The player cannot revive again until the diamond heart finishes a revival cooldown, which is separate from the potion effect."
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)It's not over till it's over.",
+      "recipe": "chromaticarsenal:super_golden_heart"
+    }
+  ]
 }

@@ -7,13 +7,13 @@ import org.jetbrains.annotations.NotNull;
 
 public class CAGroup extends CreativeModeTab {
 
-	public CAGroup(String label) {
-		super(label);
-	}
-	
-	@Override
-	public @NotNull ItemStack makeIcon() {
-		return new ItemStack(ModItems.CHROMA_SHARD.get());
-	}
+    public CAGroup(String label) {
+        super(label);
+    }
+
+    @Override
+    public @NotNull ItemStack makeIcon() {
+        return new ItemStack(ModItems.CHROMA_SHARD.get());
+    }
 
 }

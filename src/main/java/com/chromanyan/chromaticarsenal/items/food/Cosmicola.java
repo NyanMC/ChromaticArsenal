@@ -12,21 +12,21 @@ import org.jetbrains.annotations.NotNull;
 
 public class Cosmicola extends Item {
 
-	public Cosmicola() {
-		super(new Item.Properties()
-				.tab(ChromaticArsenal.GROUP)
-				.stacksTo(16)
-				.rarity(Rarity.EPIC)
-				.food(new FoodProperties.Builder()
-						.nutrition(15)
-						.saturationMod(0.7F)
-						.alwaysEat()
-						.effect(()-> new MobEffectInstance(ModPotions.SPATIAL.get(), 3600, 0), 1.0F)
-						.build()));
-	}
-	
-	@Override
-	public @NotNull SoundEvent getEatingSound() {
-		return SoundEvents.GENERIC_DRINK;
-	}
+    public Cosmicola() {
+        super(new Item.Properties()
+                .tab(ChromaticArsenal.GROUP)
+                .stacksTo(16)
+                .rarity(Rarity.EPIC)
+                .food(new FoodProperties.Builder()
+                        .nutrition(15)
+                        .saturationMod(0.7F)
+                        .alwaysEat()
+                        .effect(() -> new MobEffectInstance(ModPotions.SPATIAL.get(), 3600, 0), 1.0F)
+                        .build()));
+    }
+
+    @Override
+    public @NotNull SoundEvent getEatingSound() {
+        return SoundEvents.GENERIC_DRINK;
+    }
 }

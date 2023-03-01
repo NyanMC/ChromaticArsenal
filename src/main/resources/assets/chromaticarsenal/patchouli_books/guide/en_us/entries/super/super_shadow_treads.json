@@ -1,16 +1,16 @@
 {
-    "name": "Celestial Charm",
-    "icon": "chromaticarsenal:super_shadow_treads",
-    "category": "chromaticarsenal:super_curios",
-    "pages": [
-        {
-            "type": "patchouli:text",
-            "text": "The Celestial Charm grants damage and/or speed buffs corresponding to the time of day. At noon (time 6000), the charm grants the highest damage buff it can grant. At midnight (time 18000), the charm grants the highest defense buff it can grant. At any other time, it grants a mix of both."
-        },
-		{
-            "type": "patchouli:crafting",
-            "text": "$(o)I'll make you eat those words!",
-			"recipe": "chromaticarsenal:super_shadow_treads"
-        }
-    ]
+  "name": "Celestial Charm",
+  "icon": "chromaticarsenal:super_shadow_treads",
+  "category": "chromaticarsenal:super_curios",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Celestial Charm grants damage and/or speed buffs corresponding to the time of day. At noon (time 6000), the charm grants the highest damage buff it can grant. At midnight (time 18000), the charm grants the highest defense buff it can grant. At any other time, it grants a mix of both."
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)I'll make you eat those words!",
+      "recipe": "chromaticarsenal:super_shadow_treads"
+    }
+  ]
 }

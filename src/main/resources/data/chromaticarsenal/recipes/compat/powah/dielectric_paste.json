@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
   "conditions": [
-	{
-	  "modid": "powah",
-	  "type": "forge:mod_loaded"
-	}
+    {
+      "modid": "powah",
+      "type": "forge:mod_loaded"
+    }
   ],
   "ingredients": [
-	{
-	  "item": "chromaticarsenal:spicy_coal"
-	},
-	{
-	  "item": "minecraft:clay_ball"
-	}
+    {
+      "item": "chromaticarsenal:spicy_coal"
+    },
+    {
+      "item": "minecraft:clay_ball"
+    }
   ],
   "result": {
-	"item": "powah:dielectric_paste",
-	"count": 48
+    "item": "powah:dielectric_paste",
+    "count": 48
   }
 }
