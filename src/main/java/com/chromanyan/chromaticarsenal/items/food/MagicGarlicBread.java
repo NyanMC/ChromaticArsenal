@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Optional;
@@ -24,9 +25,8 @@ public class MagicGarlicBread extends Item {
         super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(64).rarity(Rarity.RARE).food(new FoodProperties.Builder().nutrition(10).saturationMod(0.7F).alwaysEat().build()));
     }
 
-    @SuppressWarnings("all")
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity player) {
+    public @NotNull ItemStack finishUsingItem(@NotNull ItemStack stack, Level world, @NotNull LivingEntity player) {
         if (!world.isClientSide) {
             Optional<SlotResult> rings = ChromaCurioHelper.getCurio(player, ModItems.DUALITY_RINGS.get());
             if (rings.isPresent()) {
