@@ -11,14 +11,14 @@ public class CAModels extends ItemModelProvider {
         super(generator, Reference.MODID, existingFileHelper);
     }
 
-    public void basicModel(String name) {
+    private void basicModel(String name) {
         this.singleTexture(name,
                 mcLoc("item/generated"),
                 "layer0",
                 modLoc("items/" + name));
     }
 
-    public void basicModelWithSuper(String name) {
+    private void basicModelWithSuper(String name) {
         basicModel(name);
         basicModel("super_" + name);
     }

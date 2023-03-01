@@ -18,7 +18,7 @@ import java.util.Random;
 
 import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
-@SuppressWarnings("all")
+
 public class CurioGlassShield extends BaseCurioItem {
 
     private final Random rand = new Random();

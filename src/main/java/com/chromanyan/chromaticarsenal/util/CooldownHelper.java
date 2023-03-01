@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
+@SuppressWarnings("all") // the two things that are warned about here exist only for consistency
 public class CooldownHelper {
 
     private CooldownHelper() { // i don't want people to create cooldown helpers

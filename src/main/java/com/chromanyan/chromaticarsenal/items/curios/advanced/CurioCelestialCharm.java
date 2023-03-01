@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public class CurioCelestialCharm extends BaseSuperCurio {
 
-    final ModConfig.Common config = ModConfig.COMMON;
+    private final ModConfig.Common config = ModConfig.COMMON;
 
     public CurioCelestialCharm() {
         super(ModItems.SHADOW_TREADS);

@@ -19,7 +19,7 @@ import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnch
 
 public class CurioFriendlyFireFlower extends BaseCurioItem {
 
-    final ModConfig.Common config = ModConfig.COMMON;
+    private final ModConfig.Common config = ModConfig.COMMON;
 
     public CurioFriendlyFireFlower() {
         super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(25).fireResistant());

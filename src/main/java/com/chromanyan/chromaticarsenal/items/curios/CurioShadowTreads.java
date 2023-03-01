@@ -29,7 +29,7 @@ import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnch
 
 public class CurioShadowTreads extends BaseCurioItem {
 
-    final Common config = ModConfig.COMMON;
+    private final Common config = ModConfig.COMMON;
 
     @SuppressWarnings("all")
     @Override

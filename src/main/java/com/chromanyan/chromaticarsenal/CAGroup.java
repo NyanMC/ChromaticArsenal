@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class CAGroup extends CreativeModeTab {
 
-    public CAGroup(String label) {
+    CAGroup(String label) {
         super(label);
     }
 

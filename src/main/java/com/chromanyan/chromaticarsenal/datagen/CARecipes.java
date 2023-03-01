@@ -32,7 +32,7 @@ public class CARecipes extends RecipeProvider {
     }
 
     // center is only ever a chroma shard or ascension essence in these
-    public void nyanPatternRecipe(@NotNull Consumer<FinishedRecipe> consumer, ItemLike output, ItemLike corners, ItemLike edges, TagKey<Item> center, String name) {
+    private void nyanPatternRecipe(@NotNull Consumer<FinishedRecipe> consumer, ItemLike output, ItemLike corners, ItemLike edges, TagKey<Item> center, String name) {
         ShapedRecipeBuilder.shaped(output, 1)
                 .pattern("aba")
                 .pattern("bcb")

@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioLimitBreak extends BaseCurioItem {
-    final ModConfig.Common config = ModConfig.COMMON;
+    private final ModConfig.Common config = ModConfig.COMMON;
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {

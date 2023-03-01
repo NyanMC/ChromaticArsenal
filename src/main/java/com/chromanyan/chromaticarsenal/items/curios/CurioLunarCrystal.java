@@ -35,7 +35,7 @@ import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnch
 public class CurioLunarCrystal extends BaseCurioItem {
 
     private final Random rand = new Random();
-    final ModConfig.Common config = ModConfig.COMMON;
+    private final ModConfig.Common config = ModConfig.COMMON;
 
     @Override
     public Component getName(ItemStack stack) {

@@ -1,7 +1,5 @@
 package com.chromanyan.chromaticarsenal.util;
 
-import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
-import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -18,7 +16,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Optional;
 
-@SuppressWarnings("unused")
 public class ChromaCurioHelper {
 
     private ChromaCurioHelper() { // i also don't want people to create curio helpers
@@ -39,14 +36,6 @@ public class ChromaCurioHelper {
 
     public static Optional<SlotResult> getCurio(LivingEntity livingEntity, Item item) {
         return CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, item);
-    }
-
-    public static boolean isSuperCurio(Item item) {
-        return item instanceof ISuperCurio;
-    }
-
-    public static boolean isChromaCurio(Item item) {
-        return item instanceof IChromaCurio;
     }
 
     // again, thanks flux networks

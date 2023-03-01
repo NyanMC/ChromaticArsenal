@@ -14,13 +14,17 @@ import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Optional;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("unused") // getInferiorVariant exists in case another class needs that information
 public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
 
     private final RegistryObject<Item> inferiorVariant;
 
     public BaseSuperCurio(RegistryObject<Item> upgradeTo) {
-        super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.EPIC).defaultDurability(0));
+        super(new Item.Properties()
+                .tab(ChromaticArsenal.GROUP)
+                .stacksTo(1)
+                .rarity(Rarity.EPIC)
+                .defaultDurability(0));
         this.inferiorVariant = upgradeTo;
     }
 

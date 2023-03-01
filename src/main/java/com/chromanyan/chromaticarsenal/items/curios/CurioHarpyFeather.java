@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class CurioHarpyFeather extends BaseCurioItem {
 
-    final ModConfig.Common config = ModConfig.COMMON;
+    private final ModConfig.Common config = ModConfig.COMMON;
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {

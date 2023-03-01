@@ -23,9 +23,9 @@ import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnch
 
 public class CurioGoldenHeart extends BaseCurioItem {
 
-    final Common config = ModConfig.COMMON;
+    private final Common config = ModConfig.COMMON;
 
-    public int getEffectCooldown(ItemStack stack) {
+    private int getEffectCooldown(ItemStack stack) {
         return Math.max(1, config.absorptionDuration.get() - (getItemEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY, stack) * config.enchantmentAbsorptionReduction.get()));
     }
 

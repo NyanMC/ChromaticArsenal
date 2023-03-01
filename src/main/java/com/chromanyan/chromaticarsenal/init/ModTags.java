@@ -7,7 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("unused") // just because i don't use some of these doesn't mean i shouldn't include them
 public class ModTags {
 
     public static class Items {

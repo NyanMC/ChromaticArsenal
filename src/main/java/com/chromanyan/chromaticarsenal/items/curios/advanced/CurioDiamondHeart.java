@@ -24,7 +24,6 @@ public class CurioDiamondHeart extends BaseSuperCurio {
         super(ModItems.GOLDEN_HEART);
     }
 
-    @SuppressWarnings("all")
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity livingEntity = context.entity();
@@ -32,8 +31,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
         CompoundTag nbt = stack.getOrCreateTag();
         if (livingEntity.level.isClientSide) {
             if (CooldownHelper.getCounter(nbt) == 1) {
-                if (livingEntity instanceof Player) {
-                    Player playerEntity = (Player) livingEntity;
+                if (livingEntity instanceof Player playerEntity) {
                     playerEntity.displayClientMessage(new TranslatableComponent("message.chromaticarsenal.revival_cooldown_finished"), false);
                 }
             }
