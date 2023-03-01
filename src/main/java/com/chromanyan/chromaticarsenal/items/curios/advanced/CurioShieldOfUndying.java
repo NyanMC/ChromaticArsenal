@@ -9,16 +9,21 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
 
 public class CurioShieldOfUndying extends BaseSuperCurio {
+
+	private final ModConfig.Common config = ModConfig.COMMON;
 
 	public CurioShieldOfUndying() {
 		super(ModItems.GLASS_SHIELD);
@@ -51,4 +56,19 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
 		return atts;
 	}
 
+	@Override
+	public void onWearerDied(LivingDeathEvent event, ItemStack stack, LivingEntity player) {
+		if (!event.getSource().isBypassInvul()) {
+			CompoundTag nbt = stack.getOrCreateTag();
+			if (CooldownHelper.getCounter(nbt) < config.revivalLimit.get()) {
+				CooldownHelper.addToCounter(nbt, config.shatterRevivalCooldown.get());
+				event.setCanceled(true);
+				player.setHealth(player.getMaxHealth());
+				player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
+				if (CooldownHelper.getCounter(nbt) < config.revivalLimit.get()) {
+					player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F); // player has minimum one more revive left, let them know that
+				}
+			}
+		}
+	}
 }

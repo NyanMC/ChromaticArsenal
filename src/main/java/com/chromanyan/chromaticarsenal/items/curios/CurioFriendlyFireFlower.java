@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 
@@ -42,6 +43,13 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
             return true;
         } else {
             return super.canApplyAtEnchantingTable(stack, enchantment);
+        }
+    }
+
+    @Override
+    public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
+        if (player == target) {
+            event.setAmount(0);
         }
     }
 }

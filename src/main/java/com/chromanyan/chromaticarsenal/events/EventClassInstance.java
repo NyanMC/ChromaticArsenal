@@ -4,19 +4,13 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
-import com.chromanyan.chromaticarsenal.util.CooldownHelper;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
@@ -30,19 +24,12 @@ import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.Random;
 
-import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
-
-import static com.chromanyan.chromaticarsenal.util.ChromaCurioHelper.getCurio;
-
 public class EventClassInstance {
-	// clean up this mess
-	
+
 	private final Random rand = new Random();
 	private final Common config = ModConfig.COMMON;
 	
@@ -58,82 +45,24 @@ public class EventClassInstance {
 			if (event.isCanceled()) {
 				return; // the rest of the effects should only fire if they're even applicable
 			}
-			// glass shield: block hits
-			Optional<SlotResult> shield = getCurio(player, ModItems.GLASS_SHIELD.get());
-			if (shield.isPresent() && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
-				ItemStack stack = shield.get().stack();
-				CompoundTag nbt = stack.getOrCreateTag();
-				int savedTicks = 0;
-				int freeBlockChance = 0;
-				if (getItemEnchantmentLevel(Enchantments.MENDING, stack) > 0) {
-					savedTicks = getItemEnchantmentLevel(Enchantments.MENDING, stack) * config.enchantmentCooldownReduction.get(); // i doubt this will ever be > 1, but maybe some mod uses mixins to increase it. i want to be ready for that.
-				}
-				if (getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) > 0) {
-					freeBlockChance = (int) Math.ceil(getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) * config.enchantmentFreeBlockChance.get());
-				}
-				if (CooldownHelper.isCooldownFinished(nbt)) {
-					int randBlock = rand.nextInt(99);
-					if (randBlock < freeBlockChance) { // not <= because rand.nextInt is always one less than i want it to be
-						player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F);
-						player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
-					} else {
-						CooldownHelper.updateCounter(nbt, config.cooldownDuration.get() - savedTicks);
-						player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
+
+			if (player instanceof ServerPlayer serverPlayer) {
+				for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
+					if (stack.getItem() instanceof IChromaCurio chromaStack) {
+						chromaStack.onWearerHurt(event, stack, player);
 					}
-					event.setAmount(0);
-					event.setCanceled(true);
 				}
-			}
-			
-			// (super) dispel gel: reduce incoming damage
-			Optional<SlotResult> crystal = getCurio(player, ModItems.WARD_CRYSTAL.get());
-			Optional<SlotResult> superCrystal = getCurio(player, ModItems.SUPER_WARD_CRYSTAL.get());
-			if (event.getSource().isMagic() && (crystal.isPresent() || superCrystal.isPresent()) && !event.getSource().isBypassInvul()) {
-				event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierIncoming.get()));
-			}
-
-			Optional<SlotResult> lCrystal = getCurio(player, ModItems.LUNAR_CRYSTAL.get());
-			if (event.getSource() == DamageSource.FALL && lCrystal.isPresent()) {
-				int fallEnchantLevel = getItemEnchantmentLevel(Enchantments.FALL_PROTECTION, lCrystal.get().stack());
-				if (fallEnchantLevel > 0) {
-					float percentage = (float) (1 - (fallEnchantLevel * config.fallDamageReduction.get()));
-					if (percentage < 0) percentage = 0;
-					event.setAmount(event.getAmount() * percentage);
-				}
-			}
-
-			Optional<SlotResult> aStar = getCurio(player, ModItems.ASCENDED_STAR.get());
-			if (aStar.isPresent()) {
-				event.setAmount((float) (event.getAmount() * config.damageMultiplier.get()));
 			}
 			
 			// attacker events
 			Entity possibleAttacker = event.getSource().getEntity();
 			if (possibleAttacker instanceof LivingEntity livingAttacker) { // you can never be too safe
-				// (super) dispel gel: reduce outgoing damage
-				Optional<SlotResult> attackerCrystal = getCurio(livingAttacker, ModItems.WARD_CRYSTAL.get());
-				Optional<SlotResult> attackerSuperCrystal = getCurio(livingAttacker, ModItems.SUPER_WARD_CRYSTAL.get());
-				if (event.getSource().isMagic() && (attackerCrystal.isPresent() || attackerSuperCrystal.isPresent())) {
-					event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierOutgoing.get()));
-				}
-				
-				// duality rings: increase projectile damage
-				Optional<SlotResult> attackerRings = getCurio(livingAttacker, ModItems.DUALITY_RINGS.get());
-				if (event.getSource().isProjectile() && attackerRings.isPresent()) {
-					event.setAmount((float) (event.getAmount() * config.aroOfClubsMultiplier.get()));
-				}
-
-				// friendly fire flower: negate self-damage
-				Optional<SlotResult> friendlyFlower = getCurio(livingAttacker, ModItems.FRIENDLY_FIRE_FLOWER.get());
-				if (possibleAttacker == player && friendlyFlower.isPresent()) {
-					event.setAmount(0);
-				}
-				
-				// lunar crystal: apply levitation
-				Optional<SlotResult> attackerLCrystal = getCurio(livingAttacker, ModItems.LUNAR_CRYSTAL.get());
-				int randresult = rand.nextInt(config.levitationChance.get() - 1);
-				if (attackerLCrystal.isPresent() && randresult == 0) {
-					player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, config.levitationDuration.get(), config.levitationPotency.get()));
+				if (livingAttacker instanceof ServerPlayer serverPlayer) {
+					for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
+						if (stack.getItem() instanceof IChromaCurio chromaStack) {
+							chromaStack.onWearerAttack(event, stack, livingAttacker, player);
+						}
+					}
 				}
 			}
 		}
@@ -143,20 +72,15 @@ public class EventClassInstance {
 	public void potionImmunityEvent(PotionApplicableEvent event) {
 		LivingEntity player = event.getEntityLiving();
 		if (!player.getCommandSenderWorld().isClientSide()) {
-			
-			Optional<SlotResult> treads = getCurio(player, ModItems.SHADOW_TREADS.get());
-			if (treads.isPresent() && event.getPotionEffect().getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
-				event.setResult(Result.DENY);
+			if (event.getResult() == Result.DENY) {
+				return;
 			}
-			
-			Optional<SlotResult> lcrystal = getCurio(player, ModItems.LUNAR_CRYSTAL.get());
-			if (lcrystal.isPresent() && event.getPotionEffect().getEffect() == MobEffects.LEVITATION) {
-				event.setResult(Result.DENY);
-			}
-			
-			Optional<SlotResult> superCrystal = getCurio(player, ModItems.SUPER_WARD_CRYSTAL.get());
-			if (superCrystal.isPresent()) {
-				event.setResult(Result.DENY);
+			if (player instanceof ServerPlayer serverPlayer) {
+				for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
+					if (stack.getItem() instanceof IChromaCurio chromaStack) {
+						chromaStack.onGetImmunities(event, stack, event.getPotionEffect().getEffect());
+					}
+				}
 			}
 		}
 	}
@@ -167,33 +91,11 @@ public class EventClassInstance {
 			return;
 		}
 		LivingEntity player = event.getEntityLiving();
-		Optional<SlotResult> diamondHeart = getCurio(player, ModItems.SUPER_GOLDEN_HEART.get());
-		if (diamondHeart.isPresent() && !player.hasEffect(ModPotions.FRACTURED.get())) {
-			if (!event.getSource().isBypassInvul()) {
-				ItemStack stack = diamondHeart.get().stack();
-				CompoundTag nbt = stack.getOrCreateTag();
-				if (CooldownHelper.isCooldownFinished(nbt)) {
-					CooldownHelper.updateCounter(nbt, config.revivalCooldown.get());
-					event.setCanceled(true);
-					player.setHealth(player.getMaxHealth());
-					player.addEffect(new MobEffectInstance(ModPotions.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()));
-					player.setHealth(player.getMaxHealth()); // lazy max health correction, just set the value twice lol
-					player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundSource.PLAYERS, 0.5F, 1.0F);
-				}
-			}
-		}
-		Optional<SlotResult> undyingShield = getCurio(player, ModItems.SUPER_GLASS_SHIELD.get());
-		if (undyingShield.isPresent()) {
-			if (!event.getSource().isBypassInvul()) {
-				ItemStack stack = undyingShield.get().stack();
-				CompoundTag nbt = stack.getOrCreateTag();
-				if (CooldownHelper.getCounter(nbt) < config.revivalLimit.get()) {
-					CooldownHelper.addToCounter(nbt, config.shatterRevivalCooldown.get());
-					event.setCanceled(true);
-					player.setHealth(player.getMaxHealth());
-					player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
-					if (CooldownHelper.getCounter(nbt) < config.revivalLimit.get()) {
-						player.getCommandSenderWorld().playSound((Player)null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F); // player has minimum one more revive left, let them know that
+		if (!player.getCommandSenderWorld().isClientSide()) {
+			if (player instanceof ServerPlayer serverPlayer) {
+				for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
+					if (stack.getItem() instanceof IChromaCurio chromaStack) {
+						chromaStack.onWearerDied(event, stack, player);
 					}
 				}
 			}
@@ -205,12 +107,15 @@ public class EventClassInstance {
 		if (event.isCanceled()) {
 			return;
 		}
-		if (event.getVanillaEvent() == GameEvent.STEP || event.getVanillaEvent() == GameEvent.HIT_GROUND) {
-			Entity cause = event.getCause();
-			if (cause instanceof LivingEntity entity) {
-				Optional<SlotResult> treads = getCurio(entity, ModItems.SHADOW_TREADS.get());
-				if (treads.isPresent() && entity.fallDistance < 3.0F && !entity.isSprinting()) {
-					event.setCanceled(true);
+		Entity entity = event.getCause();
+		if (entity instanceof LivingEntity player) {
+			if (!player.getCommandSenderWorld().isClientSide()) {
+				if (player instanceof ServerPlayer serverPlayer) {
+					for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
+						if (stack.getItem() instanceof IChromaCurio chromaStack) {
+							chromaStack.onVanillaEvent(event, stack, player);
+						}
+					}
 				}
 			}
 		}
@@ -226,6 +131,7 @@ public class EventClassInstance {
 			System.arraycopy(entries, 0, pool.entries, oldLength, entries.length);
 		}
 	}
+
 	@SuppressWarnings("all")
 	@SubscribeEvent
 	public void insertLoot(LootTableLoadEvent event) {

@@ -6,6 +6,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +17,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.event.VanillaGameEvent;
+import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.eventbus.api.Event;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
@@ -23,6 +28,7 @@ import java.util.UUID;
 import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
 public class CurioShadowTreads extends BaseCurioItem {
+
 	final Common config = ModConfig.COMMON;
 
 	@SuppressWarnings("all")
@@ -54,5 +60,20 @@ public class CurioShadowTreads extends BaseCurioItem {
 			return super.canApplyAtEnchantingTable(stack, enchantment);
 		}
 	}
-	
+
+	@Override
+	public void onGetImmunities(PotionEvent.PotionApplicableEvent event, ItemStack stack, MobEffect effect) {
+		if (event.getPotionEffect().getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
+			event.setResult(Event.Result.DENY);
+		}
+	}
+
+	@Override
+	public void onVanillaEvent(VanillaGameEvent event, ItemStack stack, LivingEntity player) {
+		if (event.getVanillaEvent() == GameEvent.STEP || event.getVanillaEvent() == GameEvent.HIT_GROUND) {
+			if (player.fallDistance < 3.0F && !player.isSprinting()) {
+				event.setCanceled(true);
+			}
+		}
+	}
 }

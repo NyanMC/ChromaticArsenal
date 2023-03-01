@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -11,7 +12,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
-public class BaseCurioItem extends Item implements ICurioItem {
+public class BaseCurioItem extends Item implements ICurioItem, IChromaCurio {
 
 	public BaseCurioItem() {
 		super(new Item.Properties()

@@ -7,7 +7,12 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -16,13 +21,20 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.eventbus.api.Event;
 import top.theillusivec4.curios.api.SlotContext;
 
+import java.util.Random;
 import java.util.UUID;
+
+import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
 @SuppressWarnings("all")
 public class CurioLunarCrystal extends BaseCurioItem {
 
+	private final Random rand = new Random();
 	final ModConfig.Common config = ModConfig.COMMON;
 
 	@Override
@@ -64,5 +76,32 @@ public class CurioLunarCrystal extends BaseCurioItem {
 		Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
 		atts.put(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(uuid, Reference.MODID + ":defy_gravity", config.gravityModifier.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
 		return atts;
+	}
+
+	@Override
+	public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
+		if (event.getSource() == DamageSource.FALL) {
+			int fallEnchantLevel = getItemEnchantmentLevel(Enchantments.FALL_PROTECTION, stack);
+			if (fallEnchantLevel > 0) {
+				float percentage = (float) (1 - (fallEnchantLevel * config.fallDamageReduction.get()));
+				if (percentage < 0) percentage = 0;
+				event.setAmount(event.getAmount() * percentage);
+			}
+		}
+	}
+
+	@Override
+	public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
+		int randresult = rand.nextInt(config.levitationChance.get() - 1);
+		if (randresult == 0) {
+			target.addEffect(new MobEffectInstance(MobEffects.LEVITATION, config.levitationDuration.get(), config.levitationPotency.get()));
+		}
+	}
+
+	@Override
+	public void onGetImmunities(PotionEvent.PotionApplicableEvent event, ItemStack stack, MobEffect effect) {
+		if (event.getPotionEffect().getEffect() == MobEffects.LEVITATION) {
+			event.setResult(Event.Result.DENY);
+		}
 	}
 }

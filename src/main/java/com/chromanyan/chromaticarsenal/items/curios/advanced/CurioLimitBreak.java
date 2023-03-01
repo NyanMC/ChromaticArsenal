@@ -16,6 +16,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -77,5 +78,10 @@ public class CurioLimitBreak extends BaseCurioItem {
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return false;
+    }
+
+    @Override
+    public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
+        event.setAmount((float) (event.getAmount() * config.damageMultiplier.get()));
     }
 }
