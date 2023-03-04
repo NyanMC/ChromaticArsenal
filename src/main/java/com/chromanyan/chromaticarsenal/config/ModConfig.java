@@ -64,6 +64,7 @@ public class ModConfig {
         public final IntValue bonusFortune;
 
         public final BooleanValue lootTableInsertion;
+        public final BooleanValue superCuriosOnlyInRespectiveSlot;
 
         Common(ForgeConfigSpec.Builder builder) {
             builder.push("CurioSettings");
@@ -174,14 +175,13 @@ public class ModConfig {
                     .defineInRange("fallDamageReduction", 0.05, 0, 1);
             builder.pop();
             builder.push("HarpyFeatherSettings");
-
-            builder.pop();
             jumpCooldown = builder
                     .comment("The cooldown between Harpy Feather jumps, in ticks.")
                     .defineInRange("jumpCooldown", 60, 0, Integer.MAX_VALUE);
             jumpForce = builder
                     .comment("The force of the Harpy Feather jump. This goes by internal values, so tweaking may be required.")
                     .defineInRange("jumpForce", 0.42D, 0, Double.MAX_VALUE);
+            builder.pop();
             builder.pop();
 
             builder.push("SuperCurioSettings");
@@ -234,6 +234,9 @@ public class ModConfig {
             lootTableInsertion = builder
                     .comment("Set to false to prevent Chromatic Arsenal from injecting its own items into loot tables. This will cause items only found as loot (such as the Golden Heart) to become unobtainable, and it will be up to the modpack to add a method to obtain them. This setting also affects the Wandering Trader trade for Chroma Shards.")
                     .define("lootTableInsertion", true);
+            superCuriosOnlyInRespectiveSlot = builder
+                    .comment("Whether super curios are allowed in slots other than super curio slots. Prevents equipping super curios in general purpose curio slots.")
+                    .define("superCuriosOnlyInRespectiveSlot", true);
         }
 
     }

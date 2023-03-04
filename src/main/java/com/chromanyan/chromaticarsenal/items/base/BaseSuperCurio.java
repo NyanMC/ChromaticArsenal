@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items.base;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -34,7 +35,8 @@ public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
 
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty();
+
+        return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty() && ChromaCurioHelper.isValidSuperCurioSlot(slotContext);
     }
 
     @Override

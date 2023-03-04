@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.util;
 
+import com.chromanyan.chromaticarsenal.config.ModConfig;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -7,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.SlotResult;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
@@ -18,8 +20,17 @@ import java.util.Optional;
 
 public class ChromaCurioHelper {
 
+    private static final ModConfig.Common config = ModConfig.COMMON;
+
     private ChromaCurioHelper() { // i also don't want people to create curio helpers
 
+    }
+
+    public static boolean isValidSuperCurioSlot(SlotContext context) {
+        if (context.identifier().equals("super_curio")) {
+            return true;
+        }
+        return !config.superCuriosOnlyInRespectiveSlot.get();
     }
 
     // thanks flux networks
