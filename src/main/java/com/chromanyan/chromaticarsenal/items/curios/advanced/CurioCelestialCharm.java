@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
@@ -27,6 +28,10 @@ public class CurioCelestialCharm extends BaseSuperCurio {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
         LivingEntity entity = slotContext.entity();
+        if (entity == null) {
+            ChromaticArsenal.LOGGER.warn("Tried to get attribute modifiers for " + this.getRegistryName() + " but entity was null");
+            return atts; // should hopefully fix a NPE when reloading resources with F3+T
+        }
         long time = entity.level.getDayTime() % 24000; // no see
         if (time <= 6000) {
             long compareTime = time + 6000;
