@@ -1,0 +1,17 @@
+{
+  "name": "Golden Heart",
+  "icon": "chromaticarsenal:golden_heart",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:golden_heart",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This is an item treasured by the Piglins. I'm not quite sure how they manage to create them, however they seem to know an ancient technique to do so. Despite knowing how to make them, the Piglins are clueless on how to actually use them.",
+      "item": "chromaticarsenal:golden_heart"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "They may give one up when given gold, as a token of their appreciation, however I have also heard of people stealing them from their treasure hoard. Wearing one should prevent piglins from attacking you unprovoked, unless you happen to also bear some sort of $(item)cursed ring$() not documented in this journal."
+    }
+  ]
+}

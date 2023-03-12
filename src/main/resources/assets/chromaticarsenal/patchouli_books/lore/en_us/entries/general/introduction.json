@@ -1,0 +1,16 @@
+{
+  "name": "Introduction",
+  "icon": "minecraft:book",
+  "category": "chromaticarsenal:general_lore",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Greetings. You may refer to me, the writer of this book, as $(#0000ff)Luna$(). I wrote this book as a sort of \"personal journal\" to archive my experiences in this world, and to preserve the history of this land."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "In an effort of privacy (I don't want $(o)everyone$() snooping in this book), many of these entries are hidden and will only reveal themselves when the book knows the reader has held that item at least once. Having the item in your inventory should suffice."
+    }
+  ]
+}

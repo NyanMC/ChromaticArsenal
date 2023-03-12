@@ -1,5 +1,6 @@
 {
   "name": "Super Curios",
   "description": "A list of super curios in Chromatic Arsenal.",
+  "parent": "chromaticarsenal:main",
   "icon": "chromaticarsenal:super_golden_heart"
 }

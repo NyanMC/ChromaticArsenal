@@ -1,0 +1,17 @@
+{
+  "name": "Chroma Shard",
+  "icon": "chromaticarsenal:chroma_shard",
+  "category": "chromaticarsenal:item_lore",
+  "advancement": "chromaticarsenal:chroma_shard",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This crystal seems to like to grow in chests that have been left unopened for decades. It is often found amongst people's most prized possessions, and therefore some have speculated the crystals grow inside chests with items that people care about.",
+      "item": "chromaticarsenal:chroma_shard"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Wandering traders like to collect these and sell them for profit. I have occasionally wondered if they know some sort of secret to produce them quickly."
+    }
+  ]
+}

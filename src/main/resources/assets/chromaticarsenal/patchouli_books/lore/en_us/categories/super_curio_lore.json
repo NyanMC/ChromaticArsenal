@@ -1,0 +1,6 @@
+{
+  "name": "Super Curio Lore",
+  "description": "Historical background of the various super curios.",
+  "parent": "chromaticarsenal:item_lore",
+  "icon": "chromaticarsenal:super_golden_heart"
+}

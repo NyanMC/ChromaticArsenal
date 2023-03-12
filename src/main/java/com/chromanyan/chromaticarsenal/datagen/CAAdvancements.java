@@ -30,6 +30,7 @@ public class CAAdvancements extends AdvancementProvider {
     @SuppressWarnings("unused")
     protected void registerAdvancements(@NotNull Consumer<Advancement> consumer, @NotNull ExistingFileHelper fileHelper) {
         Advancement chromaShard = simpleHasItemRecipe(ModItems.CHROMA_SHARD.get(), consumer, fileHelper);
+        Advancement goldenHeart = simpleHasItemRecipe(ModItems.GOLDEN_HEART.get(), consumer, fileHelper);
     }
 
     private CriterionTriggerInstance hasItem(ItemLike item) {
