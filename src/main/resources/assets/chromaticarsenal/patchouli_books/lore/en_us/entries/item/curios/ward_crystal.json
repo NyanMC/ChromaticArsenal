@@ -1,0 +1,17 @@
+{
+  "name": "Ward Crystal",
+  "icon": "chromaticarsenal:ward_crystal",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:ward_crystal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This item is the result of an experiment conducted by Overworld scientists to see if they could protect the body from harmful magical effects. It is used by their strongest knights to protect them from strong magic damage.",
+      "item": "chromaticarsenal:ward_crystal"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "An older version of this item was actually a gel, which was applied to either skin or armor similar to sunscreen and functioned similarly. The design was quickly rejected in favor of a gem which produced an invisible mana shield, due to being too slow to apply in combat."
+    }
+  ]
+}
