@@ -30,7 +30,12 @@ public class CAAdvancements extends AdvancementProvider {
     @SuppressWarnings("unused")
     protected void registerAdvancements(@NotNull Consumer<Advancement> consumer, @NotNull ExistingFileHelper fileHelper) {
         Advancement chromaShard = simpleHasItemRecipe(ModItems.CHROMA_SHARD.get(), consumer, fileHelper);
+        Advancement ascensionEssence = simpleHasItemRecipe(ModItems.ASCENSION_ESSENCE.get(), consumer, fileHelper);
+        Advancement spicyCoal = simpleHasItemRecipe(ModItems.SPICY_COAL.get(), consumer, fileHelper);
+
         Advancement goldenHeart = simpleHasItemRecipe(ModItems.GOLDEN_HEART.get(), consumer, fileHelper);
+        Advancement glassShield = simpleHasItemRecipe(ModItems.GLASS_SHIELD.get(), consumer, fileHelper);
+        Advancement wardCrystal = simpleHasItemRecipe(ModItems.WARD_CRYSTAL.get(), consumer, fileHelper);
     }
 
     private CriterionTriggerInstance hasItem(ItemLike item) {

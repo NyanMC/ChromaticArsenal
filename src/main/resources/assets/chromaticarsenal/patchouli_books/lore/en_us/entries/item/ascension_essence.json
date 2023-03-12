@@ -1,0 +1,17 @@
+{
+  "name": "Essence of Ascension",
+  "icon": "chromaticarsenal:ascension_essence",
+  "category": "chromaticarsenal:item_lore",
+  "advancement": "chromaticarsenal:ascension_essence",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Wither is a strange beast. Nobody knows why, but $(item)Nether Stars$() seem to react to $(item)Chroma Shards$() in a way which creates a very potent magic dust.",
+      "item": "chromaticarsenal:ascension_essence"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This dust is transformative when used on things made with Chroma Shards. It seems to want to react to things not made with Chroma Shards as well, but repeated experimentation has led to no new findings relating to that. Perhaps the essence requires a material that we haven't discovered yet to transform other things."
+    }
+  ]
+}

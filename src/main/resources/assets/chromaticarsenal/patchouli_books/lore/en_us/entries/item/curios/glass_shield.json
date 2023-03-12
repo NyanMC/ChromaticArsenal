@@ -1,0 +1,17 @@
+{
+  "name": "Glass Shield",
+  "icon": "chromaticarsenal:glass_shield",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:glass_shield",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "When I heard of a shield made of glass that was actually good at protecting you from attacks, I thought it was some sort of joke.",
+      "item": "chromaticarsenal:glass_shield"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Surprisingly, the rumors are true. Though, the $(item)Chroma Shard$() present in the item does most of the work. The shield absorbs the blow, and then the pieces re-arrange themselves back together. This is such a strange method that nobody I know actually knows how it works. It's magic."
+    }
+  ]
+}

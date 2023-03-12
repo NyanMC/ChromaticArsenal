@@ -1,0 +1,17 @@
+{
+  "name": "Spicy Coal",
+  "icon": "chromaticarsenal:spicy_coal",
+  "category": "chromaticarsenal:item_lore",
+  "advancement": "chromaticarsenal:spicy_coal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This item is strange. Nobody knows where it comes from, or why it's found in the chests of old, worn-down portals. Some believe it was never meant to exist in the first place.",
+      "item": "chromaticarsenal:spicy_coal"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "There was this one person that once boasted about how this material could be created using \"$(item)the blood of blazes$()\", or something like that. I didn't quite understand it, but figured it was worth mentioning."
+    }
+  ]
+}
