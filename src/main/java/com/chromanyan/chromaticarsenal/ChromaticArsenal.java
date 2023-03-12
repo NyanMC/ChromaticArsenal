@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.datagen.CAAdvancements;
 import com.chromanyan.chromaticarsenal.datagen.CAModels;
 import com.chromanyan.chromaticarsenal.datagen.CARecipes;
 import com.chromanyan.chromaticarsenal.events.EventClassInstance;
@@ -58,6 +59,7 @@ public class ChromaticArsenal {
         }
         if (event.includeServer()) {
             gen.addProvider(new CARecipes(gen));
+            gen.addProvider(new CAAdvancements(gen, event.getExistingFileHelper()));
         }
     }
 
