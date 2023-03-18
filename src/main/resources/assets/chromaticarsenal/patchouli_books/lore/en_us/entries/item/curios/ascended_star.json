@@ -1,0 +1,17 @@
+{
+  "name": "Ascended Star",
+  "icon": "chromaticarsenal:ascended_star",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:ascended_star",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "Only a fool would equip this. It promises great power and great fortune, however punishes those that equip it with extreme vulnerability.",
+      "item": "chromaticarsenal:ascended_star"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Very few of these are known to exist. Those that have sought one out for its power have regretted doing so. It saps some of the wearer's life energy away, leading them to be more vulnerable to otherwise weak damage."
+    }
+  ]
+}

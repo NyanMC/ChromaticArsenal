@@ -1,0 +1,17 @@
+{
+  "name": "Friendly Fire Flower",
+  "icon": "chromaticarsenal:friendly_fire_flower",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:friendly_fire_flower",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This item was originally a donation from a fiery alien species. Scientists researched it and learned how to make more of them. It seems to involve another resource which is deemed \"alien\" in nature.",
+      "item": "chromaticarsenal:friendly_fire_flower"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This flower, despite being able to resist fire, seems to break quickly when doing so. Strangely, it can be enchanted to reduce this degradation, similar to tools."
+    }
+  ]
+}

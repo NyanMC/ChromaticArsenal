@@ -25,6 +25,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
         super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(25).fireResistant());
     }
 
+    //TODO move this to onWeaererAttack
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity living = context.entity();

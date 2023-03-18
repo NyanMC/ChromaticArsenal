@@ -1,0 +1,17 @@
+{
+  "name": "Shadow Charm",
+  "icon": "chromaticarsenal:shadow_treads",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:shadow_treads",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This spherical charm is tied to darkness in a way nobody can seem to truly understand. It seems to make the wearer lighter (especially in darkness), making movement easier as well as preventing others from hearing their footsteps.",
+      "item": "chromaticarsenal:shadow_treads"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Some have managed to turn these into a pair of boots that can be worn alongside regular boots, however they refuse to share their secrets to the rest of the world."
+    }
+  ]
+}

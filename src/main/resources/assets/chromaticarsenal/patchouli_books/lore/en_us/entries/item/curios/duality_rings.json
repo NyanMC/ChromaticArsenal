@@ -1,0 +1,17 @@
+{
+  "name": "Duality Rings",
+  "icon": "chromaticarsenal:duality_rings",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:duality_rings",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "Very few people know what these rings actually mean. Some claim that it's a way for members of some group to identify each other, but nothing is known for certain. Only those that wear the rings know their secrets, and they refuse to tell others.",
+      "item": "chromaticarsenal:duality_rings"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "I actually managed to eavesdrop on one of the meetings of these individuals. They mentioned something about an invasion, something about dragons, and something about cake. I don't quite understand what those three things have in common."
+    }
+  ]
+}

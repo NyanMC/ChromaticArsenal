@@ -36,6 +36,11 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement goldenHeart = simpleHasItemRecipe(ModItems.GOLDEN_HEART.get(), consumer, fileHelper);
         Advancement glassShield = simpleHasItemRecipe(ModItems.GLASS_SHIELD.get(), consumer, fileHelper);
         Advancement wardCrystal = simpleHasItemRecipe(ModItems.WARD_CRYSTAL.get(), consumer, fileHelper);
+        Advancement shadowTreads = simpleHasItemRecipe(ModItems.SHADOW_TREADS.get(), consumer, fileHelper);
+        Advancement dualityRings = simpleHasItemRecipe(ModItems.DUALITY_RINGS.get(), consumer, fileHelper);
+        Advancement friendlyFireFlower = simpleHasItemRecipe(ModItems.FRIENDLY_FIRE_FLOWER.get(), consumer, fileHelper);
+        Advancement lunarCrystal = simpleHasItemRecipe(ModItems.LUNAR_CRYSTAL.get(), consumer, fileHelper);
+        Advancement ascendedStar = simpleHasItemRecipe(ModItems.ASCENDED_STAR.get(), consumer, fileHelper);
     }
 
     private CriterionTriggerInstance hasItem(ItemLike item) {
