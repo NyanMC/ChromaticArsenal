@@ -1,0 +1,17 @@
+{
+  "name": "Dispelling Crystal",
+  "icon": "chromaticarsenal:super_ward_crystal",
+  "category": "chromaticarsenal:super_curio_lore",
+  "advancement": "chromaticarsenal:super_ward_crystal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "After finding out how to banish one type of magic, the next question was \"How do we banish another type of magic?\" This is the result of that experimentation.",
+      "item": "chromaticarsenal:super_ward_crystal"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Researching this item required collaboration from scientists of all the dimensions. As each dimension had its own types of magic, all of their magics needed to be combined to create this crystal."
+    }
+  ]
+}

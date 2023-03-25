@@ -1,0 +1,17 @@
+{
+  "name": "Celestial Charm",
+  "icon": "chromaticarsenal:super_shadow_treads",
+  "category": "chromaticarsenal:super_curio_lore",
+  "advancement": "chromaticarsenal:super_shadow_treads",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This item is finely attuned with the Overworld's daylight cycle. Unlike clocks, which break when leaving the Overworld, this item always knows what time it is in the Overworld. Nobody knows for certain why.",
+      "item": "chromaticarsenal:super_shadow_treads"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Unlike the $(item)Shadow Charm$(), nobody has found a way to turn these into boots. That is because when this item is split into two halves, it completely loses its function. There cannot be night without day, and there cannot be day without night."
+    }
+  ]
+}

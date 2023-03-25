@@ -11,7 +11,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "When my land fell upon a great curse, this crystal shielded me from being cursed with it. Of course, this itself was a curse in a way, forcing me to roam the desolate End islands eternally. At some point, I left this behind for the future hero of the world to use. Keep this item somewhere safe, for you $(thing)might need it at some point$() in the far future."
+      "text": "When The End was cursed, this crystal shielded me from being cursed with it. Of course, this itself was a curse in a way, forcing me to roam the desolate End islands eternally. At some point, I left this behind for the future hero of the world to use. Keep this item somewhere safe, for you $(thing)might need it at some point$() in the far future."
     }
   ]
 }

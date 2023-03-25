@@ -1,0 +1,17 @@
+{
+  "name": "Diamond Heart",
+  "icon": "chromaticarsenal:super_golden_heart",
+  "category": "chromaticarsenal:super_curio_lore",
+  "advancement": "chromaticarsenal:super_golden_heart",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "When presented with a golden heart, many had questioned the idea of whether a heart made of diamond would be possible. This is the result of the experiments to create one.",
+      "item": "chromaticarsenal:super_golden_heart"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The diamond heart is sturdy enough to prevent itself from being destroyed and its owner from being defeated, however takes a heavy toll in the process, fracturing and becoming less effective. The regenerative powers of the gold are used to repair itself, rather than its user. Before you question it, no, this cannot be used for infinite diamonds. Many have tried, and they have all failed."
+    }
+  ]
+}

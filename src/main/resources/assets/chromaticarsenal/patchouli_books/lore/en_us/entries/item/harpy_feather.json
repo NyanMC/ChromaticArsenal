@@ -1,0 +1,17 @@
+{
+  "name": "Harpy Feather",
+  "icon": "chromaticarsenal:harpy_feather",
+  "category": "chromaticarsenal:item_lore",
+  "advancement": "chromaticarsenal:harpy_feather",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Chroma Shard is selectively transformative. When in the presence of certain items, these items will transform into more powerful variants. The Harpy Feather is a result of one of these transformations.",
+      "item": "chromaticarsenal:harpy_feather"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Nobody knows who named this item, or why it's named the way it is. Nobody I know of has ever heard of a harpy. Do they even exist? Perhaps they're some sort of myth."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Magic Garlic Bread",
+  "icon": "chromaticarsenal:magic_garlic_bread",
+  "category": "chromaticarsenal:item_lore",
+  "advancement": "chromaticarsenal:magic_garlic_bread",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "Nobody knows where this comes from. It has been around for a while, however nobody knows how to actually make it. The $(item)Chroma Shard$(), however, can create it for some reason.",
+      "item": "chromaticarsenal:magic_garlic_bread"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Strangely, this food is tied to $(item)a set of rings$(). Nobody but the wearers of those rings know why."
+    }
+  ]
+}

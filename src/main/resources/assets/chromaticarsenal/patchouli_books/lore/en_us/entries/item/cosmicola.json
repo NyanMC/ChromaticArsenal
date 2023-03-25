@@ -1,0 +1,17 @@
+{
+  "name": "Cosmicola",
+  "icon": "chromaticarsenal:cosmicola",
+  "category": "chromaticarsenal:item_lore",
+  "advancement": "chromaticarsenal:cosmicola",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "Contrary to what you may think, End Cities once had a sort of market area. Some clever individuals figured out how to create this beverage.",
+      "item": "chromaticarsenal:cosmicola"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The drink itself is peculiar. It doesn't quite function like the others. Unfortunately, I could not tell you why, as the recipe has been lost to time. Perhaps someday someone will find a way to create it again."
+    }
+  ]
+}

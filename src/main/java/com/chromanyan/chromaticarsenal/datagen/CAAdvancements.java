@@ -32,6 +32,9 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement chromaShard = simpleHasItemRecipe(ModItems.CHROMA_SHARD.get(), consumer, fileHelper);
         Advancement ascensionEssence = simpleHasItemRecipe(ModItems.ASCENSION_ESSENCE.get(), consumer, fileHelper);
         Advancement spicyCoal = simpleHasItemRecipe(ModItems.SPICY_COAL.get(), consumer, fileHelper);
+        Advancement magicGarlicBread = simpleHasItemRecipe(ModItems.MAGIC_GARLIC_BREAD.get(), consumer, fileHelper);
+        Advancement cosmicola = simpleHasItemRecipe(ModItems.COSMICOLA.get(), consumer, fileHelper);
+        Advancement harpyFeather = simpleHasItemRecipe(ModItems.HARPY_FEATHER.get(), consumer, fileHelper);
 
         Advancement goldenHeart = simpleHasItemRecipe(ModItems.GOLDEN_HEART.get(), consumer, fileHelper);
         Advancement glassShield = simpleHasItemRecipe(ModItems.GLASS_SHIELD.get(), consumer, fileHelper);
@@ -41,6 +44,11 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement friendlyFireFlower = simpleHasItemRecipe(ModItems.FRIENDLY_FIRE_FLOWER.get(), consumer, fileHelper);
         Advancement lunarCrystal = simpleHasItemRecipe(ModItems.LUNAR_CRYSTAL.get(), consumer, fileHelper);
         Advancement ascendedStar = simpleHasItemRecipe(ModItems.ASCENDED_STAR.get(), consumer, fileHelper);
+
+        Advancement superGoldenHeart = simpleHasItemRecipe(ModItems.SUPER_GOLDEN_HEART.get(), consumer, fileHelper);
+        Advancement superGlassShield = simpleHasItemRecipe(ModItems.SUPER_GLASS_SHIELD.get(), consumer, fileHelper);
+        Advancement superWardCrystal = simpleHasItemRecipe(ModItems.SUPER_WARD_CRYSTAL.get(), consumer, fileHelper);
+        Advancement superShadowTreads = simpleHasItemRecipe(ModItems.SUPER_SHADOW_TREADS.get(), consumer, fileHelper);
     }
 
     private CriterionTriggerInstance hasItem(ItemLike item) {

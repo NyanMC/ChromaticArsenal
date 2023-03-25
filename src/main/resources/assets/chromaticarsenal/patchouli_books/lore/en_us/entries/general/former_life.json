@@ -1,0 +1,20 @@
+{
+  "name": "The End's Former Life",
+  "icon": "minecraft:ender_pearl",
+  "category": "chromaticarsenal:general_lore",
+  "advancement": "minecraft:end/find_end_city",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A long time ago, The End was less desolate of a place. The End Cities were populated by actual sentient beings as opposed to the Endermen and Shulkers now. This species was known as the Enderlings."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This all changed when someone found a way to hatch a Dragon Egg. This dragon put a curse on the land, turning all Enderlings into Endermen and Shulkers. The species, effectively, went extinct after that point. Even if the dragon were slain, the curse would be irreversable."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "With a certain item in hand, however, it was possible to protect yourself from the curse. I was the wielder of this item. I am the last remaining Enderling. I have stored my crystal in an End City chest, for the future hero of this world to take."
+    }
+  ]
+}

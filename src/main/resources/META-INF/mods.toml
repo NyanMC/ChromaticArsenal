@@ -29,7 +29,7 @@ displayName = "Chromatic Arsenal" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile = "logo.png" #optional
 # A text field displayed in the mod UI
-credits = "XzeroAir, Z-Tunic/sonicx8000, Twi1ightStar, u/absolutely_aroace on reddit, and all others that helped me with my various issues" #optional
+credits = "XzeroAir, Z-Tunic/sonicx8000, Twi1ightStar, onno, u/absolutely_aroace on reddit, and all others that helped me with my various issues" #optional
 # A text field displayed in the mod UI
 authors = "ChromaNyan" #optional
 # The description text for the mod (multi line!) (#mandatory)

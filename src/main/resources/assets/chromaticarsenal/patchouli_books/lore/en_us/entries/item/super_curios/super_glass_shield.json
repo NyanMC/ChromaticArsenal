@@ -1,0 +1,17 @@
+{
+  "name": "Shield of Undying",
+  "icon": "chromaticarsenal:super_glass_shield",
+  "category": "chromaticarsenal:super_curio_lore",
+  "advancement": "chromaticarsenal:super_glass_shield",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This item is truly peculiar. Despite being broken into pieces, it seems to want to hold itself together. Similarly, it causes you to want to hold yourself together when you wear it.",
+      "item": "chromaticarsenal:super_glass_shield"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Similar to the regular Glass Shield, the $(item)Ascension Essence$() is what is causing the shield to hold itself together. Glass was never meant to handle this kind of power, therefore it cracks. With $(item)Ascension Essence$() filling the cracks, however, it cannot truly fall apart until acted upon with enough force. Once this shield gives up, so do you."
+    }
+  ]
+}
