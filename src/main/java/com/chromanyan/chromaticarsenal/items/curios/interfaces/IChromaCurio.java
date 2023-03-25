@@ -29,4 +29,8 @@ public interface IChromaCurio {
     default void onVanillaEvent(VanillaGameEvent event, ItemStack stack, LivingEntity player) {
 
     }
+
+    default void onPotionApplied(PotionEvent.PotionAddedEvent event) {
+
+    }
 }

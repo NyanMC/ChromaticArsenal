@@ -55,6 +55,8 @@ public class ModConfig {
         public final IntValue shatterRevivalCooldown;
         public final DoubleValue healthTradeoff;
 
+        public final DoubleValue potionDurationMultiplier;
+
         public final DoubleValue damageModifierMax;
         public final DoubleValue speedModifierMax;
 
@@ -206,6 +208,11 @@ public class ModConfig {
             healthTradeoff = builder
                     .comment("The operation 2 modifier given to the player wearing this shield. This should be negative or zero.")
                     .defineInRange("healthTradeoff", -0.8D, -1.0D, 0.0D);
+            builder.pop();
+            builder.push("SuperWardCrystalSettings");
+            potionDurationMultiplier = builder
+                    .comment("The duration of all applied potion effects will be multiplied by this value.")
+                    .defineInRange("potionDurationMultiplier", 0.2D, 0D, 2D);
             builder.pop();
             builder.push("SuperShadowTreadsSettings");
             damageModifierMax = builder
