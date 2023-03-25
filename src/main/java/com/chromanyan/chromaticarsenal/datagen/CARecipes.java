@@ -7,10 +7,12 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.UpgradeRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +43,16 @@ public class CARecipes extends RecipeProvider {
                 .define('b', edges)
                 .define('c', center)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(Reference.MODID, name));
+    }
+
+    @SuppressWarnings("all") // intellij wants me to hardcode name
+    private void chromaUpgrade(@NotNull Consumer<FinishedRecipe> consumer, ItemLike item1, ItemLike item2, Item output, String name) {
+        UpgradeRecipeBuilder.smithing(
+                Ingredient.of(item1),
+                Ingredient.of(item2),
+                output)
+                .unlocks("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(Reference.MODID, name));
     }
 
@@ -98,5 +110,8 @@ public class CARecipes extends RecipeProvider {
                 .define('c', ModItems.SUPER_SHADOW_TREADS.get())
                 .unlockedBy("has_chroma_shard", has(ASCENSION_ESSENCE))
                 .save(consumer, new ResourceLocation(Reference.MODID, "ascended_star"));
+
+        chromaUpgrade(consumer, Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");
+        chromaUpgrade(consumer, Items.NETHERITE_SCRAP, ModItems.SPICY_COAL.get(), ModItems.MAGMATIC_SCRAP.get(), "magmatic_scrap");
     }
 }
