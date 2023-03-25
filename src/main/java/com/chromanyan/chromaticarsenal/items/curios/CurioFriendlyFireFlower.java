@@ -25,15 +25,18 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
         super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(25).fireResistant());
     }
 
-    //TODO move this to onWeaererAttack
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity living = context.entity();
-        if (!living.getCommandSenderWorld().isClientSide && living.isOnFire() && !living.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-            int fireResistanceBonus = 1 + getItemEnchantmentLevel(Enchantments.FIRE_PROTECTION, stack);
-            living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, config.fireResistanceDuration.get() * fireResistanceBonus, 0, true, true));
-            if (config.canBeDamaged.get()) {
-                stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
+        if (!living.getCommandSenderWorld().isClientSide && living.isOnFire()) {
+            if (!(living.hasEffect(MobEffects.FIRE_RESISTANCE) || living.fireImmune())) { // will fireImmune() ever even trigger for a player? hell if i know
+                int fireResistanceBonus = 1 + getItemEnchantmentLevel(Enchantments.FIRE_PROTECTION, stack);
+                living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, config.fireResistanceDuration.get() * fireResistanceBonus, 0, true, true));
+                if (config.canBeDamaged.get()) {
+                    stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
+                }
+            } else {
+                living.clearFire();
             }
         }
     }
