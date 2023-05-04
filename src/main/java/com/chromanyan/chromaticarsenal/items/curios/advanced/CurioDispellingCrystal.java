@@ -6,7 +6,7 @@ import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 
 public class CurioDispellingCrystal extends BaseSuperCurio {
     private final ModConfig.Common config = ModConfig.COMMON;
@@ -30,7 +30,7 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
     }
 
     @Override
-    public void onPotionApplied(PotionEvent.PotionAddedEvent event) {
-        event.getPotionEffect().duration *= config.potionDurationMultiplier.get(); // because why should forge let you set the duration of a potion effect without an access transformer?
+    public void onPotionApplied(MobEffectEvent.Added event) {
+        event.getEffectInstance().duration *= config.potionDurationMultiplier.get(); // because why should forge let you set the duration of a potion effect without an access transformer?
     }
 }

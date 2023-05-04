@@ -14,19 +14,18 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
-
-import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
 public class CurioGoldenHeart extends BaseCurioItem {
 
     private final Common config = ModConfig.COMMON;
 
     private int getEffectCooldown(ItemStack stack) {
-        return Math.max(1, config.absorptionDuration.get() - (getItemEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY, stack) * config.enchantmentAbsorptionReduction.get()));
+        return Math.max(1, config.absorptionDuration.get() - (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY, stack) * config.enchantmentAbsorptionReduction.get()));
     }
 
     @Override
@@ -57,7 +56,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid,
                                                                         ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-        double attModBonus = getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, stack) * config.enchantmentMaxHealthIncrease.get();
+        double attModBonus = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, stack) * config.enchantmentMaxHealthIncrease.get();
         atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, Reference.MODID + ":health_bonus", config.maxHealthBoost.get() + attModBonus, AttributeModifier.Operation.fromValue(config.maxHealthBoostOperation.get())));
         return atts;
     }

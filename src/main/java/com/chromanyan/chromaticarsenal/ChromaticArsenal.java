@@ -11,6 +11,7 @@ import com.chromanyan.chromaticarsenal.init.ModPotions;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -20,7 +21,6 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.theillusivec4.curios.api.SlotTypeMessage;
@@ -55,11 +55,11 @@ public class ChromaticArsenal {
     public void gatherData(final GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
         if (event.includeClient()) {
-            gen.addProvider(new CAModels(gen, event.getExistingFileHelper()));
+            gen.addProvider(true, new CAModels(gen, event.getExistingFileHelper()));
         }
         if (event.includeServer()) {
-            gen.addProvider(new CARecipes(gen));
-            gen.addProvider(new CAAdvancements(gen, event.getExistingFileHelper()));
+            gen.addProvider(true, new CARecipes(gen));
+            gen.addProvider(true, new CAAdvancements(gen, event.getExistingFileHelper()));
         }
     }
 

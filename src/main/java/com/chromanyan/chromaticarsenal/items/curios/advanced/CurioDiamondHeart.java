@@ -6,7 +6,7 @@ import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -32,7 +32,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
         if (livingEntity.level.isClientSide) {
             if (CooldownHelper.getCounter(nbt) == 1) {
                 if (livingEntity instanceof Player playerEntity) {
-                    playerEntity.displayClientMessage(new TranslatableComponent("message.chromaticarsenal.revival_cooldown_finished"), false);
+                    playerEntity.displayClientMessage(Component.translatable("message.chromaticarsenal.revival_cooldown_finished"), false);
                 }
             }
         } else {

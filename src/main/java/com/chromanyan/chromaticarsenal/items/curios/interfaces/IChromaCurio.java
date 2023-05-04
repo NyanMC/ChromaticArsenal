@@ -6,7 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.VanillaGameEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 
 public interface IChromaCurio {
 
@@ -18,7 +18,7 @@ public interface IChromaCurio {
 
     }
 
-    default void onGetImmunities(PotionEvent.PotionApplicableEvent event, ItemStack stack, MobEffect effect) {
+    default void onGetImmunities(MobEffectEvent.Applicable event, ItemStack stack, MobEffect effect) {
 
     }
 
@@ -30,7 +30,7 @@ public interface IChromaCurio {
 
     }
 
-    default void onPotionApplied(PotionEvent.PotionAddedEvent event) {
+    default void onPotionApplied(MobEffectEvent.Added event) {
 
     }
 }

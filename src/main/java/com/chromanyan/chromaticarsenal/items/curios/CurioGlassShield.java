@@ -10,13 +10,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.Random;
-
-import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
 
 public class CurioGlassShield extends BaseCurioItem {
@@ -49,11 +48,11 @@ public class CurioGlassShield extends BaseCurioItem {
             CompoundTag nbt = stack.getOrCreateTag();
             int savedTicks = 0;
             int freeBlockChance = 0;
-            if (getItemEnchantmentLevel(Enchantments.MENDING, stack) > 0) {
-                savedTicks = getItemEnchantmentLevel(Enchantments.MENDING, stack) * config.enchantmentCooldownReduction.get(); // i doubt this will ever be > 1, but maybe some mod uses mixins to increase it. i want to be ready for that.
+            if (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.MENDING, stack) > 0) {
+                savedTicks = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.MENDING, stack) * config.enchantmentCooldownReduction.get(); // i doubt this will ever be > 1, but maybe some mod uses mixins to increase it. i want to be ready for that.
             }
-            if (getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) > 0) {
-                freeBlockChance = (int) Math.ceil(getItemEnchantmentLevel(Enchantments.UNBREAKING, stack) * config.enchantmentFreeBlockChance.get());
+            if (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.UNBREAKING, stack) > 0) {
+                freeBlockChance = (int) Math.ceil(EnchantmentHelper.getTagEnchantmentLevel(Enchantments.UNBREAKING, stack) * config.enchantmentFreeBlockChance.get());
             }
             if (CooldownHelper.isCooldownFinished(nbt)) {
                 int randBlock = rand.nextInt(99);

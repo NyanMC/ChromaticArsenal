@@ -10,12 +10,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
-
-import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
 public class CurioFriendlyFireFlower extends BaseCurioItem {
 
@@ -30,7 +29,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
         LivingEntity living = context.entity();
         if (!living.getCommandSenderWorld().isClientSide && living.isOnFire()) {
             if (!(living.hasEffect(MobEffects.FIRE_RESISTANCE) || living.fireImmune())) { // will fireImmune() ever even trigger for a player? hell if i know
-                int fireResistanceBonus = 1 + getItemEnchantmentLevel(Enchantments.FIRE_PROTECTION, stack);
+                int fireResistanceBonus = 1 + EnchantmentHelper.getTagEnchantmentLevel(Enchantments.FIRE_PROTECTION, stack);
                 living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, config.fireResistanceDuration.get() * fireResistanceBonus, 0, true, true));
                 if (config.canBeDamaged.get()) {
                     stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));

@@ -5,7 +5,6 @@ import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -31,8 +30,8 @@ public class CurioLimitBreak extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(new TranslatableComponent("tooltip.chromaticarsenal.worthit"));
-        list.add(new TranslatableComponent("tooltip.chromaticarsenal.cursed"));
+        list.add(Component.translatable("tooltip.chromaticarsenal.worthit"));
+        list.add(Component.translatable("tooltip.chromaticarsenal.cursed"));
     }
 
     @Override
