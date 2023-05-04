@@ -69,7 +69,7 @@ public class CARecipes extends RecipeProvider {
                 .save(consumer, new ResourceLocation(Reference.MODID, "glass_shield"));
 
         nyanPatternRecipe(consumer, ModItems.WARD_CRYSTAL.get(), Items.FERMENTED_SPIDER_EYE, Items.AMETHYST_SHARD, CHROMA_SHARD, "ward_crystal");
-        nyanPatternRecipe(consumer, ModItems.SHADOW_TREADS.get(), Items.BLACK_WOOL, Items.ENDER_PEARL, CHROMA_SHARD, "shadow_treads");
+        nyanPatternRecipe(consumer, ModItems.SHADOW_TREADS.get(), Items.ECHO_SHARD, Items.ENDER_PEARL, CHROMA_SHARD, "shadow_treads");
 
         ShapedRecipeBuilder.shaped(ModItems.DUALITY_RINGS.get(), 1)
                 .pattern("awm")
