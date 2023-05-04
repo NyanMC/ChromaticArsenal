@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "tag": "forge:gems/chroma"
+    },
+    "g": {
+      "tag": "forge:glass"
+    },
+    "p": {
+      "item": "minecraft:popped_chorus_fruit"
+    }
+  },
   "pattern": [
     "pcp",
     "ggg",
     " g "
   ],
-  "key": {
-    "p": {
-      "item": "minecraft:popped_chorus_fruit"
-    },
-    "g": {
-      "tag": "forge:glass"
-    },
-    "c": {
-      "tag": "forge:gems/chroma"
-    }
-  },
   "result": {
     "item": "chromaticarsenal:glass_shield"
   }

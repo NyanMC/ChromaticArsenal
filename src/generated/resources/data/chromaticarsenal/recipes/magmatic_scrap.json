@@ -1,10 +1,10 @@
 {
   "type": "minecraft:smithing",
-  "base": {
-    "item": "minecraft:netherite_scrap"
-  },
   "addition": {
     "item": "chromaticarsenal:spicy_coal"
+  },
+  "base": {
+    "item": "minecraft:netherite_scrap"
   },
   "result": {
     "item": "chromaticarsenal:magmatic_scrap"

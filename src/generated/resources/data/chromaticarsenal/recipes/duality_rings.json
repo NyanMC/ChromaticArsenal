@@ -1,27 +1,27 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "minecraft:arrow"
+    },
+    "b": {
+      "item": "minecraft:black_wool"
+    },
+    "c": {
+      "tag": "forge:gems/chroma"
+    },
+    "m": {
+      "item": "chromaticarsenal:magic_garlic_bread"
+    },
+    "w": {
+      "item": "minecraft:white_wool"
+    }
+  },
   "pattern": [
     "awm",
     "wcb",
     "mba"
   ],
-  "key": {
-    "a": {
-      "item": "minecraft:arrow"
-    },
-    "w": {
-      "item": "minecraft:white_wool"
-    },
-    "m": {
-      "item": "chromaticarsenal:magic_garlic_bread"
-    },
-    "c": {
-      "tag": "forge:gems/chroma"
-    },
-    "b": {
-      "item": "minecraft:black_wool"
-    }
-  },
   "result": {
     "item": "chromaticarsenal:duality_rings"
   }
