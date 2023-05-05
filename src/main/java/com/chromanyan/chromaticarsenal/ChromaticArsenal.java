@@ -9,7 +9,11 @@ import com.chromanyan.chromaticarsenal.init.ModBlocks;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -29,9 +33,10 @@ import top.theillusivec4.curios.api.SlotTypeMessage;
 @Mod(Reference.MODID)
 public class ChromaticArsenal {
     // Directly reference a log4j logger.
-    @SuppressWarnings("all")
+
     public static final Logger LOGGER = LogManager.getLogger();
     public static final CreativeModeTab GROUP = new CAGroup(Reference.MODID);
+    private static final ResourceLocation SUPER_CURIO_ICON = new ResourceLocation("curios", "slot/empty_super_curio_slot"); // 1.19.2 curios is stupid and requires slot textures to be registered under its own namespace
 
     public ChromaticArsenal() {
         final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -72,7 +77,13 @@ public class ChromaticArsenal {
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("body").size(1).build());
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("charm").size(1).build());
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("ring").size(1).build());
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("super_curio").size(1).build());
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("super_curio").icon(SUPER_CURIO_ICON).size(1).build());
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public static void onStitch(TextureStitchEvent.Pre event) {
+        event.addSprite(SUPER_CURIO_ICON);
     }
 
 
