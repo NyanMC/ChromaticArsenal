@@ -44,7 +44,6 @@ public class ModConfig {
         public final BooleanValue everyoneIsLuna;
         public final DoubleValue fallDamageReduction;
 
-        public final IntValue jumpCooldown;
         public final DoubleValue jumpForce;
 
         public final IntValue fracturedDuration;
@@ -177,9 +176,6 @@ public class ModConfig {
                     .defineInRange("fallDamageReduction", 0.05, 0, 1);
             builder.pop();
             builder.push("HarpyFeatherSettings");
-            jumpCooldown = builder
-                    .comment("The cooldown between Harpy Feather jumps, in ticks.")
-                    .defineInRange("jumpCooldown", 60, 0, Integer.MAX_VALUE);
             jumpForce = builder
                     .comment("The force of the Harpy Feather jump. This goes by internal values, so tweaking may be required.")
                     .defineInRange("jumpForce", 0.42D, 0, Double.MAX_VALUE);
