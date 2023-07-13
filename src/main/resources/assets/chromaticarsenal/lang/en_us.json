@@ -4,24 +4,72 @@
   "item.chromaticarsenal.spicy_coal": "Spicy Coal",
   "item.chromaticarsenal.magmatic_scrap": "Magmatic Scrap",
   "item.chromaticarsenal.golden_heart": "Golden Heart",
+  "tooltip.chromaticarsenal.golden_heart.1": "§6Grants the Absorption effect at level %1$s",
+  "tooltip.chromaticarsenal.golden_heart.2": "§6This effect is re-applied every %1$s§6 second(s)",
+  "tooltip.chromaticarsenal.golden_heart.3": "§6Functions like gold armor for Piglins",
+
   "item.chromaticarsenal.glass_shield": "Glass Shield",
+  "tooltip.chromaticarsenal.glass_shield.1": "§6Fully absorbs the damage of one attack, and then shatters",
+  "tooltip.chromaticarsenal.glass_shield.2": "§6The shield takes %1$s§6 second(s) to repair itself",
+  "tooltip.chromaticarsenal.glass_shield.3": "§6There is a %1$s§b%%§6 chance for the shield to not break when sustaining damage",
+
   "item.chromaticarsenal.ward_crystal": "Ward Crystal",
+  "tooltip.chromaticarsenal.ward_crystal.1": "§aReduces magic damage taken by %1$s§b%%",
+  "tooltip.chromaticarsenal.ward_crystal.2": "§cReduces magic damage dealt by %1$s§b%%",
+
   "item.chromaticarsenal.shadow_treads": "Shadow Charm",
+  "tooltip.chromaticarsenal.shadow_treads.1": "§6Grants immunity to Slowness",
+  "tooltip.chromaticarsenal.shadow_treads.2": "§6Grants the Speed effect at level %1$s§6 when in a light level of %2$s§6 or less",
+  "tooltip.chromaticarsenal.shadow_treads.3": "§6Prevents activation of Sculk Sensors from walking or falling short distances",
+
   "item.chromaticarsenal.duality_rings": "Duality Rings",
+  "tooltip.chromaticarsenal.duality_rings.1": "§dIncreases the effectiveness of Magic Garlic Bread",
+  "tooltip.chromaticarsenal.duality_rings.2": "§aIncreases the damage of projectiles by %1$s§b%%",
+
   "item.chromaticarsenal.friendly_fire_flower": "Friendly Fire Flower",
+  "tooltip.chromaticarsenal.friendly_fire_flower.1": "§6Nullifies self-inflicted damage",
+  "tooltip.chromaticarsenal.friendly_fire_flower.2": "§6Applies Fire Resistance for %1$s§6 seconds after taking fire damage",
+  "tooltip.chromaticarsenal.friendly_fire_flower.3": "§cTakes durability damage when applying Fire Resistance",
+
   "item.chromaticarsenal.lunar_crystal": "Lunar Crystal",
   "item.chromaticarsenal.lunar_crystal.luna": "Luna's Crystal",
+  "tooltip.chromaticarsenal.lunar_crystal.1": "§6Grants immunity to Levitation",
+  "tooltip.chromaticarsenal.lunar_crystal.2": "§6Upon striking an enemy, has a %1$s§b%%§6 chance to inflict Levitation at level %2$s§6 for %3$s§6 seconds",
+  "tooltip.chromaticarsenal.lunar_crystal.3": "§aReduces fall damage by %1$s§b%%",
+
   "item.chromaticarsenal.harpy_feather": "Harpy Feather",
+  "tooltip.chromaticarsenal.harpy_feather.1": "§6Right click with this item in either hand to perform a midair jump",
+  "tooltip.chromaticarsenal.harpy_feather.2": "§6This midair jump can be used to reset fall damage",
+  "tooltip.chromaticarsenal.harpy_feather.3": "§6After jumping, goes on cooldown until landing again",
+
   "item.chromaticarsenal.magic_garlic_bread": "Magic Garlic Bread",
   "item.chromaticarsenal.cosmicola": "Cosmicola",
   "block.chromaticarsenal.chroma_block": "Chroma Block",
   "curios.identifier.super_curio": "Super Curio",
   "curios.modifiers.super_curio": "When worn as super curio:",
   "item.chromaticarsenal.super_golden_heart": "Diamond Heart",
+  "tooltip.chromaticarsenal.super_golden_heart.1": "§6Allows for cheating death",
+  "tooltip.chromaticarsenal.super_golden_heart.2": "§6This revival reduces max health by %1$s§b%%§6 for %2$s§6 seconds",
+  "tooltip.chromaticarsenal.super_golden_heart.3": "§6After reviving, goes on cooldown for %1$s§6 seconds",
+
   "item.chromaticarsenal.super_glass_shield": "Shield of Undying",
+  "tooltip.chromaticarsenal.super_glass_shield.1": "§6Allows for cheating death multiple times",
+  "tooltip.chromaticarsenal.super_glass_shield.2": "§6Each revival adds %1$s§6 ticks to this item's cooldown",
+  "tooltip.chromaticarsenal.super_glass_shield.3": "§6When this cooldown exceeds %1$s§6 ticks, this item will stop reviving",
+
   "item.chromaticarsenal.super_ward_crystal": "Dispelling Crystal",
+  "tooltip.chromaticarsenal.super_ward_crystal.1": "§6Reduces both positive and negative potion effect durations by %1$s§b%%",
+
   "item.chromaticarsenal.super_shadow_treads": "Celestial Charm",
+  "tooltip.chromaticarsenal.super_shadow_treads.1": "§6Grants varying damage and speed bonuses depending on the time of day",
+
   "item.chromaticarsenal.ascended_star": "Ascended Star",
+  "tooltip.chromaticarsenal.ascended_star.1": "§6Grants %1$s§6 extra fortune level(s) and %2$s§6 extra looting level(s)",
+  "tooltip.chromaticarsenal.ascended_star.2": "§cMultiplies ALL damage taken by %1$s",
+
+  "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",
+  "tooltip.chromaticarsenal.cursed": "Once equipped, this curio will persist with you forever.",
+
   "effect.chromaticarsenal.fractured": "Fractured",
   "effect.chromaticarsenal.fractured.description": "Max health is reduced by 10% per level",
   "message.chromaticarsenal.revival_cooldown_finished": "§6The Diamond Heart revival cooldown has finished.",
@@ -36,7 +84,6 @@
   "modifier.chromaticarsenal.warded.2": "Dispelled",
   "modifier.chromaticarsenal.warded.flavor": "Begone, magic!",
   "modifier.chromaticarsenal.warded.description": "Banishes the magic of an ability slot in exchange for a defense slot",
-  "modifier.chromaticarsenal.warded.error_level_req": "Dispelled requires a different recipe for the first level",
-  "tooltip.chromaticarsenal.cursed": "§4Once equipped, this curio will persist with you forever.",
-  "tooltip.chromaticarsenal.worthit": "Contains drastic negative side effects. Is this item really worth it?"
+  "modifier.chromaticarsenal.warded.error_level_req": "Dispelled requires a different recipe for the first level"
+
 }
