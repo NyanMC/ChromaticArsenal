@@ -45,7 +45,7 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
     }
 
     @Override
-    public void onPotionApplied(PotionEvent.PotionAddedEvent event) {
-        event.getPotionEffect().duration *= config.potionDurationMultiplier.get(); // because why should forge let you set the duration of a potion effect without an access transformer?
+    public void onPotionApplied(MobEffectEvent.Added event) {
+        event.getEffectInstance().duration *= config.potionDurationMultiplier.get(); // because why should forge let you set the duration of a potion effect without an access transformer?
     }
 }

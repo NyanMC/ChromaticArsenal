@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "aba",
-    "bcb",
-    "aba"
-  ],
   "key": {
     "a": {
       "item": "minecraft:fermented_spider_eye"
@@ -16,6 +11,11 @@
       "tag": "forge:gems/chroma"
     }
   },
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
   "result": {
     "item": "chromaticarsenal:ward_crystal"
   }

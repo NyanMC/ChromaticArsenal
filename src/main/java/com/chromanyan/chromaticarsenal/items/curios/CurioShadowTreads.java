@@ -18,11 +18,12 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.event.VanillaGameEvent;
-import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,8 +31,6 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 import java.util.UUID;
-
-import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
 public class CurioShadowTreads extends BaseCurioItem {
 
@@ -59,8 +58,8 @@ public class CurioShadowTreads extends BaseCurioItem {
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-        if (getItemEnchantmentLevel(Enchantments.SOUL_SPEED, stack) > 0) {
-            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":speed_bonus", getItemEnchantmentLevel(Enchantments.SOUL_SPEED, stack) * config.enchantmentSpeedMultiplier.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
+        if (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.SOUL_SPEED, stack) > 0) {
+            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":speed_bonus", EnchantmentHelper.getTagEnchantmentLevel(Enchantments.SOUL_SPEED, stack) * config.enchantmentSpeedMultiplier.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
         return atts;
     }
@@ -75,8 +74,8 @@ public class CurioShadowTreads extends BaseCurioItem {
     }
 
     @Override
-    public void onGetImmunities(PotionEvent.PotionApplicableEvent event, ItemStack stack, MobEffect effect) {
-        if (event.getPotionEffect().getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
+    public void onGetImmunities(MobEffectEvent.Applicable event, ItemStack stack, MobEffect effect) {
+        if (event.getEffectInstance().getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
             event.setResult(Event.Result.DENY);
         }
     }

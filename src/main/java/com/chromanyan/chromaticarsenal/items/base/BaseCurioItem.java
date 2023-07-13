@@ -37,7 +37,7 @@ public class BaseCurioItem extends Item implements ICurioItem, IChromaCurio {
     }
 
     @Override
-    public int getItemEnchantability(ItemStack stack) {
+    public int getEnchantmentValue(ItemStack stack) {
         return 1;
     }
 

@@ -41,7 +41,7 @@ public class CurioCelestialCharm extends BaseSuperCurio {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
         LivingEntity entity = slotContext.entity();
         if (entity == null) {
-            ChromaticArsenal.LOGGER.warn("Tried to get attribute modifiers for " + this.getRegistryName() + " but entity was null");
+            ChromaticArsenal.LOGGER.warn("Tried to get attribute modifiers for celestial charm but entity was null");
             return atts; // should hopefully fix a NPE when reloading resources with F3+T
         }
         long time = entity.level.getDayTime() % 24000; // no see

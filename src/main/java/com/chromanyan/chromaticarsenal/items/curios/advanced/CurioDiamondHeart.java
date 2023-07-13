@@ -51,7 +51,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
         if (livingEntity.level.isClientSide) {
             if (CooldownHelper.getCounter(nbt) == 1) {
                 if (livingEntity instanceof Player playerEntity) {
-                    playerEntity.displayClientMessage(new TranslatableComponent("message.chromaticarsenal.revival_cooldown_finished"), false);
+                    playerEntity.displayClientMessage(Component.translatable("message.chromaticarsenal.revival_cooldown_finished"), false);
                 }
             }
         } else {

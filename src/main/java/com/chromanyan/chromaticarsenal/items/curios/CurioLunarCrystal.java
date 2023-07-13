@@ -6,7 +6,6 @@ import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -19,11 +18,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,8 +32,6 @@ import top.theillusivec4.curios.api.SlotContext;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
-
-import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
 
 @SuppressWarnings("all")
 public class CurioLunarCrystal extends BaseCurioItem {
@@ -53,7 +51,7 @@ public class CurioLunarCrystal extends BaseCurioItem {
     @Override
     public Component getName(ItemStack stack) {
         if (stack.getOrCreateTag().getString("crafter.id").equalsIgnoreCase("854adc0b-ae55-48d6-b7ba-e641a1eebf42") || config.everyoneIsLuna.get()) {
-            return new TranslatableComponent(this.getDescriptionId(stack) + ".luna");
+            return Component.translatable(this.getDescriptionId(stack) + ".luna");
         }
         return super.getName(stack);
     }
@@ -113,8 +111,8 @@ public class CurioLunarCrystal extends BaseCurioItem {
     }
 
     @Override
-    public void onGetImmunities(PotionEvent.PotionApplicableEvent event, ItemStack stack, MobEffect effect) {
-        if (event.getPotionEffect().getEffect() == MobEffects.LEVITATION) {
+    public void onGetImmunities(MobEffectEvent.Applicable event, ItemStack stack, MobEffect effect) {
+        if (event.getEffectInstance().getEffect() == MobEffects.LEVITATION) {
             event.setResult(Event.Result.DENY);
         }
     }

@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Shadow Charm grants the Speed potion effect when in a light level below 7 (though your modpack may change this). Additionally, this item also grants immunity to Slowness and prevents sculk sensors from triggering when walking or falling from short distances, but not when sprinting. You can even walk directly on top of sculk sensors."
+      "text": "The Shadow Charm grants the Speed potion effect when in a light level below 7 (though your modpack may change this). Additionally, this item also grants immunity to Slowness and prevents sculk sensors from triggering when walking or falling from short distances, but not when sprinting."
     },
     {
       "type": "patchouli:text",
