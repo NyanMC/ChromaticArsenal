@@ -6,6 +6,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -22,13 +24,23 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.event.VanillaGameEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
 
+import java.util.List;
 import java.util.UUID;
 
 public class CurioShadowTreads extends BaseCurioItem {
 
     private final Common config = ModConfig.COMMON;
+
+    @Override
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.1"));
+        list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.2", "§b" + (config.darkspeedPotency.get() + 1), "§b" + config.maxLightLevel.get()));
+        list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.3"));
+    }
 
     @SuppressWarnings("all")
     @Override

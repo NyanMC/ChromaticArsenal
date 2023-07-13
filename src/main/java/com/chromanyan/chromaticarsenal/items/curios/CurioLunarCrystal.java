@@ -16,16 +16,19 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
 
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -34,6 +37,15 @@ public class CurioLunarCrystal extends BaseCurioItem {
 
     private final Random rand = new Random();
     private final ModConfig.Common config = ModConfig.COMMON;
+
+    @Override
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.1"));
+        list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.2", "§b" + config.levitationChance.get(), "§b" + (config.levitationPotency.get() + 1), "§b" + (((float) config.levitationDuration.get()) / 20)));
+        if (stack.getEnchantmentLevel(Enchantments.FALL_PROTECTION) > 0) {
+            list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.3", "§b" + (int) Math.round(100 * (1.0 - getFallMultiplier(stack))))); // use Math.round so the tooltip doesn't display it as one more or less than it should be
+        }
+    }
 
     @Override
     public Component getName(ItemStack stack) {
@@ -60,6 +72,12 @@ public class CurioLunarCrystal extends BaseCurioItem {
         }
     }
 
+    public float getFallMultiplier(ItemStack stack) {
+        int fallEnchantLevel = stack.getEnchantmentLevel(Enchantments.FALL_PROTECTION);
+        float percentage = (float) (1 - (fallEnchantLevel * config.fallDamageReduction.get()));
+        return Math.max(0, percentage);
+    }
+
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         if (enchantment == Enchantments.FALL_PROTECTION) {
@@ -79,12 +97,7 @@ public class CurioLunarCrystal extends BaseCurioItem {
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         if (event.getSource() == DamageSource.FALL) {
-            int fallEnchantLevel = EnchantmentHelper.getTagEnchantmentLevel(Enchantments.FALL_PROTECTION, stack);
-            if (fallEnchantLevel > 0) {
-                float percentage = (float) (1 - (fallEnchantLevel * config.fallDamageReduction.get()));
-                if (percentage < 0) percentage = 0;
-                event.setAmount(event.getAmount() * percentage);
-            }
+            event.setAmount(event.getAmount() * getFallMultiplier(stack));
         }
     }
 
