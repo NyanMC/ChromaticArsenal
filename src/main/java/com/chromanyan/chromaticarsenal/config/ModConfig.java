@@ -44,7 +44,6 @@ public class ModConfig {
         public final BooleanValue everyoneIsLuna;
         public final DoubleValue fallDamageReduction;
 
-        public final IntValue jumpCooldown;
         public final DoubleValue jumpForce;
 
         public final IntValue fracturedDuration;
@@ -110,11 +109,11 @@ public class ModConfig {
             builder.push("WardCrystalSettings");
             antiMagicMultiplierIncoming = builder
                     .comment("The multiplier for incoming magic damage when wearing a Ward Crystal. 0.0 completely nullifies the attack, and 1.0 does not change the attack strength at all.")
-                    .defineInRange("antiMagicMultiplierIncoming", 0.25, 0.0, Double.MAX_VALUE);
+                    .defineInRange("antiMagicMultiplierIncoming", 0.25, 0.0, 1.0);
 
             antiMagicMultiplierOutgoing = builder
                     .comment("The multiplier for outgoing magic damage when wearing a Ward Crystal. 0.0 completely nullifies the attack, and 1.0 does not change the attack strength at all.")
-                    .defineInRange("antiMagicMultiplierOutgoing", 0.25, 0.0, Double.MAX_VALUE);
+                    .defineInRange("antiMagicMultiplierOutgoing", 0.25, 0.0, 1.0);
             builder.pop();
 
             builder.push("ShadowTreadsSettings");
@@ -177,9 +176,6 @@ public class ModConfig {
                     .defineInRange("fallDamageReduction", 0.05, 0, 1);
             builder.pop();
             builder.push("HarpyFeatherSettings");
-            jumpCooldown = builder
-                    .comment("The cooldown between Harpy Feather jumps, in ticks.")
-                    .defineInRange("jumpCooldown", 60, 0, Integer.MAX_VALUE);
             jumpForce = builder
                     .comment("The force of the Harpy Feather jump. This goes by internal values, so tweaking may be required.")
                     .defineInRange("jumpForce", 0.42D, 0, Double.MAX_VALUE);

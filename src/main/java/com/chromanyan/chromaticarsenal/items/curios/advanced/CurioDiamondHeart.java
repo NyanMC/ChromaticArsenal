@@ -5,16 +5,24 @@ import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
+
+import java.util.List;
 
 public class CurioDiamondHeart extends BaseSuperCurio {
 
@@ -22,6 +30,17 @@ public class CurioDiamondHeart extends BaseSuperCurio {
 
     public CurioDiamondHeart() {
         super(ModItems.GOLDEN_HEART);
+    }
+
+    @Override
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        list.add(new TranslatableComponent("tooltip.chromaticarsenal.super_golden_heart.1"));
+        list.add(new TranslatableComponent("tooltip.chromaticarsenal.super_golden_heart.2", "§b" + ((config.fracturedPotency.get() + 1) * 10), "§b" + (int) (((float) config.fracturedDuration.get()) / 20)));
+        list.add(new TranslatableComponent("tooltip.chromaticarsenal.super_golden_heart.3", "§b" + (int) (((float) config.revivalCooldown.get()) / 20)));
+        CompoundTag nbt = stack.getOrCreateTag();
+        if (!CooldownHelper.isCooldownFinished(nbt)) {
+            list.add(new TranslatableComponent("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
+        }
     }
 
     @Override
