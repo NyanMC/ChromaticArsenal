@@ -1,0 +1,17 @@
+{
+  "name": "World Anchor",
+  "icon": "chromaticarsenal:world_anchor",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:world_anchor",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "A strange item which seems to gravitate strongly toward the world itself. If it is taken away from the world, it will stop at nothing to reunite itself and its wearer with the ground.",
+      "item": "chromaticarsenal:world_anchor"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "It is said that this type of item was first constructed in an attempt to keep flying mobs grounded and therefore at a disadvantage, however this did not seem to work. Despite their best efforts, blazes and ghasts (as well as other things) can still fly as they please."
+    }
+  ]
+}
