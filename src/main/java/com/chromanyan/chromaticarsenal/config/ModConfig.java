@@ -196,8 +196,8 @@ public class ModConfig {
                     .comment("The bonus armor points given for having the World Anchor equipped.")
                     .defineInRange("anchorArmor", 4D, 0D, 2048D);
             anchorSoulbound = builder
-                    .comment("Should the World Anchor persist in the player's inventory after death?")
-                    .define("anchorSoulbound", true);
+                    .comment("Should the World Anchor persist in the player's inventory after death? This setting exists to help provide consistency with other challenge-like items such as the Ring of the Seven Curses from Enigmatic Legacy or the marks from Band of Gigantism.")
+                    .define("anchorSoulbound", false);
             builder.push("HarpyFeatherSettings");
             jumpForce = builder
                     .comment("The force of the Harpy Feather jump. This goes by internal values, so tweaking may be required.")
