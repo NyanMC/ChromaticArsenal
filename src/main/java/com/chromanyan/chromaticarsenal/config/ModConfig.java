@@ -44,6 +44,12 @@ public class ModConfig {
         public final BooleanValue everyoneIsLuna;
         public final DoubleValue fallDamageReduction;
 
+        public final DoubleValue anchorGravityMultiplier;
+        public final DoubleValue anchorSpeedMultiplier;
+        public final DoubleValue anchorKnockbackResistanceMultiplier;
+        public final DoubleValue anchorArmor;
+        public final BooleanValue anchorSoulbound;
+
         public final DoubleValue jumpForce;
 
         public final IntValue fracturedDuration;
@@ -175,6 +181,23 @@ public class ModConfig {
                     .comment("The percentage of fall damage reduced per level of feather falling on this item. Set to 0 to effectively disable this feature.")
                     .defineInRange("fallDamageReduction", 0.05, 0, 1);
             builder.pop();
+            builder.push("WorldAnchorSettings");
+            builder.pop();
+            anchorGravityMultiplier = builder
+                    .comment("The multiplier for the gravity modifier. (e.g. at 0.5, gravity will be increased by +50% at world height)")
+                    .defineInRange("anchorGravityMultiplier", 1D, 0D, 1D);
+            anchorSpeedMultiplier = builder
+                    .comment("The multiplier for the speed modifier.")
+                    .defineInRange("anchorSpeedMultiplier", -0.5, -1D, 0D);
+            anchorKnockbackResistanceMultiplier = builder
+                    .comment("The multiplier for the knockback resistance modifier.")
+                    .defineInRange("anchorKnockbackResistanceMultiplier", 1D, 0D, 1D);
+            anchorArmor = builder
+                    .comment("The bonus armor points given for having the World Anchor equipped.")
+                    .defineInRange("anchorArmor", 4D, 0D, 2048D);
+            anchorSoulbound = builder
+                    .comment("Should the World Anchor persist in the player's inventory after death?")
+                    .define("anchorSoulbound", true);
             builder.push("HarpyFeatherSettings");
             jumpForce = builder
                     .comment("The force of the Harpy Feather jump. This goes by internal values, so tweaking may be required.")
