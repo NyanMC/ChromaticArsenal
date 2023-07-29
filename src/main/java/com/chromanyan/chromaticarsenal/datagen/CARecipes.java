@@ -113,5 +113,6 @@ public class CARecipes extends RecipeProvider {
 
         chromaUpgrade(consumer, Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");
         chromaUpgrade(consumer, Items.NETHERITE_SCRAP, ModItems.SPICY_COAL.get(), ModItems.MAGMATIC_SCRAP.get(), "magmatic_scrap");
+        chromaUpgrade(consumer, Items.ANVIL, ModItems.CHROMA_SHARD.get(), ModItems.WORLD_ANCHOR.get(), "world_anchor");
     }
 }

@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.items.SpicyCoal;
 import com.chromanyan.chromaticarsenal.items.curios.*;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.*;
+import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioWorldAnchor;
 import com.chromanyan.chromaticarsenal.items.food.Cosmicola;
 import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
 import net.minecraft.world.item.BlockItem;
@@ -38,6 +39,7 @@ public class ModItems {
     public static final RegistryObject<Item> SUPER_SHADOW_TREADS = ITEMS_REGISTRY.register("super_shadow_treads", CurioCelestialCharm::new);
 
     public static final RegistryObject<Item> ASCENDED_STAR = ITEMS_REGISTRY.register("ascended_star", CurioLimitBreak::new);
+    public static final RegistryObject<Item> WORLD_ANCHOR = ITEMS_REGISTRY.register("world_anchor", CurioWorldAnchor::new);
 
     public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = ITEMS_REGISTRY.register("magic_garlic_bread", MagicGarlicBread::new);
     public static final RegistryObject<Item> COSMICOLA = ITEMS_REGISTRY.register("cosmicola", Cosmicola::new);

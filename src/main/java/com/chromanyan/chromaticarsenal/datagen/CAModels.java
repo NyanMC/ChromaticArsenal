@@ -39,6 +39,7 @@ public class CAModels extends ItemModelProvider {
         basicModel("harpy_feather");
 
         basicModel("ascended_star");
+        basicModel("world_anchor");
 
         basicModel("magic_garlic_bread");
         basicModel("cosmicola");

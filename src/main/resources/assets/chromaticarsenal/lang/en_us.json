@@ -67,6 +67,9 @@
   "tooltip.chromaticarsenal.ascended_star.1": "§6Grants %1$s§6 extra fortune level(s) and %2$s§6 extra looting level(s)",
   "tooltip.chromaticarsenal.ascended_star.2": "§cMultiplies ALL damage taken by %1$s",
 
+  "item.chromaticarsenal.world_anchor": "World Anchor",
+  "tooltip.chromaticarsenal.world_anchor.1": "§6The effects of this curio are more severe the further you are from the bottom of the world",
+
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",
   "tooltip.chromaticarsenal.cursed": "Once equipped, this curio will persist with you forever.",
 
