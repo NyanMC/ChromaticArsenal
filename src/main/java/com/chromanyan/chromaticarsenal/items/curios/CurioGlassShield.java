@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import net.minecraft.ChatFormatting;
@@ -9,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -87,6 +89,10 @@ public class CurioGlassShield extends BaseCurioItem {
                 } else {
                     CooldownHelper.updateCounter(nbt, getCooldownDuration(stack));
                     player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
+                }
+                if (player instanceof Player playerEntity) {
+                    int hitDamage = Math.round(event.getAmount() * 10.0F);
+                    playerEntity.awardStat(ModStats.GSHIELD_TOTAL_BLOCK, hitDamage);
                 }
                 event.setAmount(0);
                 event.setCanceled(true);

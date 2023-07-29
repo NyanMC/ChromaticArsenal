@@ -8,8 +8,12 @@ import com.chromanyan.chromaticarsenal.events.EventClassInstance;
 import com.chromanyan.chromaticarsenal.init.ModBlocks;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
+import com.chromanyan.chromaticarsenal.init.ModStats;
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.stats.StatFormatter;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -70,7 +74,9 @@ public class ChromaticArsenal {
 
     private void setup(final FMLCommonSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new EventClassInstance());
-        // some preinit code
+        Registry.register(Registry.CUSTOM_STAT, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION);
+        Stats.CUSTOM.get(ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, StatFormatter.DIVIDE_BY_TEN);
+        ModStats.load();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

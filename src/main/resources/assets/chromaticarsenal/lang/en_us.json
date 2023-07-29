@@ -12,6 +12,8 @@
   "tooltip.chromaticarsenal.glass_shield.1": "§6Fully absorbs the damage of one attack, and then shatters",
   "tooltip.chromaticarsenal.glass_shield.2": "§6The shield takes %1$s§6 second(s) to repair itself",
   "tooltip.chromaticarsenal.glass_shield.3": "§6There is a %1$s§b%%§6 chance for the shield to not break when sustaining damage",
+  "stat.chromaticarsenal.glass_shield_total_block": "Damage Blocked by Glass Shield",
+  "stat.chromaticarsenal.glass_shield_highest_block": "Hardest Hit Blocked by Glass Shield",
 
   "item.chromaticarsenal.ward_crystal": "Ward Crystal",
   "tooltip.chromaticarsenal.ward_crystal.1": "§aReduces magic damage taken by %1$s§b%%",
