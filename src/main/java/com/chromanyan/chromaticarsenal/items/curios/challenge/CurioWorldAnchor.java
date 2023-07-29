@@ -12,14 +12,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
@@ -70,10 +68,6 @@ public class CurioWorldAnchor extends BaseCurioItem {
         atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":world_anchor_speed", gravityMod * config.anchorSpeedMultiplier.get(), AttributeModifier.Operation.MULTIPLY_BASE));
         atts.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, Reference.MODID + ":world_anchor_kbresist", gravityMod * config.anchorKnockbackResistanceMultiplier.get(), AttributeModifier.Operation.ADDITION));
         atts.put(Attributes.ARMOR, new AttributeModifier(uuid, Reference.MODID + ":world_anchor_armor", config.anchorArmor.get(), AttributeModifier.Operation.ADDITION));
-        if (entity instanceof Player) {
-            CuriosApi.getCuriosHelper().addSlotModifier(atts, "charm",
-                    UUID.fromString("d020cd5d-c050-49e4-a0ea-ef27adf7e6d0"), 1, AttributeModifier.Operation.ADDITION);
-        }
 
         return atts;
     }
