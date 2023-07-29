@@ -1,0 +1,16 @@
+{
+  "name": "World Anchor",
+  "icon": "chromaticarsenal:world_anchor",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The World Anchor is created by combining an Anvil with a Chroma Shard in a smithing table. It increases the wearer's gravity and knockback resistance, and lowers their speed depending on their vertical position in the world. At the world's lowest point, there is no effect, and at the height limit the effect is the greatest. This item is primarily meant to serve as an added challenge.",
+      "item": "chromaticarsenal:world_anchor"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default Attribute modifiers:$()$(br)$(4)+0% - +100%$() Entity Gravity$(br)$(4)-0% - -50%$() Movement Speed$(br)$(2)+0 - +10$() Knockback Resistance"
+    }
+  ]
+}
