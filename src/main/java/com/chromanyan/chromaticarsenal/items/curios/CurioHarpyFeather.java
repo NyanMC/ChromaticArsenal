@@ -56,7 +56,7 @@ public class CurioHarpyFeather extends BaseCurioItem {
         ItemStack itemstack = player.getItemInHand(hand);
         player.getCooldowns().addCooldown(this, 60);
         if (!level.isClientSide()) {
-            player.fallDistance = 0;
+            player.resetFallDistance();
             player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 0.8f, 5f);
         }
         Vec3 vec3 = player.getDeltaMovement();
