@@ -1,0 +1,17 @@
+{
+  "type": "jeed:effect_provider",
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "effect": {
+    "id": "chromaticarsenal:chilled"
+  },
+  "providers": [
+    {
+      "item": "chromaticarsenal:cryo_ring"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Cryo Ring",
+  "icon": "chromaticarsenal:cryo_ring",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:cryo_ring",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This is a strange ring created by an ancient frost mage. Before now, I had thought it had been lost forever.",
+      "item": "chromaticarsenal:cryo_ring"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "It was created in an effort to make snow biomes easier to survive, but ended up driving its wearer mad. The ring and its wearer disappeared one day without a trace. The ring appears to still be intact after all this time, however the same probably can't be said for its owner."
+    }
+  ]
+}

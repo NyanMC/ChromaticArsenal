@@ -44,6 +44,11 @@ public class ModConfig {
         public final BooleanValue everyoneIsLuna;
         public final DoubleValue fallDamageReduction;
 
+        public final IntValue chilledTicks;
+        public final IntValue chilledTicksVulnerable;
+        public final DoubleValue cryoDamage;
+        public final BooleanValue cryoHealsGolems;
+
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
         public final DoubleValue anchorKnockbackResistanceMultiplier;
@@ -181,8 +186,21 @@ public class ModConfig {
                     .comment("The percentage of fall damage reduced per level of feather falling on this item. Set to 0 to effectively disable this feature.")
                     .defineInRange("fallDamageReduction", 0.05, 0, 1);
             builder.pop();
-            builder.push("WorldAnchorSettings");
+            builder.push("CryoRingSettings");
+            chilledTicks = builder
+                    .comment("The amount of ticks Chilled should be applied for when hitting an entity with a snowball.")
+                    .defineInRange("chilledTicks", 100, 0, Integer.MAX_VALUE);
+            chilledTicksVulnerable = builder
+                    .comment("Same as above, but for enemies which are extra vulnerable to freezing damage.")
+                    .defineInRange("chilledTicksVulnerable", 200, 0, Integer.MAX_VALUE);
+            cryoDamage = builder
+                    .comment("The amount of damage added when a snowball hits a mob with this curio equipped.")
+                    .defineInRange("cryoDamage", 3D, 0D, Double.MAX_VALUE);
+            cryoHealsGolems = builder
+                    .comment("Should Snow Golems be healed for the damage amount upon being hit with a snowball?")
+                    .define("cryoHealsGolems", true);
             builder.pop();
+            builder.push("WorldAnchorSettings");
             anchorGravityMultiplier = builder
                     .comment("The multiplier for the gravity modifier. (e.g. at 0.5, gravity will be increased by +50% at world height)")
                     .defineInRange("anchorGravityMultiplier", 1D, 0D, 1D);
@@ -198,6 +216,7 @@ public class ModConfig {
             anchorSoulbound = builder
                     .comment("Should the World Anchor persist in the player's inventory after death? This setting exists to help provide consistency with other challenge-like items such as the Ring of the Seven Curses from Enigmatic Legacy or the marks from Band of Gigantism.")
                     .define("anchorSoulbound", false);
+            builder.pop();
             builder.push("HarpyFeatherSettings");
             jumpForce = builder
                     .comment("The force of the Harpy Feather jump. This goes by internal values, so tweaking may be required.")

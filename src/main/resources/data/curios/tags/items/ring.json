@@ -1,6 +1,7 @@
 {
   "replace": "false",
   "values": [
-    "chromaticarsenal:duality_rings"
+    "chromaticarsenal:duality_rings",
+    "chromaticarsenal:cryo_ring"
   ]
 }

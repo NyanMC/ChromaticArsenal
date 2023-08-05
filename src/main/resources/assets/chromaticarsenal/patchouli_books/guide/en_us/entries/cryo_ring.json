@@ -1,0 +1,12 @@
+{
+  "name": "Cryo Ring",
+  "icon": "chromaticarsenal:cryo_ring",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Cryo Ring prevents its wearer from sinking in powder snow or freezing. Additionally, hitting a mob with a snowball will inflict the Chilled effect, reducing their speed and causing them to freeze as if they were standing in powder snow. If the mob is immune to freezing, they won't receive the effect. The Cryo Ring can be rarely found in Igloo chests.",
+      "item": "chromaticarsenal:cryo_ring"
+    }
+  ]
+}

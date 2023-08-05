@@ -164,6 +164,9 @@ public class EventClassInstance {
             }
             case "chests/ruined_portal" ->
                     injectInto(event, "main", LootItem.lootTableItem(ModItems.SPICY_COAL.get()).setWeight(8).build());
+            case "chests/igloo_chest" -> {
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get()).setWeight(3).build());
+            }
         }
 
         if (event.getName().getPath().contains("chests")) {
