@@ -1,0 +1,12 @@
+{
+  "name": "Cosmicola",
+  "icon": "chromaticarsenal:cosmicola",
+  "category": "chromaticarsenal:misc",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "Cosmicola is a rare drink which restores 75% of the hunger bar and a large amount of saturation. It grants the Spatial effect, which reduces gravity and prevents fall damage entirely.",
+      "item": "chromaticarsenal:cosmicola"
+    }
+  ]
+}
