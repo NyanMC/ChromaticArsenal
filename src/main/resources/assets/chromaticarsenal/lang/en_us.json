@@ -95,11 +95,25 @@
   "modifier.chromaticarsenal.antigravity": "Antigravity",
   "modifier.chromaticarsenal.antigravity.flavor": "Fly me to the moon...",
   "modifier.chromaticarsenal.antigravity.description": "Reduces the influence of gravity on you",
+
   "modifier.chromaticarsenal.warded": "Warded",
   "modifier.chromaticarsenal.warded.1": "Warded",
   "modifier.chromaticarsenal.warded.2": "Dispelled",
   "modifier.chromaticarsenal.warded.flavor": "Begone, magic!",
   "modifier.chromaticarsenal.warded.description": "Banishes the magic of an ability slot in exchange for a defense slot",
-  "modifier.chromaticarsenal.warded.error_level_req": "Dispelled requires a different recipe for the first level"
+  "modifier.chromaticarsenal.warded.error_level_req": "Dispelled requires a different recipe for the first level",
+
+  "advancement.chromaticarsenal.chroma_shard.title": "It All Starts With This...",
+  "advancement.chromaticarsenal.chroma_shard.description": "Obtain a Chroma Shard from a loot chest or Wandering Trader",
+  "advancement.chromaticarsenal.ascension_essence.title": "The Ultimate Ingredient",
+  "advancement.chromaticarsenal.ascension_essence.description": "Obtain Essence of Ascension by combining a Nether Star with some Chroma Shards",
+  "advancement.chromaticarsenal.golden_heart.title": "Heart of the Bastion",
+  "advancement.chromaticarsenal.golden_heart.description": "Loot a Golden Heart from a Bastion Remnant, or barter with Piglins to get one",
+  "advancement.chromaticarsenal.lunar_crystal.title": "Forgotten Past",
+  "advancement.chromaticarsenal.lunar_crystal.description": "Find a Lunar Crystal in an End City chest",
+  "advancement.chromaticarsenal.cryo_ring.title": "Proceed",
+  "advancement.chromaticarsenal.cryo_ring.description": "Loot a Cryo Ring from an Igloo Chest",
+  "advancement.chromaticarsenal.ascended_star.title": "A Terrible Idea",
+  "advancement.chromaticarsenal.ascended_star.description": "Assemble all of the Super Curios together to create the Ascended Star. Perhaps you shouldn't equip this..."
 
 }

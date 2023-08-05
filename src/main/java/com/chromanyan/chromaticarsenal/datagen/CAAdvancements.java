@@ -4,10 +4,12 @@ import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
+import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.advancements.AdvancementProvider;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -16,36 +18,66 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public class CAAdvancements extends AdvancementProvider {
+    // this class is so fucked
     public CAAdvancements(DataGenerator generatorIn, ExistingFileHelper fileHelperIn) {
         super(generatorIn, fileHelperIn);
     }
 
-    private Advancement simpleHasItemRecipe(ItemLike itemLike, Consumer<Advancement> consumer, ExistingFileHelper fileHelper) {
+    private Advancement.Builder simpleHasItemBase(ItemLike itemLike) {
         return Advancement.Builder.advancement()
-                .addCriterion("has_item", hasItem(itemLike))
+                .addCriterion("has_item", hasItem(itemLike));
+    }
+
+    private Advancement.Builder displayedHasItemBase(ItemLike itemLike, FrameType frameType) {
+        return simpleHasItemBase(itemLike)
+                .display(
+                        itemLike,
+                        Component.translatable("advancement.chromaticarsenal." + itemLike + ".title"),
+                        Component.translatable("advancement.chromaticarsenal." + itemLike + ".description"),
+                        null,
+                        frameType,
+                        true,
+                        true,
+                        false
+                );
+    }
+
+    private Advancement simpleHasItemRecipe(ItemLike itemLike, Consumer<Advancement> consumer, ExistingFileHelper fileHelper) {
+        return simpleHasItemBase(itemLike).save(consumer, new ResourceLocation(Reference.MODID, itemLike.toString()), fileHelper);
+    }
+
+    private Advancement displayedHasItem(ItemLike itemLike, Consumer<Advancement> consumer, ExistingFileHelper fileHelper, FrameType frameType, ResourceLocation parent) {
+        return displayedHasItemBase(itemLike, frameType)
+                .parent(parent)
+                .save(consumer, new ResourceLocation(Reference.MODID, itemLike.toString()), fileHelper);
+    }
+
+    private Advancement displayedHasItem(ItemLike itemLike, Consumer<Advancement> consumer, ExistingFileHelper fileHelper, FrameType frameType, Advancement parent) {
+        return displayedHasItemBase(itemLike, frameType)
+                .parent(parent)
                 .save(consumer, new ResourceLocation(Reference.MODID, itemLike.toString()), fileHelper);
     }
 
     @Override
-    @SuppressWarnings("unused")
+    @SuppressWarnings("unused") // most of these are considered unused by intellij
     protected void registerAdvancements(@NotNull Consumer<Advancement> consumer, @NotNull ExistingFileHelper fileHelper) {
-        Advancement chromaShard = simpleHasItemRecipe(ModItems.CHROMA_SHARD.get(), consumer, fileHelper);
-        Advancement ascensionEssence = simpleHasItemRecipe(ModItems.ASCENSION_ESSENCE.get(), consumer, fileHelper);
+        Advancement chromaShard = displayedHasItem(ModItems.CHROMA_SHARD.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/root"));
+        Advancement ascensionEssence = displayedHasItem(ModItems.ASCENSION_ESSENCE.get(), consumer, fileHelper, FrameType.GOAL, chromaShard);
         Advancement spicyCoal = simpleHasItemRecipe(ModItems.SPICY_COAL.get(), consumer, fileHelper);
         Advancement magicGarlicBread = simpleHasItemRecipe(ModItems.MAGIC_GARLIC_BREAD.get(), consumer, fileHelper);
         Advancement cosmicola = simpleHasItemRecipe(ModItems.COSMICOLA.get(), consumer, fileHelper);
         Advancement harpyFeather = simpleHasItemRecipe(ModItems.HARPY_FEATHER.get(), consumer, fileHelper);
 
-        Advancement goldenHeart = simpleHasItemRecipe(ModItems.GOLDEN_HEART.get(), consumer, fileHelper);
+        Advancement goldenHeart = displayedHasItem(ModItems.GOLDEN_HEART.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("nether/loot_bastion"));
         Advancement glassShield = simpleHasItemRecipe(ModItems.GLASS_SHIELD.get(), consumer, fileHelper);
         Advancement wardCrystal = simpleHasItemRecipe(ModItems.WARD_CRYSTAL.get(), consumer, fileHelper);
         Advancement shadowTreads = simpleHasItemRecipe(ModItems.SHADOW_TREADS.get(), consumer, fileHelper);
         Advancement dualityRings = simpleHasItemRecipe(ModItems.DUALITY_RINGS.get(), consumer, fileHelper);
         Advancement friendlyFireFlower = simpleHasItemRecipe(ModItems.FRIENDLY_FIRE_FLOWER.get(), consumer, fileHelper);
-        Advancement lunarCrystal = simpleHasItemRecipe(ModItems.LUNAR_CRYSTAL.get(), consumer, fileHelper);
-        Advancement cryoRing = simpleHasItemRecipe(ModItems.CRYO_RING.get(), consumer, fileHelper);
+        Advancement lunarCrystal = displayedHasItem(ModItems.LUNAR_CRYSTAL.get(), consumer, fileHelper, FrameType.GOAL, new ResourceLocation("end/find_end_city"));
+        Advancement cryoRing = displayedHasItem(ModItems.CRYO_RING.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/walk_on_powder_snow_with_leather_boots"));
 
-        Advancement ascendedStar = simpleHasItemRecipe(ModItems.ASCENDED_STAR.get(), consumer, fileHelper);
+        Advancement ascendedStar = displayedHasItem(ModItems.ASCENDED_STAR.get(), consumer, fileHelper, FrameType.CHALLENGE, ascensionEssence);
         Advancement worldAnchor = simpleHasItemRecipe(ModItems.WORLD_ANCHOR.get(), consumer, fileHelper);
 
         Advancement superGoldenHeart = simpleHasItemRecipe(ModItems.SUPER_GOLDEN_HEART.get(), consumer, fileHelper);
