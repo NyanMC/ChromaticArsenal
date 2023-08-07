@@ -1,0 +1,17 @@
+{
+  "name": "Chroma Salvager",
+  "icon": "chromaticarsenal:chroma_salvager",
+  "category": "chromaticarsenal:item_lore",
+  "advancement": "chromaticarsenal:chroma_salvager",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "A strange item, capable of sapping chromatic energy out of an item to manifest it as a new Chroma Shard. I have yet to understand how it works, but it emits a dangerous aura. Be careful with this.",
+      "item": "chromaticarsenal:chroma_salvager"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These were initially made with ill intent, by those that wanted to rid others of their chromatic magic. When an item in need of chromatic magic has that magic taken away, it becomes unstable and destroys itself immediately. Super Curios have potent enough magic to prevent themselves from being fully destroyed, instead merely being downgraded."
+    }
+  ]
+}
