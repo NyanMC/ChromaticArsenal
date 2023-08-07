@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
+import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.init.ModTags;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
@@ -83,6 +84,7 @@ public class ChromaSalvager extends Item {
             }
             salvageTarget.shrink(1);
             player.awardStat(Stats.ITEM_USED.get(this));
+            player.awardStat(ModStats.CHROMA_SALVAGER_USES);
             itemstack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
         }
 

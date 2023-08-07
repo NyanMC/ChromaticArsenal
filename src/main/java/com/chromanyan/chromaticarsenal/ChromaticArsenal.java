@@ -75,6 +75,7 @@ public class ChromaticArsenal {
     private void setup(final FMLCommonSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new EventClassInstance());
         Registry.register(Registry.CUSTOM_STAT, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION);
+        Registry.register(Registry.CUSTOM_STAT, ModStats.CHROMA_SALVAGER_USES_LOCATION, ModStats.CHROMA_SALVAGER_USES_LOCATION);
         Stats.CUSTOM.get(ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, StatFormatter.DIVIDE_BY_TEN);
         ModStats.load();
     }

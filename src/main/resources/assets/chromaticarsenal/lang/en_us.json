@@ -59,6 +59,7 @@
   "message.chromaticarsenal.cannot_salvage_air": "You can't salvage air!",
   "message.chromaticarsenal.salvage_blacklisted": "A mysterious force prevents this curio from being salvaged.",
   "message.chromaticarsenal.invalid_salvage": "This item doesn't contain chromatic energy.",
+  "stat.chromaticarsenal.chroma_salvager_uses": "Chromatic Curios Salvaged",
 
   "block.chromaticarsenal.chroma_block": "Chroma Block",
 
