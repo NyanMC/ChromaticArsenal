@@ -33,7 +33,7 @@ public class CARecipes extends RecipeProvider {
         return "Chromatic Arsenal Recipes";
     }
 
-    // center is only ever a chroma shard or ascension essence in these
+    // center is only ever a chromatic arsenal ingredient
     private void nyanPatternRecipe(@NotNull Consumer<FinishedRecipe> consumer, ItemLike output, ItemLike corners, ItemLike edges, TagKey<Item> center, String name) {
         ShapedRecipeBuilder.shaped(output, 1)
                 .pattern("aba")
@@ -110,6 +110,15 @@ public class CARecipes extends RecipeProvider {
                 .define('c', ModItems.SUPER_SHADOW_TREADS.get())
                 .unlockedBy("has_chroma_shard", has(ASCENSION_ESSENCE))
                 .save(consumer, new ResourceLocation(Reference.MODID, "ascended_star"));
+        ShapedRecipeBuilder.shaped(ModItems.CHROMA_SALVAGER.get(), 1)
+                .pattern("ggg")
+                .pattern("scs")
+                .pattern("ggg")
+                .define('s', ModItems.SPICY_COAL.get())
+                .define('c', ModItems.CHROMA_SHARD.get())
+                .define('g', Items.GOLD_INGOT)
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(Reference.MODID, "chroma_salvager"));
 
         chromaUpgrade(consumer, Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");
         chromaUpgrade(consumer, Items.NETHERITE_SCRAP, ModItems.SPICY_COAL.get(), ModItems.MAGMATIC_SCRAP.get(), "magmatic_scrap");

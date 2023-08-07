@@ -66,6 +66,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement spicyCoal = simpleHasItemRecipe(ModItems.SPICY_COAL.get(), consumer, fileHelper);
         Advancement magicGarlicBread = simpleHasItemRecipe(ModItems.MAGIC_GARLIC_BREAD.get(), consumer, fileHelper);
         Advancement cosmicola = simpleHasItemRecipe(ModItems.COSMICOLA.get(), consumer, fileHelper);
+        Advancement chromaSalvager = displayedHasItem(ModItems.CHROMA_SALVAGER.get(), consumer, fileHelper, FrameType.GOAL, chromaShard);
         Advancement harpyFeather = simpleHasItemRecipe(ModItems.HARPY_FEATHER.get(), consumer, fileHelper);
 
         Advancement goldenHeart = displayedHasItem(ModItems.GOLDEN_HEART.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("nether/loot_bastion"));

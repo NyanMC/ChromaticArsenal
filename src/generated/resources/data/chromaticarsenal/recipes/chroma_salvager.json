@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "item": "chromaticarsenal:chroma_shard"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "s": {
+      "item": "chromaticarsenal:spicy_coal"
+    }
+  },
+  "pattern": [
+    "ggg",
+    "scs",
+    "ggg"
+  ],
+  "result": {
+    "item": "chromaticarsenal:chroma_salvager"
+  }
+}

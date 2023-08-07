@@ -1,12 +1,12 @@
 {
-  "parent": "minecraft:adventure/walk_on_powder_snow_with_leather_boots",
+  "parent": "chromaticarsenal:chroma_shard",
   "criteria": {
     "has_item": {
       "conditions": {
         "items": [
           {
             "items": [
-              "chromaticarsenal:cryo_ring"
+              "chromaticarsenal:chroma_salvager"
             ]
           }
         ]
@@ -17,16 +17,17 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancement.chromaticarsenal.cryo_ring.description"
+      "translate": "advancement.chromaticarsenal.chroma_salvager.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "chromaticarsenal:cryo_ring"
+      "item": "chromaticarsenal:chroma_salvager",
+      "nbt": "{Damage:0}"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancement.chromaticarsenal.cryo_ring.title"
+      "translate": "advancement.chromaticarsenal.chroma_salvager.title"
     }
   },
   "requirements": [
