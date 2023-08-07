@@ -7,6 +7,10 @@
       "type": "patchouli:crafting",
       "text": "The Chroma Salvager is an item which can be used to recycle extra or unwanted chromatic curios and receive a Chroma Shard or Essence of Ascension in return. If a Super Curio is salvaged, it also returns its standard variant. It targets the item in the opposite hand.",
       "recipe": "chromaticarsenal:chroma_salvager"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When salvaging an item, the Chroma Salvager takes durability damage. It can salvage 8 items before breaking, however accepts durability-related enchantments such as Unbreaking and Mending."
     }
   ]
 }

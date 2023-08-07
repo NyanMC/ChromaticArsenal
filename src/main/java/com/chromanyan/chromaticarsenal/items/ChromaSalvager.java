@@ -7,6 +7,8 @@ import com.chromanyan.chromaticarsenal.init.ModTags;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -29,6 +31,16 @@ public class ChromaSalvager extends Item {
                 .stacksTo(1)
                 .defaultDurability(8)
                 .rarity(Rarity.UNCOMMON));
+    }
+
+    @Override
+    public boolean isEnchantable(@NotNull ItemStack p_77616_1_) {
+        return true;
+    }
+
+    @Override
+    public int getEnchantmentValue(ItemStack stack) {
+        return 1;
     }
 
     @Override
@@ -85,6 +97,7 @@ public class ChromaSalvager extends Item {
             salvageTarget.shrink(1);
             player.awardStat(Stats.ITEM_USED.get(this));
             player.awardStat(ModStats.CHROMA_SALVAGER_USES);
+            player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 0.8f, 1f);
             itemstack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
         }
 
