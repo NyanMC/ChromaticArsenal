@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.init.ModTags;
@@ -24,6 +25,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class ChromaSalvager extends Item {
+
+    private static final ModConfig.Common config = ModConfig.COMMON;
 
     public ChromaSalvager() {
         super(new Item.Properties()
@@ -71,9 +74,11 @@ public class ChromaSalvager extends Item {
             if (!salvageTarget.is(ModTags.Items.NO_SALVAGE)) {
                 Item salvageItem = salvageTarget.getItem();
                 if (salvageItem instanceof ISuperCurio) {
-                    ItemStack inferiorReturn = new ItemStack(((ISuperCurio) salvageItem).getInferiorVariant().get());
-                    if (!player.getInventory().add(inferiorReturn)) { // return the inferior variant as well
-                        player.drop(inferiorReturn, false);
+                    if (config.returnInferiorVariant.get()) {
+                        ItemStack inferiorReturn = new ItemStack(((ISuperCurio) salvageItem).getInferiorVariant().get());
+                        if (!player.getInventory().add(inferiorReturn)) {
+                            player.drop(inferiorReturn, false);
+                        }
                     }
 
                     salvageReturn = ModItems.ASCENSION_ESSENCE.get();
@@ -98,7 +103,8 @@ public class ChromaSalvager extends Item {
             player.awardStat(Stats.ITEM_USED.get(this));
             player.awardStat(ModStats.CHROMA_SALVAGER_USES);
             player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 0.8f, 1f);
-            itemstack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
+            if (config.canDamageSalvager.get())
+                itemstack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
         }
 
         return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());

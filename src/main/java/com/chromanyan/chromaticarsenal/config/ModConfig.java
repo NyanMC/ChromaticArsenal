@@ -75,6 +75,9 @@ public class ModConfig {
         public final IntValue bonusLooting;
         public final IntValue bonusFortune;
 
+        public final BooleanValue canDamageSalvager;
+        public final BooleanValue returnInferiorVariant;
+
         public final BooleanValue lootTableInsertion;
         public final BooleanValue superCuriosOnlyInRespectiveSlot;
 
@@ -274,6 +277,15 @@ public class ModConfig {
                     .comment("The amount of additional looting levels granted upon equipping the star.")
                     .defineInRange("bonusLooting", 1, 0, Integer.MAX_VALUE);
             builder.pop();
+            builder.pop();
+
+            builder.push("ChromaSalvagerSettings");
+            canDamageSalvager = builder
+                    .comment("Should the Chroma Salvager take damage when used? Doesn't remove durability from the tool entirely, merely prevents it from taking damage.")
+                    .define("canDamageSalvager", true);
+            returnInferiorVariant = builder
+                    .comment("When salvaging a Super Curio, should the standard variant of the curio be returned as well?")
+                    .define("returnInferiorVaruant", true);
             builder.pop();
 
             lootTableInsertion = builder
