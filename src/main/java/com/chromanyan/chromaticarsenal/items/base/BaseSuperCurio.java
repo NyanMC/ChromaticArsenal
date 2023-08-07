@@ -15,7 +15,6 @@ import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Optional;
 
-@SuppressWarnings("unused") // getInferiorVariant exists in case another class needs that information
 public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
 
     private final RegistryObject<Item> inferiorVariant;

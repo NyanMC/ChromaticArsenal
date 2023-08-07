@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.init;
 
+import com.chromanyan.chromaticarsenal.Reference;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -19,6 +20,8 @@ public class ModTags {
         public static final TagKey<Item> STORAGE_BLOCKS_CHROMA = forgeTag("storage_blocks/chroma");
 
         public static final TagKey<Item> DUSTS_ASCENSION = forgeTag("dusts/ascension");
+
+        public static final TagKey<Item> NO_SALVAGE = ItemTags.create(new ResourceLocation(Reference.MODID, "no_salvage"));
     }
 
     public static class Blocks {

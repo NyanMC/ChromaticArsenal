@@ -51,6 +51,15 @@
 
   "item.chromaticarsenal.magic_garlic_bread": "Magic Garlic Bread",
   "item.chromaticarsenal.cosmicola": "Cosmicola",
+
+  "item.chromaticarsenal.chroma_salvager": "Chroma Salvager",
+  "tooltip.chromaticarsenal.chroma_salvager.1": "§6When used, extracts chromatic energy from the item in the other hand, destroying it in the process",
+  "tooltip.chromaticarsenal.chroma_salvager.2": "§6This energy is manifested into a new Chroma Shard or Essence of Ascension",
+  "tooltip.chromaticarsenal.chroma_salvager.3": "§6Using this on a Super Curio will also return its standard form",
+  "message.chromaticarsenal.cannot_salvage_air": "You can't salvage air!",
+  "message.chromaticarsenal.salvage_blacklisted": "A mysterious force prevents this curio from being salvaged.",
+  "message.chromaticarsenal.invalid_salvage": "This item doesn't contain chromatic energy.",
+
   "block.chromaticarsenal.chroma_block": "Chroma Block",
 
   "curios.identifier.super_curio": "Super Curio",
