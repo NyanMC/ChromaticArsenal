@@ -177,6 +177,7 @@ dependencies {
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.4.1")
 
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    runtimeOnly fg.deobf("curse.maven:project-240630:3951643") // just enough resources 1.1.0.179
 
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77")
