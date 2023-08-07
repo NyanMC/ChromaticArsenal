@@ -156,16 +156,16 @@ public class EventClassInstance {
 
         switch (event.getName().getPath()) {
             case "chests/bastion_treasure", "gameplay/piglin_bartering" ->
-                    injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(4).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(6).build());
             case "chests/end_city_treasure" -> {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL.get()).setWeight(2).build());
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.COSMICOLA.get()).setWeight(5).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.COSMICOLA.get()).setWeight(8).build());
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD.get()).setWeight(10).build());
             }
             case "chests/ruined_portal" ->
-                    injectInto(event, "main", LootItem.lootTableItem(ModItems.SPICY_COAL.get()).setWeight(8).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.SPICY_COAL.get()).setWeight(24).build());
             case "chests/igloo_chest" -> {
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get()).setWeight(3).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get()).setWeight(5).build());
             }
         }
 
@@ -184,7 +184,7 @@ public class EventClassInstance {
         event.getRareTrades().add(new BasicItemListing(
                 rand.nextInt(16, 24),
                 new ItemStack(ModItems.CHROMA_SHARD.get()),
-                1,
+                3,
                 3
         ));
     }
