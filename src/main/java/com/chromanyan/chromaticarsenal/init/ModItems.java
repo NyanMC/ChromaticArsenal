@@ -46,6 +46,7 @@ public class ModItems {
     public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = ITEMS_REGISTRY.register("magic_garlic_bread", MagicGarlicBread::new);
     public static final RegistryObject<Item> COSMICOLA = ITEMS_REGISTRY.register("cosmicola", Cosmicola::new);
     public static final RegistryObject<Item> CHROMA_SALVAGER = ITEMS_REGISTRY.register("chroma_salvager", ChromaSalvager::new);
+    public static final RegistryObject<Item> DEBUG = ITEMS_REGISTRY.register("viewer_item", CurioDebug::new);
 
     public static final RegistryObject<BlockItem> CHROMA_BLOCK_ITEM = ITEMS_REGISTRY.register("chroma_block", () -> new BlockItem(ModBlocks.CHROMA_BLOCK.get(), new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON)));
 

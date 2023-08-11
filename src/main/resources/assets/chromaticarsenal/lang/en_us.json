@@ -89,6 +89,10 @@
   "item.chromaticarsenal.world_anchor": "World Anchor",
   "tooltip.chromaticarsenal.world_anchor.1": "§6The effects of this curio are more severe the further you are from the bottom of the world",
 
+  "item.chromaticarsenal.viewer_item": "Viewer Item",
+  "tooltip.chromaticarsenal.viewer_item.1": "Even after several Minecraft version updates, it's still a Debug Item",
+  "tooltip.chromaticarsenal.viewer_item.2": "This item's functionality may change in a later version, don't rely on it!",
+
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",
   "tooltip.chromaticarsenal.cursed": "Once equipped, this curio will persist with you forever.",
 
