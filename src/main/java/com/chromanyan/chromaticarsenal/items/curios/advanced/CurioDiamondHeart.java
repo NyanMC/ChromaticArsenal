@@ -20,6 +20,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 
@@ -73,5 +74,11 @@ public class CurioDiamondHeart extends BaseSuperCurio {
                 }
             }
         }
+    }
+
+    @NotNull
+    @Override
+    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
+        return new ICurio.SoundInfo(SoundEvents.ARMOR_EQUIP_DIAMOND, 0.5F, 1);
     }
 }

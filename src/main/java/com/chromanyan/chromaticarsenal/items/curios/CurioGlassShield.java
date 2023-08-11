@@ -20,6 +20,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.Random;
@@ -98,5 +99,11 @@ public class CurioGlassShield extends BaseCurioItem {
                 event.setCanceled(true);
             }
         }
+    }
+
+    @NotNull
+    @Override
+    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
+        return new ICurio.SoundInfo(SoundEvents.GLASS_PLACE, 0.5F, 1);
     }
 }

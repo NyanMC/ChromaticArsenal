@@ -6,6 +6,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -34,6 +35,12 @@ public class CurioLimitBreak extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.ascended_star.1", "§b" + config.bonusFortune.get(), "§b" + config.bonusLooting.get()));
         list.add(Component.translatable("tooltip.chromaticarsenal.ascended_star.2", "§b" + config.damageMultiplier.get()));
         list.add(Component.translatable("tooltip.chromaticarsenal.cursed").withStyle(ChatFormatting.RED));
+    }
+
+    @NotNull
+    @Override
+    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
+        return new ICurio.SoundInfo(SoundEvents.BEACON_DEACTIVATE, 0.5F, 1);
     }
 
     @Override

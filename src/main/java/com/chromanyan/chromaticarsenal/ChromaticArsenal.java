@@ -5,10 +5,7 @@ import com.chromanyan.chromaticarsenal.datagen.CAAdvancements;
 import com.chromanyan.chromaticarsenal.datagen.CAModels;
 import com.chromanyan.chromaticarsenal.datagen.CARecipes;
 import com.chromanyan.chromaticarsenal.events.EventClassInstance;
-import com.chromanyan.chromaticarsenal.init.ModBlocks;
-import com.chromanyan.chromaticarsenal.init.ModItems;
-import com.chromanyan.chromaticarsenal.init.ModPotions;
-import com.chromanyan.chromaticarsenal.init.ModStats;
+import com.chromanyan.chromaticarsenal.init.*;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -50,6 +47,7 @@ public class ChromaticArsenal {
         bus.addListener(this::enqueueIMC);
         bus.addListener(this::gatherData);
 
+        ModSounds.SOUNDS_REGISTRY.register(bus);
         ModBlocks.BLOCKS_REGISTRY.register(bus);
         ModItems.ITEMS_REGISTRY.register(bus);
         ModPotions.EFFECTS_REGISTRY.register(bus);

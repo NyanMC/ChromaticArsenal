@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
+import com.chromanyan.chromaticarsenal.init.ModSounds;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -10,6 +11,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 
@@ -37,4 +39,9 @@ public class CurioDebug extends BaseCurioItem {
         }
     }
 
+    @NotNull
+    @Override
+    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
+        return new ICurio.SoundInfo(ModSounds.DIAL_UP.get(), 0.5F, 1);
+    }
 }

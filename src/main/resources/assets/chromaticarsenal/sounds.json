@@ -1,0 +1,10 @@
+{
+  "dial_up": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "chromaticarsenal:dial_up"
+      }
+    ]
+  }
+}

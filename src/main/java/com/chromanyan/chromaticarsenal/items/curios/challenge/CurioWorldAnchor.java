@@ -7,6 +7,7 @@ import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -72,4 +73,9 @@ public class CurioWorldAnchor extends BaseCurioItem {
         return atts;
     }
 
+    @NotNull
+    @Override
+    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
+        return new ICurio.SoundInfo(SoundEvents.ANVIL_LAND, 0.5F, 1);
+    }
 }
