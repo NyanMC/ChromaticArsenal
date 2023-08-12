@@ -7,6 +7,7 @@
   "tooltip.chromaticarsenal.golden_heart.1": "§6Grants the Absorption effect at level %1$s",
   "tooltip.chromaticarsenal.golden_heart.2": "§6This effect is re-applied every %1$s§6 second(s)",
   "tooltip.chromaticarsenal.golden_heart.3": "§6Functions like gold armor for Piglins",
+  "tooltip.chromaticarsenal.golden_heart.twisted": "§cChromatic Twisting: Taking damage from a mob inflicts Wither on both the wearer and the attacker for %1$s§c second(s)",
 
   "item.chromaticarsenal.glass_shield": "Glass Shield",
   "tooltip.chromaticarsenal.glass_shield.1": "§6Fully absorbs the damage of one attack, and then shatters",
@@ -105,7 +106,7 @@
   "effect.chromaticarsenal.chilled.description": "Reduces movement speed by 30% and causes the target entity to freeze as if they were standing in Powder Snow",
 
   "enchantment.chromaticarsenal.chromatic_twisting": "Curse of Chromatic Twisting",
-  "enchantment.chromaticarsenal.chromatic_twisting.desc": "Increases the power of the chromatic curio, but adds a negative effect",
+  "enchantment.chromaticarsenal.chromatic_twisting.desc": "Adds a negative effect to the curio, but in exchange grants another positive ability to the curio",
 
   "itemGroup.chromaticarsenal": "Chromatic Arsenal",
 

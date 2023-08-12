@@ -1,0 +1,11 @@
+{
+  "name": "Curse of Chromatic Twisting",
+  "icon": "minecraft:enchanted_book",
+  "category": "chromaticarsenal:misc",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Chromatic Arsenal adds a single, curse enchantment: The Curse of Chromatic Twisting. This curse, when applied to any chromatic curio that supports it, will add a harmful side-effect to the curio. At the same time, however, the curio will be granted a beneficial secondary ability. The effects of Chromatic Twisting on a given curio are listed on that curio's guidebook page. This curse can be sold by Librarians."
+    }
+  ]
+}

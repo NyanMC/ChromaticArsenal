@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
@@ -20,6 +21,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
@@ -37,6 +39,9 @@ public class CurioGoldenHeart extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.1", "§b" + (config.absorptionLevel.get() + 1)));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.2", "§b" + (getEffectCooldown(stack) / 20)));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3"));
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+            list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.twisted", "§b" + (config.twistedWitherDuration.get() / 20)));
+        }
     }
 
     private int getEffectCooldown(ItemStack stack) {
@@ -64,6 +69,16 @@ public class CurioGoldenHeart extends BaseCurioItem {
         entity.removeEffect(MobEffects.ABSORPTION);
         if (entity.getHealth() > entity.getMaxHealth()) {
             entity.setHealth(entity.getMaxHealth()); // to be honest i have no clue if this will even do anything, depends on if onUnequip processes before or after attribute changes
+        }
+    }
+
+    @Override
+    public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+            if (event.getSource().getEntity() != null && event.getSource().getEntity() instanceof LivingEntity livingAttacker && event.getAmount() > 0) {
+                player.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0));
+                livingAttacker.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0));
+            }
         }
     }
 

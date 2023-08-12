@@ -16,6 +16,7 @@ public class ModConfig {
         public final IntValue absorptionDuration;
         public final DoubleValue enchantmentMaxHealthIncrease;
         public final IntValue enchantmentAbsorptionReduction;
+        public final IntValue twistedWitherDuration;
 
         public final IntValue cooldownDuration;
         public final IntValue enchantmentCooldownReduction;
@@ -87,25 +88,24 @@ public class ModConfig {
             maxHealthBoost = builder
                     .comment("The max health granted when the player equips a golden heart.")
                     .defineInRange("maxHealthBoost", 4.0, Double.MIN_VALUE, Double.MAX_VALUE);
-
             maxHealthBoostOperation = builder
                     .comment("The operation used for the health bonus. 0 for additive, 1 for multiply base, 2 for multiply total.")
                     .defineInRange("maxHealthBoostOperation", 0, 0, 2);
-
             absorptionLevel = builder
                     .comment("The level of the absorption effect applied to the player while wearing the trinket. 0 is equivalent to effect level 1.")
                     .defineInRange("absorptionLevel", 0, 0, 255);
-
             absorptionDuration = builder
                     .comment("The duration of the absorption effect, in ticks. When this hits zero, the effect is re-applied.")
                     .defineInRange("absorptionDuration", 400, 1, Integer.MAX_VALUE);
-
             enchantmentMaxHealthIncrease = builder
                     .comment("The extra max health gained per level of Protection on the Golden Heart. This obeys the operation, so if you set maxHealthBoostOperation to either 1 or 2, it's recommended to keep this at 0.1 at most.")
                     .defineInRange("enchantmentMaxHealthIncrease", 1.0, 0.0, Double.MAX_VALUE);
             enchantmentAbsorptionReduction = builder
                     .comment("The amount in which the duration of the absorption effect is reduced, in ticks. This allows for faster reapplication of the effect.")
                     .defineInRange("enchantmentAbsorptionReduction", 20, 0, Integer.MAX_VALUE);
+            twistedWitherDuration = builder
+                    .comment("The duration of the Wither effect, in ticks, when the Golden Heart's Chromatic Twisting effect procs.")
+                    .defineInRange("twistedWitherDuration", 200, 0, Integer.MAX_VALUE);
             builder.pop();
 
             builder.push("GlassShieldSettings");
