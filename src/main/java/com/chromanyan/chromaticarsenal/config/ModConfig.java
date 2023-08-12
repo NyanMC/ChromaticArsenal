@@ -21,6 +21,7 @@ public class ModConfig {
         public final IntValue cooldownDuration;
         public final IntValue enchantmentCooldownReduction;
         public final DoubleValue enchantmentFreeBlockChance;
+        public final DoubleValue twistedShatterDamageMultiplier;
 
         public final DoubleValue antiMagicMultiplierIncoming;
         public final DoubleValue antiMagicMultiplierOutgoing;
@@ -118,6 +119,9 @@ public class ModConfig {
             enchantmentFreeBlockChance = builder
                     .comment("The percent chance per level of Unbreaking to prevent the Glass Shield from shattering after blocking a hit. This is rounded up to the nearest whole number in-game. If your modpack has the ability to grant you outrageous levels of unbreaking (looking at you, Apotheosis), this should be set to a low value or kept at the default.")
                     .defineInRange("enchantmentFreeBlockChance", 2D, 0D, 100D);
+            twistedShatterDamageMultiplier = builder
+                    .comment("The multiplier for damage taken when a Glass Shield enchanted with Chromatic Twisting procs.")
+                            .defineInRange("twistedShatterDamageMultiplier", 1.5D, 1, Double.MAX_VALUE);
             builder.pop();
 
             builder.push("WardCrystalSettings");

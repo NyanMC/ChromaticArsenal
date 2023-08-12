@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
@@ -9,6 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -30,6 +32,7 @@ public class CurioGlassShield extends BaseCurioItem {
 
     private final Random rand = new Random();
     private final ModConfig.Common config = ModConfig.COMMON;
+    private static final DamageSource GLASS_SHRAPNEL = new DamageSource("chromaticarsenal.glass_shrapnel");
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -37,6 +40,9 @@ public class CurioGlassShield extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.2", "§b" + (((float) getCooldownDuration(stack)) / 20)));
         if (getFreeBlockChance(stack) > 0) {
             list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.3", "§b" + getFreeBlockChance(stack)));
+        }
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+            list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.twisted", "§b" + config.twistedShatterDamageMultiplier.get()));
         }
         CompoundTag nbt = stack.getOrCreateTag();
         if (!CooldownHelper.isCooldownFinished(nbt)) {
@@ -95,8 +101,17 @@ public class CurioGlassShield extends BaseCurioItem {
                     int hitDamage = Math.round(event.getAmount() * 10.0F);
                     playerEntity.awardStat(ModStats.GSHIELD_TOTAL_BLOCK, hitDamage);
                 }
+                if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                    if (event.getSource().getEntity() != null && event.getSource().getEntity() instanceof LivingEntity livingAttacker) {
+                        livingAttacker.hurt(GLASS_SHRAPNEL, event.getAmount());
+                    }
+                }
                 event.setAmount(0);
                 event.setCanceled(true);
+            } else {
+                if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                    event.setAmount(event.getAmount() * config.twistedShatterDamageMultiplier.get().floatValue());
+                }
             }
         }
     }

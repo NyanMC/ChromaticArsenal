@@ -9,7 +9,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "The Glass Shield supports the following enchantments:$(br2)$(l)Mending$(): Decreases the duration it takes for the curio to recharge$(br)$(l)Unbreaking$(): Grants a (small) chance to prevent the curio from shattering when blocking a hit"
+      "text": "The Glass Shield supports the following enchantments:$(br2)$(l)Mending$(): Decreases the duration it takes for the curio to recharge$(br2)$(l)Unbreaking$(): Grants a (small) chance to prevent the curio from shattering when blocking a hit$(br2)$(l)Curse of Chromatic Twisting$(): Damage taken is increased while the shield is broken, however blocked damage is returned to the attacker"
     },
     {
       "type": "patchouli:crafting",
