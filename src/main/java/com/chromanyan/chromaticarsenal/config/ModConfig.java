@@ -25,10 +25,13 @@ public class ModConfig {
 
         public final DoubleValue antiMagicMultiplierIncoming;
         public final DoubleValue antiMagicMultiplierOutgoing;
+        public final IntValue twistedWeaknessDuration;
+        public final DoubleValue antiMagicProtectionModifier;
 
         public final IntValue darkspeedPotency;
         public final DoubleValue enchantmentSpeedMultiplier;
         public final IntValue maxLightLevel;
+        public final DoubleValue shadowDodgeChance;
 
         public final DoubleValue aroOfClubsMultiplier;
         public final IntValue strengthLevel;
@@ -121,17 +124,22 @@ public class ModConfig {
                     .defineInRange("enchantmentFreeBlockChance", 2D, 0D, 100D);
             twistedShatterDamageMultiplier = builder
                     .comment("The multiplier for damage taken when a Glass Shield enchanted with Chromatic Twisting procs.")
-                            .defineInRange("twistedShatterDamageMultiplier", 1.5D, 1, Double.MAX_VALUE);
+                    .defineInRange("twistedShatterDamageMultiplier", 1.5D, 1, Double.MAX_VALUE);
             builder.pop();
 
             builder.push("WardCrystalSettings");
             antiMagicMultiplierIncoming = builder
                     .comment("The multiplier for incoming magic damage when wearing a Ward Crystal. 0.0 completely nullifies the attack, and 1.0 does not change the attack strength at all.")
                     .defineInRange("antiMagicMultiplierIncoming", 0.25, 0.0, Double.MAX_VALUE);
-
             antiMagicMultiplierOutgoing = builder
                     .comment("The multiplier for outgoing magic damage when wearing a Ward Crystal. 0.0 completely nullifies the attack, and 1.0 does not change the attack strength at all.")
                     .defineInRange("antiMagicMultiplierOutgoing", 0.25, 0.0, Double.MAX_VALUE);
+            twistedWeaknessDuration = builder
+                    .comment("The duration of the Weakness effect, in ticks, when the Ward Crystal's Chromatic Twisting effect procs.")
+                    .defineInRange("twistedWeaknessDuration", 200, 0, Integer.MAX_VALUE);
+            antiMagicProtectionModifier = builder
+                    .comment("The additional percentage reduction per level of Protection. Can be negative to increase damage instead, if you want that for whatever reason. If using a mod which changes how many levels of Protection exist, this number should be decreased.")
+                    .defineInRange("antiMagicProtectionModifier", 0.05, -1, 1);
             builder.pop();
 
             builder.push("ShadowTreadsSettings");
@@ -144,6 +152,9 @@ public class ModConfig {
             maxLightLevel = builder
                     .comment("The maximum light level in which the Shadow Charm takes effect. Values below 4 are not recommended, as sky light causes the minimum light value to always be 4 on the surface, even at midnight.")
                     .defineInRange("maxLightLevel", 7, 0, 15);
+            shadowDodgeChance = builder
+                    .comment("The chance to dodge an attack while in darkness with Shadow Treads enchanted with Chromatic Twisting. Beware that a value of 1 will make every hit guaranteed to be dodged.")
+                    .defineInRange("shadowDodgeChance", 0.2, 0, 1);
             builder.pop();
 
             builder.push("DualityRingsSettings");

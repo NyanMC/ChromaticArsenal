@@ -3,11 +3,13 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -23,6 +25,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.event.VanillaGameEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
@@ -42,6 +45,8 @@ public class CurioShadowTreads extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.2", "§b" + (config.darkspeedPotency.get() + 1), "§b" + config.maxLightLevel.get()));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.3"));
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", "§b" + Math.round(config.shadowDodgeChance.get() * 100)));
     }
 
     @SuppressWarnings("all")
@@ -52,6 +57,20 @@ public class CurioShadowTreads extends BaseCurioItem {
         if (world != null && !world.isClientSide()) {
             if (world.getMaxLocalRawBrightness(livingEntity.blockPosition()) <= config.maxLightLevel.get()) {
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, config.darkspeedPotency.get(), true, true));
+            } else if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 105, 0, true, true));
+            }
+        }
+    }
+
+    @Override
+    public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0 && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
+            Level world = player.getCommandSenderWorld(); // we already checked that this is serverside back in the event class
+            if (world.getMaxLocalRawBrightness(player.blockPosition()) <= config.maxLightLevel.get() && Math.random() < config.shadowDodgeChance.get()) {
+                player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 0.8f, 3f);
+                event.setAmount(0);
+                event.setCanceled(true);
             }
         }
     }

@@ -22,11 +22,13 @@
   "item.chromaticarsenal.ward_crystal": "Ward Crystal",
   "tooltip.chromaticarsenal.ward_crystal.1": "§aReduces magic damage taken by %1$s§b%%",
   "tooltip.chromaticarsenal.ward_crystal.2": "§cReduces magic damage dealt by %1$s§b%%",
+  "tooltip.chromaticarsenal.ward_crystal.twisted": "§cChromatic Twisting: Removes the magic damage penalty, however taking non-magic damage inflicts Weakness II for %1$s§c second(s)",
 
   "item.chromaticarsenal.shadow_treads": "Shadow Charm",
   "tooltip.chromaticarsenal.shadow_treads.1": "§6Grants immunity to Slowness",
   "tooltip.chromaticarsenal.shadow_treads.2": "§6Grants the Speed effect at level %1$s§6 when in a light level of %2$s§6 or less",
   "tooltip.chromaticarsenal.shadow_treads.3": "§6Prevents activation of Sculk Sensors from walking or falling short distances",
+  "tooltip.chromaticarsenal.shadow_treads.twisted": "§cChromatic Twisting: Adds a %1$s§b%%§c chance to dodge attacks in darkness, however being in light causes Blindness",
 
   "item.chromaticarsenal.duality_rings": "Duality Rings",
   "tooltip.chromaticarsenal.duality_rings.1": "§dIncreases the effectiveness of Magic Garlic Bread",

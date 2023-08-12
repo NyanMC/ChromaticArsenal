@@ -12,6 +12,10 @@
       "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+75%$() Magic Damage Reduction$(br)$(4)-75%$() Magic Damage$(br)"
     },
     {
+      "type": "patchouli:text",
+      "text": "The Ward Crystal supports the following enchantments:$(br2)$(l)Protection$(): Further reduces magic damage dealt and taken$(br2)$(l)Curse of Chromatic Twisting$(): Removes the penalty to magic damage dealt, however taking non-magic damage inflicts Weakness II"
+    },
+    {
       "type": "patchouli:crafting",
       "text": "$(o)It looks like an amethyst, but is in fact just some crystallized sunscreen with an added dose of Fermented Spider Eye.",
       "recipe": "chromaticarsenal:ward_crystal"

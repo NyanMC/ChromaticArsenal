@@ -9,7 +9,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "The Shadow Charm supports the following enchantments:$(br2)$(l)Soul Speed$(): Grants an additional passive speed boost per level"
+      "text": "The Shadow Charm supports the following enchantments:$(br2)$(l)Soul Speed$(): Grants an additional passive speed boost per level$(br2)$(l)Curse of Chromatic Twisting$(): Adds a moderate chance to dodge attacks in darkness, however being in light causes Blindness"
     },
     {
       "type": "patchouli:crafting",
