@@ -1,9 +1,12 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -23,12 +26,24 @@ public class CurioDualityRings extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", "§b" + (int) ((config.aroOfClubsMultiplier.get() - 1) * 100)));
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+            list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.twisted", "§b" + (config.twistedSaturationDuration.get() / 20), "§b" + (config.twistedHungerLevel.get() + 1)));
     }
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
         if (event.getSource().isProjectile()) {
             event.setAmount((float) (event.getAmount() * config.aroOfClubsMultiplier.get()));
+        }
+    }
+
+    @Override
+    public void curioTick(SlotContext context, ItemStack stack) {
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+            LivingEntity entity = context.entity();
+            if (!entity.hasEffect(MobEffects.SATURATION)) {
+                entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 25, config.twistedHungerLevel.get()));
+            }
         }
     }
 

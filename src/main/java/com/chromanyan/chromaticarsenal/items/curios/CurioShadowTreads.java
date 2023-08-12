@@ -46,7 +46,7 @@ public class CurioShadowTreads extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.2", "§b" + (config.darkspeedPotency.get() + 1), "§b" + config.maxLightLevel.get()));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.3"));
         if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", "§b" + Math.round(config.shadowDodgeChance.get() * 100)));
+            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", "§b" + Math.round(config.twistedShadowDodgeChance.get() * 100)));
     }
 
     @SuppressWarnings("all")
@@ -67,7 +67,7 @@ public class CurioShadowTreads extends BaseCurioItem {
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0 && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
             Level world = player.getCommandSenderWorld(); // we already checked that this is serverside back in the event class
-            if (world.getMaxLocalRawBrightness(player.blockPosition()) <= config.maxLightLevel.get() && Math.random() < config.shadowDodgeChance.get()) {
+            if (world.getMaxLocalRawBrightness(player.blockPosition()) <= config.maxLightLevel.get() && Math.random() < config.twistedShadowDodgeChance.get()) {
                 player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 0.8f, 3f);
                 event.setAmount(0);
                 event.setCanceled(true);

@@ -33,6 +33,7 @@
   "item.chromaticarsenal.duality_rings": "Duality Rings",
   "tooltip.chromaticarsenal.duality_rings.1": "§dIncreases the effectiveness of Magic Garlic Bread",
   "tooltip.chromaticarsenal.duality_rings.2": "§aIncreases the damage of projectiles by %1$s§b%%",
+  "tooltip.chromaticarsenal.duality_rings.twisted": "§cChromatic Twisting: Magic Garlic Bread also grants Saturation for %1$s§c second(s), however not having this effect inflicts Hunger at level %2$s",
 
   "item.chromaticarsenal.friendly_fire_flower": "Friendly Fire Flower",
   "tooltip.chromaticarsenal.friendly_fire_flower.1": "§6Nullifies self-inflicted damage",

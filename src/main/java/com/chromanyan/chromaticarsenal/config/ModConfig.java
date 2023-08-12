@@ -31,13 +31,15 @@ public class ModConfig {
         public final IntValue darkspeedPotency;
         public final DoubleValue enchantmentSpeedMultiplier;
         public final IntValue maxLightLevel;
-        public final DoubleValue shadowDodgeChance;
+        public final DoubleValue twistedShadowDodgeChance;
 
         public final DoubleValue aroOfClubsMultiplier;
         public final IntValue strengthLevel;
         public final IntValue strengthDuration;
         public final IntValue healthBoostLevel;
         public final IntValue healthBoostDuration;
+        public final IntValue twistedSaturationDuration;
+        public final IntValue twistedHungerLevel;
 
         public final IntValue fireResistanceDuration;
         public final BooleanValue canBeDamaged;
@@ -152,9 +154,9 @@ public class ModConfig {
             maxLightLevel = builder
                     .comment("The maximum light level in which the Shadow Charm takes effect. Values below 4 are not recommended, as sky light causes the minimum light value to always be 4 on the surface, even at midnight.")
                     .defineInRange("maxLightLevel", 7, 0, 15);
-            shadowDodgeChance = builder
+            twistedShadowDodgeChance = builder
                     .comment("The chance to dodge an attack while in darkness with Shadow Treads enchanted with Chromatic Twisting. Beware that a value of 1 will make every hit guaranteed to be dodged.")
-                    .defineInRange("shadowDodgeChance", 0.2, 0, 1);
+                    .defineInRange("twistedShadowDodgeChance", 0.2, 0, 1);
             builder.pop();
 
             builder.push("DualityRingsSettings");
@@ -173,6 +175,12 @@ public class ModConfig {
             healthBoostDuration = builder
                     .comment("The duration of the health boost effect, in ticks.")
                     .defineInRange("healthBoostDuration", 2400, 1, Integer.MAX_VALUE);
+            twistedSaturationDuration = builder
+                    .comment("The duration of the saturation effect with the Chromatic Twisting enchantment present, in ticks.")
+                    .defineInRange("twistedSaturationDuration", 300, 1, Integer.MAX_VALUE);
+            twistedHungerLevel = builder
+                    .comment("The level of the hunger effect with the Chromatic Twisting enchantment when the player doesn't have the saturation effect.")
+                    .defineInRange("twistedHungerLevel", 1, 0, 255);
             builder.pop();
 
             builder.push("FriendlyFireFlowerSettings");

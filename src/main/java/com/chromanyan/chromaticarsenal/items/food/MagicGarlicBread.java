@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.food;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -40,6 +41,9 @@ public class MagicGarlicBread extends Item {
             if (rings.isPresent()) {
                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, config.strengthDuration.get(), config.strengthLevel.get(), true, true));
                 player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, config.healthBoostDuration.get(), config.healthBoostLevel.get(), true, true));
+                if (rings.get().stack().getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                    player.addEffect(new MobEffectInstance(MobEffects.SATURATION, config.twistedSaturationDuration.get()));
+                }
             }
         }
         return super.finishUsingItem(stack, world, player);
