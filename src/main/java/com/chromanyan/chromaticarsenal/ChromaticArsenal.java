@@ -51,6 +51,7 @@ public class ChromaticArsenal {
         ModBlocks.BLOCKS_REGISTRY.register(bus);
         ModItems.ITEMS_REGISTRY.register(bus);
         ModPotions.EFFECTS_REGISTRY.register(bus);
+        ModEnchantments.ENCHANTMENTS_REGISTRY.register(bus);
         ModLoadingContext.get().registerConfig(Type.COMMON, ModConfig.commonSpec);
         bus.register(ModConfig.class);
 

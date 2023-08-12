@@ -104,6 +104,9 @@
   "effect.chromaticarsenal.chilled": "Chilled",
   "effect.chromaticarsenal.chilled.description": "Reduces movement speed by 30% and causes the target entity to freeze as if they were standing in Powder Snow",
 
+  "enchantment.chromaticarsenal.chromatic_twisting": "Curse of Chromatic Twisting",
+  "enchantment.chromaticarsenal.chromatic_twisting.desc": "Increases the power of the chromatic curio, but adds a negative effect",
+
   "itemGroup.chromaticarsenal": "Chromatic Arsenal",
 
   "modifier.chromaticarsenal.antigravity": "Antigravity",
