@@ -1,0 +1,17 @@
+{
+  "name": "Prismatic Crystal",
+  "icon": "chromaticarsenal:super_lunar_crystal",
+  "category": "chromaticarsenal:super_curio_lore",
+  "advancement": "chromaticarsenal:super_lunar_crystal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "My crystal can be upgraded? This is certainly a fascinating discovery.",
+      "item": "chromaticarsenal:super_lunar_crystal"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "I had never gotten an opportunity to ascend my own crystal, due to the inability to summon a Wither given just the resources of The End. This upgrade seems to increase its attunement with The End, focused on increased survivability when exploring the dimension. This is a very powerful item. Use it well."
+    }
+  ]
+}

@@ -17,6 +17,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -45,6 +46,7 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.2", "§b" + config.voidBounceDamage.get()));
+        list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.3"));
     }
 
     @Override
@@ -82,6 +84,11 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
         if (event.getSource() == DamageSource.FALL) {
             event.setCanceled(true);
         }
+    }
+
+    @Override
+    public boolean isEnderMask(SlotContext slotContext, EnderMan enderMan, ItemStack stack) {
+        return true;
     }
 
     @NotNull

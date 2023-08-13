@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Prismatic Crystal grants total immunity to fall damage and Levitation. Additionally, falling below the bottom of the world causes the wearer to bounce off of the void, reversing their velocity at the cost of void damage."
+      "text": "The Prismatic Crystal grants total immunity to fall damage and Levitation. Additionally, falling below the bottom of the world causes the wearer to bounce off of the void, reversing their velocity at the cost of void damage. Also functions as a Pumpkin for Endermen."
     },
     {
       "type": "patchouli:text",

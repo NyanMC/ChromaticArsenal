@@ -99,6 +99,7 @@
   "item.chromaticarsenal.super_lunar_crystal": "Prismatic Crystal",
   "tooltip.chromaticarsenal.super_lunar_crystal.1": "§6Grants immunity to fall damage and Levitation",
   "tooltip.chromaticarsenal.super_lunar_crystal.2": "§6Allows for bouncing out of the void, taking %1$s§6 damage in the process",
+  "tooltip.chromaticarsenal.super_lunar_crystal.3": "§6Functions as a Pumpkin for Endermen",
 
   "item.chromaticarsenal.ascended_star": "Ascended Star",
   "tooltip.chromaticarsenal.ascended_star.1": "§6Grants %1$s§6 extra fortune level(s) and %2$s§6 extra looting level(s)",
