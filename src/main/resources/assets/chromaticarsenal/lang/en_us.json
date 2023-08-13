@@ -46,8 +46,9 @@
   "item.chromaticarsenal.lunar_crystal": "Lunar Crystal",
   "item.chromaticarsenal.lunar_crystal.luna": "Luna's Crystal",
   "tooltip.chromaticarsenal.lunar_crystal.1": "§6Grants immunity to Levitation",
-  "tooltip.chromaticarsenal.lunar_crystal.2": "§6Upon striking an enemy, has a %1$s§b%%§6 chance to inflict Levitation at level %2$s§6 for %3$s§6 seconds",
+  "tooltip.chromaticarsenal.lunar_crystal.2": "§6Upon striking an enemy, has a 1 in %1$s§6 chance to inflict Levitation at level %2$s§6 for %3$s§6 seconds",
   "tooltip.chromaticarsenal.lunar_crystal.3": "§aReduces fall damage by %1$s§b%%",
+  "tooltip.chromaticarsenal.lunar_crystal.twisted": "§cChromatic Twisting: Increases the duration of inflicted Levitation, however the effect is also applied to the wearer and removes Levitation immunity",
 
   "item.chromaticarsenal.cryo_ring": "Cryo Ring",
   "tooltip.chromaticarsenal.cryo_ring.1": "§6Prevents freeze damage and sinking in powder snow",

@@ -14,7 +14,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "The Lunar Crystal supports the following enchantments:$(br2)$(l)Feather Falling$(): Fall damage is reduced slightly per level (stacks with boots)"
+      "text": "The Lunar Crystal supports the following enchantments:$(br2)$(l)Feather Falling$(): Fall damage is reduced slightly per level (stacks with boots)$(br2)$(l)Power$(): Levitation duration is increased slightly per level$(br2)$(l)Curse of Chromatic Twisting$(): Increases the duration of inflicted Levitation, however the effect is also applied to the wearer and removes Levitation immunity"
     }
   ]
 }

@@ -50,6 +50,8 @@ public class ModConfig {
 
         public final IntValue levitationChance;
         public final IntValue levitationDuration;
+        public final IntValue levitationDurationEnchantmentModifier;
+        public final IntValue twistedLevitationDurationModifier;
         public final IntValue levitationPotency;
         public final DoubleValue gravityModifier;
         public final BooleanValue everyoneIsLuna;
@@ -215,6 +217,12 @@ public class ModConfig {
                     levitationDuration = builder
                             .comment("The duration of the Levitation effect, in ticks.")
                             .defineInRange("levitationDuration", 60, 1, Integer.MAX_VALUE);
+                    levitationDurationEnchantmentModifier = builder
+                            .comment("The duration added to the Levitation effect, in ticks, per level of Power on the curio.")
+                            .defineInRange("levitationDurationEnchantmentModifier", 5, 1, Integer.MAX_VALUE);
+                    twistedLevitationDurationModifier = builder
+                            .comment("The duration added to the Levitation effect, in ticks, when the crystal has Chromatic Twisting.")
+                            .defineInRange("twistedLevitationDurationModifier", 40, 1, Integer.MAX_VALUE);
                     levitationPotency = builder
                             .comment("The level of the levitation effect. 0 is equivalent to effect level 1.")
                             .defineInRange("levitationPotency", 2, 0, 255);
