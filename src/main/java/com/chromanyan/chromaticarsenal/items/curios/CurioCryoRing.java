@@ -1,18 +1,27 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.SnowGolem;
 import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -21,6 +30,7 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class CurioCryoRing extends BaseCurioItem {
 
@@ -33,6 +43,8 @@ public class CurioCryoRing extends BaseCurioItem {
         if (!Objects.equals(config.chilledTicks.get(), config.chilledTicksVulnerable.get())) {
             list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.3", "§b" + (((float) config.chilledTicksVulnerable.get()) / 20)));
         }
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+            list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.twisted", "§b" + config.twistedCryoFireDamageMultiplier.get()));
     }
 
     @Override
@@ -40,14 +52,20 @@ public class CurioCryoRing extends BaseCurioItem {
         return true;
     }
 
-    public static void doCryoEffects(LivingHurtEvent event, LivingEntity target) {
+    public static void doCryoPotionEffects(LivingEntity target) {
         if (!target.getType().is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
             if (target.getType().is(EntityTypeTags.FREEZE_HURTS_EXTRA_TYPES)) {
                 target.addEffect(new MobEffectInstance(ModPotions.CHILLED.get(), config.chilledTicksVulnerable.get()));
             } else {
                 target.addEffect(new MobEffectInstance(ModPotions.CHILLED.get(), config.chilledTicks.get()));
             }
-            event.setAmount((float) (event.getAmount() + config.cryoDamage.get()));
+        }
+    }
+
+    public static void doCryoEffects(LivingHurtEvent event, LivingEntity target) {
+        if (!target.getType().is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
+            doCryoPotionEffects(target);
+            event.setAmount(event.getAmount() + config.cryoDamage.get().floatValue());
         }
 
         if (target instanceof SnowGolem && config.cryoHealsGolems.get()) {
@@ -56,11 +74,37 @@ public class CurioCryoRing extends BaseCurioItem {
     }
 
     @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
+        LivingEntity entity = slotContext.entity();
+        if (entity == null) {
+            ChromaticArsenal.LOGGER.warn("Tried to get attribute modifiers for cryo ring but entity was null");
+            return atts; // should hopefully fix a NPE when reloading resources with F3+T
+        }
+        Biome biome = entity.getLevel().getBiome(entity.blockPosition()).get();
+        if (biome.shouldSnowGolemBurn(entity.blockPosition()) && stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":cryo_speed_penalty", config.twistedCryoSpeedPenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
+            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, Reference.MODID + ":cryo_damage_penalty", config.twistedCryoDamagePenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
+        }
+        return atts;
+    }
+
+    @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
         if (event.getSource().isProjectile() && event.getSource().getDirectEntity() != null) { // because of course getDirectEntity can be null
             if (event.getSource().getDirectEntity() instanceof Snowball) {
                 doCryoEffects(event, target);
             }
+        }
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0
+                && !(event.getSource().isProjectile() || event.getSource().isExplosion() || event.getSource().isMagic() || event.getSource().isFire()))
+            doCryoPotionEffects(target);
+    }
+
+    @Override
+    public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
+        if (event.getSource().isFire() && stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+            event.setAmount(event.getAmount() * config.twistedCryoFireDamageMultiplier.get().floatValue());
         }
     }
 

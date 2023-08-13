@@ -61,6 +61,9 @@ public class ModConfig {
         public final IntValue chilledTicksVulnerable;
         public final DoubleValue cryoDamage;
         public final BooleanValue cryoHealsGolems;
+        public final DoubleValue twistedCryoSpeedPenalty;
+        public final DoubleValue twistedCryoDamagePenalty;
+        public final DoubleValue twistedCryoFireDamageMultiplier;
 
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
@@ -246,10 +249,20 @@ public class ModConfig {
                             .defineInRange("chilledTicksVulnerable", 200, 0, Integer.MAX_VALUE);
                     cryoDamage = builder
                             .comment("The amount of damage added when a snowball hits a mob with this curio equipped.")
-                            .defineInRange("cryoDamage", 3D, 0D, Double.MAX_VALUE);
+                            .defineInRange("cryoDamage", 3D, 0D, Float.MAX_VALUE);
                     cryoHealsGolems = builder
                             .comment("Should Snow Golems be healed for the damage amount upon being hit with a snowball?")
                             .define("cryoHealsGolems", true);
+                    twistedCryoSpeedPenalty = builder
+                            .comment("The speed penalty when in hot locations with a Chromatic Twisting cryo ring.")
+                            .defineInRange("twistedCryoSpeedPenalty", -0.2, -1, 0);
+                    twistedCryoDamagePenalty = builder
+                            .comment("The damage penalty when in hot locations with a Chromatic Twisting cryo ring.")
+                            .defineInRange("twistedCryoDamagePenalty", -0.25, -1, 0);
+                    twistedCryoFireDamageMultiplier = builder
+                            .comment("The multiplier for fire damage taken with a Chromatic Twisting cryo ring.")
+                            .defineInRange("twistedCryoFireDamageMultiplier", 2, 1, Float.MAX_VALUE);
+
                 builder.pop();
 
                 builder.push("WorldAnchorSettings");

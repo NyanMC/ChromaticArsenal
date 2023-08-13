@@ -54,6 +54,7 @@
   "tooltip.chromaticarsenal.cryo_ring.1": "§6Prevents freeze damage and sinking in powder snow",
   "tooltip.chromaticarsenal.cryo_ring.2": "§6Causes thrown snowballs to inflict %1$s§6 damage and the Chilled effect for %2$s§6 seconds",
   "tooltip.chromaticarsenal.cryo_ring.3": "§6For targets weak to freezing, the effect is applied for %1$s§6 seconds",
+  "tooltip.chromaticarsenal.cryo_ring.twisted": "§cChromatic Twisting: Allows melee attacks to inflict Chilled, however multiplies fire damage taken by %1$s§c and inflicts speed and damage debuffs in hot places",
 
   "item.chromaticarsenal.harpy_feather": "Harpy Feather",
   "tooltip.chromaticarsenal.harpy_feather.1": "§6Right click with this item in either hand to perform a midair jump",
