@@ -11,6 +11,7 @@ import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -23,6 +24,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
+import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
@@ -105,6 +108,13 @@ public class CurioCryoRing extends BaseCurioItem {
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         if (event.getSource().isFire() && stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
             event.setAmount(event.getAmount() * config.twistedCryoFireDamageMultiplier.get().floatValue());
+        }
+    }
+
+    @Override
+    public void onGetImmunities(MobEffectEvent.Applicable event, ItemStack stack, MobEffect effect) {
+        if (event.getEffectInstance().getEffect() == ModPotions.CHILLED.get()) {
+            event.setResult(Event.Result.DENY);
         }
     }
 
