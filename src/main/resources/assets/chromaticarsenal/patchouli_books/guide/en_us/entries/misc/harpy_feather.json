@@ -7,6 +7,10 @@
       "type": "patchouli:spotlight",
       "text": "The Harpy Feather is a tool created by smithing together a feather and a Chroma Shard which causes the user to jump into the air upon right clicking with the feather in either hand. This jump works (and is intended to be used) in midair, and has the height of a regular jump ignoring jump height bonuses. This item also resets fall damage, and when timed right can completely nullify it.",
       "item": "chromaticarsenal:harpy_feather"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Harpy Feather supports the following enchantments:$(br2)$(l)Curse of Chromatic Twisting$(): Right clicking causes the user to quickly drop to the ground instead of jumping into the air, does NOT negate fall damage"
     }
   ]
 }

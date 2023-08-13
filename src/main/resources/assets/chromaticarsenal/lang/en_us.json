@@ -60,6 +60,8 @@
   "tooltip.chromaticarsenal.harpy_feather.1": "§6Right click with this item in either hand to perform a midair jump",
   "tooltip.chromaticarsenal.harpy_feather.2": "§6This midair jump can be used to reset fall damage",
   "tooltip.chromaticarsenal.harpy_feather.3": "§6After jumping, goes on cooldown until landing again",
+  "tooltip.chromaticarsenal.harpy_feather.twisted": "§cChromatic Twisting: Right click with this item in either hand to quickly drop to the ground",
+  "tooltip.chromaticarsenal.harpy_feather.twisted2": "§cThis drop cancels horizontal momentum entirely and does NOT reset fall damage",
 
   "item.chromaticarsenal.magic_garlic_bread": "Magic Garlic Bread",
   "item.chromaticarsenal.cosmicola": "Cosmicola",

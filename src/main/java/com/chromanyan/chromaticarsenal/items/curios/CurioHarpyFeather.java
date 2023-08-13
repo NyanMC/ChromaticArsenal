@@ -1,6 +1,8 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
+import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -26,9 +28,14 @@ public class CurioHarpyFeather extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.2"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.3"));
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0) {
+            list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.1"));
+            list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.2"));
+            list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.3"));
+        } else {
+            list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.twisted"));
+            list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.twisted2"));
+        }
     }
 
     @Override
@@ -55,16 +62,24 @@ public class CurioHarpyFeather extends BaseCurioItem {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
-        player.getCooldowns().addCooldown(this, 60);
+        if (itemstack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0)
+            player.getCooldowns().addCooldown(this, 60);
         if (!level.isClientSide()) {
-            player.resetFallDistance();
+            if (itemstack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0)
+                player.resetFallDistance();
             player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 0.8f, 5f);
         }
         Vec3 vec3 = player.getDeltaMovement();
         if (player.getVehicle() != null) {
-            player.getVehicle().setDeltaMovement(vec3.x, config.jumpForce.get(), vec3.z);
+            if (itemstack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0)
+                player.getVehicle().setDeltaMovement(vec3.x, config.jumpForce.get(), vec3.z);
+            else
+                player.getVehicle().setDeltaMovement(0, -1, 0);
         } else {
-            player.setDeltaMovement(vec3.x, config.jumpForce.get(), vec3.z);
+            if (itemstack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0)
+                player.setDeltaMovement(vec3.x, config.jumpForce.get(), vec3.z);
+            else
+                player.setDeltaMovement(0, -1, 0);
         }
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
@@ -72,6 +87,9 @@ public class CurioHarpyFeather extends BaseCurioItem {
 
     @Override
     public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        return Rarity.UNCOMMON;
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+            return ModRarities.TWISTED;
+        else
+            return Rarity.UNCOMMON;
     }
 }
