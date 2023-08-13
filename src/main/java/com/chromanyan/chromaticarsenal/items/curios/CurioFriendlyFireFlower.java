@@ -44,7 +44,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
     }
 
     private int getEffectDuration(ItemStack stack) {
-        return config.fireResistanceDuration.get() * (1 + stack.getEnchantmentLevel(Enchantments.FIRE_PROTECTION));
+        return config.fireResistanceDuration.get() + (config.fireResistanceProtectionDuration.get() * stack.getEnchantmentLevel(Enchantments.FIRE_PROTECTION));
     }
 
     public CurioFriendlyFireFlower() {

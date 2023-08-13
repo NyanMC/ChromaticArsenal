@@ -42,6 +42,7 @@ public class ModConfig {
         public final IntValue twistedHungerLevel;
 
         public final IntValue fireResistanceDuration;
+        public final IntValue fireResistanceProtectionDuration;
         public final BooleanValue canBeDamaged;
         public final IntValue twistedFireDamageTicks;
         public final DoubleValue twistedFireDamageValue;
@@ -188,8 +189,11 @@ public class ModConfig {
 
             builder.push("FriendlyFireFlowerSettings");
             fireResistanceDuration = builder
-                    .comment("The duration of Fire Resistance granted after taking fire damage, in ticks. This is multiplied by the level of Fire Protection on the item, +1.")
-                    .defineInRange("fireResistanceDuration", 200, 1, Integer.MAX_VALUE);
+                    .comment("The base duration of Fire Resistance granted after taking fire damage, in ticks.")
+                    .defineInRange("fireResistanceDuration", 600, 1, Integer.MAX_VALUE);
+            fireResistanceProtectionDuration = builder
+                    .comment("The additional duration of Fire Resistance per level of Fire Protection on the item.")
+                    .defineInRange("fireResistanceProtectionDuration", 100, 1, Integer.MAX_VALUE);
             canBeDamaged = builder
                     .comment("If set to false, prevents the Friendly Fire Flower from being damaged when granting Fire Resistance to the wearer. Note that this will not remove durability values from flowers, and existing damaged flowers will still show as damaged.")
                     .define("canBeDamaged", true);
