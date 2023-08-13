@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "tag": "forge:dusts/ascension"
+    },
+    "e": {
+      "item": "minecraft:end_stone"
+    },
+    "l": {
+      "item": "chromaticarsenal:lunar_crystal"
+    }
+  },
+  "pattern": [
+    "a e",
+    " le",
+    "ee "
+  ],
+  "result": {
+    "item": "chromaticarsenal:super_lunar_crystal"
+  }
+}

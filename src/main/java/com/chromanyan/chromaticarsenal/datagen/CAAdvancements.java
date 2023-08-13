@@ -85,6 +85,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement superGlassShield = simpleHasItemRecipe(ModItems.SUPER_GLASS_SHIELD.get(), consumer, fileHelper);
         Advancement superWardCrystal = simpleHasItemRecipe(ModItems.SUPER_WARD_CRYSTAL.get(), consumer, fileHelper);
         Advancement superShadowTreads = simpleHasItemRecipe(ModItems.SUPER_SHADOW_TREADS.get(), consumer, fileHelper);
+        Advancement superLunarCrystal = simpleHasItemRecipe(ModItems.SUPER_LUNAR_CRYSTAL.get(), consumer, fileHelper);
     }
 
     private CriterionTriggerInstance hasItem(ItemLike item) {

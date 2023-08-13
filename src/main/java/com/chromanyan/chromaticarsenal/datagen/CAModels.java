@@ -35,7 +35,7 @@ public class CAModels extends ItemModelProvider {
         basicModelWithSuper("shadow_treads");
         basicModel("duality_rings");
         basicModel("friendly_fire_flower");
-        basicModel("lunar_crystal");
+        basicModelWithSuper("lunar_crystal");
         basicModel("cryo_ring");
         basicModel("harpy_feather");
 

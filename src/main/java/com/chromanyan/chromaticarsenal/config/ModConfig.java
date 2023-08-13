@@ -87,6 +87,10 @@ public class ModConfig {
         public final DoubleValue damageModifierMax;
         public final DoubleValue speedModifierMax;
 
+        public final DoubleValue superGravityModifier;
+        public final DoubleValue voidBounceMultiplier;
+        public final DoubleValue voidBounceDamage;
+
         public final IntValue bonusSlots;
         public final DoubleValue damageMultiplier;
         public final IntValue bonusLooting;
@@ -332,6 +336,18 @@ public class ModConfig {
                     speedModifierMax = builder
                             .comment("The speed boost applied at midnight (time 18000). This is always operation 2.")
                             .defineInRange("speedModifierMax", 0.2D, 0D, Double.MAX_VALUE);
+                builder.pop();
+
+                builder.push("SuperLunarCrystalSettings");
+                    superGravityModifier = builder
+                            .comment("The percentage in which the player's gravity is changed while the Super Lunar Crystal is equipped. Negative values reduce gravity, positive values increase it. -1 is not recommended, unless your planet needs you.")
+                            .defineInRange("superGravityModifier", -0.5D, -1, 0);
+                    voidBounceMultiplier = builder
+                            .comment("The multiplier for the force applied upon falling below the world's minimum building height. The base force is dependent on the speed in which the player fell into the void.")
+                            .defineInRange("voidBounceMultiplier", 2D, 0D, Double.MAX_VALUE);
+                    voidBounceDamage = builder
+                            .comment("The amount of damage taken when bouncing out of the void. This is void damage, meaning it bypasses most forms of protection, even creative mode.")
+                                    .defineInRange("voidBounceDamage", 4D, 0D, Float.MAX_VALUE);
                 builder.pop();
 
                 builder.push("AscendedStarSettings");

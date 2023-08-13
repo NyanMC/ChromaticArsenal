@@ -39,6 +39,7 @@ public class ModItems {
     public static final RegistryObject<Item> SUPER_GLASS_SHIELD = ITEMS_REGISTRY.register("super_glass_shield", CurioShieldOfUndying::new);
     public static final RegistryObject<Item> SUPER_WARD_CRYSTAL = ITEMS_REGISTRY.register("super_ward_crystal", CurioDispellingCrystal::new);
     public static final RegistryObject<Item> SUPER_SHADOW_TREADS = ITEMS_REGISTRY.register("super_shadow_treads", CurioCelestialCharm::new);
+    public static final RegistryObject<Item> SUPER_LUNAR_CRYSTAL = ITEMS_REGISTRY.register("super_lunar_crystal", CurioPrismaticCrystal::new);
 
     public static final RegistryObject<Item> ASCENDED_STAR = ITEMS_REGISTRY.register("ascended_star", CurioLimitBreak::new);
     public static final RegistryObject<Item> WORLD_ANCHOR = ITEMS_REGISTRY.register("world_anchor", CurioWorldAnchor::new);

@@ -1,0 +1,20 @@
+{
+  "name": "Prismatic Crystal",
+  "icon": "chromaticarsenal:super_lunar_crystal",
+  "category": "chromaticarsenal:super_curios",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Prismatic Crystal grants total immunity to fall damage and Levitation. Additionally, falling below the bottom of the world causes the wearer to bounce off of the void, reversing their velocity at the cost of void damage."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default Attribute modifiers:$()$(br)$(2)-50%$() Entity Gravity$(br)"
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)Use this to tell The End to [REDACTED].",
+      "recipe": "chromaticarsenal:super_lunar_crystal"
+    }
+  ]
+}
