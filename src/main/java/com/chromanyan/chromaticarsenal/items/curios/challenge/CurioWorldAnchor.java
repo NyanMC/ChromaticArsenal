@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios.challenge;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
@@ -15,7 +16,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -27,11 +30,17 @@ import java.util.UUID;
 
 public class CurioWorldAnchor extends BaseCurioItem {
 
-    private final ModConfig.Common config = ModConfig.COMMON;
+    private static final ModConfig.Common config = ModConfig.COMMON;
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.1"));
+        if (getFortuneLevel(stack) > 0)
+            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2", "§b" + getFortuneLevel(stack)));
+        else
+            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2alt"));
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.twisted", "§b" + config.twistedAnchorGravityMultiplier.get()));
     }
 
     @NotNull
@@ -65,12 +74,25 @@ public class CurioWorldAnchor extends BaseCurioItem {
             gravityMod = 0;
         }
 
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+            gravityMod *= config.twistedAnchorGravityMultiplier.get();
+        }
+
         atts.put(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(uuid, Reference.MODID + ":world_anchor_gravity", gravityMod * config.anchorGravityMultiplier.get(), AttributeModifier.Operation.MULTIPLY_BASE));
         atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":world_anchor_speed", gravityMod * config.anchorSpeedMultiplier.get(), AttributeModifier.Operation.MULTIPLY_BASE));
         atts.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, Reference.MODID + ":world_anchor_kbresist", gravityMod * config.anchorKnockbackResistanceMultiplier.get(), AttributeModifier.Operation.ADDITION));
         atts.put(Attributes.ARMOR, new AttributeModifier(uuid, Reference.MODID + ":world_anchor_armor", config.anchorArmor.get(), AttributeModifier.Operation.ADDITION));
 
         return atts;
+    }
+
+    @Override
+    public int getFortuneLevel(SlotContext slotContext, LootContext lootContext, ItemStack stack) {
+        return getFortuneLevel(stack);
+    }
+
+    private static int getFortuneLevel(ItemStack stack) {
+        return stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) + stack.getEnchantmentLevel(Enchantments.BINDING_CURSE);
     }
 
     @NotNull

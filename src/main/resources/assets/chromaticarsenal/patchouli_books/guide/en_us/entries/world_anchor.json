@@ -10,6 +10,10 @@
     },
     {
       "type": "patchouli:text",
+      "text": "The World Anchor supports the following enchantments:$(br2)$(l)Curse of Binding$(): In addition to the standard effects, grants an additional level of fortune$(br2)$(l)Curse of Chromatic Twisting$(): Grants an additional level of fortune, however gravity effects are increased"
+    },
+    {
+      "type": "patchouli:text",
       "text": "$(l)Default Attribute modifiers:$()$(br)$(4)+0% - +100%$() Entity Gravity$(br)$(4)-0% - -50%$() Movement Speed$(br)$(2)+0 - +10$() Knockback Resistance"
     }
   ]

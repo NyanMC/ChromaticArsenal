@@ -100,6 +100,9 @@
 
   "item.chromaticarsenal.world_anchor": "World Anchor",
   "tooltip.chromaticarsenal.world_anchor.1": "§6The effects of this curio are more severe the further you are from the bottom of the world",
+  "tooltip.chromaticarsenal.world_anchor.2": "§6The curses on this curio are granting an additional %1$s§6 fortune level(s)",
+  "tooltip.chromaticarsenal.world_anchor.2alt": "§6Can be cursed with Binding or Chromatic Twisting to grant additional fortune levels",
+  "tooltip.chromaticarsenal.world_anchor.twisted": "§cChromatic Twisting: Grants an additional level of fortune, however gravity effects are multiplied by %1$s",
 
   "item.chromaticarsenal.viewer_item": "Viewer Item",
   "tooltip.chromaticarsenal.viewer_item.1": "Even after several Minecraft version updates, it's still a Debug Item",

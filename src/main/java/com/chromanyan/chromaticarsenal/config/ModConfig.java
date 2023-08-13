@@ -70,6 +70,7 @@ public class ModConfig {
         public final DoubleValue anchorKnockbackResistanceMultiplier;
         public final DoubleValue anchorArmor;
         public final BooleanValue anchorSoulbound;
+        public final DoubleValue twistedAnchorGravityMultiplier;
 
         public final DoubleValue jumpForce;
 
@@ -281,6 +282,9 @@ public class ModConfig {
                     anchorSoulbound = builder
                             .comment("Should the World Anchor persist in the player's inventory after death? This setting exists to help provide consistency with other challenge-like items such as the Ring of the Seven Curses from Enigmatic Legacy or the marks from Band of Gigantism.")
                             .define("anchorSoulbound", false);
+                    twistedAnchorGravityMultiplier = builder
+                            .comment("The additional flat multiplier for the World Anchor's stat modifiers if the anchor is cursed with Chromatic Twisting.")
+                            .defineInRange("twistedAnchorGravityMultiplier", 2, 1, Double.MAX_VALUE);
                 builder.pop();
 
                 builder.push("HarpyFeatherSettings");
