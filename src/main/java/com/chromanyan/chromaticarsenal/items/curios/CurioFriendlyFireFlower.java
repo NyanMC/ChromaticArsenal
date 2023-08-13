@@ -2,11 +2,14 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -27,6 +30,7 @@ import java.util.List;
 public class CurioFriendlyFireFlower extends BaseCurioItem {
 
     private final ModConfig.Common config = ModConfig.COMMON;
+    private static final DamageSource UNFRIENDLY_FIRE = new DamageSource("chromaticarsenal.unfriendly_fire").setIsFire();
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -35,6 +39,8 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
         if (config.canBeDamaged.get()) {
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.3"));
         }
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+            list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.twisted", "§b" + Math.round(config.twistedUnbreakingChance.get() * 100)));
     }
 
     private int getEffectDuration(ItemStack stack) {
@@ -48,14 +54,24 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity living = context.entity();
-        if (!living.getCommandSenderWorld().isClientSide && living.isOnFire()) {
-            if (!(living.hasEffect(MobEffects.FIRE_RESISTANCE) || living.fireImmune())) { // will fireImmune() ever even trigger for a player? hell if i know
-                living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, getEffectDuration(stack), 0, true, true));
-                if (config.canBeDamaged.get()) {
-                    stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
+        if (!living.getCommandSenderWorld().isClientSide) {
+            if (living.isOnFire()) {
+                if (!(living.hasEffect(MobEffects.FIRE_RESISTANCE) || living.fireImmune())) { // will fireImmune() ever even trigger for a player? hell if i know
+                    living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, getEffectDuration(stack), 0, true, true));
+                    if (config.canBeDamaged.get()) {
+                        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0 || Math.random() < config.twistedUnbreakingChance.get()) {
+                            stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
+                        }
+                    }
+                } else {
+                    living.clearFire();
                 }
             } else {
-                living.clearFire();
+                if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                    if (!living.getCommandSenderWorld().isClientSide && living.tickCount % config.twistedFireDamageTicks.get() == 0) {
+                        living.hurt(UNFRIENDLY_FIRE, config.twistedFireDamageValue.get().floatValue());
+                    }
+                }
             }
         }
     }
@@ -73,6 +89,25 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
         if (player == target) {
             event.setAmount(0);
+        } else {
+            if (target != null && !target.fireImmune()) {
+                if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                    target.setSecondsOnFire(100);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
+        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0) {
+            return;
+        }
+        Entity attacker = event.getSource().getEntity();
+        if (attacker instanceof LivingEntity livingAttacker) {
+            if (!livingAttacker.fireImmune()) {
+                livingAttacker.setSecondsOnFire(100);
+            }
         }
     }
 

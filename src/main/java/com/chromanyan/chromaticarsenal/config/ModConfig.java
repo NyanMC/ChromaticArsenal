@@ -43,6 +43,9 @@ public class ModConfig {
 
         public final IntValue fireResistanceDuration;
         public final BooleanValue canBeDamaged;
+        public final IntValue twistedFireDamageTicks;
+        public final DoubleValue twistedFireDamageValue;
+        public final DoubleValue twistedUnbreakingChance;
 
         public final IntValue levitationChance;
         public final IntValue levitationDuration;
@@ -190,6 +193,15 @@ public class ModConfig {
             canBeDamaged = builder
                     .comment("If set to false, prevents the Friendly Fire Flower from being damaged when granting Fire Resistance to the wearer. Note that this will not remove durability values from flowers, and existing damaged flowers will still show as damaged.")
                     .define("canBeDamaged", true);
+            twistedFireDamageTicks = builder
+                    .comment("The amount of ticks between each attempt to inflict fire damage to the player with Chromatic Twisting. Respects immunity frames.")
+                    .defineInRange("twistedFireDamageTicks", 40, 1, Integer.MAX_VALUE);
+            twistedFireDamageValue = builder
+                    .comment("The amount of fire damage inflicted with Chromatic Twisting. This counts as fire damage, and will be scaled by anything which scales fire damage.")
+                    .defineInRange("twistedFireDamageValue", 2, 0, Double.MAX_VALUE);
+            twistedUnbreakingChance = builder
+                    .comment("The chance for the Friendly Fire Flower to not take durability damage with Chromatic Twisting. Stacks with Unbreaking.")
+                    .defineInRange("twistedUnbreakingChance", 0.5, 0, 1);
             builder.pop();
 
             builder.push("LunarCrystalSettings");

@@ -39,6 +39,9 @@
   "tooltip.chromaticarsenal.friendly_fire_flower.1": "§6Nullifies self-inflicted damage",
   "tooltip.chromaticarsenal.friendly_fire_flower.2": "§6Applies Fire Resistance for %1$s§6 seconds after taking fire damage",
   "tooltip.chromaticarsenal.friendly_fire_flower.3": "§cTakes durability damage when applying Fire Resistance",
+  "tooltip.chromaticarsenal.friendly_fire_flower.twisted": "§cChromatic Twisting: Attacked mobs and attackers are set on fire, and %1$s§b%%§c chance to not take durability damage, however causes constant fire damage",
+  "death.attack.chromaticarsenal.unfriendly_fire": "%1$s discovered their Friendly Fire Flower wasn't as friendly as they thought",
+  "death.attack.chromaticarsenal.unfriendly_fire.player": "%1$s was incinerated by their \"Friendly\" Fire Flower whilst fighting %2$s",
 
   "item.chromaticarsenal.lunar_crystal": "Lunar Crystal",
   "item.chromaticarsenal.lunar_crystal.luna": "Luna's Crystal",
