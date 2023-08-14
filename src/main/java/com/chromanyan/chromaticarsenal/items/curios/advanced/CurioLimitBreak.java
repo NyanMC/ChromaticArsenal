@@ -31,6 +31,7 @@ import java.util.UUID;
 
 public class CurioLimitBreak extends BaseCurioItem {
     private final ModConfig.Common config = ModConfig.COMMON;
+    private static final DamageSource ASCENDED = new DamageSource("chromaticarsenal.ascended").bypassArmor().bypassInvul();
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
@@ -46,11 +47,15 @@ public class CurioLimitBreak extends BaseCurioItem {
     }
 
     @Override
-    public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
-        if (slotContext.entity() instanceof Player player) {
-            return player.isCreative();
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+
+        if (entity instanceof Player playerEntity) {
+            if (playerEntity.isCreative()) {
+                return;
+            }
         }
-        return false;
+        entity.hurt(ASCENDED, 10000F); // if 10000 isn't enough to kill, i don't know what is
     }
 
     @NotNull
