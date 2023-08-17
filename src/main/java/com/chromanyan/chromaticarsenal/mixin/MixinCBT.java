@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Pseudo
 @Mixin(targets = "net.textstack.band_of_gigantism.event.EventHandlerMyBallsInYourMouth", remap = false)
 public class MixinCBT {
+    // forces BoG to add the twisted mark colors if no other mark colors are in effect
     @Inject(method = "colorMark", at = @At("RETURN"), cancellable = true, locals = LocalCapture.CAPTURE_FAILHARD)
     private void colorMark(LivingEntity living, String message, CallbackInfoReturnable<String> cir, String newMessage) {
         if (CurioHelper.hasCurio(living, ModItems.MARK_TWISTED.get()) && newMessage == null) {

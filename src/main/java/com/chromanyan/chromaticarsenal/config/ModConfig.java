@@ -99,6 +99,8 @@ public class ModConfig {
         public final BooleanValue canDamageSalvager;
         public final BooleanValue returnInferiorVariant;
 
+        public final BooleanValue suppressMissingModNotices;
+
         public final BooleanValue lootTableInsertion;
         public final BooleanValue superCuriosOnlyInRespectiveSlot;
 
@@ -373,6 +375,12 @@ public class ModConfig {
                 returnInferiorVariant = builder
                         .comment("When salvaging a Super Curio, should the standard variant of the curio be returned as well?")
                         .define("returnInferiorVaruant", true);
+            builder.pop();
+
+            builder.push("ModCompatSettings");
+                suppressMissingModNotices = builder
+                        .comment("Disables tooltip notices mentioning that certain items are unobtainable without a certain mod present. For modpack makers that want to make use of these items without adding the mod in question.")
+                        .define("suppressMissingModNotices", false);
             builder.pop();
 
             lootTableInsertion = builder

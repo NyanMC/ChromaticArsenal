@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.compat;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.gui.screens.Screen;
@@ -47,7 +48,7 @@ public class MarkTwisted extends Item implements ICurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.chromaticarsenal.void"));
-        if (!ModList.get().isLoaded("band_of_gigantism")) {
+        if (!(ModList.get().isLoaded("band_of_gigantism") || ModConfig.COMMON.suppressMissingModNotices.get())) {
             tooltip.add(Component.translatable("tooltip.chromaticarsenal.missing_bog"));
             tooltip.add(Component.translatable("tooltip.chromaticarsenal.missing_bog2"));
         }
