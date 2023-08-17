@@ -13,6 +13,9 @@
     "g": {
       "item": "chromaticarsenal:super_golden_heart"
     },
+    "p": {
+      "item": "chromaticarsenal:super_lunar_crystal"
+    },
     "u": {
       "item": "chromaticarsenal:super_glass_shield"
     }
@@ -20,7 +23,7 @@
   "pattern": [
     " g ",
     "uad",
-    " c "
+    "c p"
   ],
   "result": {
     "item": "chromaticarsenal:ascended_star"
