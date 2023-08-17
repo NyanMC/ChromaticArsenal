@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -86,13 +87,8 @@ public class CurioLimitBreak extends BaseCurioItem {
     }
 
     @Override
-    public boolean isEnchantable(@NotNull ItemStack p_77616_1_) {
-        return false;
-    }
-
-    @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return false;
+        return enchantment == Enchantments.BINDING_CURSE;
     }
 
     @Override
