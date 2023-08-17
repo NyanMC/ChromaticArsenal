@@ -1,9 +1,9 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -54,7 +54,7 @@ public class BaseCurioItem extends Item implements ICurioItem, IChromaCurio {
 
     @Override
     public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
             return ModRarities.TWISTED;
         else
             return super.getRarity(stack);

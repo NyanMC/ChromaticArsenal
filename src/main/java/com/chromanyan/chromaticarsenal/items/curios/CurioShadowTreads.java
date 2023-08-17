@@ -3,8 +3,8 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
-import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -45,7 +45,7 @@ public class CurioShadowTreads extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.2", "§b" + (config.darkspeedPotency.get() + 1), "§b" + config.maxLightLevel.get()));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.3"));
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
             list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", "§b" + Math.round(config.twistedShadowDodgeChance.get() * 100)));
     }
 
@@ -57,7 +57,7 @@ public class CurioShadowTreads extends BaseCurioItem {
         if (world != null && !world.isClientSide()) {
             if (world.getMaxLocalRawBrightness(livingEntity.blockPosition()) <= config.maxLightLevel.get()) {
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, config.darkspeedPotency.get(), true, true));
-            } else if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+            } else if (ChromaCurioHelper.isChromaticTwisted(stack, context.entity())) {
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 105, 0, true, true));
             }
         }
@@ -65,7 +65,7 @@ public class CurioShadowTreads extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0 && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, player) && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
             Level world = player.getCommandSenderWorld(); // we already checked that this is serverside back in the event class
             if (world.getMaxLocalRawBrightness(player.blockPosition()) <= config.maxLightLevel.get() && Math.random() < config.twistedShadowDodgeChance.get()) {
                 player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 0.8f, 3f);

@@ -3,8 +3,8 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
-import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -38,7 +38,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.1", "§b" + (config.absorptionLevel.get() + 1)));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.2", "§b" + (getEffectCooldown(stack) / 20)));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3"));
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.twisted", "§b" + (config.twistedWitherDuration.get() / 20)));
         }
     }
@@ -73,7 +73,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             if (event.getSource().getEntity() != null && event.getSource().getEntity() instanceof LivingEntity livingAttacker && event.getAmount() > 0) {
                 player.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0));
                 livingAttacker.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0));

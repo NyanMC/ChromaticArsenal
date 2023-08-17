@@ -2,8 +2,8 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -39,7 +39,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
         if (config.canBeDamaged.get()) {
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.3"));
         }
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.twisted", "§b" + Math.round(config.twistedUnbreakingChance.get() * 100)));
     }
 
@@ -59,7 +59,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
                 if (!(living.hasEffect(MobEffects.FIRE_RESISTANCE) || living.fireImmune())) { // will fireImmune() ever even trigger for a player? hell if i know
                     living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, getEffectDuration(stack), 0, true, true));
                     if (config.canBeDamaged.get()) {
-                        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0 || Math.random() < config.twistedUnbreakingChance.get()) {
+                        if (!ChromaCurioHelper.isChromaticTwisted(stack, context.entity()) || Math.random() > config.twistedUnbreakingChance.get()) {
                             stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
                         }
                     }
@@ -67,7 +67,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
                     living.clearFire();
                 }
             } else {
-                if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                if (ChromaCurioHelper.isChromaticTwisted(stack, context.entity())) {
                     if (!living.getCommandSenderWorld().isClientSide && living.tickCount % config.twistedFireDamageTicks.get() == 0) {
                         living.hurt(UNFRIENDLY_FIRE, config.twistedFireDamageValue.get().floatValue());
                     }
@@ -91,7 +91,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
             event.setAmount(0);
         } else {
             if (target != null && !target.fireImmune()) {
-                if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
                     target.setSecondsOnFire(100);
                 }
             }
@@ -100,7 +100,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0) {
+        if (!ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             return;
         }
         Entity attacker = event.getSource().getEntity();

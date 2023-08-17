@@ -1,9 +1,9 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
@@ -41,7 +41,7 @@ public class CurioGlassShield extends BaseCurioItem {
         if (getFreeBlockChance(stack) > 0) {
             list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.3", "§b" + getFreeBlockChance(stack)));
         }
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.twisted", "§b" + config.twistedShatterDamageMultiplier.get()));
         }
         CompoundTag nbt = stack.getOrCreateTag();
@@ -101,7 +101,7 @@ public class CurioGlassShield extends BaseCurioItem {
                     int hitDamage = Math.round(event.getAmount() * 10.0F);
                     playerEntity.awardStat(ModStats.GSHIELD_TOTAL_BLOCK, hitDamage);
                 }
-                if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
                     if (event.getSource().getEntity() != null && event.getSource().getEntity() instanceof LivingEntity livingAttacker) {
                         livingAttacker.hurt(GLASS_SHRAPNEL, event.getAmount());
                     }
@@ -109,7 +109,7 @@ public class CurioGlassShield extends BaseCurioItem {
                 event.setAmount(0);
                 event.setCanceled(true);
             } else {
-                if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+                if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
                     event.setAmount(event.getAmount() * config.twistedShatterDamageMultiplier.get().floatValue());
                 }
             }

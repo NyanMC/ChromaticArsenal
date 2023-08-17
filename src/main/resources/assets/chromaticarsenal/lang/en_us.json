@@ -117,6 +117,14 @@
   "tooltip.chromaticarsenal.viewer_item.1": "Even after several Minecraft version updates, it's still a Debug Item",
   "tooltip.chromaticarsenal.viewer_item.2": "This item's functionality may change in a later version, don't rely on it!",
 
+  "item.chromaticarsenal.mark_twisted": "§dMark of the Twisted",
+  "tooltip.chromaticarsenal.void": "",
+  "tooltip.chromaticarsenal.shift": "§5Hold §6Shift§5 to see details.",
+  "tooltip.chromaticarsenal.mark_generic_description": "§5Take §6severe damage §5upon unequipping.",
+  "tooltip.chromaticarsenal.mark_twisted_description_flavor": "§d§oCan you tolerate everything you know being deformed senselessly?",
+  "tooltip.chromaticarsenal.mark_twisted_description_0": "§5All equipped Chromatic Curios will function as if they had the Curse of Chromatic Twisting.",
+  "death.attack.mark_twisted": "%1$s§d's soul was twisted beyond recognition",
+
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",
   "tooltip.chromaticarsenal.cursed": "Once equipped, unequipping may prove to be fatal.",
 

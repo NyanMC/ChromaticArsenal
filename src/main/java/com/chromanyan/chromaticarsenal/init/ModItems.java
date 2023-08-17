@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.items.ChromaSalvager;
 import com.chromanyan.chromaticarsenal.items.SpicyCoal;
+import com.chromanyan.chromaticarsenal.items.compat.MarkTwisted;
 import com.chromanyan.chromaticarsenal.items.curios.*;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.*;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioWorldAnchor;
@@ -48,6 +49,8 @@ public class ModItems {
     public static final RegistryObject<Item> COSMICOLA = ITEMS_REGISTRY.register("cosmicola", Cosmicola::new);
     public static final RegistryObject<Item> CHROMA_SALVAGER = ITEMS_REGISTRY.register("chroma_salvager", ChromaSalvager::new);
     public static final RegistryObject<Item> DEBUG = ITEMS_REGISTRY.register("viewer_item", CurioDebug::new);
+
+    public static final RegistryObject<Item> MARK_TWISTED = ITEMS_REGISTRY.register("mark_twisted", MarkTwisted::new);
 
     public static final RegistryObject<BlockItem> CHROMA_BLOCK_ITEM = ITEMS_REGISTRY.register("chroma_block", () -> new BlockItem(ModBlocks.CHROMA_BLOCK.get(), new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON)));
 

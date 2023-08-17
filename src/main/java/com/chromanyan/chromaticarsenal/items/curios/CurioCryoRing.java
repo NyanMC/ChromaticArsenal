@@ -3,9 +3,9 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -46,7 +46,7 @@ public class CurioCryoRing extends BaseCurioItem {
         if (!Objects.equals(config.chilledTicks.get(), config.chilledTicksVulnerable.get())) {
             list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.3", "§b" + (((float) config.chilledTicksVulnerable.get()) / 20)));
         }
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
             list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.twisted", "§b" + config.twistedCryoFireDamageMultiplier.get()));
     }
 
@@ -85,7 +85,7 @@ public class CurioCryoRing extends BaseCurioItem {
             return atts; // should hopefully fix a NPE when reloading resources with F3+T
         }
         Biome biome = entity.getLevel().getBiome(entity.blockPosition()).get();
-        if (biome.shouldSnowGolemBurn(entity.blockPosition()) && stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+        if (biome.shouldSnowGolemBurn(entity.blockPosition()) && ChromaCurioHelper.isChromaticTwisted(stack, slotContext.entity())) {
             atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":cryo_speed_penalty", config.twistedCryoSpeedPenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
             atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, Reference.MODID + ":cryo_damage_penalty", config.twistedCryoDamagePenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
@@ -99,14 +99,14 @@ public class CurioCryoRing extends BaseCurioItem {
                 doCryoEffects(event, target);
             }
         }
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0
+        if (ChromaCurioHelper.isChromaticTwisted(stack, player)
                 && !(event.getSource().isProjectile() || event.getSource().isExplosion() || event.getSource().isMagic() || event.getSource().isFire()))
             doCryoPotionEffects(target);
     }
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource().isFire() && stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+        if (event.getSource().isFire() && ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             event.setAmount(event.getAmount() * config.twistedCryoFireDamageMultiplier.get().floatValue());
         }
     }

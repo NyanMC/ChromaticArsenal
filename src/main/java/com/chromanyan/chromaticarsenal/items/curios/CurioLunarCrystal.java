@@ -2,8 +2,8 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -42,21 +42,21 @@ public class CurioLunarCrystal extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0) {
+        if (!ChromaCurioHelper.isChromaticTwisted(stack, null)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.1"));
         }
-        list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.2", "§b" + config.levitationChance.get(), "§b" + (config.levitationPotency.get() + 1), "§b" + (((float) getLevitationDuration(stack)) / 20)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.2", "§b" + config.levitationChance.get(), "§b" + (config.levitationPotency.get() + 1), "§b" + (((float) getLevitationDuration(stack, null)) / 20)));
         if (stack.getEnchantmentLevel(Enchantments.FALL_PROTECTION) > 0) {
             list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.3", "§b" + (int) Math.round(100 * (1.0 - getFallMultiplier(stack))))); // use Math.round so the tooltip doesn't display it as one more or less than it should be
         }
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.twisted"));
         }
     }
 
-    private static int getLevitationDuration(ItemStack stack) {
+    private static int getLevitationDuration(ItemStack stack, @Nullable LivingEntity player) {
         int powerModifier = stack.getEnchantmentLevel(Enchantments.POWER_ARROWS) * config.levitationDurationEnchantmentModifier.get();
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             return config.levitationDuration.get() + powerModifier + config.twistedLevitationDurationModifier.get();
         } else {
             return config.levitationDuration.get() + powerModifier;
@@ -119,9 +119,9 @@ public class CurioLunarCrystal extends BaseCurioItem {
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
         int randresult = rand.nextInt(config.levitationChance.get() - 1);
         if (randresult == 0) {
-            target.addEffect(new MobEffectInstance(MobEffects.LEVITATION, getLevitationDuration(stack), config.levitationPotency.get()));
-            if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
-                player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, getLevitationDuration(stack), config.levitationPotency.get()));
+            target.addEffect(new MobEffectInstance(MobEffects.LEVITATION, getLevitationDuration(stack, player), config.levitationPotency.get()));
+            if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
+                player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, getLevitationDuration(stack, player), config.levitationPotency.get()));
             }
         }
     }
@@ -129,7 +129,7 @@ public class CurioLunarCrystal extends BaseCurioItem {
     @Override
     public void onGetImmunities(MobEffectEvent.Applicable event, ItemStack stack, MobEffect effect) {
         if (event.getEffectInstance().getEffect() == MobEffects.LEVITATION) {
-            if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) == 0) {
+            if (!ChromaCurioHelper.isChromaticTwisted(stack, event.getEntity())) {
                 event.setResult(Event.Result.DENY);
             }
         }

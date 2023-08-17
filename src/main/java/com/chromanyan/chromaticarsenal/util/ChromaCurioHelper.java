@@ -1,6 +1,8 @@
 package com.chromanyan.chromaticarsenal.util;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
+import com.chromanyan.chromaticarsenal.init.ModItems;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -14,6 +16,7 @@ import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Optional;
@@ -31,6 +34,13 @@ public class ChromaCurioHelper {
             return true;
         }
         return !config.superCuriosOnlyInRespectiveSlot.get();
+    }
+
+    public static boolean isChromaticTwisted(ItemStack stack, @Nullable LivingEntity player) {
+        if (player != null)
+            return ChromaCurioHelper.getCurio(player, ModItems.MARK_TWISTED.get()).isPresent() || stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0;
+        else
+            return stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0;
     }
 
     // thanks flux networks

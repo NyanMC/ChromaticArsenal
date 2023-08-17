@@ -1,8 +1,8 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -26,7 +26,7 @@ public class CurioDualityRings extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", "§b" + (int) ((config.aroOfClubsMultiplier.get() - 1) * 100)));
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
             list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.twisted", "§b" + (config.twistedSaturationDuration.get() / 20), "§b" + (config.twistedHungerLevel.get() + 1)));
     }
 
@@ -39,7 +39,7 @@ public class CurioDualityRings extends BaseCurioItem {
 
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, context.entity())) {
             LivingEntity entity = context.entity();
             if (!entity.hasEffect(MobEffects.SATURATION)) {
                 entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 25, config.twistedHungerLevel.get()));

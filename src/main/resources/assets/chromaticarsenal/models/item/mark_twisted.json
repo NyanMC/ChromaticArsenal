@@ -1,0 +1,35 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "chromaticarsenal:items/mark_twisted"
+  },
+  "display": {
+    "gui": {
+      "scale": [2,2,1]
+    },
+    "thirdperson_righthand": {
+      "translation": [0,2,1],
+      "scale": [1,1,0.5]
+    },
+    "thirdperson_lefthand": {
+      "translation": [0,2,1],
+      "scale": [1,1,0.5]
+    },
+    "firstperson_righthand": {
+      "translation": [1,2,1],
+      "rotation": [0,-90,25],
+      "scale": [1,1,0.5]
+    },
+    "firstperson_lefthand": {
+      "translation": [1,2,1],
+      "rotation": [0,90,-25],
+      "scale": [1,1,0.5]
+    },
+    "ground": {
+      "scale": [1,1,0.5]
+    },
+    "fixed": {
+      "scale": [2,2,1]
+    }
+  }
+}
