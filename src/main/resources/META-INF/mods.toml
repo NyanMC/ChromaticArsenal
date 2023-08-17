@@ -53,7 +53,14 @@ side = "BOTH"
 [[dependencies.chromaticarsenal]]
 modId = "curios"
 mandatory = true
-# This version range declares a minimum of the current minecraft version and exclusively the current minecraft version
-versionRange = "[1.19.2,1.19.3)"
+# curios specifies its version beginning with the game version, this should accept all 1.19.2 versions of the mod
+versionRange = "[1.19.2,1.20)"
 ordering = "NONE"
+side = "BOTH"
+[[dependencies.chromaticarsenal]]
+modId = "band_of_gigantism"
+mandatory = false
+# BoG also specifies its version beginning with the game version
+versionRange = "[1.19.2,1.20)"
+ordering = "AFTER"
 side = "BOTH"

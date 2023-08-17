@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing",
+  "conditions": [
+    {
+      "modid": "band_of_gigantism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "addition": {
+    "item": "chromaticarsenal:chroma_shard"
+  },
+  "base": {
+    "item": "band_of_gigantism:mark_faded"
+  },
+  "result": {
+    "item": "chromaticarsenal:mark_twisted"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.chromanyan.chromaticarsenal.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mixins.chromaticarsenal.refmap.json",
+  "mixins": [
+    "MixinCBT"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}

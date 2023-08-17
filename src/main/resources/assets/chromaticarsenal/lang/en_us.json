@@ -123,6 +123,8 @@
   "tooltip.chromaticarsenal.mark_generic_description": "§5Take §6severe damage §5upon unequipping.",
   "tooltip.chromaticarsenal.mark_twisted_description_flavor": "§d§oCan you tolerate everything you know being deformed senselessly?",
   "tooltip.chromaticarsenal.mark_twisted_description_0": "§5All equipped Chromatic Curios will function as if they had the Curse of Chromatic Twisting.",
+  "tooltip.chromaticarsenal.missing_bog": "§You will not be able to obtain this item because Band of Gigantism is not installed.",
+  "tooltip.chromaticarsenal.missing_bog2": "§(For modpack makers: You can hide this message in the config.)",
   "death.attack.mark_twisted": "%1$s§d's soul was twisted beyond recognition",
 
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",

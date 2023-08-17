@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -46,6 +47,10 @@ public class MarkTwisted extends Item implements ICurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.chromaticarsenal.void"));
+        if (!ModList.get().isLoaded("band_of_gigantism")) {
+            tooltip.add(Component.translatable("tooltip.chromaticarsenal.missing_bog"));
+            tooltip.add(Component.translatable("tooltip.chromaticarsenal.missing_bog2"));
+        }
         if (Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.chromaticarsenal.mark_twisted_description_flavor"));
             tooltip.add(Component.translatable("tooltip.chromaticarsenal.void"));
