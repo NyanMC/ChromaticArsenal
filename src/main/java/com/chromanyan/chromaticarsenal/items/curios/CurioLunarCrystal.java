@@ -35,7 +35,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-@SuppressWarnings("all")
 public class CurioLunarCrystal extends BaseCurioItem {
 
     private final Random rand = new Random();
@@ -65,7 +64,7 @@ public class CurioLunarCrystal extends BaseCurioItem {
     }
 
     @Override
-    public Component getName(ItemStack stack) {
+    public @NotNull Component getName(ItemStack stack) {
         if (stack.getOrCreateTag().getString("crafter.id").equalsIgnoreCase("854adc0b-ae55-48d6-b7ba-e641a1eebf42") || config.everyoneIsLuna.get()) {
             return Component.translatable(this.getDescriptionId(stack) + ".luna");
         }
@@ -73,13 +72,11 @@ public class CurioLunarCrystal extends BaseCurioItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int itemSlot, boolean isSelected) {
+    public void inventoryTick(@NotNull ItemStack stack, @NotNull Level world, @NotNull Entity entity, int itemSlot, boolean isSelected) {
         super.inventoryTick(stack, world, entity, itemSlot, isSelected);
         if (stack.getOrCreateTag().getString("crafter.id").isEmpty()) {
             if (entity instanceof Player) {
-                if (((Player) entity).getUUID() != null) {
-                    stack.getOrCreateTag().putString("crafter.id", ((Player) entity).getUUID().toString());
-                }
+                stack.getOrCreateTag().putString("crafter.id", entity.getUUID().toString());
             }
         } else {
             final Player player = entity.level.getPlayerByUUID(UUID.fromString(stack.getOrCreateTag().getString("crafter.id")));

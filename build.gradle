@@ -54,8 +54,10 @@ minecraft {
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
+            args '--uuid', '854adc0b-ae55-48d6-b7ba-e641a1eebf42', '--username', 'ChromaNyan'
+
             mods {
-                examplemod {
+                chromaticarsenal {
                     source sourceSets.main
                 }
             }
