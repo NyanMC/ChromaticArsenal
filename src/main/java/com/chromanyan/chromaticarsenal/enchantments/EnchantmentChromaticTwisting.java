@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.enchantments;
 
+import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioLimitBreak;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -37,6 +38,6 @@ public class EnchantmentChromaticTwisting extends Enchantment {
 
     @Override
     public boolean canEnchant(@NotNull ItemStack stack) {
-        return stack.getItem() instanceof IChromaCurio && !(stack.getItem() instanceof ISuperCurio);
+        return stack.getItem() instanceof IChromaCurio && !(stack.getItem() instanceof ISuperCurio || stack.getItem() instanceof CurioLimitBreak);
     }
 }
