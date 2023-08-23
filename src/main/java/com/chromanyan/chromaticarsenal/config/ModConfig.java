@@ -349,7 +349,7 @@ public class ModConfig {
                             .defineInRange("voidBounceMultiplier", 2D, 0D, Double.MAX_VALUE);
                     voidBounceDamage = builder
                             .comment("The amount of damage taken when bouncing out of the void. This is void damage, meaning it bypasses most forms of protection, even creative mode.")
-                                    .defineInRange("voidBounceDamage", 4D, 0D, Float.MAX_VALUE);
+                            .defineInRange("voidBounceDamage", 4D, 0D, Float.MAX_VALUE);
                 builder.pop();
 
                 builder.push("AscendedStarSettings");
