@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "tag": "forge:dusts/ascension"
+    },
+    "g": {
+      "item": "minecraft:golden_carrot"
+    },
+    "i": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "pattern": [
+    "ai ",
+    "igi",
+    " i "
+  ],
+  "result": {
+    "item": "chromaticarsenal:super_glow_ring"
+  }
+}

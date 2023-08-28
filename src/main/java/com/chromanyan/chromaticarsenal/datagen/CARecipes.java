@@ -46,7 +46,6 @@ public class CARecipes extends RecipeProvider {
                 .save(consumer, new ResourceLocation(Reference.MODID, name));
     }
 
-    @SuppressWarnings("all") // intellij wants me to hardcode name
     private void chromaUpgrade(@NotNull Consumer<FinishedRecipe> consumer, ItemLike item1, ItemLike item2, Item output, String name) {
         UpgradeRecipeBuilder.smithing(
                 Ingredient.of(item1),
@@ -121,15 +120,26 @@ public class CARecipes extends RecipeProvider {
                 .define('p', ModItems.SUPER_LUNAR_CRYSTAL.get())
                 .unlockedBy("has_chroma_shard", has(ASCENSION_ESSENCE))
                 .save(consumer, new ResourceLocation(Reference.MODID, "ascended_star"));
+
         ShapedRecipeBuilder.shaped(ModItems.CHROMA_SALVAGER.get(), 1)
                 .pattern("ggg")
                 .pattern("scs")
                 .pattern("ggg")
                 .define('s', ModItems.SPICY_COAL.get())
                 .define('c', ModItems.CHROMA_SHARD.get())
-                .define('g', Items.GOLD_INGOT)
+                .define('g', Tags.Items.INGOTS_GOLD)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(Reference.MODID, "chroma_salvager"));
+
+        ShapedRecipeBuilder.shaped(ModItems.SUPER_GLOW_RING.get(), 1)
+                .pattern("ai ")
+                .pattern("igi")
+                .pattern(" i ")
+                .define('g', Items.GOLDEN_CARROT)
+                .define('i', Tags.Items.INGOTS_IRON)
+                .define('a', ASCENSION_ESSENCE)
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(Reference.MODID, "super_glow_ring"));
 
         chromaUpgrade(consumer, Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");
         chromaUpgrade(consumer, Items.NETHERITE_SCRAP, ModItems.SPICY_COAL.get(), ModItems.MAGMATIC_SCRAP.get(), "magmatic_scrap");
