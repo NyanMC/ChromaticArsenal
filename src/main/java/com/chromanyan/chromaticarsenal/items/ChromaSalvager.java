@@ -74,7 +74,7 @@ public class ChromaSalvager extends Item {
             if (!salvageTarget.is(ModTags.Items.NO_SALVAGE)) {
                 Item salvageItem = salvageTarget.getItem();
                 if (salvageItem instanceof ISuperCurio) {
-                    if (config.returnInferiorVariant.get()) {
+                    if (config.returnInferiorVariant.get() && ((ISuperCurio) salvageItem).getInferiorVariant() != null) {
                         ItemStack inferiorReturn = new ItemStack(((ISuperCurio) salvageItem).getInferiorVariant().get());
                         if (!player.getInventory().add(inferiorReturn)) {
                             player.drop(inferiorReturn, false);

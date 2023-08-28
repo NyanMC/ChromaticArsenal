@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.SlotResult;
@@ -19,7 +20,7 @@ public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
 
     private final RegistryObject<Item> inferiorVariant;
 
-    public BaseSuperCurio(RegistryObject<Item> upgradeTo) {
+    public BaseSuperCurio(@Nullable RegistryObject<Item> upgradeTo) {
         super(new Item.Properties()
                 .tab(ChromaticArsenal.GROUP)
                 .stacksTo(1)
@@ -28,6 +29,7 @@ public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
         this.inferiorVariant = upgradeTo;
     }
 
+    @Nullable
     public RegistryObject<Item> getInferiorVariant() {
         return inferiorVariant;
     }
@@ -41,7 +43,7 @@ public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity livingEntity = context.entity();
-        if (livingEntity.level.isClientSide) {
+        if (livingEntity.level.isClientSide || inferiorVariant == null) {
             return;
         }
         Optional<SlotResult> inferiorInstance = CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, inferiorVariant.get());
