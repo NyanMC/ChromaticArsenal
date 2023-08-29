@@ -1,0 +1,17 @@
+{
+  "name": "Ring of Illuminated Soul",
+  "icon": "chromaticarsenal:super_glow_ring",
+  "category": "chromaticarsenal:super_curio_lore",
+  "advancement": "chromaticarsenal:super_glow_ring",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This item is unique in nature, as it is barely tied to the magic of the Chroma Shards.",
+      "item": "chromaticarsenal:super_glow_ring"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This item has a strange origin, as if it $(thing)came from another world$(). It makes no sense for the Essence of Ascension to be able to conjure this. It is an anomaly, and I do not understand it. Perhaps there are other types of magic at play here."
+    }
+  ]
+}

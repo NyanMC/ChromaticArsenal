@@ -1,0 +1,16 @@
+{
+  "name": "Ring of Illuminated Soul",
+  "icon": "chromaticarsenal:super_glow_ring",
+  "category": "chromaticarsenal:super_curios",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Ring of Illuminated Soul grants Night Vision and immunity to both Blindness and Darkness. It causes its wearer to emit a glowing outline, as if they had the Glowing potion effect applied. The wearer also inflicts Glowing to any mob they strike, and deals increased damage to the undead, similar to Smite. This item is a super curio variant of the Ring of Enchanted Eyes from Trinkets and Baubles."
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)You're filled with determination.",
+      "recipe": "chromaticarsenal:super_glow_ring"
+    }
+  ]
+}

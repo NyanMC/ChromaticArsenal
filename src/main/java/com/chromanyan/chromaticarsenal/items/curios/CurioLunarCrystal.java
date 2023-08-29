@@ -47,7 +47,7 @@ public class CurioLunarCrystal extends BaseCurioItem {
         }
         list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.2", "§b" + config.levitationChance.get(), "§b" + (config.levitationPotency.get() + 1), "§b" + (((float) getLevitationDuration(stack, null)) / 20)));
         if (stack.getEnchantmentLevel(Enchantments.FALL_PROTECTION) > 0) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.3", "§b" + (int) Math.round(100 * (1.0 - getFallMultiplier(stack))))); // use Math.round so the tooltip doesn't display it as one more or less than it should be
+            list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.3", "§b" + Math.round(100 * (1.0 - getFallMultiplier(stack))))); // use Math.round so the tooltip doesn't display it as one more or less than it should be
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.twisted"));

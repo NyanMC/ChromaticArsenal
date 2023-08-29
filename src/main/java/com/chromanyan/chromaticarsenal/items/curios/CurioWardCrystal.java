@@ -27,9 +27,9 @@ public class CurioWardCrystal extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.1", "§b" + (int) (100 * (1.0 - getIncomingMultiplier(stack)))));
+        list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.1", "§b" + Math.round(100 * (1.0 - getIncomingMultiplier(stack)))));
         if (!ChromaCurioHelper.isChromaticTwisted(stack, null))
-            list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.2", "§b" + (int) (100 * (1.0 - getOutgoingMultiplier(stack)))));
+            list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.2", "§b" + Math.round(100 * (1.0 - getOutgoingMultiplier(stack)))));
         else
             list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.twisted", "§b" + (config.twistedWeaknessDuration.get() / 20)));
     }
