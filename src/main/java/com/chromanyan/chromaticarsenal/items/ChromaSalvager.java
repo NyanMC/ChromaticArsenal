@@ -49,7 +49,10 @@ public class ChromaSalvager extends Item {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.2"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.3"));
+        if (config.returnInferiorVariant.get())
+            list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.3"));
+        else
+            list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.3.alt"));
     }
 
     @Override
