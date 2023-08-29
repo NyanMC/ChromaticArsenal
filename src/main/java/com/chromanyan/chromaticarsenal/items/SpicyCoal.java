@@ -14,7 +14,6 @@ public class SpicyCoal extends Item {
     public SpicyCoal() {
         super(new Item.Properties()
                 .tab(ChromaticArsenal.GROUP)
-                .stacksTo(64)
                 .fireResistant()
                 .rarity(Rarity.UNCOMMON));
     }
