@@ -5,7 +5,6 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.init.ModTags;
-import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -73,16 +72,18 @@ public class ChromaSalvager extends Item {
         if (!salvageTarget.isEmpty()) {
             if (!salvageTarget.is(ModTags.Items.NO_SALVAGE)) {
                 Item salvageItem = salvageTarget.getItem();
-                if (salvageItem instanceof ISuperCurio) {
-                    if (config.returnInferiorVariant.get() && ((ISuperCurio) salvageItem).getInferiorVariant() != null) {
-                        ItemStack inferiorReturn = new ItemStack(((ISuperCurio) salvageItem).getInferiorVariant().get());
-                        if (!player.getInventory().add(inferiorReturn)) {
-                            player.drop(inferiorReturn, false);
+                if (salvageTarget.is(ModTags.Items.SUPER_CURIOS)) {
+                    if (salvageItem instanceof ISuperCurio superSalvage) { // is this ACTUALLY a super curio, or is the modpack fucking with our tags?
+                        if (config.returnInferiorVariant.get() && superSalvage.getInferiorVariant() != null) {
+                            ItemStack inferiorReturn = new ItemStack(superSalvage.getInferiorVariant().get());
+                            if (!player.getInventory().add(inferiorReturn)) {
+                                player.drop(inferiorReturn, false);
+                            }
                         }
                     }
 
                     salvageReturn = ModItems.ASCENSION_ESSENCE.get();
-                } else if (salvageItem instanceof IChromaCurio) {
+                } else if (salvageTarget.is(ModTags.Items.CHROMATIC_CURIOS)) {
                     salvageReturn = ModItems.CHROMA_SHARD.get();
                 } else {
                     player.displayClientMessage(Component.translatable("message.chromaticarsenal.invalid_salvage"), true);
