@@ -31,6 +31,7 @@ public class ModConfig {
         public final IntValue darkspeedPotency;
         public final DoubleValue enchantmentSpeedMultiplier;
         public final IntValue maxLightLevel;
+        public final DoubleValue swiftSneakDetectionReduction;
         public final DoubleValue twistedShadowDodgeChance;
 
         public final DoubleValue aroOfClubsMultiplier;
@@ -173,6 +174,9 @@ public class ModConfig {
                     maxLightLevel = builder
                             .comment("The maximum light level in which the Shadow Charm takes effect. Values below 4 are not recommended, as sky light causes the minimum light value to always be 4 on the surface, even at midnight.")
                             .defineInRange("maxLightLevel", 7, 0, 15);
+                    swiftSneakDetectionReduction = builder
+                            .comment("The reduction in mob detection range per level of Swift Sneak. Stacks multiplicatively with other factors such as invisibility. Setting this to 0 effectively disables the mixin injection, if that is causing issues.")
+                            .defineInRange("swiftSneakDetectionReduction", 0.05, 0D, 1D);
                     twistedShadowDodgeChance = builder
                             .comment("The chance to dodge an attack while in darkness with Shadow Treads enchanted with Chromatic Twisting. Beware that a value of 1 will make every hit guaranteed to be dodged.")
                             .defineInRange("twistedShadowDodgeChance", 0.2, 0, 1);

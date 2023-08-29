@@ -28,6 +28,7 @@
   "tooltip.chromaticarsenal.shadow_treads.1": "§6Grants immunity to Slowness",
   "tooltip.chromaticarsenal.shadow_treads.2": "§6Grants the Speed effect at level %1$s§6 when in a light level of %2$s§6 or less",
   "tooltip.chromaticarsenal.shadow_treads.3": "§6Prevents activation of Sculk Sensors from walking or falling short distances",
+  "tooltip.chromaticarsenal.shadow_treads.swift_sneak": "§aReduces visibility to other mobs by %1$s§b%%",
   "tooltip.chromaticarsenal.shadow_treads.twisted": "§cChromatic Twisting: Adds a %1$s§b%%§c chance to dodge attacks in darkness, however being in light causes Blindness",
 
   "item.chromaticarsenal.duality_rings": "Duality Rings",

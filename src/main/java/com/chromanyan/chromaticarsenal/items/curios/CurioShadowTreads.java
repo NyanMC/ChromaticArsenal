@@ -38,13 +38,15 @@ import java.util.UUID;
 
 public class CurioShadowTreads extends BaseCurioItem {
 
-    private final Common config = ModConfig.COMMON;
+    private static final Common config = ModConfig.COMMON;
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.2", "§b" + (config.darkspeedPotency.get() + 1), "§b" + config.maxLightLevel.get()));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.3"));
+        if (stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) > 0 && config.swiftSneakDetectionReduction.get() > 0)
+            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.swift_sneak", "§b" + Math.round(100 * (stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) * config.swiftSneakDetectionReduction.get()))));
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
             list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", "§b" + Math.round(config.twistedShadowDodgeChance.get() * 100)));
     }
@@ -78,7 +80,7 @@ public class CurioShadowTreads extends BaseCurioItem {
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-        if (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.SOUL_SPEED, stack) > 0) {
+        if (stack.getEnchantmentLevel(Enchantments.SOUL_SPEED) > 0) {
             atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":speed_bonus", EnchantmentHelper.getTagEnchantmentLevel(Enchantments.SOUL_SPEED, stack) * config.enchantmentSpeedMultiplier.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
         return atts;
@@ -86,7 +88,7 @@ public class CurioShadowTreads extends BaseCurioItem {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        if (enchantment == Enchantments.SOUL_SPEED) {
+        if (enchantment == Enchantments.SOUL_SPEED || enchantment == Enchantments.SWIFT_SNEAK) {
             return true;
         } else {
             return super.canApplyAtEnchantingTable(stack, enchantment);
