@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioLimitBreak extends BaseCurioItem {
-    private final ModConfig.Common config = ModConfig.COMMON;
+    private static final ModConfig.Common config = ModConfig.COMMON;
     private static final DamageSource ASCENDED = new DamageSource("chromaticarsenal.ascended").bypassArmor().bypassInvul();
 
     @Override

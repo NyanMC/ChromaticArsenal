@@ -91,6 +91,9 @@ public class ModConfig {
         public final DoubleValue voidBounceMultiplier;
         public final DoubleValue voidBounceDamage;
 
+        public final IntValue glowingDuration;
+        public final DoubleValue illuminatedUndeadMultiplier;
+
         public final IntValue bonusSlots;
         public final DoubleValue damageMultiplier;
         public final IntValue bonusLooting;
@@ -350,6 +353,15 @@ public class ModConfig {
                     voidBounceDamage = builder
                             .comment("The amount of damage taken when bouncing out of the void. This is void damage, meaning it bypasses most forms of protection, even creative mode.")
                             .defineInRange("voidBounceDamage", 4D, 0D, Float.MAX_VALUE);
+                builder.pop();
+
+                builder.push("SuperGlowRingSettings");
+                    glowingDuration = builder
+                            .comment("The duration of the Glowing effect applied when attacking a mob. Set to 0 to disable.")
+                            .defineInRange("glowingDuration", 1200, 0, Integer.MAX_VALUE);
+                    illuminatedUndeadMultiplier = builder
+                            .comment("The damage multiplier when attacking undead mobs with a Ring of Illuminated Soul.")
+                            .defineInRange("illuminatedUndeadMultiplier", 1.2, 1, Float.MAX_VALUE);
                 builder.pop();
 
                 builder.push("AscendedStarSettings");

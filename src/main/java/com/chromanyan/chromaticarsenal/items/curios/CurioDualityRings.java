@@ -25,7 +25,7 @@ public class CurioDualityRings extends BaseCurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", "§b" + (int) ((config.aroOfClubsMultiplier.get() - 1) * 100)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", "§b" + Math.round((config.aroOfClubsMultiplier.get() - 1) * 100)));
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
             list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.twisted", "§b" + (config.twistedSaturationDuration.get() / 20), "§b" + (config.twistedHungerLevel.get() + 1)));
     }
