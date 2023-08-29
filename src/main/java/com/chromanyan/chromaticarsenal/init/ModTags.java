@@ -8,7 +8,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-@SuppressWarnings("unused") // just because i don't use some of these doesn't mean i shouldn't include them
 public class ModTags {
 
     public static class Items {
@@ -22,10 +21,13 @@ public class ModTags {
         public static final TagKey<Item> DUSTS_ASCENSION = forgeTag("dusts/ascension");
 
         public static final TagKey<Item> NO_SALVAGE = ItemTags.create(new ResourceLocation(Reference.MODID, "no_salvage"));
+
+        public static final TagKey<Item> CHROMATIC_CURIOS = ItemTags.create(new ResourceLocation(Reference.MODID, "chromatic_curios"));
+        public static final TagKey<Item> SUPER_CURIOS = ItemTags.create(new ResourceLocation(Reference.MODID, "super_curios"));
     }
 
     public static class Blocks {
-        @SuppressWarnings("all")
+        @SuppressWarnings("SameParameterValue")
         private static TagKey<Block> forgeTag(String name) {
             return BlockTags.create(new ResourceLocation("forge", name));
         }

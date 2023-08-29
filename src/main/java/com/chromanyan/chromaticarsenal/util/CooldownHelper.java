@@ -4,9 +4,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 
-@SuppressWarnings("all") // the two things that are warned about here exist only for consistency
 public class CooldownHelper {
 
     private CooldownHelper() { // i don't want people to create cooldown helpers
@@ -55,9 +53,10 @@ public class CooldownHelper {
      * @param livingEntity the LivingEntity to play the sound at if the cooldown finishes
      * @return a boolean for if the counter was finished this tick
      */
+    @SuppressWarnings("UnusedReturnValue")
     public static boolean tickCounter(CompoundTag nbt, SoundEvent sound, LivingEntity livingEntity) {
         if (tickCounter(nbt)) {
-            livingEntity.getCommandSenderWorld().playSound((Player) null, livingEntity.blockPosition(), sound, SoundSource.PLAYERS, 0.5F, 1.0F);
+            livingEntity.getCommandSenderWorld().playSound(null, livingEntity.blockPosition(), sound, SoundSource.PLAYERS, 0.5F, 1.0F);
             return true;
         }
         return false;

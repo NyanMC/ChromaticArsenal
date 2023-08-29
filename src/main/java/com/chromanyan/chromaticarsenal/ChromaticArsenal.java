@@ -4,6 +4,8 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.datagen.CAAdvancements;
 import com.chromanyan.chromaticarsenal.datagen.CAModels;
 import com.chromanyan.chromaticarsenal.datagen.CARecipes;
+import com.chromanyan.chromaticarsenal.datagen.tags.CABlockTags;
+import com.chromanyan.chromaticarsenal.datagen.tags.CAItemTags;
 import com.chromanyan.chromaticarsenal.events.EventClassInstance;
 import com.chromanyan.chromaticarsenal.init.*;
 import net.minecraft.core.Registry;
@@ -16,6 +18,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -62,13 +65,17 @@ public class ChromaticArsenal {
     @SubscribeEvent
     public void gatherData(final GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
+        ExistingFileHelper efh = event.getExistingFileHelper();
         if (event.includeClient()) {
-            gen.addProvider(true, new CAModels(gen, event.getExistingFileHelper()));
+            gen.addProvider(true, new CAModels(gen, efh));
         }
         if (event.includeServer()) {
             gen.addProvider(true, new CARecipes(gen));
-            gen.addProvider(true, new CAAdvancements(gen, event.getExistingFileHelper()));
-        }
+            gen.addProvider(true, new CAAdvancements(gen, efh));
+            CABlockTags blockTags = new CABlockTags(gen, event.getExistingFileHelper());
+            gen.addProvider(true, blockTags);
+            gen.addProvider(true, new CAItemTags(gen, blockTags, efh));
+    }
     }
 
     private void setup(final FMLCommonSetupEvent event) {
