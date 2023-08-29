@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.datagen;
 import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -11,6 +12,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +21,13 @@ import java.util.function.Consumer;
 
 public class CAAdvancements extends AdvancementProvider {
     // this class is so fucked
+
+    private static final Item[] CURIOS = new Item[] {
+            ModItems.GOLDEN_HEART.get(), ModItems.GLASS_SHIELD.get(), ModItems.WARD_CRYSTAL.get(), ModItems.SHADOW_TREADS.get(), ModItems.DUALITY_RINGS.get(), ModItems.FRIENDLY_FIRE_FLOWER.get(), ModItems.LUNAR_CRYSTAL.get(), ModItems.CRYO_RING.get(),
+            ModItems.SUPER_GOLDEN_HEART.get(), ModItems.SUPER_GLASS_SHIELD.get(), ModItems.SUPER_WARD_CRYSTAL.get(), ModItems.SUPER_SHADOW_TREADS.get(), ModItems.SUPER_LUNAR_CRYSTAL.get(), ModItems.SUPER_GLOW_RING.get(),
+            ModItems.ASCENDED_STAR.get(), ModItems.WORLD_ANCHOR.get(), ModItems.HARPY_FEATHER.get()
+    };
+
     public CAAdvancements(DataGenerator generatorIn, ExistingFileHelper fileHelperIn) {
         super(generatorIn, fileHelperIn);
     }
@@ -52,6 +61,7 @@ public class CAAdvancements extends AdvancementProvider {
                 .save(consumer, new ResourceLocation(Reference.MODID, itemLike.toString()), fileHelper);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private Advancement displayedHasItem(ItemLike itemLike, Consumer<Advancement> consumer, ExistingFileHelper fileHelper, FrameType frameType, Advancement parent) {
         return displayedHasItemBase(itemLike, frameType)
                 .parent(parent)
@@ -78,7 +88,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement lunarCrystal = displayedHasItem(ModItems.LUNAR_CRYSTAL.get(), consumer, fileHelper, FrameType.GOAL, new ResourceLocation("end/find_end_city"));
         Advancement cryoRing = displayedHasItem(ModItems.CRYO_RING.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/walk_on_powder_snow_with_leather_boots"));
 
-        Advancement ascendedStar = displayedHasItem(ModItems.ASCENDED_STAR.get(), consumer, fileHelper, FrameType.CHALLENGE, ascensionEssence);
+        Advancement ascendedStar = displayedHasItem(ModItems.ASCENDED_STAR.get(), consumer, fileHelper, FrameType.GOAL, ascensionEssence);
         Advancement worldAnchor = simpleHasItemRecipe(ModItems.WORLD_ANCHOR.get(), consumer, fileHelper);
 
         Advancement superGoldenHeart = simpleHasItemRecipe(ModItems.SUPER_GOLDEN_HEART.get(), consumer, fileHelper);
@@ -88,6 +98,28 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement superLunarCrystal = simpleHasItemRecipe(ModItems.SUPER_LUNAR_CRYSTAL.get(), consumer, fileHelper);
 
         Advancement superGlowRing = simpleHasItemRecipe(ModItems.SUPER_GLOW_RING.get(), consumer, fileHelper);
+
+        Advancement curioCollectathon = addCurios(Advancement.Builder.advancement())
+                .display(
+                        ModItems.ASCENDED_STAR.get(),
+                        Component.translatable("advancement.chromaticarsenal.arsenal_accumulated.title"),
+                        Component.translatable("advancement.chromaticarsenal.arsenal_accumulated.description"),
+                        null,
+                        FrameType.CHALLENGE,
+                        true,
+                        true,
+                        false
+                )
+                .rewards(AdvancementRewards.Builder.experience(100))
+                .parent(ascendedStar)
+                .save(consumer, new ResourceLocation(Reference.MODID, "arsenal_accumulated"), fileHelper);
+    }
+
+    private Advancement.Builder addCurios(Advancement.Builder advancement) {
+        for (Item item : CURIOS) {
+            advancement.addCriterion("has_" + item, hasItem(item));
+        }
+        return advancement;
     }
 
     private CriterionTriggerInstance hasItem(ItemLike item) {

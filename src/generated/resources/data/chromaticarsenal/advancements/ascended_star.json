@@ -19,7 +19,7 @@
     "description": {
       "translate": "advancement.chromaticarsenal.ascended_star.description"
     },
-    "frame": "challenge",
+    "frame": "goal",
     "hidden": false,
     "icon": {
       "item": "chromaticarsenal:ascended_star"

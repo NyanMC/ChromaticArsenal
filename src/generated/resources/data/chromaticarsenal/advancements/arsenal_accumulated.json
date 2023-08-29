@@ -1,0 +1,280 @@
+{
+  "parent": "chromaticarsenal:ascended_star",
+  "criteria": {
+    "has_ascended_star": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:ascended_star"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cryo_ring": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:cryo_ring"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_duality_rings": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:duality_rings"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_friendly_fire_flower": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:friendly_fire_flower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_glass_shield": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:glass_shield"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_golden_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:golden_heart"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_harpy_feather": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:harpy_feather"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_lunar_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:lunar_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shadow_treads": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:shadow_treads"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_super_glass_shield": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:super_glass_shield"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_super_glow_ring": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:super_glow_ring"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_super_golden_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:super_golden_heart"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_super_lunar_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:super_lunar_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_super_shadow_treads": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:super_shadow_treads"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_super_ward_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:super_ward_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ward_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:ward_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_world_anchor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:world_anchor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.chromaticarsenal.arsenal_accumulated.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "chromaticarsenal:ascended_star"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.chromaticarsenal.arsenal_accumulated.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_golden_heart"
+    ],
+    [
+      "has_glass_shield"
+    ],
+    [
+      "has_ward_crystal"
+    ],
+    [
+      "has_shadow_treads"
+    ],
+    [
+      "has_duality_rings"
+    ],
+    [
+      "has_friendly_fire_flower"
+    ],
+    [
+      "has_lunar_crystal"
+    ],
+    [
+      "has_cryo_ring"
+    ],
+    [
+      "has_super_golden_heart"
+    ],
+    [
+      "has_super_glass_shield"
+    ],
+    [
+      "has_super_ward_crystal"
+    ],
+    [
+      "has_super_shadow_treads"
+    ],
+    [
+      "has_super_lunar_crystal"
+    ],
+    [
+      "has_super_glow_ring"
+    ],
+    [
+      "has_ascended_star"
+    ],
+    [
+      "has_world_anchor"
+    ],
+    [
+      "has_harpy_feather"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}
