@@ -136,7 +136,7 @@ public class EventClassInstance {
         }
     }
 
-    @SuppressWarnings("all")
+    @SuppressWarnings("SameParameterValue")
     private static void injectInto(LootTableLoadEvent event, String poolName, LootPoolEntryContainer... entries) {
         LootPool pool = event.getTable().getPool(poolName);
         //noinspection ConstantConditions method is annotated wrongly
@@ -147,7 +147,6 @@ public class EventClassInstance {
         }
     }
 
-    @SuppressWarnings("all")
     @SubscribeEvent
     public void insertLoot(LootTableLoadEvent event) {
         if (!config.lootTableInsertion.get()) {
@@ -162,14 +161,14 @@ public class EventClassInstance {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.COSMICOLA.get()).setWeight(8).build());
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD.get()).setWeight(10).build());
             }
-            case "chests/ruined_portal" ->
+            case "chests/ruined_portal", "chests/nether_bridge" ->
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.SPICY_COAL.get()).setWeight(24).build());
-            case "chests/igloo_chest" -> {
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get()).setWeight(5).build());
-            }
+            case "chests/igloo_chest" ->
+                    injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get()).setWeight(5).build());
         }
 
         if (event.getName().getPath().contains("chests")) {
+            //noinspection ConstantConditions
             if (event.getTable().getPool("main") != null) {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMA_SHARD.get()).setWeight(2).build());
             }
