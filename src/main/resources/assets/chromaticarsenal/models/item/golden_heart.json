@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "chromaticarsenal:items/golden_heart"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "chromaticarsenal:is_chromanyan": 1
+      },
+      "model": "chromaticarsenal:item/golden_heart_nyans"
+    }
+  ]
+}

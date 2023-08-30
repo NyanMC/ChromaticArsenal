@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/golden_heart"
+    "layer0": "chromaticarsenal:items/golden_heart_nyans"
   }
 }

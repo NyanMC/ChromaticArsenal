@@ -8,6 +8,7 @@ import com.chromanyan.chromaticarsenal.datagen.tags.CABlockTags;
 import com.chromanyan.chromaticarsenal.datagen.tags.CAItemTags;
 import com.chromanyan.chromaticarsenal.events.EventClassInstance;
 import com.chromanyan.chromaticarsenal.init.*;
+import com.chromanyan.chromaticarsenal.items.curios.CurioGoldenHeart;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -26,6 +27,7 @@ import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -46,6 +48,7 @@ public class ChromaticArsenal {
         final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         // Register the setup method for modloading
         bus.addListener(this::setup);
+        bus.addListener(this::clientSetup);
         // Register the enqueueIMC method for modloading
         bus.addListener(this::enqueueIMC);
         bus.addListener(this::gatherData);
@@ -85,6 +88,10 @@ public class ChromaticArsenal {
         Registry.register(Registry.CUSTOM_STAT, ModStats.CHROMA_SALVAGER_USES_LOCATION, ModStats.CHROMA_SALVAGER_USES_LOCATION);
         Stats.CUSTOM.get(ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, StatFormatter.DIVIDE_BY_TEN);
         ModStats.load();
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+        CurioGoldenHeart.registerVariants();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
