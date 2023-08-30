@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
@@ -39,8 +40,8 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.2", "§b" + config.shatterRevivalCooldown.get()));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.3", "§b" + config.revivalLimit.get()));
+        list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.2", TooltipHelper.valueTooltip(config.shatterRevivalCooldown.get())));
+        list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.3", TooltipHelper.valueTooltip(config.revivalLimit.get())));
         CompoundTag nbt = stack.getOrCreateTag();
         if (!CooldownHelper.isCooldownFinished(nbt)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));

@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -35,12 +36,12 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.2", "§b" + (((float) getEffectDuration(stack)) / 20)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.2", TooltipHelper.ticksToSecondsTooltip(getEffectDuration(stack))));
         if (config.canBeDamaged.get()) {
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.3"));
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
-            list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.twisted", "§b" + Math.round(config.twistedUnbreakingChance.get() * 100)));
+            list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.twisted", TooltipHelper.percentTooltip(config.twistedUnbreakingChance.get())));
     }
 
     private int getEffectDuration(ItemStack stack) {

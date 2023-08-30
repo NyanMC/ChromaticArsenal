@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -37,12 +38,12 @@ public class CurioGlassShield extends BaseCurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.2", "§b" + (((float) getCooldownDuration(stack)) / 20)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.2", TooltipHelper.ticksToSecondsTooltip(getCooldownDuration(stack))));
         if (getFreeBlockChance(stack) > 0) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.3", "§b" + getFreeBlockChance(stack)));
+            list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.3", TooltipHelper.valueTooltip(getFreeBlockChance(stack))));
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.twisted", "§b" + config.twistedShatterDamageMultiplier.get()));
+            list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.twisted", TooltipHelper.valueTooltip(config.twistedShatterDamageMultiplier.get())));
         }
         CompoundTag nbt = stack.getOrCreateTag();
         if (!CooldownHelper.isCooldownFinished(nbt)) {

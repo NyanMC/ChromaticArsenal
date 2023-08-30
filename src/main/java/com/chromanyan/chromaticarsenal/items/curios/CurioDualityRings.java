@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -25,9 +26,9 @@ public class CurioDualityRings extends BaseCurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", "§b" + Math.round((config.aroOfClubsMultiplier.get() - 1) * 100)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", TooltipHelper.multiplierAsPercentTooltip(config.aroOfClubsMultiplier.get())));
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
-            list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.twisted", "§b" + (config.twistedSaturationDuration.get() / 20), "§b" + (config.twistedHungerLevel.get() + 1)));
+            list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.twisted", TooltipHelper.ticksToSecondsTooltip(config.twistedSaturationDuration.get()), TooltipHelper.potionAmplifierTooltip(config.twistedHungerLevel.get())));
     }
 
     @Override

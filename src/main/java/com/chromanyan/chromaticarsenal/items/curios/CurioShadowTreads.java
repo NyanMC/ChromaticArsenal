@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -43,12 +44,12 @@ public class CurioShadowTreads extends BaseCurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.2", "§b" + (config.darkspeedPotency.get() + 1), "§b" + config.maxLightLevel.get()));
+        list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.2", TooltipHelper.potionAmplifierTooltip(config.darkspeedPotency.get()), TooltipHelper.valueTooltip(config.maxLightLevel.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.3"));
         if (stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) > 0 && config.swiftSneakDetectionReduction.get() > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.swift_sneak", "§b" + Math.round(100 * (stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) * config.swiftSneakDetectionReduction.get()))));
+            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.swift_sneak", TooltipHelper.percentTooltip(stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) * config.swiftSneakDetectionReduction.get())));
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
-            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", "§b" + Math.round(config.twistedShadowDodgeChance.get() * 100)));
+            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", TooltipHelper.percentTooltip(config.twistedShadowDodgeChance.get())));
     }
 
     @SuppressWarnings("all")

@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -36,11 +37,11 @@ public class CurioWorldAnchor extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.1"));
         if (getFortuneLevel(stack) > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2", "§b" + getFortuneLevel(stack)));
+            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2", TooltipHelper.valueTooltip(getFortuneLevel(stack))));
         else
             list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2alt"));
         if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.twisted", "§b" + config.twistedAnchorGravityMultiplier.get()));
+            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.twisted", TooltipHelper.valueTooltip(config.twistedAnchorGravityMultiplier.get())));
     }
 
     @NotNull

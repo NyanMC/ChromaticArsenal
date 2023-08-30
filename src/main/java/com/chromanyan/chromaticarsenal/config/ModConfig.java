@@ -415,12 +415,16 @@ public class ModConfig {
     public static class Client {
 
         public final BooleanValue suppressMissingModNotices;
+        public final IntValue tooltipDecimalThreshold;
 
         Client(ForgeConfigSpec.Builder builder) {
             builder.push("TooltipSettings");
             suppressMissingModNotices = builder
                     .comment("Disables tooltip notices mentioning that certain items are unobtainable without a certain mod present.")
                     .define("suppressMissingModNotices", false);
+            tooltipDecimalThreshold = builder
+                    .comment("Whenever ticks are converted to seconds in a tooltip, the decimal is kept if the resulting amount of seconds is under this value.")
+                    .defineInRange("tooltipDecimalThreshold", 10, 0, Integer.MAX_VALUE);
             builder.pop();
         }
     }

@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -45,9 +46,9 @@ public class CurioLunarCrystal extends BaseCurioItem {
         if (!ChromaCurioHelper.isChromaticTwisted(stack, null)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.1"));
         }
-        list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.2", "§b" + config.levitationChance.get(), "§b" + (config.levitationPotency.get() + 1), "§b" + (((float) getLevitationDuration(stack, null)) / 20)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.2", TooltipHelper.valueTooltip(config.levitationChance.get()), TooltipHelper.potionAmplifierTooltip(config.levitationPotency.get()), TooltipHelper.ticksToSecondsTooltip(getLevitationDuration(stack, null))));
         if (stack.getEnchantmentLevel(Enchantments.FALL_PROTECTION) > 0) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.3", "§b" + Math.round(100 * (1.0 - getFallMultiplier(stack))))); // use Math.round so the tooltip doesn't display it as one more or less than it should be
+            list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.3", TooltipHelper.multiplierAsPercentTooltip(getFallMultiplier(stack)))); // use Math.round so the tooltip doesn't display it as one more or less than it should be
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.twisted"));

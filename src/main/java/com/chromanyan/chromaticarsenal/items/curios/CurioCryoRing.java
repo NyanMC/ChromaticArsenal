@@ -6,6 +6,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -42,12 +43,12 @@ public class CurioCryoRing extends BaseCurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.2", "§b" + config.cryoDamage.get(), "§b" + (((float) config.chilledTicks.get()) / 20)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.2", TooltipHelper.valueTooltip(config.cryoDamage.get()), "§b" + TooltipHelper.ticksToSecondsTooltip(config.chilledTicks.get())));
         if (!Objects.equals(config.chilledTicks.get(), config.chilledTicksVulnerable.get())) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.3", "§b" + (((float) config.chilledTicksVulnerable.get()) / 20)));
+            list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.3", TooltipHelper.ticksToSecondsTooltip(config.chilledTicksVulnerable.get())));
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
-            list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.twisted", "§b" + config.twistedCryoFireDamageMultiplier.get()));
+            list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.twisted", TooltipHelper.valueTooltip(config.twistedCryoFireDamageMultiplier.get())));
     }
 
     @Override

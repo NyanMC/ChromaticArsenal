@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
@@ -34,9 +35,9 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.1"));
         if (config.glowingDuration.get() > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.2", "§b" + (config.glowingDuration.get() / 20)));
+            list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.2", TooltipHelper.ticksToSecondsTooltip(config.glowingDuration.get())));
         if (config.illuminatedUndeadMultiplier.get() > 1)
-            list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.3", "§b" + Math.round((config.illuminatedUndeadMultiplier.get() - 1) * 100)));
+            list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.3", TooltipHelper.multiplierAsPercentTooltip(config.illuminatedUndeadMultiplier.get())));
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -35,8 +36,8 @@ public class CurioDiamondHeart extends BaseSuperCurio {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.2", "§b" + ((config.fracturedPotency.get() + 1) * 10), "§b" + (int) (((float) config.fracturedDuration.get()) / 20)));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.3", "§b" + (int) (((float) config.revivalCooldown.get()) / 20)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.2", TooltipHelper.valueTooltip((config.fracturedPotency.get() + 1) * 10), TooltipHelper.ticksToSecondsTooltip(config.fracturedDuration.get())));
+        list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.3", TooltipHelper.ticksToSecondsTooltip(config.revivalCooldown.get())));
         CompoundTag nbt = stack.getOrCreateTag();
         if (!CooldownHelper.isCooldownFinished(nbt)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
