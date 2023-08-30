@@ -48,7 +48,7 @@ public class MarkTwisted extends Item implements ICurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.chromaticarsenal.void"));
-        if (!(ModList.get().isLoaded("band_of_gigantism") || ModConfig.COMMON.suppressMissingModNotices.get())) {
+        if (!(ModList.get().isLoaded("band_of_gigantism") || ModConfig.CLIENT.suppressMissingModNotices.get())) {
             tooltip.add(Component.translatable("tooltip.chromaticarsenal.missing_bog"));
             tooltip.add(Component.translatable("tooltip.chromaticarsenal.missing_bog2"));
         }

@@ -56,6 +56,7 @@ public class ChromaticArsenal {
         ModPotions.EFFECTS_REGISTRY.register(bus);
         ModEnchantments.ENCHANTMENTS_REGISTRY.register(bus);
         ModLoadingContext.get().registerConfig(Type.COMMON, ModConfig.commonSpec);
+        ModLoadingContext.get().registerConfig(Type.CLIENT, ModConfig.clientSpec);
         bus.register(ModConfig.class);
 
         // Register ourselves for server and other game events we are interested in

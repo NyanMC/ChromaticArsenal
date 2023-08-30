@@ -103,8 +103,6 @@ public class ModConfig {
         public final BooleanValue canDamageSalvager;
         public final BooleanValue returnInferiorVariant;
 
-        public final BooleanValue suppressMissingModNotices;
-
         public final BooleanValue lootTableInsertion;
         public final BooleanValue superCuriosOnlyInRespectiveSlot;
 
@@ -393,11 +391,7 @@ public class ModConfig {
                         .define("returnInferiorVaruant", true);
             builder.pop();
 
-            builder.push("ModCompatSettings");
-                suppressMissingModNotices = builder
-                        .comment("Disables tooltip notices mentioning that certain items are unobtainable without a certain mod present. For modpack makers that want to make use of these items without adding the mod in question.")
-                        .define("suppressMissingModNotices", false);
-            builder.pop();
+
 
             lootTableInsertion = builder
                     .comment("Set to false to prevent Chromatic Arsenal from injecting its own items into loot tables. This will cause items only found as loot (such as the Golden Heart) to become unobtainable, and it will be up to the modpack to add a method to obtain them. This setting also affects the Wandering Trader trade for Chroma Shards.")
@@ -416,6 +410,28 @@ public class ModConfig {
         final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
         commonSpec = specPair.getRight();
         COMMON = specPair.getLeft();
+    }
+
+    public static class Client {
+
+        public final BooleanValue suppressMissingModNotices;
+
+        Client(ForgeConfigSpec.Builder builder) {
+            builder.push("TooltipSettings");
+            suppressMissingModNotices = builder
+                    .comment("Disables tooltip notices mentioning that certain items are unobtainable without a certain mod present.")
+                    .define("suppressMissingModNotices", false);
+            builder.pop();
+        }
+    }
+
+    public static final ForgeConfigSpec clientSpec;
+    public static final Client CLIENT;
+
+    static {
+        final Pair<Client, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Client::new);
+        clientSpec = specPair.getRight();
+        CLIENT = specPair.getLeft();
     }
 
 }
