@@ -36,6 +36,7 @@ public class ModItems {
     public static final RegistryObject<Item> FRIENDLY_FIRE_FLOWER = ITEMS_REGISTRY.register("friendly_fire_flower", CurioFriendlyFireFlower::new);
     public static final RegistryObject<Item> LUNAR_CRYSTAL = ITEMS_REGISTRY.register("lunar_crystal", CurioLunarCrystal::new);
     public static final RegistryObject<Item> CRYO_RING = ITEMS_REGISTRY.register("cryo_ring", CurioCryoRing::new);
+    public static final RegistryObject<Item> VERTICAL_STASIS = ITEMS_REGISTRY.register("vertical_stasis_stone", CurioVerticalStasis::new);
     public static final RegistryObject<Item> HARPY_FEATHER = ITEMS_REGISTRY.register("harpy_feather", CurioHarpyFeather::new);
 
     // super curios
