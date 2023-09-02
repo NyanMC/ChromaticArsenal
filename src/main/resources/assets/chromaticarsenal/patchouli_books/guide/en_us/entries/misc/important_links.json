@@ -1,0 +1,12 @@
+{
+  "name": "Potentially Useful Links",
+  "icon": "minecraft:paper",
+  "category": "chromaticarsenal:misc",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l:https://github.com/NyanMC/ChromaticArsenal/issues)Issues Page$(/l)$(br2)$(l:https://discord.gg/apVvEGphr9)Nyaniverse Discord Server$(/l) (has a dedicated #chromatic-arsenal channel and a channel for feedback such as suggestions)"
+    }
+  ]
+}
