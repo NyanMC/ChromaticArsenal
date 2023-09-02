@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Super curios are ascended versions of your existing arsenal, upgraded using a new material known as Essence of Ascension. These curios have their own designated slot, and cannot be equipped in standard curio slots (not even the otherwise all-purpose curio slot type). Additionally, do not attempt to equip a super curio alongside its inferior variant. It will not go well."
+      "text": "Super Curios are ascended versions of your existing arsenal, upgraded using a new material known as $(l:misc/ascension_essence)Essence of Ascension$(/l). These curios have their own designated slot, and cannot be equipped in standard curio slots (not even the otherwise all-purpose curio slot type). Additionally, do not attempt to equip a super curio alongside its inferior variant. It will not go well."
     }
   ]
 }

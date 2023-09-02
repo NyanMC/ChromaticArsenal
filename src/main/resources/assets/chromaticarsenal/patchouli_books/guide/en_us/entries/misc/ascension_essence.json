@@ -1,0 +1,12 @@
+{
+  "name": "Essence of Ascension",
+  "icon": "chromaticarsenal:ascension_essence",
+  "category": "chromaticarsenal:misc",
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "text": "The Essence of Ascension is used to convert your standard arsenal into Super Curios.",
+      "recipe": "chromaticarsenal:ascension_essence"
+    }
+  ]
+}

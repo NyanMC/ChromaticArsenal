@@ -13,7 +13,7 @@
     },
     {
       "type": "patchouli:crafting",
-      "text": "$(o)Don't try this at home!",
+      "text": "$(o)Hallowed Armor was so good they made a Hallowed Armor 2",
       "recipe": "chromaticarsenal:glass_shield"
     }
   ]

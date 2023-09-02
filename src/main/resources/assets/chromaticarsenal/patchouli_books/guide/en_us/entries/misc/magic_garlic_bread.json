@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:crafting",
-      "text": "Magic Garlic Bread is a food which restores half the hunger bar and a moderate amount of saturation. If the player is wearing the Duality Rings, they will also receive $(4)Health Boost III$() and $(4)Strength I$(). It can also be found rarely in end city chests.",
+      "text": "Magic Garlic Bread is a food which restores half the hunger bar and a moderate amount of saturation. If the player is wearing the $(l:misc/duality_rings)Duality Rings$(/l), they will also receive $(4)Health Boost III$() and $(4)Strength I$(). It can also be found rarely in end city chests.",
       "recipe": "chromaticarsenal:magic_garlic_bread"
     }
   ]

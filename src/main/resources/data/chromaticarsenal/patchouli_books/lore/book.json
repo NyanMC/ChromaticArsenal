@@ -1,5 +1,6 @@
 {
   "name": "Cosmic Journal",
+  "subtitle": "The Survivor's Archive",
   "landing_text": "A strange journal with magical properties. As you collect new chromatic items, it gains new entries.",
   "show_progress": true,
   "progress_bar_color": "AA55FF",
