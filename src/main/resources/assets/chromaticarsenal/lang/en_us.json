@@ -58,9 +58,9 @@
   "tooltip.chromaticarsenal.cryo_ring.twisted": "§cChromatic Twisting: Allows melee attacks to inflict Chilled, however multiplies fire damage taken by %1$s§c and inflicts speed and damage debuffs in hot places",
 
   "item.chromaticarsenal.harpy_feather": "Harpy Feather",
-  "tooltip.chromaticarsenal.harpy_feather.1": "§6Right click with this item in either hand to perform a midair jump",
-  "tooltip.chromaticarsenal.harpy_feather.2": "§6This midair jump can be used to reset fall damage",
-  "tooltip.chromaticarsenal.harpy_feather.3": "§6After jumping, goes on cooldown until landing again",
+  "tooltip.chromaticarsenal.harpy_feather.1": "§6Right click to perform a midair jump that resets fall damage",
+  "tooltip.chromaticarsenal.harpy_feather.2": "§6After jumping, goes on cooldown until landing again",
+  "tooltip.chromaticarsenal.harpy_feather.3": "§cCannot be used while sneaking",
   "tooltip.chromaticarsenal.harpy_feather.twisted": "§cChromatic Twisting: Right click with this item in either hand to quickly drop to the ground",
   "tooltip.chromaticarsenal.harpy_feather.twisted2": "§cThis drop cancels horizontal momentum entirely and does NOT reset fall damage",
 
