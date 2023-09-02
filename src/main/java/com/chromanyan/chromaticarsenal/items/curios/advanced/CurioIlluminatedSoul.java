@@ -52,6 +52,8 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         LivingEntity entity = slotContext.entity();
+        if (entity.getCommandSenderWorld().isClientSide)
+            return;
         entity.removeEffect(MobEffects.NIGHT_VISION);
         entity.setGlowingTag(false);
     }

@@ -91,6 +91,8 @@ public class CurioGoldenHeart extends BaseCurioItem {
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         LivingEntity entity = slotContext.entity();
+        if (entity.getCommandSenderWorld().isClientSide)
+            return;
         entity.removeEffect(MobEffects.ABSORPTION);
         if (entity.getHealth() > entity.getMaxHealth()) {
             entity.setHealth(entity.getMaxHealth()); // to be honest i have no clue if this will even do anything, depends on if onUnequip processes before or after attribute changes

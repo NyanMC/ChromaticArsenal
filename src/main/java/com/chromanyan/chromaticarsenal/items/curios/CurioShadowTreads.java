@@ -52,12 +52,11 @@ public class CurioShadowTreads extends BaseCurioItem {
             list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", TooltipHelper.percentTooltip(config.twistedShadowDodgeChance.get())));
     }
 
-    @SuppressWarnings("all")
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity livingEntity = context.entity();
         Level world = livingEntity.getCommandSenderWorld();
-        if (world != null && !world.isClientSide()) {
+        if (!world.isClientSide()) {
             if (world.getMaxLocalRawBrightness(livingEntity.blockPosition()) <= config.maxLightLevel.get()) {
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, config.darkspeedPotency.get(), true, true));
             } else if (ChromaCurioHelper.isChromaticTwisted(stack, context.entity())) {
