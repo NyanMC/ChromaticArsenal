@@ -1,8 +1,10 @@
 {
   "name": "Chromatic Arsenal",
-  "landing_text": "A guide to the items in Chromatic Arsenal.",
+  "subtitle": "A Beginner's Guide to Chromatic Magic",
+  "landing_text": "A guide for obtaining and using the items in Chromatic Arsenal.",
   "show_progress": false,
   "use_resource_pack": true,
+  "creative_tab": "chromaticarsenal",
   "model": "chromaticarsenal:ca_book",
   "book_texture": "chromaticarsenal:textures/gui/book_chroma.png"
 }
