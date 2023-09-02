@@ -1,7 +1,6 @@
 {
   "name": "Cosmic Journal",
   "landing_text": "The lore of Chromatic Arsenal, archived in a strange journal.",
-  "version": 1,
   "show_progress": true,
   "use_resource_pack": true,
   "model": "chromaticarsenal:lore_book",
