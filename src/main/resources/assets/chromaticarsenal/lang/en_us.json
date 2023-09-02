@@ -60,6 +60,7 @@
   "item.chromaticarsenal.vertical_stasis_stone": "Stone of Vertical Stasis",
   "tooltip.chromaticarsenal.vertical_stasis_stone.1": "§6Negates the effects of gravity while sneaking",
   "tooltip.chromaticarsenal.vertical_stasis_stone.2": "§6While in effect, sneaking won't prevent falling off ledges",
+  "tooltip.chromaticarsenal.vertical_stasis_stone.twisted": "§cChromatic Twisting: Applies Levitation instead of negating gravity",
 
   "item.chromaticarsenal.harpy_feather": "Harpy Feather",
   "tooltip.chromaticarsenal.harpy_feather.1": "§6Right click to perform a midair jump that resets fall damage",

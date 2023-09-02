@@ -1,8 +1,12 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -10,6 +14,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 
@@ -19,15 +24,24 @@ public class CurioVerticalStasis extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.vertical_stasis_stone.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.vertical_stasis_stone.2"));
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
+            list.add(Component.translatable("tooltip.chromaticarsenal.vertical_stasis_stone.twisted"));
     }
 
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         CompoundTag nbt = stack.getOrCreateTag();
         LivingEntity entity = context.entity();
-
+        if (entity.getCommandSenderWorld().isClientSide())
+            return;
         nbt.putBoolean("active", entity.isDiscrete() && (entity.isOnGround() || nbt.getBoolean("active")));
-        entity.setNoGravity(nbt.getBoolean("active"));
+        if (ChromaCurioHelper.isChromaticTwisted(stack, entity)) {
+            if (nbt.getBoolean("active")) {
+                entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 100, 2));
+            }
+        } else {
+            entity.setNoGravity(nbt.getBoolean("active"));
+        }
     }
 
     @Override
@@ -37,5 +51,11 @@ public class CurioVerticalStasis extends BaseCurioItem {
             nbt.putBoolean("active", false);
             context.entity().setNoGravity(false);
         }
+    }
+
+    @NotNull
+    @Override
+    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
+        return new ICurio.SoundInfo(SoundEvents.SHULKER_BULLET_HIT, 0.5F, 1);
     }
 }
