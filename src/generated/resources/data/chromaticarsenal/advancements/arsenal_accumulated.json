@@ -181,6 +181,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_vertical_stasis_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:vertical_stasis_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_ward_crystal": {
       "conditions": {
         "items": [
@@ -245,6 +257,9 @@
     ],
     [
       "has_cryo_ring"
+    ],
+    [
+      "has_vertical_stasis_stone"
     ],
     [
       "has_super_golden_heart"

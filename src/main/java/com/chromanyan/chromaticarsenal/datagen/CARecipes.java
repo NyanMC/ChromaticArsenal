@@ -83,6 +83,18 @@ public class CARecipes extends RecipeProvider {
                 .save(consumer, new ResourceLocation(Reference.MODID, "duality_rings"));
 
         nyanPatternRecipe(consumer, ModItems.FRIENDLY_FIRE_FLOWER.get(), ModItems.MAGMATIC_SCRAP.get(), Items.ORANGE_TULIP, CHROMA_SHARD, "friendly_fire_flower");
+
+        ShapedRecipeBuilder.shaped(ModItems.VERTICAL_STASIS.get(), 1)
+                .pattern("pop")
+                .pattern("scs")
+                .pattern("pop")
+                .define('c', CHROMA_SHARD)
+                .define('s', Items.SHULKER_SHELL)
+                .define('o', ModItems.COSMICOLA.get())
+                .define('p', Items.POPPED_CHORUS_FRUIT)
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(Reference.MODID, "vertical_stasis_stone"));
+
         nyanPatternRecipe(consumer, ModItems.SUPER_GOLDEN_HEART.get(), Items.DIAMOND, ModItems.GOLDEN_HEART.get(), ASCENSION_ESSENCE, "super_golden_heart");
 
         ShapedRecipeBuilder.shaped(ModItems.SUPER_GLASS_SHIELD.get(), 1)

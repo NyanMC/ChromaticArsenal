@@ -52,6 +52,7 @@ public class CAItemTags extends ItemTagsProvider {
                         ModItems.FRIENDLY_FIRE_FLOWER.get(),
                         ModItems.LUNAR_CRYSTAL.get(),
                         ModItems.CRYO_RING.get(),
+                        ModItems.VERTICAL_STASIS.get(),
                         ModItems.HARPY_FEATHER.get(), // yes the harpy feather is a chromatic curio, it even has the curio capability, i just don't do anything with it
                         ModItems.WORLD_ANCHOR.get()
                 )

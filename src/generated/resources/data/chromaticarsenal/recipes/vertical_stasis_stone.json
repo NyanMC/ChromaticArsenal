@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "tag": "forge:gems/chroma"
+    },
+    "o": {
+      "item": "chromaticarsenal:cosmicola"
+    },
+    "p": {
+      "item": "minecraft:popped_chorus_fruit"
+    },
+    "s": {
+      "item": "minecraft:shulker_shell"
+    }
+  },
+  "pattern": [
+    "pop",
+    "scs",
+    "pop"
+  ],
+  "result": {
+    "item": "chromaticarsenal:vertical_stasis_stone"
+  }
+}
