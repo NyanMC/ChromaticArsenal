@@ -50,7 +50,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'chromaticarsenal'
             // fixes patchouli, don't ask me why
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
@@ -71,10 +71,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'chromaticarsenal'
 
             mods {
-                examplemod {
+                chromaticarsenal {
                     source sourceSets.main
                 }
             }
@@ -90,10 +90,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'chromaticarsenal'
 
             mods {
-                examplemod {
+                chromaticarsenal {
                     source sourceSets.main
                 }
             }
@@ -112,7 +112,7 @@ minecraft {
             args '--mod', 'chromaticarsenal', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                chromaticarsenal {
                     source sourceSets.main
                 }
             }
