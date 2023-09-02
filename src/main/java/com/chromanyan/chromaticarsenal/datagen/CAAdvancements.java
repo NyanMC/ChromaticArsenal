@@ -86,6 +86,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement dualityRings = simpleHasItemRecipe(ModItems.DUALITY_RINGS.get(), consumer, fileHelper);
         Advancement friendlyFireFlower = simpleHasItemRecipe(ModItems.FRIENDLY_FIRE_FLOWER.get(), consumer, fileHelper);
         Advancement lunarCrystal = displayedHasItem(ModItems.LUNAR_CRYSTAL.get(), consumer, fileHelper, FrameType.GOAL, new ResourceLocation("end/find_end_city"));
+        Advancement verticalStasis = simpleHasItemRecipe(ModItems.VERTICAL_STASIS.get(), consumer, fileHelper);
         Advancement cryoRing = displayedHasItem(ModItems.CRYO_RING.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/walk_on_powder_snow_with_leather_boots"));
 
         Advancement ascendedStar = displayedHasItem(ModItems.ASCENDED_STAR.get(), consumer, fileHelper, FrameType.GOAL, ascensionEssence);

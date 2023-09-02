@@ -37,7 +37,7 @@ public class CurioVerticalStasis extends BaseCurioItem {
         nbt.putBoolean("active", entity.isDiscrete() && (entity.isOnGround() || nbt.getBoolean("active")));
         if (ChromaCurioHelper.isChromaticTwisted(stack, entity)) {
             if (nbt.getBoolean("active")) {
-                entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 100, 2));
+                entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 10, 2));
             }
         } else {
             entity.setNoGravity(nbt.getBoolean("active"));

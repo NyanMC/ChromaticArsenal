@@ -1,0 +1,17 @@
+{
+  "name": "Duality Rings",
+  "icon": "chromaticarsenal:vertical_stasis_stone",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:vertical_stasis_stone",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This stone is peculiar, in that it has negative gravity to the point of counteracting its wearer's gravity. How it works is a mystery.",
+      "item": "chromaticarsenal:vertical_stasis_stone"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This item was used in older times in order to save on scaffolding, however, due to how slow it is to move while utilizing its effects, it was very annoying to use. This drove some people to seek out an enchantment which would allow them to sneak around faster. Those people delved into the deepest depths of The Overworld and haven't been seen since."
+    }
+  ]
+}
