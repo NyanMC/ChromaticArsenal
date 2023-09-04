@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Ward Crystal protects you from magic damage, but also reduces the magic damage you deal."
+      "text": "The Ward Crystal protects you from magic damage, but also reduces the magic damage you deal. Be warned that not all types of incoming magic damage are reduced. By default, the Warden's sonic boom damage will not be reduced. Your modpack may add additional damage sources to this list."
     },
     {
       "type": "patchouli:text",

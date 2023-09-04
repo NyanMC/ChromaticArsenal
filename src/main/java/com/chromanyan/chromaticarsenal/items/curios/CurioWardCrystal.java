@@ -50,6 +50,12 @@ public class CurioWardCrystal extends BaseCurioItem {
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         if (event.getSource().isMagic() && !event.getSource().isBypassInvul()) {
+            if (!config.damageSourceBlacklist.get().isEmpty()) {
+                for (String blacklisted : config.damageSourceBlacklist.get()) {
+                    if (event.getSource().getMsgId().equals(blacklisted))
+                        return;
+                }
+            }
             event.setAmount(event.getAmount() * getIncomingMultiplier(stack));
         } else if (ChromaCurioHelper.isChromaticTwisted(stack, player) && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
             player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, config.twistedWeaknessDuration.get(), 1));

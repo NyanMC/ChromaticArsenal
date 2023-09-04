@@ -36,6 +36,12 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         if (event.getSource().isMagic() && !event.getSource().isBypassInvul()) {
+            if (!config.damageSourceBlacklist.get().isEmpty()) {
+                for (String blacklisted : config.damageSourceBlacklist.get()) {
+                    if (event.getSource().getMsgId().equals(blacklisted))
+                        return;
+                }
+            }
             event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierIncoming.get()));
         }
     }
