@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.datagen;
 
-import com.chromanyan.chromaticarsenal.Reference;
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModTags;
 import net.minecraft.data.DataGenerator;
@@ -43,7 +43,7 @@ public class CARecipes extends RecipeProvider {
                 .define('b', edges)
                 .define('c', center)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
-                .save(consumer, new ResourceLocation(Reference.MODID, name));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, name));
     }
 
     private void chromaUpgrade(@NotNull Consumer<FinishedRecipe> consumer, ItemLike item1, ItemLike item2, Item output, String name) {
@@ -52,7 +52,7 @@ public class CARecipes extends RecipeProvider {
                 Ingredient.of(item2),
                 output)
                 .unlocks("has_chroma_shard", has(CHROMA_SHARD))
-                .save(consumer, new ResourceLocation(Reference.MODID, name));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, name));
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CARecipes extends RecipeProvider {
                 .define('g', Tags.Items.GLASS)
                 .define('c', CHROMA_SHARD)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
-                .save(consumer, new ResourceLocation(Reference.MODID, "glass_shield"));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "glass_shield"));
 
         nyanPatternRecipe(consumer, ModItems.WARD_CRYSTAL.get(), Items.FERMENTED_SPIDER_EYE, Items.AMETHYST_SHARD, CHROMA_SHARD, "ward_crystal");
         nyanPatternRecipe(consumer, ModItems.SHADOW_TREADS.get(), Items.ECHO_SHARD, Items.ENDER_PEARL, CHROMA_SHARD, "shadow_treads");
@@ -80,7 +80,7 @@ public class CARecipes extends RecipeProvider {
                 .define('c', CHROMA_SHARD)
                 .define('b', Items.BLACK_WOOL)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
-                .save(consumer, new ResourceLocation(Reference.MODID, "duality_rings"));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "duality_rings"));
 
         nyanPatternRecipe(consumer, ModItems.FRIENDLY_FIRE_FLOWER.get(), ModItems.MAGMATIC_SCRAP.get(), Items.ORANGE_TULIP, CHROMA_SHARD, "friendly_fire_flower");
 
@@ -93,7 +93,7 @@ public class CARecipes extends RecipeProvider {
                 .define('o', ModItems.COSMICOLA.get())
                 .define('p', Items.POPPED_CHORUS_FRUIT)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
-                .save(consumer, new ResourceLocation(Reference.MODID, "vertical_stasis_stone"));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "vertical_stasis_stone"));
 
         nyanPatternRecipe(consumer, ModItems.SUPER_GOLDEN_HEART.get(), Items.DIAMOND, ModItems.GOLDEN_HEART.get(), ASCENSION_ESSENCE, "super_golden_heart");
 
@@ -105,7 +105,7 @@ public class CARecipes extends RecipeProvider {
                 .define('a', ASCENSION_ESSENCE)
                 .define('c', ModItems.GLASS_SHIELD.get())
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
-                .save(consumer, new ResourceLocation(Reference.MODID, "super_glass_shield"));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_glass_shield"));
 
         nyanPatternRecipe(consumer, ModItems.SUPER_WARD_CRYSTAL.get(), Items.FERMENTED_SPIDER_EYE, ModItems.WARD_CRYSTAL.get(), ASCENSION_ESSENCE, "super_ward_crystal");
         nyanPatternRecipe(consumer, ModItems.SUPER_SHADOW_TREADS.get(), ModItems.SPICY_COAL.get(), ModItems.SHADOW_TREADS.get(), ASCENSION_ESSENCE, "super_shadow_treads");
@@ -118,7 +118,7 @@ public class CARecipes extends RecipeProvider {
                 .define('a', ASCENSION_ESSENCE)
                 .define('l', ModItems.LUNAR_CRYSTAL.get())
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
-                .save(consumer, new ResourceLocation(Reference.MODID, "super_lunar_crystal"));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_lunar_crystal"));
 
         ShapedRecipeBuilder.shaped(ModItems.ASCENDED_STAR.get(), 1)
                 .pattern(" g ")
@@ -131,7 +131,7 @@ public class CARecipes extends RecipeProvider {
                 .define('c', ModItems.SUPER_SHADOW_TREADS.get())
                 .define('p', ModItems.SUPER_LUNAR_CRYSTAL.get())
                 .unlockedBy("has_chroma_shard", has(ASCENSION_ESSENCE))
-                .save(consumer, new ResourceLocation(Reference.MODID, "ascended_star"));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "ascended_star"));
 
         ShapedRecipeBuilder.shaped(ModItems.CHROMA_SALVAGER.get(), 1)
                 .pattern("ggg")
@@ -141,7 +141,7 @@ public class CARecipes extends RecipeProvider {
                 .define('c', ModItems.CHROMA_SHARD.get())
                 .define('g', Tags.Items.INGOTS_GOLD)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
-                .save(consumer, new ResourceLocation(Reference.MODID, "chroma_salvager"));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "chroma_salvager"));
 
         ShapedRecipeBuilder.shaped(ModItems.SUPER_GLOW_RING.get(), 1)
                 .pattern("ai ")
@@ -151,7 +151,7 @@ public class CARecipes extends RecipeProvider {
                 .define('i', Tags.Items.INGOTS_IRON)
                 .define('a', ASCENSION_ESSENCE)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
-                .save(consumer, new ResourceLocation(Reference.MODID, "super_glow_ring"));
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_glow_ring"));
 
         chromaUpgrade(consumer, Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");
         chromaUpgrade(consumer, Items.NETHERITE_SCRAP, ModItems.SPICY_COAL.get(), ModItems.MAGMATIC_SCRAP.get(), "magmatic_scrap");

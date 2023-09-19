@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
@@ -87,8 +86,8 @@ public class CurioCryoRing extends BaseCurioItem {
         }
         Biome biome = entity.getLevel().getBiome(entity.blockPosition()).get();
         if (biome.shouldSnowGolemBurn(entity.blockPosition()) && ChromaCurioHelper.isChromaticTwisted(stack, slotContext.entity())) {
-            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":cryo_speed_penalty", config.twistedCryoSpeedPenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
-            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, Reference.MODID + ":cryo_damage_penalty", config.twistedCryoDamagePenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
+            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":cryo_speed_penalty", config.twistedCryoSpeedPenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
+            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":cryo_damage_penalty", config.twistedCryoDamagePenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
         return atts;
     }

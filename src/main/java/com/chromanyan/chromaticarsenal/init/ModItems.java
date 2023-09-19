@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.init;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.items.ChromaSalvager;
 import com.chromanyan.chromaticarsenal.items.SpicyCoal;
 import com.chromanyan.chromaticarsenal.items.compat.MarkTwisted;
@@ -19,7 +18,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 @SuppressWarnings("unused") // intellij doesn't recognize that things like ASCENSION_ESSENCE are, in fact, used
 public class ModItems {
-    public static final DeferredRegister<Item> ITEMS_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MODID);
+    public static final DeferredRegister<Item> ITEMS_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ChromaticArsenal.MODID);
 
     // materials
     public static final RegistryObject<Item> CHROMA_SHARD = ITEMS_REGISTRY.register("chroma_shard", () -> new Item(new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON)));

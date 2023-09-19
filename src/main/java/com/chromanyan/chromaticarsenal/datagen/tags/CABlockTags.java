@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.datagen.tags;
 
-import com.chromanyan.chromaticarsenal.Reference;
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModBlocks;
 import com.chromanyan.chromaticarsenal.init.ModTags;
 import net.minecraft.data.DataGenerator;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 public class CABlockTags extends BlockTagsProvider {
 
     public CABlockTags(DataGenerator p_126511_, @Nullable ExistingFileHelper existingFileHelper) {
-        super(p_126511_, Reference.MODID, existingFileHelper);
+        super(p_126511_, ChromaticArsenal.MODID, existingFileHelper);
     }
 
     @Override

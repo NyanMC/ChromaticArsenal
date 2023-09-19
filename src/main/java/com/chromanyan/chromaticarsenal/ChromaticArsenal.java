@@ -36,12 +36,13 @@ import org.apache.logging.log4j.Logger;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(Reference.MODID)
+@Mod(ChromaticArsenal.MODID)
 public class ChromaticArsenal {
     // Directly reference a log4j logger.
 
     public static final Logger LOGGER = LogManager.getLogger();
-    public static final CreativeModeTab GROUP = new CAGroup(Reference.MODID);
+    public static final String MODID = "chromaticarsenal";
+    public static final CreativeModeTab GROUP = new CAGroup(MODID);
     private static final ResourceLocation SUPER_CURIO_ICON = new ResourceLocation("curios", "slot/empty_super_curio_slot"); // 1.19.2 curios is stupid and requires slot textures to be registered under its own namespace
 
     public ChromaticArsenal() {

@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.datagen;
 
-import com.chromanyan.chromaticarsenal.Reference;
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
@@ -52,20 +52,20 @@ public class CAAdvancements extends AdvancementProvider {
     }
 
     private Advancement simpleHasItemRecipe(ItemLike itemLike, Consumer<Advancement> consumer, ExistingFileHelper fileHelper) {
-        return simpleHasItemBase(itemLike).save(consumer, new ResourceLocation(Reference.MODID, itemLike.toString()), fileHelper);
+        return simpleHasItemBase(itemLike).save(consumer, new ResourceLocation(ChromaticArsenal.MODID, itemLike.toString()), fileHelper);
     }
 
     private Advancement displayedHasItem(ItemLike itemLike, Consumer<Advancement> consumer, ExistingFileHelper fileHelper, FrameType frameType, ResourceLocation parent) {
         return displayedHasItemBase(itemLike, frameType)
                 .parent(parent)
-                .save(consumer, new ResourceLocation(Reference.MODID, itemLike.toString()), fileHelper);
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, itemLike.toString()), fileHelper);
     }
 
     @SuppressWarnings("SameParameterValue")
     private Advancement displayedHasItem(ItemLike itemLike, Consumer<Advancement> consumer, ExistingFileHelper fileHelper, FrameType frameType, Advancement parent) {
         return displayedHasItemBase(itemLike, frameType)
                 .parent(parent)
-                .save(consumer, new ResourceLocation(Reference.MODID, itemLike.toString()), fileHelper);
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, itemLike.toString()), fileHelper);
     }
 
     @Override
@@ -113,7 +113,7 @@ public class CAAdvancements extends AdvancementProvider {
                 )
                 .rewards(AdvancementRewards.Builder.experience(100))
                 .parent(ascendedStar)
-                .save(consumer, new ResourceLocation(Reference.MODID, "arsenal_accumulated"), fileHelper);
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "arsenal_accumulated"), fileHelper);
     }
 
     private Advancement.Builder addCurios(Advancement.Builder advancement) {

@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
-import com.chromanyan.chromaticarsenal.Reference;
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModItems;
@@ -76,7 +76,7 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-        atts.put(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(uuid, Reference.MODID + ":super_defy_gravity", config.superGravityModifier.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
+        atts.put(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":super_defy_gravity", config.superGravityModifier.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
         return atts;
     }
 

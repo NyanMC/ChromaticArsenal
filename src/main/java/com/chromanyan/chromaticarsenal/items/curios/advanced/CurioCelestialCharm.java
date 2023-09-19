@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
@@ -48,17 +47,17 @@ public class CurioCelestialCharm extends BaseSuperCurio {
         long time = entity.level.getDayTime() % 24000; // no see
         if (time <= 6000) {
             long compareTime = time + 6000;
-            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":celestial_speed_bonus", config.speedModifierMax.get() * (1 - ((float) compareTime / 12000F)), AttributeModifier.Operation.MULTIPLY_TOTAL));
-            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, Reference.MODID + ":celestial_damage_bonus", config.damageModifierMax.get() * ((float) compareTime / 12000F), AttributeModifier.Operation.MULTIPLY_TOTAL));
+            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":celestial_speed_bonus", config.speedModifierMax.get() * (1 - ((float) compareTime / 12000F)), AttributeModifier.Operation.MULTIPLY_TOTAL));
+            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":celestial_damage_bonus", config.damageModifierMax.get() * ((float) compareTime / 12000F), AttributeModifier.Operation.MULTIPLY_TOTAL));
 
         } else if (time <= 18000) {
             long compareTime = time - 6000;
-            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":celestial_speed_bonus", config.speedModifierMax.get() * ((float) compareTime / 12000F), AttributeModifier.Operation.MULTIPLY_TOTAL));
-            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, Reference.MODID + ":celestial_damage_bonus", config.damageModifierMax.get() * (1 - ((float) compareTime / 12000F)), AttributeModifier.Operation.MULTIPLY_TOTAL));
+            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":celestial_speed_bonus", config.speedModifierMax.get() * ((float) compareTime / 12000F), AttributeModifier.Operation.MULTIPLY_TOTAL));
+            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":celestial_damage_bonus", config.damageModifierMax.get() * (1 - ((float) compareTime / 12000F)), AttributeModifier.Operation.MULTIPLY_TOTAL));
         } else {
             long compareTime = time - 18000;
-            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":celestial_speed_bonus", config.speedModifierMax.get() * (1 - ((float) compareTime / 12000F)), AttributeModifier.Operation.MULTIPLY_TOTAL));
-            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, Reference.MODID + ":celestial_damage_bonus", config.damageModifierMax.get() * ((float) compareTime / 12000F), AttributeModifier.Operation.MULTIPLY_TOTAL));
+            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":celestial_speed_bonus", config.speedModifierMax.get() * (1 - ((float) compareTime / 12000F)), AttributeModifier.Operation.MULTIPLY_TOTAL));
+            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":celestial_damage_bonus", config.damageModifierMax.get() * ((float) compareTime / 12000F), AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
         return atts;
     }

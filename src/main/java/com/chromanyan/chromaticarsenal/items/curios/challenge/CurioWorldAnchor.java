@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.challenge;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.Reference;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
@@ -79,10 +78,10 @@ public class CurioWorldAnchor extends BaseCurioItem {
             gravityMod *= config.twistedAnchorGravityMultiplier.get();
         }
 
-        atts.put(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(uuid, Reference.MODID + ":world_anchor_gravity", gravityMod * config.anchorGravityMultiplier.get(), AttributeModifier.Operation.MULTIPLY_BASE));
-        atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, Reference.MODID + ":world_anchor_speed", gravityMod * config.anchorSpeedMultiplier.get(), AttributeModifier.Operation.MULTIPLY_BASE));
-        atts.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, Reference.MODID + ":world_anchor_kbresist", gravityMod * config.anchorKnockbackResistanceMultiplier.get(), AttributeModifier.Operation.ADDITION));
-        atts.put(Attributes.ARMOR, new AttributeModifier(uuid, Reference.MODID + ":world_anchor_armor", config.anchorArmor.get(), AttributeModifier.Operation.ADDITION));
+        atts.put(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":world_anchor_gravity", gravityMod * config.anchorGravityMultiplier.get(), AttributeModifier.Operation.MULTIPLY_BASE));
+        atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":world_anchor_speed", gravityMod * config.anchorSpeedMultiplier.get(), AttributeModifier.Operation.MULTIPLY_BASE));
+        atts.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":world_anchor_kbresist", gravityMod * config.anchorKnockbackResistanceMultiplier.get(), AttributeModifier.Operation.ADDITION));
+        atts.put(Attributes.ARMOR, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":world_anchor_armor", config.anchorArmor.get(), AttributeModifier.Operation.ADDITION));
 
         return atts;
     }

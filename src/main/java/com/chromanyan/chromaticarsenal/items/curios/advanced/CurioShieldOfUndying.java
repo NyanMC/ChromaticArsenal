@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
-import com.chromanyan.chromaticarsenal.Reference;
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
@@ -71,7 +71,7 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid,
                                                                         ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-        atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, Reference.MODID + ":undying_health_tradeoff", ModConfig.COMMON.healthTradeoff.get(), AttributeModifier.Operation.fromValue(2)));
+        atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":undying_health_tradeoff", ModConfig.COMMON.healthTradeoff.get(), AttributeModifier.Operation.fromValue(2)));
         return atts;
     }
 

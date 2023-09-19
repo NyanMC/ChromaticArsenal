@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.datagen;
 
-import com.chromanyan.chromaticarsenal.Reference;
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -8,7 +8,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 public class CAModels extends ItemModelProvider {
 
     public CAModels(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, Reference.MODID, existingFileHelper);
+        super(generator, ChromaticArsenal.MODID, existingFileHelper);
     }
 
     private void basicModel(String name) {

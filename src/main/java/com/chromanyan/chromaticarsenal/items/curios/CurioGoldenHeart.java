@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
-import com.chromanyan.chromaticarsenal.Reference;
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
@@ -66,7 +66,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
 
     @OnlyIn(Dist.CLIENT)
     public static void registerVariants() {
-        ItemProperties.register(ModItems.GOLDEN_HEART.get(), new ResourceLocation(Reference.MODID, "is_chromanyan"), (stack, world, entity, thing) -> stack.getOrCreateTag().getInt("is_chromanyan"));
+        ItemProperties.register(ModItems.GOLDEN_HEART.get(), new ResourceLocation(ChromaticArsenal.MODID, "is_chromanyan"), (stack, world, entity, thing) -> stack.getOrCreateTag().getInt("is_chromanyan"));
     }
 
     private int getEffectCooldown(ItemStack stack) {
@@ -114,7 +114,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
                                                                         ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
         double attModBonus = stack.getEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION) * config.enchantmentMaxHealthIncrease.get();
-        atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, Reference.MODID + ":health_bonus", config.maxHealthBoost.get() + attModBonus, AttributeModifier.Operation.fromValue(config.maxHealthBoostOperation.get())));
+        atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":health_bonus", config.maxHealthBoost.get() + attModBonus, AttributeModifier.Operation.fromValue(config.maxHealthBoostOperation.get())));
         return atts;
     }
 

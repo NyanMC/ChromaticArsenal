@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.init;
 
-import com.chromanyan.chromaticarsenal.Reference;
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -20,10 +20,10 @@ public class ModTags {
 
         public static final TagKey<Item> DUSTS_ASCENSION = forgeTag("dusts/ascension");
 
-        public static final TagKey<Item> NO_SALVAGE = ItemTags.create(new ResourceLocation(Reference.MODID, "no_salvage"));
+        public static final TagKey<Item> NO_SALVAGE = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "no_salvage"));
 
-        public static final TagKey<Item> CHROMATIC_CURIOS = ItemTags.create(new ResourceLocation(Reference.MODID, "chromatic_curios"));
-        public static final TagKey<Item> SUPER_CURIOS = ItemTags.create(new ResourceLocation(Reference.MODID, "super_curios"));
+        public static final TagKey<Item> CHROMATIC_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "chromatic_curios"));
+        public static final TagKey<Item> SUPER_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "super_curios"));
     }
 
     public static class Blocks {
