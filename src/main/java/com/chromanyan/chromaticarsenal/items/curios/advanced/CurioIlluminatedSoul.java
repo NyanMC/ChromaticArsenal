@@ -33,6 +33,7 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
         list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.1"));
         if (config.glowingDuration.get() > 0)
             list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.2", TooltipHelper.ticksToSecondsTooltip(config.glowingDuration.get())));

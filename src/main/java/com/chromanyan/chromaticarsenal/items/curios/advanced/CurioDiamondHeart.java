@@ -35,6 +35,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
         list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.2", TooltipHelper.valueTooltip((config.fracturedPotency.get() + 1) * 10), TooltipHelper.ticksToSecondsTooltip(config.fracturedDuration.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.3", TooltipHelper.ticksToSecondsTooltip(config.revivalCooldown.get())));

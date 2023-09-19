@@ -39,6 +39,7 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
         list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.2", TooltipHelper.valueTooltip(config.shatterRevivalCooldown.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.3", TooltipHelper.valueTooltip(config.revivalLimit.get())));

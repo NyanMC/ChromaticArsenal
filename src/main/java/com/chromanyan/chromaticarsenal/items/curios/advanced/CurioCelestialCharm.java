@@ -33,6 +33,7 @@ public class CurioCelestialCharm extends BaseSuperCurio {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
         list.add(Component.translatable("tooltip.chromaticarsenal.super_shadow_treads.1"));
     }
 
