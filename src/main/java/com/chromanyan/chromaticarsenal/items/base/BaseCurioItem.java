@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -45,7 +46,11 @@ public class BaseCurioItem extends Item implements ICurioItem, IChromaCurio {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        if (enchantment == Enchantments.BINDING_CURSE || enchantment == Enchantments.VANISHING_CURSE) { // for some reason this doesn't happen unless a curio has durability
+        if (
+                enchantment == Enchantments.BINDING_CURSE ||
+                enchantment == Enchantments.VANISHING_CURSE ||
+                enchantment == ModEnchantments.CHROMATIC_TWISTING.get()
+        ) {
             return true;
         } else {
             return super.canApplyAtEnchantingTable(stack, enchantment);
