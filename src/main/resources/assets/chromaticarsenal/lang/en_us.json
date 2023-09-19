@@ -62,6 +62,11 @@
   "tooltip.chromaticarsenal.vertical_stasis_stone.2": "§6While in effect, sneaking won't prevent falling off ledges",
   "tooltip.chromaticarsenal.vertical_stasis_stone.twisted": "§cChromatic Twisting: Applies Levitation instead of negating gravity",
 
+  "item.chromaticarsenal.gravity_stone": "Gravity Stone",
+  "tooltip.chromaticarsenal.gravity_stone.1": "§6Prevents gravity from being reduced below the base value",
+  "tooltip.chromaticarsenal.gravity_stone.2": "§6Prevents the floatiness from Slow Falling (the effect will still negate fall damage)",
+  "tooltip.chromaticarsenal.gravity_stone.3": "§cDoes not grant immunity to Levitation",
+
   "item.chromaticarsenal.harpy_feather": "Harpy Feather",
   "tooltip.chromaticarsenal.harpy_feather.1": "§6Right click to perform a midair jump that resets fall damage",
   "tooltip.chromaticarsenal.harpy_feather.2": "§6After jumping, goes on cooldown until landing again",
@@ -141,6 +146,9 @@
 
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",
   "tooltip.chromaticarsenal.cursed": "Once equipped, unequipping may prove to be fatal.",
+  "tooltip.chromaticarsenal.super": "§dSuper Curio",
+  "tooltip.chromaticarsenal.challenge": "§4Challenge Curio",
+  "tooltip.chromaticarsenal.utility": "§9Utility Curio",
 
   "effect.chromaticarsenal.fractured": "Fractured",
   "effect.chromaticarsenal.fractured.description": "Max health is reduced by 10% per level",
