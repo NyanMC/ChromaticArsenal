@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.enchantments;
 
-import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioLimitBreak;
+import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioLimitBreak;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import net.minecraft.world.entity.EquipmentSlot;

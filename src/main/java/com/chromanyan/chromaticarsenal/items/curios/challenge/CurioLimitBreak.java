@@ -1,4 +1,4 @@
-package com.chromanyan.chromaticarsenal.items.curios.advanced;
+package com.chromanyan.chromaticarsenal.items.curios.challenge;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
