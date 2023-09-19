@@ -1,8 +1,10 @@
 package com.chromanyan.chromaticarsenal.enchantments;
 
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import org.jetbrains.annotations.NotNull;
 
 public class EnchantmentChromaticTwisting extends Enchantment {
     private static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
@@ -29,5 +31,10 @@ public class EnchantmentChromaticTwisting extends Enchantment {
 
     public boolean isCurse() {
         return true;
+    }
+
+    @Override
+    public boolean canEnchant(@NotNull ItemStack stack) {
+        return stack.getItem().canApplyAtEnchantingTable(stack, this);
     }
 }
