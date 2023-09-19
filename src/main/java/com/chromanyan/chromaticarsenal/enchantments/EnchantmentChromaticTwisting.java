@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.enchantments;
 
+import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -35,6 +36,6 @@ public class EnchantmentChromaticTwisting extends Enchantment {
 
     @Override
     public boolean canEnchant(@NotNull ItemStack stack) {
-        return stack.getItem().canApplyAtEnchantingTable(stack, this);
+        return stack.getItem() instanceof IChromaCurio && stack.getItem().canApplyAtEnchantingTable(stack, this);
     }
 }
