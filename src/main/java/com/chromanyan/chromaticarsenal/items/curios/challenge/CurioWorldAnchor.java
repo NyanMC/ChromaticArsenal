@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios.challenge;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
+import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -34,6 +36,7 @@ public class CurioWorldAnchor extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
+        list.add(Component.translatable("tooltip.chromaticarsenal.challenge"));
         list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.1"));
         if (getFortuneLevel(stack) > 0)
             list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2", TooltipHelper.valueTooltip(getFortuneLevel(stack))));
@@ -99,5 +102,10 @@ public class CurioWorldAnchor extends BaseCurioItem {
     @Override
     public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
         return new ICurio.SoundInfo(SoundEvents.ANVIL_LAND, 0.5F, 1);
+    }
+
+    @Override
+    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
+        return ModRarities.CHALLENGE;
     }
 }

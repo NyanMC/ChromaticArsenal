@@ -37,6 +37,7 @@ public class CurioLimitBreak extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
+        list.add(Component.translatable("tooltip.chromaticarsenal.challenge"));
         list.add(Component.translatable("tooltip.chromaticarsenal.ascended_star.1", TooltipHelper.valueTooltip(config.bonusFortune.get()), TooltipHelper.valueTooltip(config.bonusLooting.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.ascended_star.2", TooltipHelper.valueTooltip(config.damageMultiplier.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.cursed").withStyle(ChatFormatting.RED));
@@ -99,6 +100,6 @@ public class CurioLimitBreak extends BaseCurioItem {
 
     @Override
     public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        return ModRarities.TWISTED;
+        return ModRarities.CHALLENGE;
     }
 }
