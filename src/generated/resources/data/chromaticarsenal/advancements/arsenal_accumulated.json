@@ -73,6 +73,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_gravity_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:gravity_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_harpy_feather": {
       "conditions": {
         "items": [
@@ -284,6 +296,9 @@
     ],
     [
       "has_world_anchor"
+    ],
+    [
+      "has_gravity_stone"
     ],
     [
       "has_harpy_feather"

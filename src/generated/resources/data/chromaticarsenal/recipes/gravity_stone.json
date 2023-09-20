@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "chromaticarsenal:chroma_shard"
+  },
+  "base": {
+    "item": "minecraft:end_stone"
+  },
+  "result": {
+    "item": "chromaticarsenal:gravity_stone"
+  }
+}

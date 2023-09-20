@@ -42,6 +42,15 @@ public class CAItemTags extends ItemTagsProvider {
                 ModItems.SUPER_GLOW_RING.get()
         );
 
+        tag(ModTags.Items.CHALLENGE_CURIOS).add(
+                ModItems.ASCENDED_STAR.get(),
+                ModItems.WORLD_ANCHOR.get()
+        );
+
+        tag(ModTags.Items.UTILITY_CURIOS).add(
+                ModItems.GRAVITY_STONE.get()
+        );
+
         tag(ModTags.Items.CHROMATIC_CURIOS)
                 .add(
                         ModItems.GOLDEN_HEART.get(),
@@ -53,9 +62,10 @@ public class CAItemTags extends ItemTagsProvider {
                         ModItems.LUNAR_CRYSTAL.get(),
                         ModItems.CRYO_RING.get(),
                         ModItems.VERTICAL_STASIS.get(),
-                        ModItems.HARPY_FEATHER.get(), // yes the harpy feather is a chromatic curio, it even has the curio capability, i just don't do anything with it
-                        ModItems.WORLD_ANCHOR.get()
+                        ModItems.HARPY_FEATHER.get() // yes the harpy feather is a chromatic curio, it even has the curio capability, i just don't do anything with it
                 )
-                .addTag(ModTags.Items.SUPER_CURIOS);
+                .addTag(ModTags.Items.SUPER_CURIOS)
+                .addTag(ModTags.Items.CHALLENGE_CURIOS)
+                .addTag(ModTags.Items.UTILITY_CURIOS);
     }
 }
