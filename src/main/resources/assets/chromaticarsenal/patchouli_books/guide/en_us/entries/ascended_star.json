@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Ascended Star is an item which punishes the hasty and foolish that equip it without first learning its side effects. It grants an additional fortune and looting level, and the ability to use a second super curio, but multiplies received damage by huge amounts. Additionally, unequipping it will deal a fatally high amount of damage."
+      "text": "The Ascended Star is a $(4)challenge curio$() which punishes the hasty and foolish that equip it without first learning its side effects. It grants an additional fortune and looting level, and the ability to use a second super curio, but multiplies received damage by huge amounts. Additionally, unequipping it will deal a fatally high amount of damage."
     },
     {
       "type": "patchouli:text",

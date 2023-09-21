@@ -1,0 +1,17 @@
+{
+  "name": "Gravity Stone",
+  "icon": "chromaticarsenal:gravity_stone",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:gravity_stone",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "With a Chroma Shard awakening the End Stone's hidden magic, it seems to normalize gravity around it.",
+      "item": "chromaticarsenal:gravity_stone"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The End has always been known to have many strange effects. These islands float, after all. What I did not expect is that taking a block out of one of these islands and infusing it with chromatic energy creates an item which normalizes gravity."
+    }
+  ]
+}

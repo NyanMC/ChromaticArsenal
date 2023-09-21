@@ -1,0 +1,16 @@
+{
+  "name": "Gravity Stone",
+  "icon": "chromaticarsenal:gravity_stone",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Gravity Stone is a $(9)utility curio$() created by combining End Stone with a Chroma Shard in a smithing table. It prevents the effects of low gravity.",
+      "item": "chromaticarsenal:gravity_stone"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If its wearer's gravity is lower than normal, they will still move as if they were moving at their base gravity. Additionally, Slow Falling will no longer slow down falling speed while this is equipped, however it will still cancel all fall damage. This item does NOT grant immunity to Levitation or higher than average gravity."
+    }
+  ]
+}

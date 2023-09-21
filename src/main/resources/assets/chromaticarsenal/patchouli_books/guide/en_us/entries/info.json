@@ -1,0 +1,36 @@
+{
+  "name": "Curio Labels",
+  "icon": "chromaticarsenal:ascension_essence",
+  "category": "chromaticarsenal:main",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Some curios have a label associated with them. Each label determines a few shared characteristics between that curio and others with the same label."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "tag": "chromaticarsenal:super_curios"
+      },
+      "title": "Super Curios",
+      "text": "$(5)Super Curios$() are ascended versions of your existing arsenal, upgraded using a new material known as $(l:misc/ascension_essence)Essence of Ascension$(/l). These curios have their own designated slot, cannot be enchanted besides curses, and cannot be equipped in standard curio slots (not even in the Curio slot type). Additionally, do not attempt to equip a super curio alongside its inferior variant. It will not go well."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "tag": "chromaticarsenal:challenge_curios"
+      },
+      "title": "Challenge Curios",
+      "text": "$(4)Challenge Curios$() are typically more harmful than helpful. They cannot accept enchantments, however some accept curses. The costs of using them outweigh the benefits. However, fortune favors those that decide to endure this torment, literally. Many of these items naturally grant or can be cursed to grant bonus levels of Fortune or Looting."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "tag": "chromaticarsenal:utility_curios"
+      },
+      "title": "Utility Curios",
+      "text": "$(9)Utility Curios$() are curios with small, sometimes niche effects. They aren't always helpful, however they grant an additional curio slot when equipped as to not use any slots. They cannot be enchanted or cursed (not even with Binding or Vanishing)."
+    }
+  ]
+}
