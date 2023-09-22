@@ -30,7 +30,7 @@
         "tag": "chromaticarsenal:utility_curios"
       },
       "title": "Utility Curios",
-      "text": "$(9)Utility Curios$() are curios with small, sometimes niche effects. They aren't always helpful, however they grant an additional curio slot when equipped as to not use any slots. They cannot be enchanted or cursed (not even with Binding or Vanishing)."
+      "text": "$(9)Utility Curios$() are curios with miscellaneous, sometimes smaller or more niche effects, and are not always useful. They don't support any enchantments besides curses (and not all Utility Curios even support those). Some Utility Curios may also have a secondary effect performed when right clicking while holding them."
     }
   ]
 }
