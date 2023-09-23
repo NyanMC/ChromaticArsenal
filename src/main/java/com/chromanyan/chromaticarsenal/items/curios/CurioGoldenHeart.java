@@ -43,9 +43,9 @@ public class CurioGoldenHeart extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3"));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.1", TooltipHelper.potionAmplifierTooltip(config.absorptionLevel.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.2", TooltipHelper.ticksToSecondsTooltip(getEffectCooldown(stack))));
-        list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3"));
         if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.twisted", TooltipHelper.ticksToSecondsTooltip((config.twistedWitherDuration.get()))));
         }

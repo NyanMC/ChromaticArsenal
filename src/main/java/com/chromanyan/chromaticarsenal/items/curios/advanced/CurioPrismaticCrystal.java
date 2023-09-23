@@ -47,8 +47,8 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.2", TooltipHelper.valueTooltip(config.voidBounceDamage.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.3"));
+        list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.2", TooltipHelper.valueTooltip(config.voidBounceDamage.get())));
     }
 
     @Override
