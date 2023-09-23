@@ -39,7 +39,6 @@ public class CAModels extends ItemModelProvider {
         basicModelWithSuper("lunar_crystal");
         basicModel("cryo_ring");
         basicModel("vertical_stasis_stone");
-        basicModel("harpy_feather");
 
         // super curios
         basicModel("super_golden_heart"); // can't datagen the regular golden heart because it does special stuff
@@ -51,6 +50,7 @@ public class CAModels extends ItemModelProvider {
 
         // utility curios
         basicModel("gravity_stone");
+        basicModel("harpy_feather");
 
         // other stuff
         basicModel("magic_garlic_bread");

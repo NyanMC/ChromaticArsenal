@@ -1,7 +1,7 @@
 {
   "name": "Harpy Feather",
   "icon": "chromaticarsenal:harpy_feather",
-  "category": "chromaticarsenal:item_lore",
+  "category": "chromaticarsenal:curio_lore",
   "advancement": "chromaticarsenal:harpy_feather",
   "pages": [
     {

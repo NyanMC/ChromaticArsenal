@@ -78,6 +78,8 @@ public class ModConfig {
         public final DoubleValue twistedAnchorGravityMultiplier;
 
         public final DoubleValue jumpForce;
+        public final DoubleValue featherFallDamageReduction;
+        public final DoubleValue twistedFeatherGravityModifier;
 
         public final IntValue fracturedDuration;
         public final IntValue fracturedPotency;
@@ -309,6 +311,12 @@ public class ModConfig {
                     jumpForce = builder
                             .comment("The force of the Harpy Feather jump. This goes by internal values, so tweaking may be required.")
                             .defineInRange("jumpForce", 0.42D, 0, Double.MAX_VALUE);
+                    featherFallDamageReduction = builder
+                            .comment("The multiplier to fall damage taken when a Harpy Feather is equipped.")
+                            .defineInRange("fallDamageMultiplier", 0.8, 0, 1);
+                    twistedFeatherGravityModifier = builder
+                            .comment("The operation 2 modifier to gravity when a Twisted Harpy Feather is equipped.")
+                            .defineInRange("twistedFeatherGravityModifier", 0.25, 0, Double.MAX_VALUE);
                 builder.pop();
             builder.pop();
 
