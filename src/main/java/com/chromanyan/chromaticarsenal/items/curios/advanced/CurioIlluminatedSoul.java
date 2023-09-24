@@ -43,6 +43,7 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
+        super.curioTick(slotContext, stack);
         LivingEntity entity = slotContext.entity();
         if (!entity.getCommandSenderWorld().isClientSide) {
             entity.setGlowingTag(true);

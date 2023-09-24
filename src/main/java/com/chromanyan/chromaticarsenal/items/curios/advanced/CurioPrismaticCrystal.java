@@ -53,6 +53,7 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
 
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
+        super.curioTick(context, stack);
         LivingEntity living = context.entity();
         Vec3 vec3 = living.getDeltaMovement();
         if (living.blockPosition().getY() < living.getLevel().getMinBuildHeight() && vec3.y < 0) {

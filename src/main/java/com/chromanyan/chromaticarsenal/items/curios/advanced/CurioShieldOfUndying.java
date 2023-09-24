@@ -49,9 +49,9 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
         }
     }
 
-    @SuppressWarnings("all")
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
+        super.curioTick(context, stack);
         LivingEntity livingEntity = context.entity();
         if (livingEntity.level.isClientSide) {
             return;
