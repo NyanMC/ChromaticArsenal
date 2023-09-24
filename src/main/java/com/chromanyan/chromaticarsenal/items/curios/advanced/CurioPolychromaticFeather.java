@@ -77,7 +77,7 @@ public class CurioPolychromaticFeather extends BaseSuperCurio {
         }
 
         Vec3 deltaMovement = entity.getDeltaMovement();
-        if (deltaMovement.y > 0) { // are we ascending and holding jump?
+        if (deltaMovement.y > 0) {
             AttributeInstance gravity = entity.getAttribute(net.minecraftforge.common.ForgeMod.ENTITY_GRAVITY.get());
             double forceMultiplier = gravity != null ? gravity.getValue() / 0.08 : 1;
 
