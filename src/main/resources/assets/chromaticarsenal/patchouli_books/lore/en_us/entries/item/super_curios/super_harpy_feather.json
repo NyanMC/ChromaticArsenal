@@ -1,0 +1,13 @@
+{
+  "name": "Polychromatic Feather",
+  "icon": "chromaticarsenal:super_harpy_feather",
+  "category": "chromaticarsenal:super_curio_lore",
+  "advancement": "chromaticarsenal:super_harpy_feather",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Harpy Feather seems to resonate well with most types of chromatic energy. One day, someone had attempted to ascend a Harpy Feather. Despite not being like other curios, the process worked fine, and the feather even picked up proper chromatic coloring.",
+      "item": "chromaticarsenal:super_harpy_feather"
+    }
+  ]
+}

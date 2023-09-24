@@ -1,0 +1,16 @@
+{
+  "name": "Polychromatic Feather",
+  "icon": "chromaticarsenal:super_harpy_feather",
+  "category": "chromaticarsenal:super_curios",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Polychromatic Feather is created by smithing together a Harpy Feather and an Essense of Ascension. In addition to its standard variant's effects, it will grant slow falling while on cooldown. Its cooldown is separate from the standard variant, allowing both to be used for a triple jump.",
+      "item": "chromaticarsenal:super_harpy_feather"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When equipped, instead of reducing fall damage, it allows its wearer to ascend faster and further by holding the jump button. This applies to anything that causes the wearer to ascend, unless they are swimming, are unaffected by gravity, or are using an elytra. The ascension speed increase is inversely affected by the Entity Gravity attribute."
+    }
+  ]
+}
