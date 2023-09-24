@@ -50,7 +50,6 @@ public class CAModels extends ItemModelProvider {
 
         // utility curios
         basicModel("gravity_stone");
-        basicModel("harpy_feather");
 
         // other stuff
         basicModel("magic_garlic_bread");
