@@ -68,10 +68,10 @@
   "tooltip.chromaticarsenal.gravity_stone.3": "§cDoes not grant immunity to Levitation",
 
   "item.chromaticarsenal.harpy_feather": "Harpy Feather",
-  "tooltip.chromaticarsenal.harpy_feather.1": "§6Use from the hand to perform a midair jump that resets fall damage",
+  "tooltip.chromaticarsenal.harpy_feather.1": "§6Upon use, performs a midair jump",
   "tooltip.chromaticarsenal.harpy_feather.2": "§6While equipped, reduces fall damage taken by %1$s§b%%",
   "tooltip.chromaticarsenal.harpy_feather.3": "§cCannot be used while sneaking",
-  "tooltip.chromaticarsenal.harpy_feather.twisted": "§cChromatic Twisting:§5 Use from the hand to quickly drop to the ground",
+  "tooltip.chromaticarsenal.harpy_feather.twisted": "§cChromatic Twisting:§5 Use to quickly drop to the ground",
   "tooltip.chromaticarsenal.harpy_feather.twisted2": "§5This drop cancels horizontal momentum entirely and does NOT reset fall damage",
 
   "item.chromaticarsenal.magic_garlic_bread": "Magic Garlic Bread",
@@ -114,7 +114,7 @@
   "tooltip.chromaticarsenal.super_lunar_crystal.2": "§6Allows for bouncing out of the void, taking %1$s§6 damage in the process",
 
   "item.chromaticarsenal.super_harpy_feather": "Polychromatic Feather",
-  "tooltip.chromaticarsenal.super_harpy_feather.1": "§6Use from the hand to perform a midair jump, followed by a gentle descent",
+  "tooltip.chromaticarsenal.super_harpy_feather.1": "§6Upon use, performs a midair jump, followed by a gentle descent",
   "tooltip.chromaticarsenal.super_harpy_feather.2": "§6While equipped, hold the jump button to ascend faster and further",
 
   "item.chromaticarsenal.super_glow_ring": "Ring of Illuminated Soul",
