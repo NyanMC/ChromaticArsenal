@@ -72,12 +72,12 @@ public class CurioPolychromaticFeather extends BaseSuperCurio {
         super.curioTick(context, stack);
 
         LivingEntity entity = context.entity();
-        if (entity.isFallFlying() || entity.isNoGravity() || entity.isSwimming()) {
-            return; // these three states allow for getting stupid amounts of height so don't perform the effects for them
+        if (entity.isFallFlying() || entity.isNoGravity() || entity.isSwimming() || !entity.jumping) {
+            return;
         }
 
         Vec3 deltaMovement = entity.getDeltaMovement();
-        if (entity.jumping && deltaMovement.y > 0) { // are we ascending and holding jump?
+        if (deltaMovement.y > 0) { // are we ascending and holding jump?
             AttributeInstance gravity = entity.getAttribute(net.minecraftforge.common.ForgeMod.ENTITY_GRAVITY.get());
             double forceMultiplier = gravity != null ? gravity.getValue() / 0.08 : 1;
 
