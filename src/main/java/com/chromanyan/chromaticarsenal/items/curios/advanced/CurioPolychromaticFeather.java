@@ -75,12 +75,13 @@ public class CurioPolychromaticFeather extends BaseSuperCurio {
         AttributeInstance gravity = entity.getAttribute(net.minecraftforge.common.ForgeMod.ENTITY_GRAVITY.get());
         double forceMultiplier = gravity != null ? gravity.getValue() / 0.08 : 1;
         if (
-                entity.jumping
-                && deltaMovement.y > 0
-                && !entity.isFallFlying()
-                && !entity.isNoGravity()
+                entity.jumping                  // holding jump
+                && deltaMovement.y > 0          // ascending
+                && !entity.isFallFlying()       // not using an elytra
+                && !entity.isNoGravity()        // affected by gravity
+                && !entity.isSwimming()         // not swimming
         ) {
-            entity.setDeltaMovement(deltaMovement.add(0, 0.05 * forceMultiplier, 0));
+            entity.setDeltaMovement(deltaMovement.add(0, config.jumpBonusForce.get() * forceMultiplier, 0));
         }
     }
 
