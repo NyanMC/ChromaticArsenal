@@ -91,7 +91,7 @@ public class CurioPolychromaticFeather extends BaseSuperCurio {
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         if (player.isDiscrete())
-            return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
+            return InteractionResultHolder.pass(itemstack);
 
         player.getCooldowns().addCooldown(this, 60);
         if (!level.isClientSide()) {

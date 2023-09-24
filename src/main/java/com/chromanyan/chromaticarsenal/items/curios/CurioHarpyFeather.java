@@ -94,7 +94,7 @@ public class CurioHarpyFeather extends BaseCurioItem {
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         if (player.isDiscrete())
-            return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
+            return InteractionResultHolder.pass(itemstack);
 
         if (!ChromaCurioHelper.isChromaticTwisted(itemstack, player))
             player.getCooldowns().addCooldown(this, 60);
