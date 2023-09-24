@@ -11,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
@@ -32,8 +33,13 @@ public class CurioVerticalStasis extends BaseCurioItem {
     public void curioTick(SlotContext context, ItemStack stack) {
         CompoundTag nbt = stack.getOrCreateTag();
         LivingEntity entity = context.entity();
-        if (entity.getCommandSenderWorld().isClientSide())
+        if (entity.getCommandSenderWorld().isClientSide()) {
+            if (nbt.getBoolean("active")) {
+                Vec3 deltaMovement = entity.getDeltaMovement();
+                entity.setDeltaMovement(deltaMovement.x, 0, deltaMovement.z); // zero out their Y momentum completely, prevents a lot of cheesing
+            }
             return;
+        }
         nbt.putBoolean("active", entity.isDiscrete() && (entity.isOnGround() || nbt.getBoolean("active")));
         if (ChromaCurioHelper.isChromaticTwisted(stack, entity)) {
             if (nbt.getBoolean("active")) {
