@@ -72,7 +72,7 @@ public class CurioPolychromaticFeather extends BaseSuperCurio {
         super.curioTick(context, stack);
 
         LivingEntity entity = context.entity();
-        if (entity.isFallFlying() || entity.isNoGravity() || entity.isSwimming() || !entity.jumping) {
+        if (!entity.jumping || entity.isFallFlying() || entity.isNoGravity() || entity.isSwimming()) {
             return;
         }
 
