@@ -77,12 +77,14 @@ public class CurioPolychromaticFeather extends BaseSuperCurio {
         }
 
         Vec3 deltaMovement = entity.getDeltaMovement();
-        if (deltaMovement.y > 0) {
-            AttributeInstance gravity = entity.getAttribute(net.minecraftforge.common.ForgeMod.ENTITY_GRAVITY.get());
-            double forceMultiplier = gravity != null ? gravity.getValue() / 0.08 : 1;
-
-            entity.setDeltaMovement(deltaMovement.add(0, config.jumpBonusForce.get() * forceMultiplier, 0));
+        if (deltaMovement.y <= 0) {
+            return;
         }
+
+        AttributeInstance gravity = entity.getAttribute(net.minecraftforge.common.ForgeMod.ENTITY_GRAVITY.get());
+        double forceMultiplier = gravity != null ? gravity.getValue() / 0.08 : 1;
+
+        entity.setDeltaMovement(deltaMovement.add(0, config.jumpBonusForce.get() * forceMultiplier, 0));
     }
 
     @Override
