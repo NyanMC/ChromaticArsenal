@@ -113,6 +113,10 @@
   "tooltip.chromaticarsenal.super_lunar_crystal.3": "§2Functions as a Pumpkin for Endermen",
   "tooltip.chromaticarsenal.super_lunar_crystal.2": "§6Allows for bouncing out of the void, taking %1$s§6 damage in the process",
 
+  "item.chromaticarsenal.super_harpy_feather": "Polychromatic Feather",
+  "tooltip.chromaticarsenal.super_harpy_feather.1": "§6Right click to perform a midair jump that grants slowfall",
+  "tooltip.chromaticarsenal.super_harpy_feather.2": "§6While equipped, hold the jump button to jump higher (including the jump from Harpy Feathers)",
+
   "item.chromaticarsenal.super_glow_ring": "Ring of Illuminated Soul",
   "tooltip.chromaticarsenal.super_glow_ring.1": "§2Grants Night Vision, Glowing, and immunity to Blindness and Darkness",
   "tooltip.chromaticarsenal.super_glow_ring.2": "§6Attacking a mob inflicts Glowing for %1$s§6 seconds",

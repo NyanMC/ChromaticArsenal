@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "chromaticarsenal:ascension_essence"
+  },
+  "base": {
+    "item": "chromaticarsenal:harpy_feather"
+  },
+  "result": {
+    "item": "chromaticarsenal:super_harpy_feather"
+  }
+}

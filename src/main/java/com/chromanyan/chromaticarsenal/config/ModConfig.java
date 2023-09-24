@@ -98,6 +98,9 @@ public class ModConfig {
         public final DoubleValue voidBounceMultiplier;
         public final DoubleValue voidBounceDamage;
 
+        public final DoubleValue superJumpForce;
+        public final DoubleValue jumpBonusForce;
+
         public final IntValue glowingDuration;
         public final DoubleValue illuminatedUndeadMultiplier;
 
@@ -370,6 +373,15 @@ public class ModConfig {
                     voidBounceDamage = builder
                             .comment("The amount of damage taken when bouncing out of the void. This is void damage, meaning it bypasses most forms of protection, even creative mode.")
                             .defineInRange("voidBounceDamage", 4D, 0D, Float.MAX_VALUE);
+                builder.pop();
+
+                builder.push("SuperHarpyFeatherSettings");
+                    superJumpForce = builder
+                            .comment("The force of the Polychromatic Feather jump.")
+                            .defineInRange("superJumpForce", 0.42D, 0, Double.MAX_VALUE);
+                    jumpBonusForce = builder
+                            .comment("The additional force per tick while holding the jump button with the Polychromatic Feather equipped. Multiplied by entity gravity divided by 0.08.")
+                            .defineInRange("jumpBonusForce", 0.05, 0, Double.MAX_VALUE);
                 builder.pop();
 
                 builder.push("SuperGlowRingSettings");

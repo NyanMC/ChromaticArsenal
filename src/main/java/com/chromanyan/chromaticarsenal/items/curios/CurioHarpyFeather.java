@@ -68,6 +68,9 @@ public class CurioHarpyFeather extends BaseCurioItem {
 
     @Override
     public void inventoryTick(@NotNull ItemStack stack, @NotNull Level level, @NotNull Entity entity, int itemSlot, boolean isSelected) {
+        if (level.isClientSide()) {
+            return;
+        }
         if (entity instanceof Player player) {
             if (player.getCooldowns().isOnCooldown(this)) {
                 if (player.getVehicle() == null) {
