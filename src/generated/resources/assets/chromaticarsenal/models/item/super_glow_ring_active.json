@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/super_glow_ring"
+    "layer0": "chromaticarsenal:items/super_glow_ring_active"
   }
 }

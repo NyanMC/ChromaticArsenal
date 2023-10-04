@@ -42,7 +42,6 @@ public class CAModels extends ItemModelProvider {
 
         // super curios
         basicModel("super_golden_heart"); // can't datagen the regular golden heart because it does special stuff
-        basicModel("super_glow_ring");
 
         // challenge curios
         basicModel("ascended_star");
@@ -59,6 +58,7 @@ public class CAModels extends ItemModelProvider {
 
         // miscellaneous
         basicModel("golden_heart_nyans");
+        basicModel("super_glow_ring_active");
         basicModel("ca_book");
         basicModel("lore_book");
     }

@@ -9,6 +9,7 @@ import com.chromanyan.chromaticarsenal.datagen.tags.CAItemTags;
 import com.chromanyan.chromaticarsenal.events.EventClassInstance;
 import com.chromanyan.chromaticarsenal.init.*;
 import com.chromanyan.chromaticarsenal.items.curios.CurioGoldenHeart;
+import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioIlluminatedSoul;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -93,6 +94,7 @@ public class ChromaticArsenal {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         CurioGoldenHeart.registerVariants();
+        CurioIlluminatedSoul.registerVariants();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

@@ -1,9 +1,13 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -13,15 +17,20 @@ import net.minecraft.world.entity.MobType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.SlotResult;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CurioIlluminatedSoul extends BaseSuperCurio {
 
@@ -73,6 +82,24 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
             target.addEffect(new MobEffectInstance(MobEffects.GLOWING, config.glowingDuration.get()));
         if (target.getMobType() == MobType.UNDEAD)
             event.setAmount(event.getAmount() * config.illuminatedUndeadMultiplier.get().floatValue());
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void registerVariants() {
+        ItemProperties.register(ModItems.SUPER_GLOW_RING.get(), new ResourceLocation(ChromaticArsenal.MODID, "equipped"),
+                (stack, world, entity, thing) -> { // what a nightmare
+                    if (entity == null) {
+                        return 0;
+                    }
+
+                    Optional<SlotResult> result = CuriosApi.getCuriosHelper().findFirstCurio(entity, stack.getItem());
+
+                    if (result.isPresent() && result.get().stack() != null && result.get().stack() == stack) {
+                        return 1;
+                    }
+
+                    return 0;
+                });
     }
 
     @NotNull
