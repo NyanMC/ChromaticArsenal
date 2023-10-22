@@ -12,6 +12,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.OwnableEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -36,10 +38,13 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.1"));
+        if (stack.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0)
+            list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.silktouch"));
+
         list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.2", TooltipHelper.ticksToSecondsTooltip(getEffectDuration(stack))));
-        if (config.canBeDamaged.get()) {
+        if (config.canBeDamaged.get())
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.3"));
-        }
+
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.twisted", TooltipHelper.percentTooltip(config.twistedUnbreakingChance.get())));
     }
@@ -79,7 +84,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        if (enchantment == Enchantments.FIRE_PROTECTION) {
+        if (enchantment == Enchantments.FIRE_PROTECTION || enchantment == Enchantments.SILK_TOUCH) {
             return true;
         } else {
             return super.canApplyAtEnchantingTable(stack, enchantment);
@@ -88,8 +93,18 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
+        if (stack.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
+            if (target instanceof Player
+                    || (target instanceof OwnableEntity && ((OwnableEntity) target).getOwner() instanceof Player)) {
+                event.setAmount(0);
+                event.setCanceled(true);
+                return;
+            }
+        }
+
         if (player == target) {
             event.setAmount(0);
+            event.setCanceled(true);
         } else {
             if (target != null && !target.fireImmune()) {
                 if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {

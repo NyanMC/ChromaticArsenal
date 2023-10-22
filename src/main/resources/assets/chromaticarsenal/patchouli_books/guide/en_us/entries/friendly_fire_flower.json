@@ -9,7 +9,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "The Friendly Fire Flower supports the following enchantments:$(br2)$(l)Mending$(): Vanilla effect$(br2)$(l)Unbreaking$(): Vanilla effect$(br2)$(l)Fire Protection$(): Increases the duration of the Fire Resistance effect given$(br2)$(l)Curse of Chromatic Twisting$(): Attackers and attacked mobs are ignited for 100 seconds, and reduces the chance to lose durability, however causes constant fire damage"
+      "text": "The Friendly Fire Flower supports the following enchantments:$(br2)$(l)Unbreaking & Mending$(): Vanilla effect$(br2)$(l)Fire Protection$(): Increases the duration of the Fire Resistance effect given$(br2)$(l)Silk Touch$(): Nullifies damage dealt to other players and tamed animals$(br2)$(l)Curse of Chromatic Twisting$(): Attackers and attacked mobs are ignited for 100 seconds, and reduces the chance to lose durability, however causes constant fire damage"
     },
     {
       "type": "patchouli:crafting",
