@@ -56,7 +56,7 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
         LivingEntity entity = slotContext.entity();
         if (!entity.getCommandSenderWorld().isClientSide) {
             entity.setGlowingTag(true);
-            entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 410, 0, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 410, 0, false, false), entity);
         }
     }
 
@@ -79,7 +79,7 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
         if (config.glowingDuration.get() > 0)
-            target.addEffect(new MobEffectInstance(MobEffects.GLOWING, config.glowingDuration.get()));
+            target.addEffect(new MobEffectInstance(MobEffects.GLOWING, config.glowingDuration.get()), player);
         if (target.getMobType() == MobType.UNDEAD)
             event.setAmount(event.getAmount() * config.illuminatedUndeadMultiplier.get().floatValue());
     }

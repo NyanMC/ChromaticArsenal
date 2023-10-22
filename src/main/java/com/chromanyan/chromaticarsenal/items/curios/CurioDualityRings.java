@@ -45,7 +45,7 @@ public class CurioDualityRings extends BaseCurioItem {
             return;
         if (ChromaCurioHelper.isChromaticTwisted(stack, entity)) {
             if (!entity.hasEffect(MobEffects.SATURATION)) {
-                entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 25, config.twistedHungerLevel.get()));
+                entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 25, config.twistedHungerLevel.get()), entity);
             }
         }
     }

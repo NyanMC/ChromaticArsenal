@@ -70,7 +70,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
                     CooldownHelper.updateCounter(nbt, config.revivalCooldown.get());
                     event.setCanceled(true);
                     player.setHealth(player.getMaxHealth());
-                    player.addEffect(new MobEffectInstance(ModPotions.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()));
+                    player.addEffect(new MobEffectInstance(ModPotions.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()), player);
                     player.setHealth(player.getMaxHealth()); // lazy max health correction, just set the value twice lol
                     player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundSource.PLAYERS, 0.5F, 1.0F);
                 }

@@ -49,7 +49,7 @@ public class CurioPolychromaticFeather extends BaseSuperCurio {
         }
         if (entity instanceof Player player) {
             if (player.getCooldowns().isOnCooldown(this)) {
-                player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 5, 0));
+                player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 5, 0), player);
                 if (player.getVehicle() == null) {
                     if (player.isOnGround()) {
                         player.getCooldowns().removeCooldown(this);

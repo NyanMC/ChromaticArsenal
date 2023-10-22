@@ -76,7 +76,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
         if (!slotContext.entity().getCommandSenderWorld().isClientSide) {
-            slotContext.entity().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (getEffectCooldown(stack) + 5), config.absorptionLevel.get(), true, true));
+            slotContext.entity().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (getEffectCooldown(stack) + 5), config.absorptionLevel.get(), true, true), slotContext.entity());
         }
     }
 
@@ -84,7 +84,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity living = context.entity();
         if (!living.getCommandSenderWorld().isClientSide && living.tickCount % getEffectCooldown(stack) == 0) {
-            living.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (getEffectCooldown(stack) + 5), config.absorptionLevel.get(), true, true));
+            living.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, (getEffectCooldown(stack) + 5), config.absorptionLevel.get(), true, true), living);
         }
     }
 
@@ -103,8 +103,8 @@ public class CurioGoldenHeart extends BaseCurioItem {
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             if (event.getSource().getEntity() != null && event.getSource().getEntity() instanceof LivingEntity livingAttacker && event.getAmount() > 0) {
-                player.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0));
-                livingAttacker.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0));
+                player.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0), player);
+                livingAttacker.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0), player);
             }
         }
     }

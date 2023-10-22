@@ -58,7 +58,7 @@ public class CurioWardCrystal extends BaseCurioItem {
             }
             event.setAmount(event.getAmount() * getIncomingMultiplier(stack));
         } else if (ChromaCurioHelper.isChromaticTwisted(stack, player) && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
-            player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, config.twistedWeaknessDuration.get(), 1));
+            player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, config.twistedWeaknessDuration.get(), 1), player);
         }
     }
 

@@ -58,9 +58,9 @@ public class CurioShadowTreads extends BaseCurioItem {
         Level world = livingEntity.getCommandSenderWorld();
         if (!world.isClientSide()) {
             if (world.getMaxLocalRawBrightness(livingEntity.blockPosition()) <= config.maxLightLevel.get()) {
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, config.darkspeedPotency.get(), true, true));
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, config.darkspeedPotency.get(), true, true), livingEntity);
             } else if (ChromaCurioHelper.isChromaticTwisted(stack, context.entity())) {
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 105, 0, true, true));
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 105, 0, true, true), livingEntity);
             }
         }
     }

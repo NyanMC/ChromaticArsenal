@@ -55,19 +55,19 @@ public class CurioCryoRing extends BaseCurioItem {
         return true;
     }
 
-    public static void doCryoPotionEffects(LivingEntity target) {
+    public static void doCryoPotionEffects(LivingEntity target, @Nullable LivingEntity player) {
         if (!target.getType().is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
             if (target.getType().is(EntityTypeTags.FREEZE_HURTS_EXTRA_TYPES)) {
-                target.addEffect(new MobEffectInstance(ModPotions.CHILLED.get(), config.chilledTicksVulnerable.get()));
+                target.addEffect(new MobEffectInstance(ModPotions.CHILLED.get(), config.chilledTicksVulnerable.get()), player);
             } else {
-                target.addEffect(new MobEffectInstance(ModPotions.CHILLED.get(), config.chilledTicks.get()));
+                target.addEffect(new MobEffectInstance(ModPotions.CHILLED.get(), config.chilledTicks.get()), player);
             }
         }
     }
 
     public static void doCryoEffects(LivingHurtEvent event, LivingEntity target) {
         if (!target.getType().is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
-            doCryoPotionEffects(target);
+            doCryoPotionEffects(target, event.getEntity());
             event.setAmount(event.getAmount() + config.cryoDamage.get().floatValue());
         }
 
@@ -101,7 +101,7 @@ public class CurioCryoRing extends BaseCurioItem {
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, player)
                 && !(event.getSource().isProjectile() || event.getSource().isExplosion() || event.getSource().isMagic() || event.getSource().isFire()))
-            doCryoPotionEffects(target);
+            doCryoPotionEffects(target, player);
     }
 
     @Override

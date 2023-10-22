@@ -120,9 +120,9 @@ public class CurioLunarCrystal extends BaseCurioItem {
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
         int randresult = rand.nextInt(config.levitationChance.get() - 1);
         if (randresult == 0) {
-            target.addEffect(new MobEffectInstance(MobEffects.LEVITATION, getLevitationDuration(stack, player), config.levitationPotency.get()));
+            target.addEffect(new MobEffectInstance(MobEffects.LEVITATION, getLevitationDuration(stack, player), config.levitationPotency.get()), player);
             if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
-                player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, getLevitationDuration(stack, player), config.levitationPotency.get()));
+                player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, getLevitationDuration(stack, player), config.levitationPotency.get()), player);
             }
         }
     }
