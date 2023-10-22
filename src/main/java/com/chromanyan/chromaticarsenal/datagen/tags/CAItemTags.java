@@ -50,6 +50,7 @@ public class CAItemTags extends ItemTagsProvider {
 
         tag(ModTags.Items.UTILITY_CURIOS).add(
                 ModItems.GRAVITY_STONE.get(),
+                ModItems.VERTICAL_STASIS.get(),
                 ModItems.HARPY_FEATHER.get(),
                 ModItems.SUPER_HARPY_FEATHER.get()
         );
@@ -63,8 +64,7 @@ public class CAItemTags extends ItemTagsProvider {
                         ModItems.DUALITY_RINGS.get(),
                         ModItems.FRIENDLY_FIRE_FLOWER.get(),
                         ModItems.LUNAR_CRYSTAL.get(),
-                        ModItems.CRYO_RING.get(),
-                        ModItems.VERTICAL_STASIS.get()
+                        ModItems.CRYO_RING.get()
                 )
                 .addTag(ModTags.Items.SUPER_CURIOS)
                 .addTag(ModTags.Items.CHALLENGE_CURIOS)

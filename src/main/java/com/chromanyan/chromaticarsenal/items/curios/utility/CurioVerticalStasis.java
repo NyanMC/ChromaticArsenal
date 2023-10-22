@@ -1,5 +1,6 @@
-package com.chromanyan.chromaticarsenal.items.curios;
+package com.chromanyan.chromaticarsenal.items.curios.utility;
 
+import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.nbt.CompoundTag;
@@ -9,6 +10,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -23,6 +25,7 @@ public class CurioVerticalStasis extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        list.add(Component.translatable("tooltip.chromaticarsenal.utility"));
         list.add(Component.translatable("tooltip.chromaticarsenal.vertical_stasis_stone.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.vertical_stasis_stone.2"));
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
@@ -63,5 +66,9 @@ public class CurioVerticalStasis extends BaseCurioItem {
     @Override
     public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
         return new ICurio.SoundInfo(SoundEvents.SHULKER_BULLET_HIT, 0.5F, 1);
+    }
+    @Override
+    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
+        return ModRarities.UTILITY;
     }
 }

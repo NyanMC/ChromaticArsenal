@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Stone of Vertical Stasis causes its wearer to defy gravity while sneaking. This only takes effect if the wearer has touched the ground at least once while sneaking (typically from initially sneaking on the ground). Additionally, the wearer can freely walk off ledges while defying gravity. This curio pairs well with Swift Sneak."
+      "text": "The Stone of Vertical Stasis is a utility curio that causes its wearer to defy gravity while sneaking. This only takes effect if the wearer has touched the ground at least once while sneaking (typically from initially sneaking on the ground). Additionally, the wearer can freely walk off ledges while defying gravity. This curio pairs well with Swift Sneak."
     },
     {
       "type": "patchouli:text",

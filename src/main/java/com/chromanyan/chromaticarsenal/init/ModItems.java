@@ -9,6 +9,8 @@ import com.chromanyan.chromaticarsenal.items.curios.advanced.*;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioLimitBreak;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioWorldAnchor;
 import com.chromanyan.chromaticarsenal.items.curios.utility.CurioGravityStone;
+import com.chromanyan.chromaticarsenal.items.curios.utility.CurioHarpyFeather;
+import com.chromanyan.chromaticarsenal.items.curios.utility.CurioVerticalStasis;
 import com.chromanyan.chromaticarsenal.items.food.Cosmicola;
 import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
 import net.minecraft.world.item.BlockItem;

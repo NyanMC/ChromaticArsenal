@@ -1,4 +1,4 @@
-package com.chromanyan.chromaticarsenal.items.curios;
+package com.chromanyan.chromaticarsenal.items.curios.utility;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
