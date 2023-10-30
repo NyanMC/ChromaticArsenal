@@ -36,13 +36,6 @@ public class CurioVerticalStasis extends BaseCurioItem {
     public void curioTick(SlotContext context, ItemStack stack) {
         CompoundTag nbt = stack.getOrCreateTag();
         LivingEntity entity = context.entity();
-        if (entity.getCommandSenderWorld().isClientSide()) {
-            if (nbt.getBoolean("active")) {
-                Vec3 deltaMovement = entity.getDeltaMovement();
-                entity.setDeltaMovement(deltaMovement.x, 0, deltaMovement.z); // zero out their Y momentum completely, prevents a lot of cheesing
-            }
-            return;
-        }
         nbt.putBoolean("active", entity.isDiscrete() && (entity.isOnGround() || nbt.getBoolean("active")));
         if (ChromaCurioHelper.isChromaticTwisted(stack, entity)) {
             if (nbt.getBoolean("active")) {
@@ -50,6 +43,12 @@ public class CurioVerticalStasis extends BaseCurioItem {
             }
         } else {
             entity.setNoGravity(nbt.getBoolean("active"));
+            if (entity.getCommandSenderWorld().isClientSide()) {
+                if (nbt.getBoolean("active")) {
+                    Vec3 deltaMovement = entity.getDeltaMovement();
+                    entity.setDeltaMovement(deltaMovement.x, 0, deltaMovement.z); // zero out their Y momentum completely, prevents a lot of cheesing
+                }
+            }
         }
     }
 
