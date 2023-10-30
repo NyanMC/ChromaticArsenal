@@ -90,6 +90,7 @@ public class ModConfig {
         public final DoubleValue healthTradeoff;
 
         public final DoubleValue potionDurationMultiplier;
+        public final ForgeConfigSpec.ConfigValue<List<? extends String>> effectBlacklist;
 
         public final DoubleValue damageModifierMax;
         public final DoubleValue speedModifierMax;
@@ -352,6 +353,9 @@ public class ModConfig {
                     potionDurationMultiplier = builder
                             .comment("The duration of all applied potion effects will be multiplied by this value.")
                             .defineInRange("potionDurationMultiplier", 0.2D, 0D, 2D);
+                    effectBlacklist = builder
+                            .comment("A list of effects which will NOT have their duration changed. Defined using the effect resource location.")
+                            .defineList("effectBlacklist", new ArrayList<>(List.of("minecraft:night_vision")), o -> o instanceof String);
                 builder.pop();
 
                 builder.push("SuperShadowTreadsSettings");
