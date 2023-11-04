@@ -42,7 +42,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.silktouch"));
 
         list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.2", TooltipHelper.ticksToSecondsTooltip(getEffectDuration(stack))));
-        if (config.canBeDamaged.get() && stack.isDamageableItem()) // second check is for if the item has the unbreakable tag
+        if (stack.isDamageableItem()) // this check includes when the item has the unbreakable tag
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.3"));
 
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
@@ -64,10 +64,9 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
             if (living.isOnFire()) {
                 if (!(living.hasEffect(MobEffects.FIRE_RESISTANCE) || living.fireImmune())) { // will fireImmune() ever even trigger for a player? hell if i know
                     living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, getEffectDuration(stack), 0, true, true));
-                    if (config.canBeDamaged.get()) {
-                        if (!ChromaCurioHelper.isChromaticTwisted(stack, context.entity()) || Math.random() > config.twistedUnbreakingChance.get()) {
-                            stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
-                        }
+                    // we no longer have to check canBeDamaged here because hurtAndBreak checks isDamageable
+                    if (!ChromaCurioHelper.isChromaticTwisted(stack, context.entity()) || Math.random() > config.twistedUnbreakingChance.get()) {
+                        stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
                     }
                 } else {
                     living.clearFire();
@@ -112,6 +111,11 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean isDamageable(ItemStack stack) { // make the config option alter the vanilla behavior, not hardcoded checks
+        return config.canBeDamaged.get() && super.isDamageable(stack);
     }
 
     @Override
