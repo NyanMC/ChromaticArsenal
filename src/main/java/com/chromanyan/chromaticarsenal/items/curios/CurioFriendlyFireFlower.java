@@ -53,6 +53,10 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
         return config.fireResistanceDuration.get() + (config.fireResistanceProtectionDuration.get() * stack.getEnchantmentLevel(Enchantments.FIRE_PROTECTION));
     }
 
+    private boolean isFireImmune(@NotNull LivingEntity living) {
+        return living.hasEffect(MobEffects.FIRE_RESISTANCE) || living.fireImmune(); // will fireImmune() ever even trigger for a player? hell if i know
+    }
+
     public CurioFriendlyFireFlower() {
         super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(25).fireResistant());
     }
@@ -62,14 +66,16 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
         LivingEntity living = context.entity();
         if (!living.getCommandSenderWorld().isClientSide) {
             if (living.isOnFire()) {
-                if (!(living.hasEffect(MobEffects.FIRE_RESISTANCE) || living.fireImmune())) { // will fireImmune() ever even trigger for a player? hell if i know
-                    living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, getEffectDuration(stack), 0, true, true));
-                    // we no longer have to check canBeDamaged here because hurtAndBreak checks isDamageable
-                    if (!ChromaCurioHelper.isChromaticTwisted(stack, context.entity()) || Math.random() > config.twistedUnbreakingChance.get()) {
-                        stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
-                    }
-                } else {
+                if (isFireImmune(living)) {
                     living.clearFire();
+                    return;
+                }
+
+                living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, getEffectDuration(stack), 0, true, true));
+
+                // we no longer have to check canBeDamaged here because hurtAndBreak checks isDamageable
+                if (!ChromaCurioHelper.isChromaticTwisted(stack, context.entity()) || Math.random() > config.twistedUnbreakingChance.get()) {
+                    stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
                 }
             } else {
                 if (ChromaCurioHelper.isChromaticTwisted(stack, context.entity())) {
@@ -105,7 +111,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
             event.setAmount(0);
             event.setCanceled(true);
         } else {
-            if (target != null && !target.fireImmune()) {
+            if (target != null && !isFireImmune(target)) {
                 if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
                     target.setSecondsOnFire(100);
                 }
