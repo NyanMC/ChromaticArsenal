@@ -42,7 +42,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.silktouch"));
 
         list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.2", TooltipHelper.ticksToSecondsTooltip(getEffectDuration(stack))));
-        if (config.canBeDamaged.get())
+        if (config.canBeDamaged.get() && stack.isDamageableItem()) // second check is for if the item has the unbreakable tag
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.3"));
 
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))
