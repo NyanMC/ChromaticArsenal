@@ -24,6 +24,7 @@ import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.UUID;
@@ -81,5 +82,9 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         return atts;
     }
 
-    //TODO equip sound
+    @NotNull
+    @Override
+    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
+        return new ICurio.SoundInfo(SoundEvents.BUCKET_FILL, 0.5F, 1);
+    }
 }
