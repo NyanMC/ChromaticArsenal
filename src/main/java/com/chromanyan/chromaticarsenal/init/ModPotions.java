@@ -6,7 +6,6 @@ import com.chromanyan.chromaticarsenal.effects.EffectChilled;
 import com.chromanyan.chromaticarsenal.effects.EffectFractured;
 import com.chromanyan.chromaticarsenal.effects.EffectSpatial;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
