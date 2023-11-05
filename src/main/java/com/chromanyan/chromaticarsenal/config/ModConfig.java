@@ -297,7 +297,7 @@ public class ModConfig {
                 builder.push("BubbleAmuletSettings");
                     amuletSwimSpeed = builder
                             .comment("The operation 1 attribute modifier for swim speed on the Bubble Amulet.")
-                            .defineInRange("amuletSwimSpeed", 0.5D, 0, Double.MAX_VALUE);
+                            .defineInRange("amuletSwimSpeed", 0.3D, 0, Double.MAX_VALUE);
                     bubblePanicDuration = builder
                             .comment("The duration of the Bubble Panic! effect when the wearer runs out of breath.")
                             .defineInRange("bubblePanicDuration", 1200, 0, Integer.MAX_VALUE);

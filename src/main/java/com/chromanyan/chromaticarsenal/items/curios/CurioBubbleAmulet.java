@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
@@ -18,6 +19,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
@@ -34,10 +36,14 @@ public class CurioBubbleAmulet extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        //TODO nyan please add details
         CompoundTag nbt = stack.getOrCreateTag();
+        list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.1").withStyle(ChatFormatting.GRAY));
+        if (config.bubblePanicDuration.get() > 0)
+            list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.2", TooltipHelper.ticksToSecondsTooltip(config.bubblePanicDuration.get())));
+        list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.3", TooltipHelper.ticksToSecondsTooltip(getCooldownDuration(stack))));
         if (!CooldownHelper.isCooldownFinished(nbt)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
+            list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
         }
     }
 
@@ -80,6 +86,15 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
         atts.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_swimming", config.amuletSwimSpeed.get(), AttributeModifier.Operation.MULTIPLY_BASE));
         return atts;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        if (enchantment == Enchantments.RESPIRATION) {
+            return true;
+        } else {
+            return super.canApplyAtEnchantingTable(stack, enchantment);
+        }
     }
 
     @NotNull
