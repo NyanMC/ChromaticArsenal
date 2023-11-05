@@ -164,6 +164,8 @@
   "effect.chromaticarsenal.spatial.description": "Reduces player gravity, grants immunity to Fall Damage",
   "effect.chromaticarsenal.chilled": "Chilled",
   "effect.chromaticarsenal.chilled.description": "Reduces movement speed by 30% and causes the target entity to freeze as if they were standing in Powder Snow",
+  "effect.chromaticarsenal.bubble_panic": "Bubble Panic!",
+  "effect.chromaticarsenal.bubble_panic.description": "Increases swimming speed by 50%",
 
   "enchantment.chromaticarsenal.chromatic_twisting": "Curse of Chromatic Twisting",
   "enchantment.chromaticarsenal.chromatic_twisting.desc": "Adds a negative effect to the curio, but in exchange grants another positive ability to the curio",
