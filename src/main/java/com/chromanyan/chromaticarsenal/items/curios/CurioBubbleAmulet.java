@@ -18,6 +18,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
@@ -70,8 +71,7 @@ public class CurioBubbleAmulet extends BaseCurioItem {
     }
 
     private int getCooldownDuration(ItemStack stack) {
-        //TODO maybe make respiration enchant reduce the cooldown?
-        return config.baseBubbleCooldown.get();
+        return config.baseBubbleCooldown.get() - (config.respirationCooldownReduction.get() * stack.getEnchantmentLevel(Enchantments.RESPIRATION));
     }
 
     @Override

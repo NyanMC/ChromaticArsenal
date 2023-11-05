@@ -73,6 +73,7 @@ public class ModConfig {
         public final DoubleValue amuletSwimSpeed;
         public final IntValue bubblePanicDuration;
         public final IntValue baseBubbleCooldown;
+        public final IntValue respirationCooldownReduction;
 
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
@@ -303,6 +304,9 @@ public class ModConfig {
                     baseBubbleCooldown = builder
                             .comment("The base duration of the cooldown after the Bubble Amulet takes effect.")
                             .defineInRange("baseBubbleCooldown", 2400, 0, Integer.MAX_VALUE);
+                    respirationCooldownReduction = builder
+                            .comment("The amount of ticks removed from the cooldown per level of Respiration.")
+                            .defineInRange("respirationCooldownReduction", 300, 0, Integer.MAX_VALUE);
                 builder.pop();
 
                 builder.push("WorldAnchorSettings");
