@@ -58,15 +58,17 @@
   "tooltip.chromaticarsenal.cryo_ring.3": "§6For targets weak to freezing, the effect is applied for %1$s§6 seconds",
   "tooltip.chromaticarsenal.cryo_ring.twisted": "§cChromatic Twisting:§5 Allows melee attacks to inflict Chilled, however multiplies fire damage taken by %1$s§5 and inflicts speed and damage debuffs in hot places",
 
-  "item.chromaticarsenal.vertical_stasis_stone": "Stone of Vertical Stasis",
-  "tooltip.chromaticarsenal.vertical_stasis_stone.1": "§6Negates the effects of gravity while sneaking",
-  "tooltip.chromaticarsenal.vertical_stasis_stone.2": "§6While in effect, sneaking won't prevent falling off ledges",
-  "tooltip.chromaticarsenal.vertical_stasis_stone.twisted": "§cChromatic Twisting: §5Applies Levitation instead of negating gravity",
+  "item.chromaticarsenal.bubble_amulet": "Bubble Amulet",
 
   "item.chromaticarsenal.gravity_stone": "Gravity Stone",
   "tooltip.chromaticarsenal.gravity_stone.1": "§6Prevents gravity from being reduced below the base value",
   "tooltip.chromaticarsenal.gravity_stone.2": "§6Prevents the floatiness from Slow Falling (the effect will still negate fall damage)",
   "tooltip.chromaticarsenal.gravity_stone.3": "§cDoes not grant immunity to Levitation",
+
+  "item.chromaticarsenal.vertical_stasis_stone": "Stone of Vertical Stasis",
+  "tooltip.chromaticarsenal.vertical_stasis_stone.1": "§6Negates the effects of gravity while sneaking",
+  "tooltip.chromaticarsenal.vertical_stasis_stone.2": "§6While in effect, sneaking won't prevent falling off ledges",
+  "tooltip.chromaticarsenal.vertical_stasis_stone.twisted": "§cChromatic Twisting: §5Applies Levitation instead of negating gravity",
 
   "item.chromaticarsenal.harpy_feather": "Harpy Feather",
   "tooltip.chromaticarsenal.harpy_feather.1": "§6Upon use, performs a midair jump",
