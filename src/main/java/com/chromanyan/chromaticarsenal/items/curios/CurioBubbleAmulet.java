@@ -59,8 +59,7 @@ public class CurioBubbleAmulet extends BaseCurioItem {
                     SoundSource.PLAYERS, 0.5F, 1.0F);
             living.setAirSupply(maxAirSupply);
             CooldownHelper.updateCounter(nbt, getCooldownDuration(stack));
-            //TODO configurability
-            living.addEffect(new MobEffectInstance(ModPotions.BUBBLE_PANIC.get(), 1200), living);
+            living.addEffect(new MobEffectInstance(ModPotions.BUBBLE_PANIC.get(), config.bubblePanicDuration.get()), living);
         } else if (airSupply >= maxAirSupply) {
             CompoundTag nbt = stack.getOrCreateTag();
             if (CooldownHelper.isCooldownFinished(nbt))
@@ -71,15 +70,16 @@ public class CurioBubbleAmulet extends BaseCurioItem {
     }
 
     private int getCooldownDuration(ItemStack stack) {
-        //TODO configurability, maybe make respiration enchant reduce the cooldown?
-        return 2400; // 2 minutes
+        //TODO maybe make respiration enchant reduce the cooldown?
+        return config.baseBubbleCooldown.get();
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-        //TODO make swim speed attribute here configurable
-        atts.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_swimming", 0.5, AttributeModifier.Operation.MULTIPLY_BASE));
+        atts.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_swimming", config.amuletSwimSpeed.get(), AttributeModifier.Operation.MULTIPLY_BASE));
         return atts;
     }
+
+    //TODO equip sound
 }

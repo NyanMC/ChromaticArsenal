@@ -70,6 +70,10 @@ public class ModConfig {
         public final DoubleValue twistedCryoDamagePenalty;
         public final DoubleValue twistedCryoFireDamageMultiplier;
 
+        public final DoubleValue amuletSwimSpeed;
+        public final IntValue bubblePanicDuration;
+        public final IntValue baseBubbleCooldown;
+
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
         public final DoubleValue anchorKnockbackResistanceMultiplier;
@@ -287,7 +291,18 @@ public class ModConfig {
                     twistedCryoFireDamageMultiplier = builder
                             .comment("The multiplier for fire damage taken with a Chromatic Twisting cryo ring.")
                             .defineInRange("twistedCryoFireDamageMultiplier", 2, 1, Float.MAX_VALUE);
+                builder.pop();
 
+                builder.push("BubbleAmuletSettings");
+                    amuletSwimSpeed = builder
+                            .comment("The operation 1 attribute modifier for swim speed on the Bubble Amulet.")
+                            .defineInRange("amuletSwimSpeed", 0.5D, 0, Double.MAX_VALUE);
+                    bubblePanicDuration = builder
+                            .comment("The duration of the Bubble Panic! effect when the wearer runs out of breath.")
+                            .defineInRange("bubblePanicDuration", 1200, 0, Integer.MAX_VALUE);
+                    baseBubbleCooldown = builder
+                            .comment("The base duration of the cooldown after the Bubble Amulet takes effect.")
+                            .defineInRange("baseBubbleCooldown", 2400, 0, Integer.MAX_VALUE);
                 builder.pop();
 
                 builder.push("WorldAnchorSettings");
