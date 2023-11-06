@@ -81,16 +81,20 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         return config.baseBubbleCooldown.get() - (config.respirationCooldownReduction.get() * stack.getEnchantmentLevel(Enchantments.RESPIRATION));
     }
 
+    private double getSwimSpeedMod(ItemStack stack) {
+        return config.amuletSwimSpeed.get() + (config.depthStriderAdditionalSpeed.get() * stack.getEnchantmentLevel(Enchantments.DEPTH_STRIDER));
+    }
+
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
-        atts.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_swimming", config.amuletSwimSpeed.get(), AttributeModifier.Operation.MULTIPLY_BASE));
+        atts.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_swimming", getSwimSpeedMod(stack), AttributeModifier.Operation.MULTIPLY_BASE));
         return atts;
     }
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        if (enchantment == Enchantments.RESPIRATION) {
+        if (enchantment == Enchantments.RESPIRATION || enchantment == Enchantments.DEPTH_STRIDER) {
             return true;
         } else {
             return super.canApplyAtEnchantingTable(stack, enchantment);

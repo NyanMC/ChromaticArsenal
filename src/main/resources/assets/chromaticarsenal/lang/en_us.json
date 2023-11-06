@@ -59,9 +59,9 @@
   "tooltip.chromaticarsenal.cryo_ring.twisted": "§cChromatic Twisting:§5 Allows melee attacks to inflict Chilled, however multiplies fire damage taken by %1$s§5 and inflicts speed and damage debuffs in hot places",
 
   "item.chromaticarsenal.bubble_amulet": "Bubble Amulet",
-  "tooltip.chromaticarsenal.bubble_amulet.1": "§6Upon running out of air, the bubble pops, completely restoring the wearer's air supply",
-  "tooltip.chromaticarsenal.bubble_amulet.2": "§6This also further increases swimming speed for %1$s§6 seconds",
-  "tooltip.chromaticarsenal.bubble_amulet.3": "§6Goes on cooldown for %1$s§6 seconds after popping",
+  "tooltip.chromaticarsenal.bubble_amulet.1": "§6Upon running out of air, restores the wearer's air supply",
+  "tooltip.chromaticarsenal.bubble_amulet.2": "§6This ability further increases swimming speed for %1$s§6 seconds",
+  "tooltip.chromaticarsenal.bubble_amulet.3": "§6Goes on cooldown for %1$s§6 seconds after this effect applies",
   "tooltip.chromaticarsenal.bubble_amulet.cooldown": "Cooldown only ticks with a full air supply",
 
   "item.chromaticarsenal.gravity_stone": "Gravity Stone",

@@ -71,6 +71,7 @@ public class ModConfig {
         public final DoubleValue twistedCryoFireDamageMultiplier;
 
         public final DoubleValue amuletSwimSpeed;
+        public final DoubleValue depthStriderAdditionalSpeed;
         public final IntValue bubblePanicDuration;
         public final IntValue baseBubbleCooldown;
         public final IntValue respirationCooldownReduction;
@@ -298,6 +299,9 @@ public class ModConfig {
                     amuletSwimSpeed = builder
                             .comment("The operation 1 attribute modifier for swim speed on the Bubble Amulet.")
                             .defineInRange("amuletSwimSpeed", 0.3D, 0, Double.MAX_VALUE);
+                    depthStriderAdditionalSpeed = builder
+                            .comment("The additional swim speed added per level of Depth Strider. Still operation 1.")
+                            .defineInRange("depthStriderAdditionalSpeed", 0.1D, 0, Double.MAX_VALUE);
                     bubblePanicDuration = builder
                             .comment("The duration of the Bubble Panic! effect when the wearer runs out of breath.")
                             .defineInRange("bubblePanicDuration", 1200, 0, Integer.MAX_VALUE);
