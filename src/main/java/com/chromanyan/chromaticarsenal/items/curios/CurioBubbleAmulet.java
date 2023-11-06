@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
@@ -14,9 +15,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -36,8 +39,12 @@ public class CurioBubbleAmulet extends BaseCurioItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
+            list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.twisted"));
+            return;
+        }
         CompoundTag nbt = stack.getOrCreateTag();
-        list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.1").withStyle(ChatFormatting.GRAY));
+        list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.1"));
         if (config.bubblePanicDuration.get() > 0)
             list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.2", TooltipHelper.ticksToSecondsTooltip(config.bubblePanicDuration.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.3", TooltipHelper.ticksToSecondsTooltip(getCooldownDuration(stack))));
@@ -53,6 +60,11 @@ public class CurioBubbleAmulet extends BaseCurioItem {
 
         if (living.level.isClientSide) {
             return; // the server will replicate our changes to the client for us
+        }
+
+        if (ChromaCurioHelper.isChromaticTwisted(stack, living)) {
+            living.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 25, 0, true, true), living);
+            return;
         }
 
         int airSupply = living.getAirSupply();
@@ -89,6 +101,9 @@ public class CurioBubbleAmulet extends BaseCurioItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
         atts.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_swimming", getSwimSpeedMod(stack), AttributeModifier.Operation.MULTIPLY_BASE));
+        LivingEntity living = slotContext.entity();
+        if (ChromaCurioHelper.isChromaticTwisted(stack, living))
+            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_slowness", config.twistedBubbleSlowness.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
         return atts;
     }
 

@@ -75,6 +75,7 @@ public class ModConfig {
         public final IntValue bubblePanicDuration;
         public final IntValue baseBubbleCooldown;
         public final IntValue respirationCooldownReduction;
+        public final DoubleValue twistedBubbleSlowness;
 
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
@@ -311,6 +312,9 @@ public class ModConfig {
                     respirationCooldownReduction = builder
                             .comment("The amount of ticks removed from the cooldown per level of Respiration.")
                             .defineInRange("respirationCooldownReduction", 300, 0, Integer.MAX_VALUE);
+                    twistedBubbleSlowness = builder
+                            .comment("The operation 2 attribute modifier for movement speed when the player is outside of water or rain with a chromatically twisted Bubble Amulet.")
+                            .defineInRange("twistedBubbleSlowness", -0.5, -1, 0);
                 builder.pop();
 
                 builder.push("WorldAnchorSettings");

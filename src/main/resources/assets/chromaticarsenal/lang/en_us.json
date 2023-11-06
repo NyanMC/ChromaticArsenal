@@ -62,6 +62,7 @@
   "tooltip.chromaticarsenal.bubble_amulet.1": "§6Upon running out of air, restores the wearer's air supply",
   "tooltip.chromaticarsenal.bubble_amulet.2": "§6This ability further increases swimming speed for %1$s§6 seconds",
   "tooltip.chromaticarsenal.bubble_amulet.3": "§6Goes on cooldown for %1$s§6 seconds after this effect applies",
+  "tooltip.chromaticarsenal.bubble_amulet.twisted": "§cChromatic Twisting:§5 Grants indefinite Water Breathing, however movement speed on land is greatly reduced",
   "tooltip.chromaticarsenal.bubble_amulet.cooldown": "Cooldown only ticks with a full air supply",
 
   "item.chromaticarsenal.gravity_stone": "Gravity Stone",
