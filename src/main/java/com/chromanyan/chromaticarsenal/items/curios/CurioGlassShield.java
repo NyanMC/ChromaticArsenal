@@ -87,34 +87,44 @@ public class CurioGlassShield extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
-            CompoundTag nbt = stack.getOrCreateTag();
-            if (CooldownHelper.isCooldownFinished(nbt)) {
-                int randBlock = rand.nextInt(99);
-                if (randBlock < getFreeBlockChance(stack)) { // not <= because rand.nextInt is always one less than i want it to be
-                    player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F);
-                    player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
-                } else {
-                    CooldownHelper.updateCounter(nbt, getCooldownDuration(stack));
-                    player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
-                }
-                if (player instanceof Player playerEntity) {
-                    int hitDamage = Math.round(event.getAmount() * 10.0F);
-                    playerEntity.awardStat(ModStats.GSHIELD_TOTAL_BLOCK, hitDamage);
-                }
-                if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
-                    if (event.getSource().getEntity() != null && event.getSource().getEntity() instanceof LivingEntity livingAttacker) {
-                        livingAttacker.hurt(GLASS_SHRAPNEL, event.getAmount());
-                    }
-                }
-                event.setAmount(0);
-                event.setCanceled(true);
-            } else {
-                if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
-                    event.setAmount(event.getAmount() * config.twistedShatterDamageMultiplier.get().floatValue());
-                }
+        // if the attack is already zeroed out or hurts creative players, we don't care about it
+        if (event.getAmount() == 0 || event.getSource().isBypassInvul()) {
+            return;
+        }
+
+        CompoundTag nbt = stack.getOrCreateTag();
+        // if we're on cooldown and the player's shield is twisted, do more damage, return when on cooldown
+        if (!CooldownHelper.isCooldownFinished(nbt)) {
+            if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
+                event.setAmount(event.getAmount() * config.twistedShatterDamageMultiplier.get().floatValue());
+            }
+            return;
+        }
+
+        // handle random chance to block damage with unbreaking
+        int randBlock = rand.nextInt(99);
+        if (randBlock < getFreeBlockChance(stack)) { // got the free block
+            player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F);
+            player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
+        } else {
+            CooldownHelper.updateCounter(nbt, getCooldownDuration(stack));
+            player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5F, 1.0F);
+        }
+
+        // if the shield is twisted, return the damage to the attacker if it exists
+        if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
+            if (event.getSource().getEntity() instanceof LivingEntity livingAttacker) {
+                livingAttacker.hurt(GLASS_SHRAPNEL, event.getAmount());
             }
         }
+
+        // handles the stat tracking how much damage the player has blocked with the glass shield
+        if (player instanceof Player playerEntity) {
+            int hitDamage = Math.round(event.getAmount() * 10.0F); // we need to multiply this by 10, for some reason
+            playerEntity.awardStat(ModStats.GSHIELD_TOTAL_BLOCK, hitDamage);
+        }
+        event.setAmount(0);
+        event.setCanceled(true);
     }
 
     @NotNull
