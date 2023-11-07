@@ -88,7 +88,7 @@ public class CurioGlassShield extends BaseCurioItem {
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         // if the attack is already zeroed out or hurts creative players, we don't care about it
-        if (event.getAmount() == 0 || event.getSource().isBypassInvul()) {
+        if (ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             return;
         }
 

@@ -102,7 +102,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
-            if (event.getSource().getEntity() != null && event.getSource().getEntity() instanceof LivingEntity livingAttacker && event.getAmount() > 0) {
+            if (event.getSource().getEntity() instanceof LivingEntity livingAttacker && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
                 player.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0), player);
                 livingAttacker.addEffect(new MobEffectInstance(MobEffects.WITHER, config.twistedWitherDuration.get(), 0), player);
             }

@@ -67,7 +67,7 @@ public class CurioShadowTreads extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (ChromaCurioHelper.isChromaticTwisted(stack, player) && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, player) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             Level world = player.getCommandSenderWorld(); // we already checked that this is serverside back in the event class
             if (world.getMaxLocalRawBrightness(player.blockPosition()) <= config.maxLightLevel.get() && Math.random() < config.twistedShadowDodgeChance.get()) {
                 player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 0.8f, 3f);

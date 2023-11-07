@@ -49,7 +49,7 @@ public class CurioWardCrystal extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource().isMagic() && !event.getSource().isBypassInvul()) {
+        if (event.getSource().isMagic() && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             if (!config.damageSourceBlacklist.get().isEmpty()) {
                 for (String blacklisted : config.damageSourceBlacklist.get()) {
                     if (event.getSource().getMsgId().equals(blacklisted))
@@ -57,14 +57,14 @@ public class CurioWardCrystal extends BaseCurioItem {
                 }
             }
             event.setAmount(event.getAmount() * getIncomingMultiplier(stack));
-        } else if (ChromaCurioHelper.isChromaticTwisted(stack, player) && event.getAmount() != 0 && !event.getSource().isBypassInvul()) {
+        } else if (ChromaCurioHelper.isChromaticTwisted(stack, player) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, config.twistedWeaknessDuration.get(), 1), player);
         }
     }
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
-        if (event.getSource().isMagic() && !event.getSource().isBypassInvul() && !ChromaCurioHelper.isChromaticTwisted(stack, player)) {
+        if (event.getSource().isMagic() && !ChromaCurioHelper.shouldIgnoreDamageEvent(event) && !ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             event.setAmount(event.getAmount() * getOutgoingMultiplier(stack));
         }
     }

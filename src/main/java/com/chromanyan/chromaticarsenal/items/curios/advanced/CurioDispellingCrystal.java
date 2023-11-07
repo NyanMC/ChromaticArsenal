@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -40,7 +41,7 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource().isMagic() && !event.getSource().isBypassInvul()) {
+        if (event.getSource().isMagic() && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             if (!config.damageSourceBlacklist.get().isEmpty()) {
                 for (String blacklisted : config.damageSourceBlacklist.get()) {
                     if (event.getSource().getMsgId().equals(blacklisted))
@@ -53,7 +54,7 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
-        if (event.getSource().isMagic() && !event.getSource().isBypassInvul()) {
+        if (event.getSource().isMagic() && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierOutgoing.get()));
         }
     }
