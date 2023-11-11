@@ -13,6 +13,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_bubble_amulet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:bubble_amulet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_cryo_ring": {
       "conditions": {
         "items": [
@@ -283,7 +295,7 @@
       "has_cryo_ring"
     ],
     [
-      "has_vertical_stasis_stone"
+      "has_bubble_amulet"
     ],
     [
       "has_super_golden_heart"
@@ -311,6 +323,9 @@
     ],
     [
       "has_gravity_stone"
+    ],
+    [
+      "has_vertical_stasis_stone"
     ],
     [
       "has_harpy_feather"

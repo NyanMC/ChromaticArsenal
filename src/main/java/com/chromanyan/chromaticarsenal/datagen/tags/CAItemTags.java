@@ -64,7 +64,8 @@ public class CAItemTags extends ItemTagsProvider {
                         ModItems.DUALITY_RINGS.get(),
                         ModItems.FRIENDLY_FIRE_FLOWER.get(),
                         ModItems.LUNAR_CRYSTAL.get(),
-                        ModItems.CRYO_RING.get()
+                        ModItems.CRYO_RING.get(),
+                        ModItems.BUBBLE_AMULET.get()
                 )
                 .addTag(ModTags.Items.SUPER_CURIOS)
                 .addTag(ModTags.Items.CHALLENGE_CURIOS)
