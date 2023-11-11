@@ -175,7 +175,7 @@ public class EventClassInstance {
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4))).setWeight(6).build());
             case "chests/igloo_chest" ->
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get())
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(5).build());
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(10).build());
         }
 
         if (event.getName().getPath().contains("chests")) {
