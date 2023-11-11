@@ -76,6 +76,8 @@ public class ModConfig {
         public final IntValue baseBubbleCooldown;
         public final IntValue respirationCooldownReduction;
         public final DoubleValue twistedBubbleSlowness;
+        public final IntValue amuletDropChance;
+        public final IntValue amuletDropLootingModifier;
 
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
@@ -315,6 +317,12 @@ public class ModConfig {
                     twistedBubbleSlowness = builder
                             .comment("The operation 2 attribute modifier for movement speed when the player is outside of water or rain with a chromatically twisted Bubble Amulet.")
                             .defineInRange("twistedBubbleSlowness", -0.5, -1, 0);
+                    amuletDropChance = builder
+                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Bubble Amulet to drop when killing a Drowned. This is X.")
+                            .defineInRange("amuletDropChance", 40, 1, Integer.MAX_VALUE);
+                    amuletDropLootingModifier = builder
+                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Bubble Amulet to drop when killing a Drowned. This is Y.")
+                            .defineInRange("amuletDropLootingModifier", 2, 0, Integer.MAX_VALUE);
                 builder.pop();
 
                 builder.push("WorldAnchorSettings");

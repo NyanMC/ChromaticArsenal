@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -21,6 +22,7 @@ import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.VanillaGameEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
@@ -196,6 +198,23 @@ public class EventClassInstance {
                 3,
                 3
         ));
+    }
+
+    @SubscribeEvent
+    public void insertDrops(LivingDropsEvent event) {
+        if (!config.lootTableInsertion.get()) {
+            return;
+        }
+
+        LivingEntity dying = event.getEntity();
+
+        if (dying instanceof Drowned) {
+            int chance = config.amuletDropChance.get() - (event.getLootingLevel() * config.amuletDropLootingModifier.get());
+            // first check prevents an edge case crash where the player somehow has a ridiculously high looting level
+            if (chance <= 0 || rand.nextInt(chance) == 0) {
+                event.getDrops().add(dying.spawnAtLocation(new ItemStack(ModItems.BUBBLE_AMULET.get())));
+            }
+        }
     }
 
 }
