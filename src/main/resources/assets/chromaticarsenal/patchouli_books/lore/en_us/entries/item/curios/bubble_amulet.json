@@ -1,0 +1,17 @@
+{
+  "name": "Bubble Amulet",
+  "icon": "chromaticarsenal:bubble_amulet",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:bubble_amulet",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "A strange, everlasting bubble which can be worn around the neck. Naturally, it has an affinity for water.",
+      "item": "chromaticarsenal:bubble_amulet"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A long time ago, there were people who lived on the oceans. They used these amulets in order to breathe longer underwater. Unfortunately, their ships were destroyed, and none of them survived. Some of their amulets did, though, and now those amulets belong to the Drowned."
+    }
+  ]
+}

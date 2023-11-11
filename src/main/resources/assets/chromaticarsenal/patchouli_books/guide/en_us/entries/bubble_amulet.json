@@ -1,0 +1,20 @@
+{
+  "name": "Bubble Amulet",
+  "icon": "chromaticarsenal:bubble_amulet",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Bubble Amulet can be rarely dropped by drowned, affected by Looting. It increases the wearer's swimming speed. Additionally, when the wearer runs out of air, the amulet restores their air supply back to maximum. This grants an effect which further increases swimming speed temporarily. This effect has a 2 minute cooldown by default.",
+      "item": "chromaticarsenal:bubble_amulet"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+30%$() Swim Speed$(br)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Bubble Amulet supports the following enchantments:$(br2)$(l)Respiration$(): Reduces the duration of the effect cooldown$(br2)$(l)Depth Strider$(): Increases the base swimming speed increase$(br2)$(l)Curse of Chromatic Twisting$(): Grants indefinite Water Breathing, however movement speed on land is greatly reduced"
+    }
+  ]
+}
