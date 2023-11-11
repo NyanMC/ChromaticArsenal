@@ -203,6 +203,8 @@
   "advancement.chromaticarsenal.arsenal_accumulated.title": "Arsenal Accumulated",
   "advancement.chromaticarsenal.arsenal_accumulated.description": "Acquire all of the chromatic curios!",
   "advancement.chromaticarsenal.chroma_salvager.title": "Reduce, Reuse, Recycle",
-  "advancement.chromaticarsenal.chroma_salvager.description": "Craft a Chroma Salvager, an item capable of salvaging excess chromatic curios back into Chroma Shards"
+  "advancement.chromaticarsenal.chroma_salvager.description": "Craft a Chroma Salvager, an item capable of salvaging excess chromatic curios back into Chroma Shards",
+  "advancement.chromaticarsenal.bubble_amulet.title": "I Wanna Breathe",
+  "advancement.chromaticarsenal.bubble_amulet.description": "Pick up a Bubble Amulet, which rarely drops from slain Drowned"
 
 }
