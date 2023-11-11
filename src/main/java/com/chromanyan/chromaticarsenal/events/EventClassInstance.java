@@ -14,6 +14,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.VanillaGameEvent;
@@ -155,22 +158,29 @@ public class EventClassInstance {
 
         switch (event.getName().getPath()) {
             case "chests/bastion_treasure", "gameplay/piglin_bartering" ->
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(6).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(6)
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).build());
             case "chests/end_city_treasure" -> {
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL.get()).setWeight(2).build());
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.COSMICOLA.get()).setWeight(8).build());
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD.get()).setWeight(10).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL.get()).setWeight(4)
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.COSMICOLA.get()).setWeight(4)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD.get()).setWeight(5)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 5))).build());
             }
             case "chests/ruined_portal", "chests/nether_bridge" ->
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.SPICY_COAL.get()).setWeight(24).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.SPICY_COAL.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4))).setWeight(6).build());
             case "chests/igloo_chest" ->
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get()).setWeight(5).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(5).build());
         }
 
         if (event.getName().getPath().contains("chests")) {
             //noinspection ConstantConditions
             if (event.getTable().getPool("main") != null) {
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMA_SHARD.get()).setWeight(2).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMA_SHARD.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(2).build());
             }
         }
     }
