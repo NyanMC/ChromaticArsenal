@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios.challenge;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -36,5 +37,11 @@ public class CurioCursedTotem extends BaseCurioItem {
         //TODO this should be increased when the target has the potion effect (which you haven't made yet)
         //TODO also this will need to be configurable
         return super.getLootingLevel(slotContext, source, target, baseLooting, stack);
+    }
+
+    @NotNull
+    @Override
+    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
+        return new ICurio.SoundInfo(SoundEvents.TOTEM_USE, 0.5F, 1);
     }
 }
