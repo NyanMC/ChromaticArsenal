@@ -14,6 +14,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Drowned;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -124,6 +125,13 @@ public class EventClassInstance {
     @SubscribeEvent
     public void potionAppliedEvent(MobEffectEvent.Added event) {
         LivingEntity player = event.getEntity();
+
+        // this should never happen under normal circumstances...unless a creeper with cursed revival explodes
+        if (player instanceof Player && event.getEffectInstance().getEffect() == ModPotions.CURSED_REVIVAL.get()) {
+            event.setResult(Result.DENY);
+            return;
+        }
+
         if (!player.getCommandSenderWorld().isClientSide()) {
             if (player instanceof ServerPlayer serverPlayer) {
                 for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
