@@ -7,10 +7,14 @@ import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Drowned;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -96,13 +100,23 @@ public class EventClassInstance {
         if (event.isCanceled()) {
             return;
         }
-        LivingEntity player = event.getEntity();
-        if (!player.getCommandSenderWorld().isClientSide()) {
-            if (player instanceof ServerPlayer serverPlayer) {
-                for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
-                    if (stack.getItem() instanceof IChromaCurio chromaStack) {
-                        chromaStack.onWearerDied(event, stack, player);
-                    }
+        LivingEntity entity = event.getEntity();
+        if (entity.getCommandSenderWorld().isClientSide()) {
+            return;
+        }
+
+        if (entity.hasEffect(ModPotions.CURSED_REVIVAL.get())) {
+            event.setCanceled(true);
+            entity.removeEffect(ModPotions.CURSED_REVIVAL.get());
+            entity.addEffect(new MobEffectInstance(ModPotions.FRACTURED.get(), 72000, 4)); // TODO configurability?
+            entity.setHealth(entity.getMaxHealth());
+            entity.getCommandSenderWorld().playSound(null, entity.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundSource.HOSTILE, 0.5F, 1.0F);
+        }
+
+        if (entity instanceof ServerPlayer serverPlayer) {
+            for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
+                if (stack.getItem() instanceof IChromaCurio chromaStack) {
+                    chromaStack.onWearerDied(event, stack, entity);
                 }
             }
         }
