@@ -1,0 +1,17 @@
+{
+  "type": "jeed:effect_provider",
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "effect": {
+    "id": "chromaticarsenal:cursed_revival"
+  },
+  "providers": [
+    {
+      "item": "chromaticarsenal:cursed_totem"
+    }
+  ]
+}
