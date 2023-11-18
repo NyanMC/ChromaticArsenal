@@ -153,6 +153,17 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_glow_ring"));
 
+        ShapedRecipeBuilder.shaped(ModItems.CURSED_TOTEM.get(), 1)
+                .pattern("rtr")
+                .pattern("ece")
+                .pattern("rer")
+                .define('c', CHROMA_SHARD)
+                .define('t', Items.TOTEM_OF_UNDYING)
+                .define('r', Items.END_CRYSTAL)
+                .define('e', Tags.Items.GEMS_EMERALD)
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "cursed_totem"));
+
         chromaUpgrade(consumer, Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");
         chromaUpgrade(consumer, Items.NETHERITE_SCRAP, ModItems.SPICY_COAL.get(), ModItems.MAGMATIC_SCRAP.get(), "magmatic_scrap");
         chromaUpgrade(consumer, Items.ANVIL, ModItems.CHROMA_SHARD.get(), ModItems.WORLD_ANCHOR.get(), "world_anchor");

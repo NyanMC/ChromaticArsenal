@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "tag": "forge:gems/chroma"
+    },
+    "e": {
+      "tag": "forge:gems/emerald"
+    },
+    "r": {
+      "item": "minecraft:end_crystal"
+    },
+    "t": {
+      "item": "minecraft:totem_of_undying"
+    }
+  },
+  "pattern": [
+    "rtr",
+    "ece",
+    "rer"
+  ],
+  "result": {
+    "item": "chromaticarsenal:cursed_totem"
+  }
+}
