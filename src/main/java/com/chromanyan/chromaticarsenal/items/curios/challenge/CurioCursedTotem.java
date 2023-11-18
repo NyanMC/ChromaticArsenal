@@ -50,9 +50,11 @@ public class CurioCursedTotem extends BaseCurioItem {
 
     @Override
     public int getLootingLevel(SlotContext slotContext, DamageSource source, LivingEntity target, int baseLooting, ItemStack stack) {
-        //TODO this should be increased when the target has the potion effect (which you haven't made yet)
-        //TODO also this will need to be configurable
-        return super.getLootingLevel(slotContext, source, target, baseLooting, stack);
+        int baseCount = super.getLootingLevel(slotContext, source, target, baseLooting, stack);
+        if (target.hasEffect(ModPotions.FRACTURED.get()))
+            return baseCount + 2;
+        //TODO this will need to be configurable
+        return baseCount;
     }
 
     @NotNull
