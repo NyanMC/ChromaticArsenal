@@ -1,14 +1,18 @@
 package com.chromanyan.chromaticarsenal.items.curios.challenge;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
@@ -30,6 +34,16 @@ public class CurioCursedTotem extends BaseCurioItem {
     @Override
     public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {
         return ICurio.DropRule.ALWAYS_KEEP;
+    }
+
+    @Override
+    public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
+        // attacking a player to give them a free revival would be cool, but also really cheesy. denied
+        if (target instanceof Player || target.hasEffect(ModPotions.FRACTURED.get())) {
+            return;
+        }
+
+        target.addEffect(new MobEffectInstance(ModPotions.CURSED_REVIVAL.get(), 72000), player);
     }
 
     @Override
