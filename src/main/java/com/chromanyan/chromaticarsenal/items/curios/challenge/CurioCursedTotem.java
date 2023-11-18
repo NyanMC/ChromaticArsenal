@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -29,7 +30,9 @@ public class CurioCursedTotem extends BaseCurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.challenge"));
-        //TODO nyan please add details
+        list.add(Component.translatable("tooltip.chromaticarsenal.cursed_totem.1"));
+        list.add(Component.translatable("tooltip.chromaticarsenal.cursed_totem.2", TooltipHelper.percentTooltip((config.cursedTotemFracturedLevel.get() + 1) * 0.1F)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.cursed_totem.3", TooltipHelper.valueTooltip(config.cursedTotemBonusLooting.get())));
     }
 
     @NotNull

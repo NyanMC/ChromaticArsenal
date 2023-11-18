@@ -142,6 +142,11 @@
   "tooltip.chromaticarsenal.world_anchor.2alt": "§6Can be cursed with Binding or Chromatic Twisting to grant additional fortune levels",
   "tooltip.chromaticarsenal.world_anchor.twisted": "§cChromatic Twisting: §5Grants an additional level of fortune, however gravity effects are multiplied by %1$s",
 
+  "item.chromaticarsenal.cursed_totem": "Totem of Necromancy",
+  "tooltip.chromaticarsenal.cursed_totem.1": "§cApplies Cursed Revival on hit, which allows the target to revive once",
+  "tooltip.chromaticarsenal.cursed_totem.2": "§cMobs which revive this way have %1$s§b%%§c reduced maximum health",
+  "tooltip.chromaticarsenal.cursed_totem.3": "§6Grants %1$s§6 looting level(s) against mobs that have revived this way",
+
   "item.chromaticarsenal.viewer_item": "Viewer Item",
   "tooltip.chromaticarsenal.viewer_item.1": "Even after several Minecraft version updates, it's still a Debug Item",
   "tooltip.chromaticarsenal.viewer_item.2": "This item's functionality may change in a later version, don't rely on it!",
