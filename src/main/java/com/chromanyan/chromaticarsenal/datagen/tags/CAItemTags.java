@@ -45,7 +45,8 @@ public class CAItemTags extends ItemTagsProvider {
 
         tag(ModTags.Items.CHALLENGE_CURIOS).add(
                 ModItems.ASCENDED_STAR.get(),
-                ModItems.WORLD_ANCHOR.get()
+                ModItems.WORLD_ANCHOR.get(),
+                ModItems.CURSED_TOTEM.get()
         );
 
         tag(ModTags.Items.UTILITY_CURIOS).add(

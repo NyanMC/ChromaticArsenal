@@ -37,6 +37,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_cursed_totem": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:cursed_totem"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_duality_rings": {
       "conditions": {
         "items": [
@@ -320,6 +332,9 @@
     ],
     [
       "has_world_anchor"
+    ],
+    [
+      "has_cursed_totem"
     ],
     [
       "has_gravity_stone"

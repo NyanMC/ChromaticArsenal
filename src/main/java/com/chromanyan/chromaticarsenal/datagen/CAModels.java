@@ -46,6 +46,7 @@ public class CAModels extends ItemModelProvider {
         // challenge curios
         basicModel("ascended_star");
         basicModel("world_anchor");
+        basicModel("cursed_totem");
 
         // utility curios
         basicModel("gravity_stone");
