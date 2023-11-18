@@ -1,0 +1,16 @@
+{
+  "name": "Totem of Necromancy",
+  "icon": "chromaticarsenal:cursed_totem",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Totem of Necromancy is a $(4)challenge curio$() which applies Cursed Revival to attacked mobs. This effect revives the mob when it is killed, and reduces its maximum health. This curio grants two additional levels of Looting against revived enemies. The effect does not apply to players."
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)I am going to kill you...$(br2)...and then kill you again.",
+      "recipe": "chromaticarsenal:cursed_totem"
+    }
+  ]
+}

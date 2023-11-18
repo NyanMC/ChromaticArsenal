@@ -1,0 +1,17 @@
+{
+  "name": "Totem of Necromancy",
+  "icon": "chromaticarsenal:cursed_totem",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:cursed_totem",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This curio is a trap designed by the Illagers. It reverses the Totem of Undying's magic to apply to the wearer's enemies, instead of themselves.",
+      "item": "chromaticarsenal:cursed_totem"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Initially, this item was used to the Illagers' benefit. They would kill their allies when they were greatly injured, so they could be resurrected with a net gain of health. Those that took on this role were unable to fight due to giving the enemies an advantage when attempting to do so, though they would give the enemies trying to use their totem a nasty surprise."
+    }
+  ]
+}
