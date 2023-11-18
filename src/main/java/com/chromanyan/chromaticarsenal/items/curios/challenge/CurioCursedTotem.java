@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items.curios.challenge;
 
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
+import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -10,6 +11,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -57,5 +59,10 @@ public class CurioCursedTotem extends BaseCurioItem {
     @Override
     public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
         return new ICurio.SoundInfo(SoundEvents.TOTEM_USE, 0.5F, 1);
+    }
+
+    @Override
+    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
+        return ModRarities.CHALLENGE;
     }
 }
