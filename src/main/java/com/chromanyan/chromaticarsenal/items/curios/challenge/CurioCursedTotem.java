@@ -52,8 +52,7 @@ public class CurioCursedTotem extends BaseCurioItem {
     public int getLootingLevel(SlotContext slotContext, DamageSource source, LivingEntity target, int baseLooting, ItemStack stack) {
         int baseCount = super.getLootingLevel(slotContext, source, target, baseLooting, stack);
         if (target.hasEffect(ModPotions.FRACTURED.get()))
-            return baseCount + 2;
-        //TODO this will need to be configurable
+            return baseCount + config.cursedTotemBonusLooting.get();
         return baseCount;
     }
 

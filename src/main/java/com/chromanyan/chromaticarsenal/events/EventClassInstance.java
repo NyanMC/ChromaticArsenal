@@ -107,7 +107,7 @@ public class EventClassInstance {
         if (entity.hasEffect(ModPotions.CURSED_REVIVAL.get())) {
             event.setCanceled(true);
             entity.removeEffect(ModPotions.CURSED_REVIVAL.get());
-            entity.addEffect(new MobEffectInstance(ModPotions.FRACTURED.get(), 72000, 4)); // TODO configurability?
+            entity.addEffect(new MobEffectInstance(ModPotions.FRACTURED.get(), 72000, config.cursedTotemFracturedLevel.get()));
             entity.setHealth(entity.getMaxHealth());
             entity.getCommandSenderWorld().playSound(null, entity.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundSource.HOSTILE, 0.5F, 1.0F);
         }

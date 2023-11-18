@@ -86,6 +86,9 @@ public class ModConfig {
         public final BooleanValue anchorSoulbound;
         public final DoubleValue twistedAnchorGravityMultiplier;
 
+        public final IntValue cursedTotemFracturedLevel;
+        public final IntValue cursedTotemBonusLooting;
+
         public final DoubleValue jumpForce;
         public final DoubleValue featherFallDamageReduction;
         public final DoubleValue twistedFeatherGravityModifier;
@@ -344,6 +347,15 @@ public class ModConfig {
                     twistedAnchorGravityMultiplier = builder
                             .comment("The additional flat multiplier for the World Anchor's stat modifiers if the anchor is cursed with Chromatic Twisting.")
                             .defineInRange("twistedAnchorGravityMultiplier", 2, 1, Double.MAX_VALUE);
+                builder.pop();
+
+                builder.push("CursedTotemSettings");
+                    cursedTotemFracturedLevel = builder
+                            .comment("The level of Fractured applied to enemies that revive from Cursed Revival. Every level is an additional 10% max health lost.")
+                            .defineInRange("cursedTotemFracturedLevel", 4, 0, 8);
+                    cursedTotemBonusLooting = builder
+                            .comment("The amount of looting levels added when killing an enemy which has revived from Cursed Revival.")
+                                    .defineInRange("cursedTotemBonusLooting", 2, 0, Integer.MAX_VALUE);
                 builder.pop();
 
                 builder.push("HarpyFeatherSettings");
