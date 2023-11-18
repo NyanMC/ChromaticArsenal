@@ -33,6 +33,18 @@ public class CAItemTags extends ItemTagsProvider {
 
         tag(ModTags.Items.NO_SALVAGE).add(ModItems.ASCENDED_STAR.get());
 
+        tag(ModTags.Items.STANDARD_CURIOS).add(
+                ModItems.GOLDEN_HEART.get(),
+                ModItems.GLASS_SHIELD.get(),
+                ModItems.WARD_CRYSTAL.get(),
+                ModItems.SHADOW_TREADS.get(),
+                ModItems.DUALITY_RINGS.get(),
+                ModItems.FRIENDLY_FIRE_FLOWER.get(),
+                ModItems.LUNAR_CRYSTAL.get(),
+                ModItems.CRYO_RING.get(),
+                ModItems.BUBBLE_AMULET.get()
+        );
+
         tag(ModTags.Items.SUPER_CURIOS).add(
                 ModItems.SUPER_GOLDEN_HEART.get(),
                 ModItems.SUPER_GLASS_SHIELD.get(),
@@ -57,17 +69,7 @@ public class CAItemTags extends ItemTagsProvider {
         );
 
         tag(ModTags.Items.CHROMATIC_CURIOS)
-                .add(
-                        ModItems.GOLDEN_HEART.get(),
-                        ModItems.GLASS_SHIELD.get(),
-                        ModItems.WARD_CRYSTAL.get(),
-                        ModItems.SHADOW_TREADS.get(),
-                        ModItems.DUALITY_RINGS.get(),
-                        ModItems.FRIENDLY_FIRE_FLOWER.get(),
-                        ModItems.LUNAR_CRYSTAL.get(),
-                        ModItems.CRYO_RING.get(),
-                        ModItems.BUBBLE_AMULET.get()
-                )
+                .addTag(ModTags.Items.STANDARD_CURIOS)
                 .addTag(ModTags.Items.SUPER_CURIOS)
                 .addTag(ModTags.Items.CHALLENGE_CURIOS)
                 .addTag(ModTags.Items.UTILITY_CURIOS);
