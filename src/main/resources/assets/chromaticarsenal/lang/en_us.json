@@ -177,7 +177,7 @@
   "effect.chromaticarsenal.bubble_panic": "Bubble Panic!",
   "effect.chromaticarsenal.bubble_panic.description": "Increases swimming speed by 50%",
   "effect.chromaticarsenal.cursed_revival": "Cursed Revival",
-  "effect.chromaticarsenal.cursed_revival.description": "When killed, resurrects the target and applies Fractured",
+  "effect.chromaticarsenal.cursed_revival.description": "When killed, resurrects the target and applies Fractured; Does nothing if the target is a player or already has Fractured",
 
   "enchantment.chromaticarsenal.chromatic_twisting": "Curse of Chromatic Twisting",
   "enchantment.chromaticarsenal.chromatic_twisting.desc": "Adds a negative effect to the curio, but in exchange grants another positive ability to the curio",

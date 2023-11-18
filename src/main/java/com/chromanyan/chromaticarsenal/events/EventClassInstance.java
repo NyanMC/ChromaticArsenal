@@ -105,7 +105,10 @@ public class EventClassInstance {
             return;
         }
 
-        if (entity.hasEffect(ModPotions.CURSED_REVIVAL.get())) {
+        // those damn creepers, allowing a mob to have both cursed revival and fractured
+        if (entity.hasEffect(ModPotions.CURSED_REVIVAL.get())
+                && !entity.hasEffect(ModPotions.FRACTURED.get())
+                && !(entity instanceof Player)) {
             event.setCanceled(true);
             entity.removeEffect(ModPotions.CURSED_REVIVAL.get());
             entity.addEffect(new MobEffectInstance(ModPotions.FRACTURED.get(), 72000, config.cursedTotemFracturedLevel.get()));
@@ -125,12 +128,6 @@ public class EventClassInstance {
     @SubscribeEvent
     public void potionAppliedEvent(MobEffectEvent.Added event) {
         LivingEntity player = event.getEntity();
-
-        // this should never happen under normal circumstances...unless a creeper with cursed revival explodes
-        if (player instanceof Player && event.getEffectInstance().getEffect() == ModPotions.CURSED_REVIVAL.get()) {
-            event.setResult(Result.DENY);
-            return;
-        }
 
         if (!player.getCommandSenderWorld().isClientSide()) {
             if (player instanceof ServerPlayer serverPlayer) {
