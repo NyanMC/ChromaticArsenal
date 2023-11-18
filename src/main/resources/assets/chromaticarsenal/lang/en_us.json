@@ -171,6 +171,8 @@
   "effect.chromaticarsenal.chilled.description": "Reduces movement speed by 30% and causes the target entity to freeze as if they were standing in Powder Snow",
   "effect.chromaticarsenal.bubble_panic": "Bubble Panic!",
   "effect.chromaticarsenal.bubble_panic.description": "Increases swimming speed by 50%",
+  "effect.chromaticarsenal.cursed_revival": "Cursed Revival",
+  "effect.chromaticarsenal.cursed_revival.description": "When killed, resurrects the target and applies Fractured",
 
   "enchantment.chromaticarsenal.chromatic_twisting": "Curse of Chromatic Twisting",
   "enchantment.chromaticarsenal.chromatic_twisting.desc": "Adds a negative effect to the curio, but in exchange grants another positive ability to the curio",
