@@ -6,6 +6,7 @@ import com.chromanyan.chromaticarsenal.items.SpicyCoal;
 import com.chromanyan.chromaticarsenal.items.compat.MarkTwisted;
 import com.chromanyan.chromaticarsenal.items.curios.*;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.*;
+import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioCursedTotem;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioLimitBreak;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioWorldAnchor;
 import com.chromanyan.chromaticarsenal.items.curios.utility.CurioGravityStone;
@@ -53,6 +54,7 @@ public class ModItems {
     // challenge curios
     public static final RegistryObject<Item> ASCENDED_STAR = ITEMS_REGISTRY.register("ascended_star", CurioLimitBreak::new);
     public static final RegistryObject<Item> WORLD_ANCHOR = ITEMS_REGISTRY.register("world_anchor", CurioWorldAnchor::new);
+    public static final RegistryObject<Item> CURSED_TOTEM = ITEMS_REGISTRY.register("cursed_totem", CurioCursedTotem::new);
 
     // utility curios
     public static final RegistryObject<Item> GRAVITY_STONE = ITEMS_REGISTRY.register("gravity_stone", CurioGravityStone::new);
