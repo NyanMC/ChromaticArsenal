@@ -20,13 +20,13 @@ public class ModTags {
 
         public static final TagKey<Item> DUSTS_ASCENSION = forgeTag("dusts/ascension");
 
-        public static final TagKey<Item> NO_SALVAGE = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "no_salvage"));
-
         public static final TagKey<Item> CHROMATIC_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "chromatic_curios"));
         public static final TagKey<Item> STANDARD_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "standard_curios"));
         public static final TagKey<Item> SUPER_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "super_curios"));
         public static final TagKey<Item> CHALLENGE_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "challenge_curios"));
         public static final TagKey<Item> UTILITY_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "utility_curios"));
+
+        public static final TagKey<Item> NO_SALVAGE = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "no_salvage"));
     }
 
     public static class Blocks {

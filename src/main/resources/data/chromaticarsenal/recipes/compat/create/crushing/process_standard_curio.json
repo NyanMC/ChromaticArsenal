@@ -1,0 +1,32 @@
+{
+  "type": "create:crushing",
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredients": [
+    {
+      "type": "forge:difference",
+      "base": {
+        "tag": "chromaticarsenal:chromatic_curios"
+      },
+      "subtracted": [
+        {
+          "tag": "chromaticarsenal:super_curios"
+        },
+        {
+          "tag": "chromaticarsenal:no_salvage"
+        }
+      ]
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "chance": 0.5,
+      "item": "chromaticarsenal:chroma_shard"
+    }
+  ]
+}

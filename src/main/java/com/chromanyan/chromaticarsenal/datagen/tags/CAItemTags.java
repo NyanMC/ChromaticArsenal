@@ -31,8 +31,6 @@ public class CAItemTags extends ItemTagsProvider {
         tag(ModTags.Items.DUSTS_ASCENSION).add(ModItems.ASCENSION_ESSENCE.get());
         tag(Tags.Items.DUSTS).add(ModItems.ASCENSION_ESSENCE.get());
 
-        tag(ModTags.Items.NO_SALVAGE).add(ModItems.ASCENDED_STAR.get());
-
         tag(ModTags.Items.STANDARD_CURIOS).add(
                 ModItems.GOLDEN_HEART.get(),
                 ModItems.GLASS_SHIELD.get(),
@@ -73,5 +71,7 @@ public class CAItemTags extends ItemTagsProvider {
                 .addTag(ModTags.Items.SUPER_CURIOS)
                 .addTag(ModTags.Items.CHALLENGE_CURIOS)
                 .addTag(ModTags.Items.UTILITY_CURIOS);
+
+        tag(ModTags.Items.NO_SALVAGE).add(ModItems.ASCENDED_STAR.get());
     }
 }

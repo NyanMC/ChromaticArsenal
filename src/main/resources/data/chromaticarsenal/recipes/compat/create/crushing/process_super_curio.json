@@ -1,0 +1,30 @@
+{
+  "type": "create:crushing",
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredients": [
+    {
+      "type": "forge:difference",
+      "base": {
+        "tag": "chromaticarsenal:super_curios"
+      },
+      "subtracted": {
+        "tag": "chromaticarsenal:no_salvage"
+      }
+    }
+  ],
+  "processingTime": 300,
+  "results": [
+    {
+      "item": "chromaticarsenal:ascension_essence"
+    },
+    {
+      "chance": 0.5,
+      "item": "chromaticarsenal:chroma_shard"
+    }
+  ]
+}
