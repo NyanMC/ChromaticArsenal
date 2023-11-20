@@ -17,6 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -54,6 +55,21 @@ public class CurioBlahaj extends BlockItem implements IChromaCurio, ICurioItem {
         if (event.getLookingEntity() instanceof Phantom) {
             event.modifyVisibility(0);
         }
+    }
+
+    @Override
+    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+        return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty();
+    }
+
+    @Override
+    public boolean isEnchantable(@NotNull ItemStack p_77616_1_) {
+        return true;
+    }
+
+    @Override
+    public int getEnchantmentValue(ItemStack stack) {
+        return 1;
     }
 
     public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
