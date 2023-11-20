@@ -60,6 +60,7 @@ public class ModItems {
     public static final RegistryObject<Item> GRAVITY_STONE = ITEMS_REGISTRY.register("gravity_stone", CurioGravityStone::new);
     public static final RegistryObject<Item> VERTICAL_STASIS = ITEMS_REGISTRY.register("vertical_stasis_stone", CurioVerticalStasis::new);
     public static final RegistryObject<Item> HARPY_FEATHER = ITEMS_REGISTRY.register("harpy_feather", CurioHarpyFeather::new);
+    public static final RegistryObject<Item> BLAHAJ = ITEMS_REGISTRY.register("blahaj", CurioBlahaj::new);
 
     // misc. items
     public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = ITEMS_REGISTRY.register("magic_garlic_bread", MagicGarlicBread::new);

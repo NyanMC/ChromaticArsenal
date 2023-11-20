@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "chromaticarsenal:block/blahaj"},
+    "facing=south": {"model": "chromaticarsenal:block/blahaj", "y": 180},
+    "facing=west": {"model": "chromaticarsenal:block/blahaj", "y": 270},
+    "facing=east": {"model": "chromaticarsenal:block/blahaj", "y": 90}
+  }
+}

@@ -1,10 +1,14 @@
 package com.chromanyan.chromaticarsenal.init;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.blocks.BlockBlahaj;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,4 +25,10 @@ public class ModBlocks {
                     .sound(SoundType.METAL)
                     .lightLevel((state) -> 15))
     );
+
+    public static final RegistryObject<Block> BLAHAJ = BLOCKS_REGISTRY.register("blahaj", BlockBlahaj::new);
+
+    public static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {
+        return false;
+    }
 }
