@@ -8,12 +8,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
@@ -33,6 +35,13 @@ public class CurioBlahaj extends BlockItem implements IChromaCurio, ICurioItem {
         LivingEntity livingEntity = slotContext.entity();
         if (livingEntity instanceof ServerPlayer player) {
             player.getStats().setValue(player, Stats.CUSTOM.get(Stats.TIME_SINCE_REST), 0);
+        }
+    }
+
+    @Override
+    public void onGetVisibility(LivingEvent.LivingVisibilityEvent event, ItemStack stack) {
+        if (event.getLookingEntity() instanceof Phantom) {
+            event.modifyVisibility(0);
         }
     }
 
