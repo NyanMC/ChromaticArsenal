@@ -83,9 +83,8 @@
   "tooltip.chromaticarsenal.harpy_feather.twisted2": "§5This drop cancels horizontal momentum entirely and does NOT reset fall damage",
 
   "block.chromaticarsenal.blahaj": "Blåhaj",
-  "tooltip.chromaticarsenal.blahaj.1": "§2Grants immunity to insomnia",
-  "tooltip.chromaticarsenal.blahaj.2": "§6Prevents Phantoms from targeting the wearer",
-  "tooltip.chromaticarsenal.blahaj.3": "§6Prevents restlessness from nearby monsters",
+  "tooltip.chromaticarsenal.blahaj.1": "§6Prevents Phantoms from targeting or spawning near the wearer",
+  "tooltip.chromaticarsenal.blahaj.2": "§6Prevents restlessness from nearby monsters",
 
   "item.chromaticarsenal.magic_garlic_bread": "Magic Garlic Bread",
   "item.chromaticarsenal.cosmicola": "Cosmicola",
@@ -168,6 +167,7 @@
 
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",
   "tooltip.chromaticarsenal.cursed": "Once equipped, unequipping may prove to be fatal.",
+  "tooltip.chromaticarsenal.can_place": "Can be placed",
   "tooltip.chromaticarsenal.super": "§dSuper Curio",
   "tooltip.chromaticarsenal.challenge": "§4Challenge Curio",
   "tooltip.chromaticarsenal.utility": "§9Utility Curio",
