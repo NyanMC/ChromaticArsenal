@@ -208,7 +208,7 @@ public class EventClassInstance {
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(10).build());
         }
 
-        if (event.getName().getPath().contains("chests")) {
+        if (event.getName().getPath().contains("chests") && !event.getName().getPath().contains("dispenser")) {
             //noinspection ConstantConditions
             if (event.getTable().getPool("main") != null) {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMA_SHARD.get())
