@@ -9,6 +9,7 @@ import com.chromanyan.chromaticarsenal.items.curios.advanced.*;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioCursedTotem;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioLimitBreak;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioWorldAnchor;
+import com.chromanyan.chromaticarsenal.items.curios.utility.CurioBlahaj;
 import com.chromanyan.chromaticarsenal.items.curios.utility.CurioGravityStone;
 import com.chromanyan.chromaticarsenal.items.curios.utility.CurioHarpyFeather;
 import com.chromanyan.chromaticarsenal.items.curios.utility.CurioVerticalStasis;

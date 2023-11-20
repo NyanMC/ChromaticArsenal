@@ -28,6 +28,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> BLAHAJ = BLOCKS_REGISTRY.register("blahaj", BlockBlahaj::new);
 
+    @SuppressWarnings("unused")
     public static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {
         return false;
     }
