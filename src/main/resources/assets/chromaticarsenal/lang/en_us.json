@@ -82,6 +82,11 @@
   "tooltip.chromaticarsenal.harpy_feather.twisted": "§cChromatic Twisting:§5 Use to quickly drop to the ground",
   "tooltip.chromaticarsenal.harpy_feather.twisted2": "§5This drop cancels horizontal momentum entirely and does NOT reset fall damage",
 
+  "block.chromaticarsenal.blahaj": "Blåhaj",
+  "tooltip.chromaticarsenal.blahaj.1": "§2Grants immunity to insomnia",
+  "tooltip.chromaticarsenal.blahaj.2": "§6Prevents Phantoms from targeting the wearer",
+  "tooltip.chromaticarsenal.blahaj.3": "§6Prevents restlessness from nearby monsters",
+
   "item.chromaticarsenal.magic_garlic_bread": "Magic Garlic Bread",
   "item.chromaticarsenal.cosmicola": "Cosmicola",
 
