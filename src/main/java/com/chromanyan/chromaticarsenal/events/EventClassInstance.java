@@ -206,6 +206,9 @@ public class EventClassInstance {
             case "chests/igloo_chest" ->
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get())
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(10).build());
+            case "chests/village/village_shepherd" ->
+                    injectInto(event, "main", LootItem.lootTableItem(ModItems.BLAHAJ.get())
+                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(4).build());
         }
 
         if (event.getName().getPath().contains("chests") && !event.getName().getPath().contains("dispenser")) {
