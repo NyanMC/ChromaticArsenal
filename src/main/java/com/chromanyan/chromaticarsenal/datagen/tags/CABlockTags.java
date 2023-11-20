@@ -22,5 +22,7 @@ public class CABlockTags extends BlockTagsProvider {
         tag(BlockTags.BEACON_BASE_BLOCKS).add(ModBlocks.CHROMA_BLOCK.get());
         tag(ModTags.Blocks.STORAGE_BLOCKS_CHROMA).add(ModBlocks.CHROMA_BLOCK.get());
         tag(Tags.Blocks.STORAGE_BLOCKS).add(ModBlocks.CHROMA_BLOCK.get());
+
+        tag(BlockTags.OCCLUDES_VIBRATION_SIGNALS).add(ModBlocks.BLAHAJ.get());
     }
 }

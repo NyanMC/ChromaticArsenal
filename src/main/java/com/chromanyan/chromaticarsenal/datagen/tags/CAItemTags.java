@@ -63,7 +63,8 @@ public class CAItemTags extends ItemTagsProvider {
                 ModItems.GRAVITY_STONE.get(),
                 ModItems.VERTICAL_STASIS.get(),
                 ModItems.HARPY_FEATHER.get(),
-                ModItems.SUPER_HARPY_FEATHER.get()
+                ModItems.SUPER_HARPY_FEATHER.get(),
+                ModItems.BLAHAJ.get()
         );
 
         tag(ModTags.Items.CHROMATIC_CURIOS)
