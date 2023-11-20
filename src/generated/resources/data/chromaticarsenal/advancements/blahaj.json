@@ -1,12 +1,12 @@
 {
-  "parent": "chromaticarsenal:chroma_shard",
+  "parent": "minecraft:adventure/sleep_in_bed",
   "criteria": {
     "has_item": {
       "conditions": {
         "items": [
           {
             "items": [
-              "chromaticarsenal:ascension_essence"
+              "chromaticarsenal:blahaj"
             ]
           }
         ]
@@ -17,16 +17,16 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancement.chromaticarsenal.ascension_essence.description"
+      "translate": "advancement.chromaticarsenal.blahaj.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "chromaticarsenal:ascension_essence"
+      "item": "chromaticarsenal:blahaj"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancement.chromaticarsenal.ascension_essence.title"
+      "translate": "advancement.chromaticarsenal.blahaj.title"
     }
   },
   "requirements": [

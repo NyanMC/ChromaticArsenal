@@ -25,7 +25,7 @@ public class CAAdvancements extends AdvancementProvider {
     private static final Item[] CURIOS = new Item[] {
             ModItems.GOLDEN_HEART.get(), ModItems.GLASS_SHIELD.get(), ModItems.WARD_CRYSTAL.get(), ModItems.SHADOW_TREADS.get(), ModItems.DUALITY_RINGS.get(), ModItems.FRIENDLY_FIRE_FLOWER.get(), ModItems.LUNAR_CRYSTAL.get(), ModItems.CRYO_RING.get(), ModItems.BUBBLE_AMULET.get(),
             ModItems.SUPER_GOLDEN_HEART.get(), ModItems.SUPER_GLASS_SHIELD.get(), ModItems.SUPER_WARD_CRYSTAL.get(), ModItems.SUPER_SHADOW_TREADS.get(), ModItems.SUPER_LUNAR_CRYSTAL.get(), ModItems.SUPER_GLOW_RING.get(),
-            ModItems.ASCENDED_STAR.get(), ModItems.WORLD_ANCHOR.get(), ModItems.CURSED_TOTEM.get(), ModItems.GRAVITY_STONE.get(), ModItems.VERTICAL_STASIS.get(), ModItems.HARPY_FEATHER.get(), ModItems.SUPER_HARPY_FEATHER.get()
+            ModItems.ASCENDED_STAR.get(), ModItems.WORLD_ANCHOR.get(), ModItems.CURSED_TOTEM.get(), ModItems.GRAVITY_STONE.get(), ModItems.VERTICAL_STASIS.get(), ModItems.HARPY_FEATHER.get(), ModItems.SUPER_HARPY_FEATHER.get(), ModItems.BLAHAJ.get()
     };
 
     public CAAdvancements(DataGenerator generatorIn, ExistingFileHelper fileHelperIn) {
@@ -72,7 +72,7 @@ public class CAAdvancements extends AdvancementProvider {
     @SuppressWarnings("unused") // most of these are considered unused by intellij
     protected void registerAdvancements(@NotNull Consumer<Advancement> consumer, @NotNull ExistingFileHelper fileHelper) {
         Advancement chromaShard = displayedHasItem(ModItems.CHROMA_SHARD.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/root"));
-        Advancement ascensionEssence = displayedHasItem(ModItems.ASCENSION_ESSENCE.get(), consumer, fileHelper, FrameType.GOAL, chromaShard);
+        Advancement ascensionEssence = displayedHasItem(ModItems.ASCENSION_ESSENCE.get(), consumer, fileHelper, FrameType.TASK, chromaShard);
         Advancement spicyCoal = simpleHasItemRecipe(ModItems.SPICY_COAL.get(), consumer, fileHelper);
         Advancement magicGarlicBread = simpleHasItemRecipe(ModItems.MAGIC_GARLIC_BREAD.get(), consumer, fileHelper);
         Advancement cosmicola = simpleHasItemRecipe(ModItems.COSMICOLA.get(), consumer, fileHelper);
@@ -95,6 +95,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement gravityStone = simpleHasItemRecipe(ModItems.GRAVITY_STONE.get(), consumer, fileHelper);
         Advancement verticalStasis = simpleHasItemRecipe(ModItems.VERTICAL_STASIS.get(), consumer, fileHelper);
         Advancement harpyFeather = simpleHasItemRecipe(ModItems.HARPY_FEATHER.get(), consumer, fileHelper);
+        Advancement blahaj = displayedHasItem(ModItems.BLAHAJ.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/sleep_in_bed"));
 
         Advancement superGoldenHeart = simpleHasItemRecipe(ModItems.SUPER_GOLDEN_HEART.get(), consumer, fileHelper);
         Advancement superGlassShield = simpleHasItemRecipe(ModItems.SUPER_GLASS_SHIELD.get(), consumer, fileHelper);

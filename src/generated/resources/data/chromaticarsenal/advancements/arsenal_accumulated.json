@@ -13,6 +13,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_blahaj": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:blahaj"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_bubble_amulet": {
       "conditions": {
         "items": [
@@ -347,6 +359,9 @@
     ],
     [
       "has_super_harpy_feather"
+    ],
+    [
+      "has_blahaj"
     ]
   ],
   "rewards": {
