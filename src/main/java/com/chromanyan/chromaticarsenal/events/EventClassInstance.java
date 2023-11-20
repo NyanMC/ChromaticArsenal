@@ -25,10 +25,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.VanillaGameEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.MobEffectEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -120,6 +117,21 @@ public class EventClassInstance {
             for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
                 if (stack.getItem() instanceof IChromaCurio chromaStack) {
                     chromaStack.onWearerDied(event, stack, entity);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void entityVisibilityEvent(LivingEvent.LivingVisibilityEvent event) {
+        LivingEntity player = event.getEntity();
+
+        if (!player.getCommandSenderWorld().isClientSide()) {
+            if (player instanceof ServerPlayer serverPlayer) {
+                for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
+                    if (stack.getItem() instanceof IChromaCurio chromaStack) {
+                        chromaStack.onGetVisibility(event, stack);
+                    }
                 }
             }
         }

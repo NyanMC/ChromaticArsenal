@@ -26,6 +26,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.event.VanillaGameEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -99,6 +100,15 @@ public class CurioShadowTreads extends BaseCurioItem {
     public void onGetImmunities(MobEffectEvent.Applicable event, ItemStack stack, MobEffect effect) {
         if (event.getEffectInstance().getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
             event.setResult(Event.Result.DENY);
+        }
+    }
+
+    @Override
+    public void onGetVisibility(LivingEvent.LivingVisibilityEvent event, ItemStack stack) {
+        int swiftSneakLevel = stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK);
+        double swiftSneakReduction = config.swiftSneakDetectionReduction.get();
+        if (swiftSneakLevel > 0 && swiftSneakReduction > 0) {
+            event.modifyVisibility(1 - (swiftSneakLevel * swiftSneakReduction));
         }
     }
 
