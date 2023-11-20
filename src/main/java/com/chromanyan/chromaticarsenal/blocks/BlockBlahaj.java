@@ -72,6 +72,6 @@ public class BlockBlahaj extends Block {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext p_48781_) {
-        return this.defaultBlockState().setValue(FACING, p_48781_.getHorizontalDirection());
+        return this.defaultBlockState().setValue(FACING, p_48781_.getHorizontalDirection().getOpposite());
     }
 }
