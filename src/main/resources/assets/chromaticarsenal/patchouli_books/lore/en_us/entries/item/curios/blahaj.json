@@ -1,0 +1,13 @@
+{
+  "name": "Blåhaj",
+  "icon": "chromaticarsenal:blahaj",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:blahaj",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "An interesting plush crafted by shepherds looking to make use of excess wool, this toy shark is bursting with chromatic energy. This is likely where its ability to completely ward off insomnia comes from.",
+      "item": "chromaticarsenal:blahaj"
+    }
+  ]
+}
