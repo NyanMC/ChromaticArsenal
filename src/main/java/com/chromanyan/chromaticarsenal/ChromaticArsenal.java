@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal;
 
+import com.chromanyan.chromaticarsenal.client.renderer.CuriosRenderers;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.datagen.CAAdvancements;
 import com.chromanyan.chromaticarsenal.datagen.CAModels;
@@ -55,6 +56,8 @@ public class ChromaticArsenal {
         bus.addListener(this::enqueueIMC);
         bus.addListener(this::gatherData);
 
+        bus.addListener(CuriosRenderers::onLayerRegister);
+
         ModSounds.SOUNDS_REGISTRY.register(bus);
         ModBlocks.BLOCKS_REGISTRY.register(bus);
         ModItems.ITEMS_REGISTRY.register(bus);
@@ -95,6 +98,8 @@ public class ChromaticArsenal {
     private void clientSetup(final FMLClientSetupEvent event) {
         CurioGoldenHeart.registerVariants();
         CurioIlluminatedSoul.registerVariants();
+
+        CuriosRenderers.register();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
