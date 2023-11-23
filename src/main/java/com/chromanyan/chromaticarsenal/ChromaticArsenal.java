@@ -25,6 +25,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -56,7 +57,8 @@ public class ChromaticArsenal {
         bus.addListener(this::enqueueIMC);
         bus.addListener(this::gatherData);
 
-        bus.addListener(CuriosRenderers::onLayerRegister);
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
+                () -> () -> bus.addListener(CuriosRenderers::onLayerRegister));
 
         ModSounds.SOUNDS_REGISTRY.register(bus);
         ModBlocks.BLOCKS_REGISTRY.register(bus);
