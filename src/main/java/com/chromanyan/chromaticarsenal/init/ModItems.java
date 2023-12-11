@@ -9,10 +9,7 @@ import com.chromanyan.chromaticarsenal.items.curios.advanced.*;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioCursedTotem;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioLimitBreak;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioWorldAnchor;
-import com.chromanyan.chromaticarsenal.items.curios.utility.CurioBlahaj;
-import com.chromanyan.chromaticarsenal.items.curios.utility.CurioGravityStone;
-import com.chromanyan.chromaticarsenal.items.curios.utility.CurioHarpyFeather;
-import com.chromanyan.chromaticarsenal.items.curios.utility.CurioVerticalStasis;
+import com.chromanyan.chromaticarsenal.items.curios.utility.*;
 import com.chromanyan.chromaticarsenal.items.food.Cosmicola;
 import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
 import net.minecraft.world.item.BlockItem;
@@ -67,6 +64,7 @@ public class ModItems {
     public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = ITEMS_REGISTRY.register("magic_garlic_bread", MagicGarlicBread::new);
     public static final RegistryObject<Item> COSMICOLA = ITEMS_REGISTRY.register("cosmicola", Cosmicola::new);
     public static final RegistryObject<Item> CHROMA_SALVAGER = ITEMS_REGISTRY.register("chroma_salvager", ChromaSalvager::new);
+    public static final RegistryObject<Item> CHROMANYAN = ITEMS_REGISTRY.register("chromanyan_plush", CurioChromaNyan::new);
     public static final RegistryObject<Item> DEBUG = ITEMS_REGISTRY.register("viewer_item", CurioDebug::new);
 
     // compatibility

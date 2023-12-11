@@ -170,6 +170,8 @@
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",
   "tooltip.chromaticarsenal.cursed": "Once equipped, unequipping may prove to be fatal.",
   "tooltip.chromaticarsenal.can_place": "Can be placed",
+  "tooltip.chromaticarsenal.vanity": "Vanity Item",
+  "tooltip.chromaticarsenal.impersonation": "§o\"Great for impersonating devs!\"",
   "tooltip.chromaticarsenal.super": "§dSuper Curio",
   "tooltip.chromaticarsenal.challenge": "§4Challenge Curio",
   "tooltip.chromaticarsenal.utility": "§9Utility Curio",
