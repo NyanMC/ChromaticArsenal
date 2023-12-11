@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.init;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.blocks.BlockBlahaj;
+import com.chromanyan.chromaticarsenal.blocks.BlockChromaNyan;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -27,6 +28,7 @@ public class ModBlocks {
     );
 
     public static final RegistryObject<Block> BLAHAJ = BLOCKS_REGISTRY.register("blahaj", BlockBlahaj::new);
+    public static final RegistryObject<Block> CHROMANYAN = BLOCKS_REGISTRY.register("chromanyan_plush", BlockChromaNyan::new);
 
     @SuppressWarnings("unused")
     public static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "chromaticarsenal:block/chromanyan_plush"},
+    "facing=south": {"model": "chromaticarsenal:block/chromanyan_plush", "y": 180},
+    "facing=west": {"model": "chromaticarsenal:block/chromanyan_plush", "y": 270},
+    "facing=east": {"model": "chromaticarsenal:block/chromanyan_plush", "y": 90}
+  }
+}

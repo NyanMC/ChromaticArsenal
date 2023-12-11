@@ -37,6 +37,11 @@ public class BlockBlahaj extends Block {
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
+    public BlockBlahaj(BlockBehaviour.Properties bb) { // second constructor for chromanyan plush to use
+        super(bb);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+    }
+
     @SuppressWarnings("deprecation") // if farmer's delight uses it then i will too, i don't give a damn
     @Override
     public @NotNull RenderShape getRenderShape(@NotNull BlockState p_60550_) {
