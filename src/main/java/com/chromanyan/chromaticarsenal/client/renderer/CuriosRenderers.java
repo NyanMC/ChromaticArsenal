@@ -12,9 +12,11 @@ import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 public class CuriosRenderers {
     public static void register() {
         CuriosRendererRegistry.register(ModItems.BLAHAJ.get(), () -> new BlahajRenderer(Minecraft.getInstance().getEntityModels().bakeLayer(BlahajRenderer.LAYER)));
+        CuriosRendererRegistry.register(ModItems.CHROMANYAN.get(), () -> new ChromaNyanRenderer(Minecraft.getInstance().getEntityModels().bakeLayer(ChromaNyanRenderer.LAYER)));
     }
 
     public static void onLayerRegister(final EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(BlahajRenderer.LAYER, () -> LayerDefinition.create(BlahajRenderer.mesh(), 1, 1));
+        event.registerLayerDefinition(ChromaNyanRenderer.LAYER, () -> LayerDefinition.create(ChromaNyanRenderer.mesh(), 1, 1));
     }
 }
