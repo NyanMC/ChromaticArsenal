@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "minecraft:black_wool"
+    },
+    "c": {
+      "tag": "forge:gems/chroma"
+    },
+    "h": {
+      "tag": "forge:heads"
+    },
+    "l": {
+      "item": "minecraft:light_blue_wool"
+    },
+    "p": {
+      "item": "minecraft:pink_wool"
+    },
+    "u": {
+      "item": "minecraft:purple_wool"
+    },
+    "w": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "lpw",
+    "chc",
+    "bwu"
+  ],
+  "result": {
+    "item": "chromaticarsenal:chromanyan_plush"
+  }
+}
