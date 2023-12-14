@@ -11,5 +11,5 @@
   "creative_tab": "chromaticarsenal",
   "model": "chromaticarsenal:lore_book",
   "book_texture": "chromaticarsenal:textures/gui/book_cosmic.png",
-  "filler_texture": "chromaticarsenal:textures/gui/page_filler_white.png"
+  "filler_texture": "chromaticarsenal:textures/gui/page_filler_cosmic.png"
 }
