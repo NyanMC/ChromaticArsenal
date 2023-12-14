@@ -3,9 +3,13 @@
   "subtitle": "The Survivor's Archive",
   "landing_text": "A strange journal with magical properties. As you collect new chromatic items, it gains new entries.",
   "show_progress": true,
+  "text_color": "FFFFFF",
+  "header_color": "BBBBBB",
   "progress_bar_color": "AA55FF",
+  "progress_bar_background": "333333",
   "use_resource_pack": true,
   "creative_tab": "chromaticarsenal",
   "model": "chromaticarsenal:lore_book",
-  "book_texture": "patchouli:textures/gui/book_gray.png"
+  "book_texture": "chromaticarsenal:textures/gui/book_cosmic.png",
+  "filler_texture": "chromaticarsenal:textures/gui/page_filler_white.png"
 }
