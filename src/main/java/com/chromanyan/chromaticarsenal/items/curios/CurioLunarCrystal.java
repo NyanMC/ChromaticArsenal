@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -24,6 +25,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -38,7 +40,7 @@ import java.util.UUID;
 
 public class CurioLunarCrystal extends BaseCurioItem {
 
-    private final Random rand = new Random();
+    private static final Random rand = new Random();
     private static final ModConfig.Common config = ModConfig.COMMON;
 
     @Override
@@ -91,6 +93,14 @@ public class CurioLunarCrystal extends BaseCurioItem {
         int fallEnchantLevel = stack.getEnchantmentLevel(Enchantments.FALL_PROTECTION);
         float percentage = (float) (1 - (fallEnchantLevel * config.fallDamageReduction.get()));
         return Math.max(0, percentage);
+    }
+
+    public static void handleDrop(LivingDropsEvent event, LivingEntity dying) {
+        int chance = config.lunarCrystalDropChance.get() - (event.getLootingLevel() * config.lunarCrystalDropLootingModifier.get());
+        // first check prevents an edge case crash where the player somehow has a ridiculously high looting level
+        if (chance <= 0 || rand.nextInt(chance) == 0) {
+            event.getDrops().add(dying.spawnAtLocation(new ItemStack(ModItems.LUNAR_CRYSTAL.get())));
+        }
     }
 
     @Override

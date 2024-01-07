@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -26,16 +27,19 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class CurioBubbleAmulet extends BaseCurioItem {
-    private final ModConfig.Common config = ModConfig.COMMON;
+    private static final ModConfig.Common config = ModConfig.COMMON;
+    private static final Random rand = new Random();
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -50,7 +54,7 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.3", TooltipHelper.ticksToSecondsTooltip(getCooldownDuration(stack))));
         if (!CooldownHelper.isCooldownFinished(nbt)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
-            list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
+            list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.cooldown"));
         }
     }
 
@@ -95,6 +99,14 @@ public class CurioBubbleAmulet extends BaseCurioItem {
 
     private double getSwimSpeedMod(ItemStack stack) {
         return config.amuletSwimSpeed.get() + (config.depthStriderAdditionalSpeed.get() * stack.getEnchantmentLevel(Enchantments.DEPTH_STRIDER));
+    }
+
+    public static void handleDrop(LivingDropsEvent event, LivingEntity dying) {
+        int chance = config.amuletDropChance.get() - (event.getLootingLevel() * config.amuletDropLootingModifier.get());
+        // first check prevents an edge case crash where the player somehow has a ridiculously high looting level
+        if (chance <= 0 || rand.nextInt(chance) == 0) {
+            event.getDrops().add(dying.spawnAtLocation(new ItemStack(ModItems.BUBBLE_AMULET.get())));
+        }
     }
 
     @Override

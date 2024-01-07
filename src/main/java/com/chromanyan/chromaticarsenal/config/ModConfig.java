@@ -61,6 +61,8 @@ public class ModConfig {
         public final DoubleValue gravityModifier;
         public final BooleanValue everyoneIsLuna;
         public final DoubleValue fallDamageReduction;
+        public final IntValue lunarCrystalDropChance;
+        public final IntValue lunarCrystalDropLootingModifier;
 
         public final IntValue chilledTicks;
         public final IntValue chilledTicksVulnerable;
@@ -275,6 +277,12 @@ public class ModConfig {
                     fallDamageReduction = builder
                             .comment("The percentage of fall damage reduced per level of feather falling on this item. Set to 0 to effectively disable this feature.")
                             .defineInRange("fallDamageReduction", 0.05, 0, 1);
+                    lunarCrystalDropChance = builder
+                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Lunar Crystal to drop when killing an Enderman in the End. This is X.")
+                            .defineInRange("lunarCrystalDropChance", 100, 1, Integer.MAX_VALUE);
+                    lunarCrystalDropLootingModifier = builder
+                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Lunar Crystal to drop when killing an Enderman in the End. This is Y.")
+                            .defineInRange("lunarCrystalDropLootingModifier", 5, 1, Integer.MAX_VALUE);
                 builder.pop();
 
                 builder.push("CryoRingSettings");

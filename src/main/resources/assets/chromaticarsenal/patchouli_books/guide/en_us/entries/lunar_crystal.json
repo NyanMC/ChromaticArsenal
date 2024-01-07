@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:spotlight",
-      "text": "The Lunar Crystal makes its wearer immune to Levitation. By default, hitting a mob has a 10% chance to inflict Levitation III to the target for 3 seconds. This curio can (rarely) be found in end city chests.",
+      "text": "The Lunar Crystal makes its wearer immune to Levitation. By default, hitting a mob has a 10% chance to inflict Levitation III to the target for 3 seconds. This curio can (rarely) be found in end city chests, and additionally rarely drops from Endermen in the end.",
       "item": "chromaticarsenal:lunar_crystal"
     },
     {

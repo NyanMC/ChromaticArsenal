@@ -4,6 +4,8 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
+import com.chromanyan.chromaticarsenal.items.curios.CurioBubbleAmulet;
+import com.chromanyan.chromaticarsenal.items.curios.CurioLunarCrystal;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,8 +16,10 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Drowned;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
@@ -242,11 +246,11 @@ public class EventClassInstance {
         LivingEntity dying = event.getEntity();
 
         if (dying instanceof Drowned) {
-            int chance = config.amuletDropChance.get() - (event.getLootingLevel() * config.amuletDropLootingModifier.get());
-            // first check prevents an edge case crash where the player somehow has a ridiculously high looting level
-            if (chance <= 0 || rand.nextInt(chance) == 0) {
-                event.getDrops().add(dying.spawnAtLocation(new ItemStack(ModItems.BUBBLE_AMULET.get())));
-            }
+            CurioBubbleAmulet.handleDrop(event, dying);
+        }
+
+        if (dying instanceof EnderMan && dying.level.dimension() == Level.END) {
+            CurioLunarCrystal.handleDrop(event, dying);
         }
     }
 
