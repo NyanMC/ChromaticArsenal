@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.init;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.items.ChampionCatalyst;
 import com.chromanyan.chromaticarsenal.items.ChromaSalvager;
 import com.chromanyan.chromaticarsenal.items.SpicyCoal;
 import com.chromanyan.chromaticarsenal.items.compat.MarkTwisted;
@@ -28,6 +29,7 @@ public class ModItems {
     public static final RegistryObject<Item> ASCENSION_ESSENCE = ITEMS_REGISTRY.register("ascension_essence", () -> new Item(new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.RARE)));
     public static final RegistryObject<Item> SPICY_COAL = ITEMS_REGISTRY.register("spicy_coal", SpicyCoal::new);
     public static final RegistryObject<Item> MAGMATIC_SCRAP = ITEMS_REGISTRY.register("magmatic_scrap", () -> new Item(new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final RegistryObject<Item> CHAMPION_CATALYST = ITEMS_REGISTRY.register("champion_catalyst", ChampionCatalyst::new);
 
     // standard curios
     public static final RegistryObject<Item> GOLDEN_HEART = ITEMS_REGISTRY.register("golden_heart", CurioGoldenHeart::new);

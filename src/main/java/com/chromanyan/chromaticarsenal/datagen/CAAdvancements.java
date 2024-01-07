@@ -76,6 +76,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement spicyCoal = simpleHasItemRecipe(ModItems.SPICY_COAL.get(), consumer, fileHelper);
         Advancement magicGarlicBread = simpleHasItemRecipe(ModItems.MAGIC_GARLIC_BREAD.get(), consumer, fileHelper);
         Advancement cosmicola = simpleHasItemRecipe(ModItems.COSMICOLA.get(), consumer, fileHelper);
+        Advancement championCatalyst = simpleHasItemRecipe(ModItems.CHAMPION_CATALYST.get(), consumer, fileHelper);
         Advancement chromaSalvager = displayedHasItem(ModItems.CHROMA_SALVAGER.get(), consumer, fileHelper, FrameType.GOAL, chromaShard);
         Advancement chromanyanPlush = simpleHasItemRecipe(ModItems.CHROMANYAN.get(), consumer, fileHelper);
 

@@ -29,6 +29,7 @@ public class CAModels extends ItemModelProvider {
         basicModel("ascension_essence");
         basicModel("spicy_coal");
         basicModel("magmatic_scrap");
+        basicModel("champion_catalyst");
 
         // regular chromatic curios
         basicModelWithSuper("glass_shield");

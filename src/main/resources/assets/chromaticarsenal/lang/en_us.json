@@ -3,6 +3,8 @@
   "item.chromaticarsenal.ascension_essence": "Essence of Ascension",
   "item.chromaticarsenal.spicy_coal": "Spicy Coal",
   "item.chromaticarsenal.magmatic_scrap": "Magmatic Scrap",
+  "item.chromaticarsenal.champion_catalyst": "Champion's Catalyst",
+
   "item.chromaticarsenal.golden_heart": "Golden Heart",
   "tooltip.chromaticarsenal.golden_heart.3": "§2Functions as gold armor for Piglins",
   "tooltip.chromaticarsenal.golden_heart.1": "§6Grants the Absorption effect at level %1$s",
@@ -171,6 +173,7 @@
   "tooltip.chromaticarsenal.cursed": "Once equipped, unequipping may prove to be fatal.",
   "tooltip.chromaticarsenal.can_place": "Can be placed",
   "tooltip.chromaticarsenal.vanity": "Vanity Item",
+  "tooltip.chromaticarsenal.crafting_reusable": "Not consumed when used in crafting",
   "tooltip.chromaticarsenal.impersonation": "§o\"Great for impersonating devs!\"",
   "tooltip.chromaticarsenal.super": "§dSuper Curio",
   "tooltip.chromaticarsenal.challenge": "§4Challenge Curio",

@@ -4,10 +4,7 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModTags;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.UpgradeRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -57,6 +54,12 @@ public class CARecipes extends RecipeProvider {
 
     @Override
     public void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+        ShapelessRecipeBuilder.shapeless(ModItems.CHAMPION_CATALYST.get(), 1)
+                .requires(ModItems.LUNAR_CRYSTAL.get())
+                .requires(Tags.Items.NETHER_STARS)
+                .unlockedBy("has_lunar_crystal", has(ModItems.LUNAR_CRYSTAL.get()))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "champion_catalyst"));
+
         ShapedRecipeBuilder.shaped(ModItems.GLASS_SHIELD.get(), 1)
                 .pattern("pcp")
                 .pattern("ggg")
