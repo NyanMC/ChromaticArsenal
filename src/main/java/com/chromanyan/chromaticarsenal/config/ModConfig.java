@@ -279,7 +279,7 @@ public class ModConfig {
                             .defineInRange("fallDamageReduction", 0.05, 0, 1);
                     lunarCrystalDropChance = builder
                             .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Lunar Crystal to drop when killing an Enderman in the End. This is X.")
-                            .defineInRange("lunarCrystalDropChance", 100, 1, Integer.MAX_VALUE);
+                            .defineInRange("lunarCrystalDropChance", 200, 1, Integer.MAX_VALUE);
                     lunarCrystalDropLootingModifier = builder
                             .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Lunar Crystal to drop when killing an Enderman in the End. This is Y.")
                             .defineInRange("lunarCrystalDropLootingModifier", 5, 1, Integer.MAX_VALUE);
