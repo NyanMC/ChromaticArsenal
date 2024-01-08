@@ -30,6 +30,6 @@ public class ChampionCatalyst extends Item {
 
     @Override
     public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
-        return itemStack;
+        return new ItemStack(this);
     }
 }

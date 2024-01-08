@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "chromaticarsenal:champion_catalyst"
+    },
+    {
+      "tag": "forge:gems/chroma"
+    },
+    {
+      "tag": "forge:gems/chroma"
+    },
+    {
+      "tag": "forge:gems/chroma"
+    },
+    {
+      "tag": "forge:gems/chroma"
+    }
+  ],
+  "result": {
+    "item": "chromaticarsenal:ascension_essence"
+  }
+}

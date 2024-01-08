@@ -4,9 +4,13 @@
   "category": "chromaticarsenal:misc",
   "pages": [
     {
+      "type": "patchouli:text",
+      "text": "The Essence of Ascension is used to convert standard Chromatic Curios into Super Curios. Doing so requires a Champion's Catalyst, obtained by combining a Lunar Crystal with a Nether Star. The Champion's Catalyst will not be consumed when used in crafting."
+    },
+    {
       "type": "patchouli:crafting",
-      "text": "The Essence of Ascension is used to convert your standard arsenal into Super Curios.",
-      "recipe": "chromaticarsenal:ascension_essence"
+      "recipe": "chromaticarsenal:champion_catalyst",
+      "recipe2": "chromaticarsenal:ascension_essence"
     }
   ]
 }

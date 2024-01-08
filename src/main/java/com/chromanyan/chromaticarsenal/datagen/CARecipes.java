@@ -60,6 +60,15 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_lunar_crystal", has(ModItems.LUNAR_CRYSTAL.get()))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "champion_catalyst"));
 
+        ShapelessRecipeBuilder.shapeless(ModItems.ASCENSION_ESSENCE.get(), 1)
+                .requires(ModItems.CHAMPION_CATALYST.get())
+                .requires(CHROMA_SHARD)
+                .requires(CHROMA_SHARD)
+                .requires(CHROMA_SHARD)
+                .requires(CHROMA_SHARD)
+                .unlockedBy("has_lunar_crystal", has(ModItems.LUNAR_CRYSTAL.get()))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "ascension_essence"));
+
         ShapedRecipeBuilder.shaped(ModItems.GLASS_SHIELD.get(), 1)
                 .pattern("pcp")
                 .pattern("ggg")
