@@ -2,19 +2,22 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "a": {
-      "item": "minecraft:fermented_spider_eye"
+      "tag": "forge:dusts/ascension"
     },
     "b": {
-      "item": "chromaticarsenal:ward_crystal"
+      "tag": "forge:storage_blocks/amethyst"
     },
-    "c": {
-      "tag": "forge:dusts/ascension"
+    "m": {
+      "item": "minecraft:milk_bucket"
+    },
+    "w": {
+      "item": "chromaticarsenal:ward_crystal"
     }
   },
   "pattern": [
-    "aba",
-    "bcb",
-    "aba"
+    "mam",
+    "bwb",
+    "mbm"
   ],
   "result": {
     "item": "chromaticarsenal:super_ward_crystal"

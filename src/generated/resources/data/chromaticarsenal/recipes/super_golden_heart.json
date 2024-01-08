@@ -2,19 +2,22 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "a": {
-      "item": "minecraft:diamond"
+      "tag": "forge:dusts/ascension"
     },
     "b": {
-      "item": "chromaticarsenal:golden_heart"
+      "tag": "forge:storage_blocks/diamond"
     },
-    "c": {
-      "tag": "forge:dusts/ascension"
+    "d": {
+      "tag": "forge:gems/diamond"
+    },
+    "h": {
+      "item": "chromaticarsenal:golden_heart"
     }
   },
   "pattern": [
-    "aba",
-    "bcb",
-    "aba"
+    "d d",
+    "bhb",
+    " a "
   ],
   "result": {
     "item": "chromaticarsenal:super_golden_heart"

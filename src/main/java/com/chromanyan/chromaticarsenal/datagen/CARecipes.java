@@ -107,7 +107,16 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "vertical_stasis_stone"));
 
-        nyanPatternRecipe(consumer, ModItems.SUPER_GOLDEN_HEART.get(), Items.DIAMOND, ModItems.GOLDEN_HEART.get(), ASCENSION_ESSENCE, "super_golden_heart");
+        ShapedRecipeBuilder.shaped(ModItems.SUPER_GOLDEN_HEART.get(), 1)
+                .pattern("d d")
+                .pattern("bhb")
+                .pattern(" a ")
+                .define('d', Tags.Items.GEMS_DIAMOND)
+                .define('b', Tags.Items.STORAGE_BLOCKS_DIAMOND)
+                .define('a', ASCENSION_ESSENCE)
+                .define('h', ModItems.GOLDEN_HEART.get())
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_golden_heart"));
 
         ShapedRecipeBuilder.shaped(ModItems.SUPER_GLASS_SHIELD.get(), 1)
                 .pattern("gcg")
@@ -119,8 +128,26 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_glass_shield"));
 
-        nyanPatternRecipe(consumer, ModItems.SUPER_WARD_CRYSTAL.get(), Items.FERMENTED_SPIDER_EYE, ModItems.WARD_CRYSTAL.get(), ASCENSION_ESSENCE, "super_ward_crystal");
-        nyanPatternRecipe(consumer, ModItems.SUPER_SHADOW_TREADS.get(), ModItems.SPICY_COAL.get(), ModItems.SHADOW_TREADS.get(), ASCENSION_ESSENCE, "super_shadow_treads");
+        ShapedRecipeBuilder.shaped(ModItems.SUPER_WARD_CRYSTAL.get(), 1)
+                .pattern("mam")
+                .pattern("bwb")
+                .pattern("mbm")
+                .define('w', ModItems.WARD_CRYSTAL.get())
+                .define('a', ASCENSION_ESSENCE)
+                .define('b', Tags.Items.STORAGE_BLOCKS_AMETHYST)
+                .define('m', Items.MILK_BUCKET)
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_ward_crystal"));
+
+        ShapedRecipeBuilder.shaped(ModItems.SUPER_SHADOW_TREADS.get(), 1)
+                .pattern(" c ")
+                .pattern("cas")
+                .pattern(" s ")
+                .define('c', ModItems.SPICY_COAL.get())
+                .define('a', ASCENSION_ESSENCE)
+                .define('s', ModItems.SHADOW_TREADS.get())
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_shadow_treads"));
 
         ShapedRecipeBuilder.shaped(ModItems.SUPER_LUNAR_CRYSTAL.get(), 1)
                 .pattern("a e")
