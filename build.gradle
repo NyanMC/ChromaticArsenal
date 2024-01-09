@@ -179,8 +179,7 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.4.4")
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.4.4")
+    implementation fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.4.4")
 
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
     runtimeOnly fg.deobf("curse.maven:project-240630:3951643") // just enough resources 1.1.0.179
@@ -188,11 +187,9 @@ dependencies {
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77")
 
-    compileOnly fg.deobf("curse.maven:band-of-gigantism-615965:4688205")
-    runtimeOnly fg.deobf("curse.maven:band-of-gigantism-615965:4688205")
+    implementation fg.deobf("curse.maven:band-of-gigantism-615965:4688205")
 
-    compileOnly fg.deobf("curse.maven:pehkui-319596:4684376")
-    runtimeOnly fg.deobf("curse.maven:pehkui-319596:4684376")
+    implementation fg.deobf("curse.maven:pehkui-319596:4684376")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
