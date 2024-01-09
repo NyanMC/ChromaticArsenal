@@ -67,6 +67,9 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         }
 
         if (ChromaCurioHelper.isChromaticTwisted(stack, living)) {
+            // tricks curios into updating the attribute, as it only does such when NBT updates
+            stack.getOrCreateTag().putDouble("dummy", Math.random());
+
             living.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 25, 0, true, true), living);
             return;
         }
@@ -114,7 +117,7 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
         atts.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_swimming", getSwimSpeedMod(stack), AttributeModifier.Operation.MULTIPLY_BASE));
         LivingEntity living = slotContext.entity();
-        if (ChromaCurioHelper.isChromaticTwisted(stack, living))
+        if (ChromaCurioHelper.isChromaticTwisted(stack, living) && !living.isInWaterRainOrBubble())
             atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_slowness", config.twistedBubbleSlowness.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
         return atts;
     }

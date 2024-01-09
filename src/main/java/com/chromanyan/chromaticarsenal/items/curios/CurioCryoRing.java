@@ -51,6 +51,12 @@ public class CurioCryoRing extends BaseCurioItem {
     }
 
     @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        // tricks curios into updating the attribute, as it only does such when NBT updates
+        stack.getOrCreateTag().putDouble("dummy", Math.random());
+    }
+
+    @Override
     public boolean canWalkOnPowderedSnow(SlotContext slotContext, ItemStack stack) {
         return true;
     }

@@ -38,6 +38,12 @@ public class CurioCelestialCharm extends BaseSuperCurio {
     }
 
     @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        // tricks curios into updating the attribute, as it only does such when NBT updates
+        stack.getOrCreateTag().putDouble("dummy", Math.random());
+    }
+
+    @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
         LivingEntity entity = slotContext.entity();
