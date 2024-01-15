@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.curios.challenge;
 
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -32,7 +31,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioLimitBreak extends BaseCurioItem {
-    private static final ModConfig.Common config = ModConfig.COMMON;
     private static final DamageSource ASCENDED = new DamageSource("chromaticarsenal.ascended").bypassArmor().bypassInvul();
 
     @Override

@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModSounds;
@@ -36,8 +35,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioPrismaticCrystal extends BaseSuperCurio {
-
-    private final ModConfig.Common config = ModConfig.COMMON;
 
     public CurioPrismaticCrystal() {
         super(ModItems.LUNAR_CRYSTAL);

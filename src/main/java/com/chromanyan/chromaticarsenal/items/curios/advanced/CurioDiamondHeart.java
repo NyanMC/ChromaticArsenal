@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
@@ -26,8 +25,6 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import java.util.List;
 
 public class CurioDiamondHeart extends BaseSuperCurio {
-
-    private final ModConfig.Common config = ModConfig.COMMON;
 
     public CurioDiamondHeart() {
         super(ModItems.GOLDEN_HEART);

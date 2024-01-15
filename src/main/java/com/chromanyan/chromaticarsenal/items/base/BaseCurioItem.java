@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
@@ -16,6 +17,9 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 public class BaseCurioItem extends Item implements ICurioItem, IChromaCurio {
+
+    protected static final ModConfig.Common config = ModConfig.COMMON;
+    protected static final ModConfig.Client clientConfig = ModConfig.CLIENT;
 
     public BaseCurioItem() {
         super(new Item.Properties()

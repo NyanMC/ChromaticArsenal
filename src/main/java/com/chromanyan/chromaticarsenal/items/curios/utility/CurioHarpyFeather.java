@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.utility;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -35,8 +34,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioHarpyFeather extends BaseCurioItem {
-
-    private final ModConfig.Common config = ModConfig.COMMON;
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {

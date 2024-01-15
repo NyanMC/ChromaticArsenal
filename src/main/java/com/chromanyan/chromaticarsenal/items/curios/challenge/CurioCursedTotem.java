@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.curios.challenge;
 
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
@@ -26,8 +25,6 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import java.util.List;
 
 public class CurioCursedTotem extends BaseCurioItem {
-
-    private static final ModConfig.Common config = ModConfig.COMMON;
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {

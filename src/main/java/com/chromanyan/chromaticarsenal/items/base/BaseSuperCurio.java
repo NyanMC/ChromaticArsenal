@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -28,8 +27,6 @@ import java.util.Map;
 import java.util.Optional;
 
 public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
-
-    private final ModConfig.Client clientConfig = ModConfig.CLIENT;
 
     private final RegistryObject<Item> inferiorVariant;
 

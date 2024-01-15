@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -25,7 +24,6 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import java.util.List;
 
 public class CurioDispellingCrystal extends BaseSuperCurio {
-    private final ModConfig.Common config = ModConfig.COMMON;
 
     public CurioDispellingCrystal() {
         super(ModItems.WARD_CRYSTAL);

@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -32,7 +31,6 @@ import java.util.List;
 
 public class CurioFriendlyFireFlower extends BaseCurioItem {
 
-    private final ModConfig.Common config = ModConfig.COMMON;
     private static final DamageSource UNFRIENDLY_FIRE = new DamageSource("chromaticarsenal.unfriendly_fire").setIsFire();
 
     @Override

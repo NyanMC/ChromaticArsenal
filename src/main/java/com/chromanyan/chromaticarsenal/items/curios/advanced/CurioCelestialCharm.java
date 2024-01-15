@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.google.common.collect.LinkedHashMultimap;
@@ -24,8 +23,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioCelestialCharm extends BaseSuperCurio {
-
-    private final ModConfig.Common config = ModConfig.COMMON;
 
     public CurioCelestialCharm() {
         super(ModItems.SHADOW_TREADS);

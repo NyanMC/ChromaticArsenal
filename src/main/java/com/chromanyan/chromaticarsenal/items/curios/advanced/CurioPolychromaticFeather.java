@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import net.minecraft.network.chat.Component;
@@ -27,8 +26,6 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import java.util.List;
 
 public class CurioPolychromaticFeather extends BaseSuperCurio {
-
-    private final ModConfig.Common config = ModConfig.COMMON;
 
     public CurioPolychromaticFeather() {
         super(ModItems.HARPY_FEATHER);

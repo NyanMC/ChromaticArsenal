@@ -1,8 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -39,7 +37,6 @@ import java.util.UUID;
 
 public class CurioGoldenHeart extends BaseCurioItem {
 
-    private final Common config = ModConfig.COMMON;
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {

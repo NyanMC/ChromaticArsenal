@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModPotions;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
@@ -38,7 +37,6 @@ import java.util.Random;
 import java.util.UUID;
 
 public class CurioBubbleAmulet extends BaseCurioItem {
-    private static final ModConfig.Common config = ModConfig.COMMON;
     private static final Random rand = new Random();
 
     @Override

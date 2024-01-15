@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -32,7 +31,6 @@ import java.util.Random;
 public class CurioGlassShield extends BaseCurioItem {
 
     private final Random rand = new Random();
-    private final ModConfig.Common config = ModConfig.COMMON;
     private static final DamageSource GLASS_SHRAPNEL = new DamageSource("chromaticarsenal.glass_shrapnel");
 
     @Override

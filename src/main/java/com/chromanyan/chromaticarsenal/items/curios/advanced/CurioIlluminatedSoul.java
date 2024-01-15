@@ -1,7 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -33,8 +32,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class CurioIlluminatedSoul extends BaseSuperCurio {
-
-    private static final ModConfig.Common config = ModConfig.COMMON;
 
     public CurioIlluminatedSoul() {
         super(null);
