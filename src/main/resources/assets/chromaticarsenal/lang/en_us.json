@@ -175,6 +175,9 @@
   "tooltip.chromaticarsenal.vanity": "Vanity Item",
   "tooltip.chromaticarsenal.crafting_reusable": "Not consumed when used in crafting",
   "tooltip.chromaticarsenal.impersonation": "§o\"Great for impersonating devs!\"",
+  "tooltip.chromaticarsenal.enchanted_super_curio_warning.1": "Warning: Super Curios cannot utilize enchantments other than the Binding and Vanishing curses.",
+  "tooltip.chromaticarsenal.enchanted_super_curio_warning.2": "Consider putting this item into a Grindstone.",
+
   "tooltip.chromaticarsenal.super": "§dSuper Curio",
   "tooltip.chromaticarsenal.challenge": "§4Challenge Curio",
   "tooltip.chromaticarsenal.utility": "§9Utility Curio",
