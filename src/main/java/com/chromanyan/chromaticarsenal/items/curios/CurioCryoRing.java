@@ -50,10 +50,16 @@ public class CurioCryoRing extends BaseCurioItem {
             list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.twisted", TooltipHelper.valueTooltip(config.twistedCryoFireDamageMultiplier.get())));
     }
 
+    private static boolean shouldDoTwistedPenalty(LivingEntity entity, ItemStack stack) {
+        Biome biome = entity.getLevel().getBiome(entity.blockPosition()).get();
+        return biome.shouldSnowGolemBurn(entity.blockPosition()) && ChromaCurioHelper.isChromaticTwisted(stack, entity);
+    }
+
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         // tricks curios into updating the attribute, as it only does such when NBT updates
-        stack.getOrCreateTag().putDouble("dummy", Math.random());
+        LivingEntity entity = slotContext.entity();
+        stack.getOrCreateTag().putBoolean("shouldDoTwistedPenalty", shouldDoTwistedPenalty(entity, stack));
     }
 
     @Override
@@ -90,11 +96,13 @@ public class CurioCryoRing extends BaseCurioItem {
             ChromaticArsenal.LOGGER.warn("Tried to get attribute modifiers for cryo ring but entity was null");
             return atts; // should hopefully fix a NPE when reloading resources with F3+T
         }
-        Biome biome = entity.getLevel().getBiome(entity.blockPosition()).get();
-        if (biome.shouldSnowGolemBurn(entity.blockPosition()) && ChromaCurioHelper.isChromaticTwisted(stack, slotContext.entity())) {
-            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":cryo_speed_penalty", config.twistedCryoSpeedPenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
-            atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":cryo_damage_penalty", config.twistedCryoDamagePenalty.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
-        }
+
+        double speedPenalty = shouldDoTwistedPenalty(entity, stack) ? config.twistedCryoSpeedPenalty.get() : 0D;
+        double damagePenalty = shouldDoTwistedPenalty(entity, stack) ? config.twistedCryoDamagePenalty.get() : 0D;
+
+        atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":cryo_speed_penalty", speedPenalty, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":cryo_damage_penalty", damagePenalty, AttributeModifier.Operation.MULTIPLY_TOTAL));
+
         return atts;
     }
 

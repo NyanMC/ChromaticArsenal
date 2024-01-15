@@ -58,6 +58,10 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         }
     }
 
+    private static boolean shouldDoTwistedPenalty(LivingEntity living, ItemStack stack) {
+        return ChromaCurioHelper.isChromaticTwisted(stack, living) && !living.isInWaterRainOrBubble();
+    }
+
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity living = context.entity();
@@ -68,7 +72,7 @@ public class CurioBubbleAmulet extends BaseCurioItem {
 
         if (ChromaCurioHelper.isChromaticTwisted(stack, living)) {
             // tricks curios into updating the attribute, as it only does such when NBT updates
-            stack.getOrCreateTag().putDouble("dummy", Math.random());
+            stack.getOrCreateTag().putBoolean("shouldDoTwistedPenalty", shouldDoTwistedPenalty(living, stack));
 
             living.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 25, 0, true, true), living);
             return;
@@ -117,8 +121,10 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
         atts.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_swimming", getSwimSpeedMod(stack), AttributeModifier.Operation.MULTIPLY_BASE));
         LivingEntity living = slotContext.entity();
-        if (ChromaCurioHelper.isChromaticTwisted(stack, living) && !living.isInWaterRainOrBubble())
-            atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_slowness", config.twistedBubbleSlowness.get(), AttributeModifier.Operation.MULTIPLY_TOTAL));
+
+        double speedPenalty = shouldDoTwistedPenalty(living, stack) ? config.twistedBubbleSlowness.get() : 0D;
+        atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":bubble_slowness", speedPenalty, AttributeModifier.Operation.MULTIPLY_TOTAL));
+
         return atts;
     }
 
