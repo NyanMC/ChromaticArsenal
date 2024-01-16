@@ -149,6 +149,17 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_shadow_treads"));
 
+        ShapedRecipeBuilder.shaped(ModItems.SUPER_FRIENDLY_FIRE_FLOWER.get(), 1)
+                .pattern("cmc")
+                .pattern("mam")
+                .pattern(" f ")
+                .define('m', ModItems.MAGMATIC_SCRAP.get())
+                .define('c', Items.MAGMA_CREAM)
+                .define('a', ASCENSION_ESSENCE)
+                .define('f', ModItems.FRIENDLY_FIRE_FLOWER.get())
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_friendly_fire_flower"));
+
         ShapedRecipeBuilder.shaped(ModItems.SUPER_LUNAR_CRYSTAL.get(), 1)
                 .pattern("a e")
                 .pattern(" le")
