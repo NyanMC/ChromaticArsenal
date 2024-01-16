@@ -10,6 +10,9 @@
     "d": {
       "item": "chromaticarsenal:super_ward_crystal"
     },
+    "f": {
+      "item": "chromaticarsenal:super_friendly_fire_flower"
+    },
     "g": {
       "item": "chromaticarsenal:super_golden_heart"
     },
@@ -21,9 +24,9 @@
     }
   },
   "pattern": [
-    " g ",
-    "uad",
-    "c p"
+    "g u",
+    "dac",
+    "f p"
   ],
   "result": {
     "item": "chromaticarsenal:ascended_star"

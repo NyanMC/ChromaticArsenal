@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "tag": "forge:dusts/ascension"
+    },
+    "c": {
+      "item": "minecraft:magma_cream"
+    },
+    "f": {
+      "item": "chromaticarsenal:friendly_fire_flower"
+    },
+    "m": {
+      "item": "chromaticarsenal:magmatic_scrap"
+    }
+  },
+  "pattern": [
+    "cmc",
+    "mam",
+    " f "
+  ],
+  "result": {
+    "item": "chromaticarsenal:super_friendly_fire_flower"
+  }
+}

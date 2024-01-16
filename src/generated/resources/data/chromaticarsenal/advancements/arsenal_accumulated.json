@@ -157,6 +157,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_super_friendly_fire_flower": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:super_friendly_fire_flower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_super_glass_shield": {
       "conditions": {
         "items": [
@@ -332,6 +344,9 @@
     ],
     [
       "has_super_shadow_treads"
+    ],
+    [
+      "has_super_friendly_fire_flower"
     ],
     [
       "has_super_lunar_crystal"

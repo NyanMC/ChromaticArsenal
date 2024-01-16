@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -119,7 +120,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
 
     @Override
     public boolean isDamageable(ItemStack stack) { // make the config option alter the vanilla behavior, not hardcoded checks
-        return config.canBeDamaged.get() && super.isDamageable(stack);
+        return ModConfig.COMMON.canBeDamaged.get() && super.isDamageable(stack);
     }
 
     @Override
