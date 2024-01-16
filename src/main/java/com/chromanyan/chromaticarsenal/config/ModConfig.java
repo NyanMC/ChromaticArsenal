@@ -109,6 +109,9 @@ public class ModConfig {
         public final DoubleValue damageModifierMax;
         public final DoubleValue speedModifierMax;
 
+        public final IntValue infernoDuration;
+        public final DoubleValue viciousFireDamageMultplier;
+
         public final DoubleValue superGravityModifier;
         public final DoubleValue voidBounceMultiplier;
         public final DoubleValue voidBounceDamage;
@@ -420,6 +423,15 @@ public class ModConfig {
                     speedModifierMax = builder
                             .comment("The speed boost applied at midnight (time 18000). This is always operation 2.")
                             .defineInRange("speedModifierMax", 0.2D, 0D, Double.MAX_VALUE);
+                builder.pop();
+
+                builder.push("SuperFriendlyFireFlowerSettings");
+                    infernoDuration = builder
+                            .comment("The duration of the Inferno potion effect applied when dealing damage, in ticks.")
+                            .defineInRange("infernoDuration", 100, 0, Integer.MAX_VALUE);
+                    viciousFireDamageMultplier = builder
+                            .comment("The damage multiplier against enemies which have been set on fire.")
+                            .defineInRange("viciousFireDamageMultiplier", 1.2, 0, Double.MAX_VALUE);
                 builder.pop();
 
                 builder.push("SuperLunarCrystalSettings");
