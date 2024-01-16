@@ -160,14 +160,15 @@ public class CARecipes extends RecipeProvider {
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "super_lunar_crystal"));
 
         ShapedRecipeBuilder.shaped(ModItems.ASCENDED_STAR.get(), 1)
-                .pattern(" g ")
-                .pattern("uad")
-                .pattern("c p")
+                .pattern("g u")
+                .pattern("dac")
+                .pattern("f p")
                 .define('g', ModItems.SUPER_GOLDEN_HEART.get())
                 .define('a', ASCENSION_ESSENCE)
                 .define('u', ModItems.SUPER_GLASS_SHIELD.get())
                 .define('d', ModItems.SUPER_WARD_CRYSTAL.get())
                 .define('c', ModItems.SUPER_SHADOW_TREADS.get())
+                .define('f', ModItems.SUPER_FRIENDLY_FIRE_FLOWER.get())
                 .define('p', ModItems.SUPER_LUNAR_CRYSTAL.get())
                 .unlockedBy("has_chroma_shard", has(ASCENSION_ESSENCE))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "ascended_star"));

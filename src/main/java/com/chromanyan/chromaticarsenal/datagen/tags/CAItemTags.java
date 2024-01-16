@@ -48,6 +48,7 @@ public class CAItemTags extends ItemTagsProvider {
                 ModItems.SUPER_GLASS_SHIELD.get(),
                 ModItems.SUPER_WARD_CRYSTAL.get(),
                 ModItems.SUPER_SHADOW_TREADS.get(),
+                ModItems.SUPER_FRIENDLY_FIRE_FLOWER.get(),
                 ModItems.SUPER_LUNAR_CRYSTAL.get(),
                 ModItems.SUPER_HARPY_FEATHER.get(),
                 ModItems.SUPER_GLOW_RING.get()

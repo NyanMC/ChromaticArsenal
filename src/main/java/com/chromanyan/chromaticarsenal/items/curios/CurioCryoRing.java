@@ -1,7 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.init.ModPotions;
+import com.chromanyan.chromaticarsenal.init.ModEffects;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -67,9 +67,9 @@ public class CurioCryoRing extends BaseCurioItem {
     public static void doCryoPotionEffects(LivingEntity target, @Nullable LivingEntity player) {
         if (!target.getType().is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
             if (target.getType().is(EntityTypeTags.FREEZE_HURTS_EXTRA_TYPES)) {
-                target.addEffect(new MobEffectInstance(ModPotions.CHILLED.get(), config.chilledTicksVulnerable.get()), player);
+                target.addEffect(new MobEffectInstance(ModEffects.CHILLED.get(), config.chilledTicksVulnerable.get()), player);
             } else {
-                target.addEffect(new MobEffectInstance(ModPotions.CHILLED.get(), config.chilledTicks.get()), player);
+                target.addEffect(new MobEffectInstance(ModEffects.CHILLED.get(), config.chilledTicks.get()), player);
             }
         }
     }
@@ -124,7 +124,7 @@ public class CurioCryoRing extends BaseCurioItem {
 
     @Override
     public void onGetImmunities(MobEffectEvent.Applicable event, ItemStack stack, MobEffect effect) {
-        if (event.getEffectInstance().getEffect() == ModPotions.CHILLED.get()) {
+        if (event.getEffectInstance().getEffect() == ModEffects.CHILLED.get()) {
             event.setResult(Event.Result.DENY);
         }
     }

@@ -2,7 +2,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
-import com.chromanyan.chromaticarsenal.init.ModPotions;
+import com.chromanyan.chromaticarsenal.init.ModEffects;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
@@ -88,7 +88,7 @@ public class CurioBubbleAmulet extends BaseCurioItem {
                     SoundSource.PLAYERS, 0.5F, 1.0F);
             living.setAirSupply(maxAirSupply);
             CooldownHelper.updateCounter(nbt, getCooldownDuration(stack));
-            living.addEffect(new MobEffectInstance(ModPotions.BUBBLE_PANIC.get(), config.bubblePanicDuration.get()), living);
+            living.addEffect(new MobEffectInstance(ModEffects.BUBBLE_PANIC.get(), config.bubblePanicDuration.get()), living);
         } else if (airSupply >= maxAirSupply) {
             CompoundTag nbt = stack.getOrCreateTag();
             if (CooldownHelper.isCooldownFinished(nbt))

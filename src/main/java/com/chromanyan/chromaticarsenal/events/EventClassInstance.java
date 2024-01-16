@@ -3,7 +3,7 @@ package com.chromanyan.chromaticarsenal.events;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
-import com.chromanyan.chromaticarsenal.init.ModPotions;
+import com.chromanyan.chromaticarsenal.init.ModEffects;
 import com.chromanyan.chromaticarsenal.items.curios.CurioBubbleAmulet;
 import com.chromanyan.chromaticarsenal.items.curios.CurioLunarCrystal;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
@@ -48,7 +48,7 @@ public class EventClassInstance {
         LivingEntity player = event.getEntity();
         if (!player.getCommandSenderWorld().isClientSide()) {
             // spatial: block fall damage
-            if (player.hasEffect(ModPotions.SPATIAL.get()) && event.getSource() == DamageSource.FALL) {
+            if (player.hasEffect(ModEffects.SPATIAL.get()) && event.getSource() == DamageSource.FALL) {
                 event.setAmount(0); // just in case, you know?
                 event.setCanceled(true);
             }
@@ -107,12 +107,12 @@ public class EventClassInstance {
         }
 
         // those damn creepers, allowing a mob to have both cursed revival and fractured
-        if (entity.hasEffect(ModPotions.CURSED_REVIVAL.get())
-                && !entity.hasEffect(ModPotions.FRACTURED.get())
+        if (entity.hasEffect(ModEffects.CURSED_REVIVAL.get())
+                && !entity.hasEffect(ModEffects.FRACTURED.get())
                 && !(entity instanceof Player)) {
             event.setCanceled(true);
-            entity.removeEffect(ModPotions.CURSED_REVIVAL.get());
-            entity.addEffect(new MobEffectInstance(ModPotions.FRACTURED.get(), 72000, config.cursedTotemFracturedLevel.get()));
+            entity.removeEffect(ModEffects.CURSED_REVIVAL.get());
+            entity.addEffect(new MobEffectInstance(ModEffects.FRACTURED.get(), 72000, config.cursedTotemFracturedLevel.get()));
             entity.setHealth(entity.getMaxHealth());
             entity.getCommandSenderWorld().playSound(null, entity.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundSource.HOSTILE, 0.5F, 1.0F);
         }

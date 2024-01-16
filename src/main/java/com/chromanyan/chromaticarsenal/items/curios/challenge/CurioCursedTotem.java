@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.challenge;
 
-import com.chromanyan.chromaticarsenal.init.ModPotions;
+import com.chromanyan.chromaticarsenal.init.ModEffects;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -43,17 +43,17 @@ public class CurioCursedTotem extends BaseCurioItem {
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
         // attacking a player to give them a free revival would be cool, but also really cheesy. denied
-        if (target instanceof Player || target.hasEffect(ModPotions.FRACTURED.get())) {
+        if (target instanceof Player || target.hasEffect(ModEffects.FRACTURED.get())) {
             return;
         }
 
-        target.addEffect(new MobEffectInstance(ModPotions.CURSED_REVIVAL.get(), 72000), player);
+        target.addEffect(new MobEffectInstance(ModEffects.CURSED_REVIVAL.get(), 72000), player);
     }
 
     @Override
     public int getLootingLevel(SlotContext slotContext, DamageSource source, LivingEntity target, int baseLooting, ItemStack stack) {
         int baseCount = super.getLootingLevel(slotContext, source, target, baseLooting, stack);
-        if (target.hasEffect(ModPotions.FRACTURED.get()))
+        if (target.hasEffect(ModEffects.FRACTURED.get()))
             return baseCount + config.cursedTotemBonusLooting.get();
         return baseCount;
     }

@@ -63,7 +63,7 @@ public class ChromaticArsenal {
         ModSounds.SOUNDS_REGISTRY.register(bus);
         ModBlocks.BLOCKS_REGISTRY.register(bus);
         ModItems.ITEMS_REGISTRY.register(bus);
-        ModPotions.EFFECTS_REGISTRY.register(bus);
+        ModEffects.EFFECTS_REGISTRY.register(bus);
         ModEnchantments.ENCHANTMENTS_REGISTRY.register(bus);
         ModLoadingContext.get().registerConfig(Type.COMMON, ModConfig.commonSpec);
         ModLoadingContext.get().registerConfig(Type.CLIENT, ModConfig.clientSpec);
