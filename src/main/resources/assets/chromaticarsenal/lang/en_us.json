@@ -124,6 +124,10 @@
   "item.chromaticarsenal.super_shadow_treads": "Celestial Charm",
   "tooltip.chromaticarsenal.super_shadow_treads.1": "§6Grants varying damage and speed bonuses depending on the time of day",
 
+  "item.chromaticarsenal.super_friendly_fire_flower": "Vicious Inferno Flower",
+  "tooltip.chromaticarsenal.super_friendly_fire_flower.1": "§2Grants permanent Fire Resistance",
+  "tooltip.chromaticarsenal.super_friendly_fire_flower.2": "§6Attacks engulf the target in flames which cannot be extinguished",
+
   "item.chromaticarsenal.super_lunar_crystal": "Prismatic Crystal",
   "tooltip.chromaticarsenal.super_lunar_crystal.1": "§2Grants immunity to fall damage and Levitation",
   "tooltip.chromaticarsenal.super_lunar_crystal.3": "§2Functions as a Pumpkin for Endermen",
