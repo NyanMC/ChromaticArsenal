@@ -1,0 +1,20 @@
+{
+  "name": "Vicious Inferno Flower",
+  "icon": "chromaticarsenal:super_friendly_fire_flower",
+  "category": "chromaticarsenal:super_curios",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Vicious Inferno Flower grants permanent fire resistance. Additionally, attacking a mob will inflict the Inferno potion effect, which engulfs them in flames which cannot be extinguished by water. When attacking a mob on fire, damage is increased."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+20%$() Attack Damage (if target is on fire)$(br)"
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)Not even water can put the flame out",
+      "recipe": "chromaticarsenal:super_friendly_fire_flower"
+    }
+  ]
+}

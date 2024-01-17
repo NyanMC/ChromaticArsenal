@@ -1,0 +1,17 @@
+{
+  "name": "Vicious Inferno Flower",
+  "icon": "chromaticarsenal:super_friendly_fire_flower",
+  "category": "chromaticarsenal:super_curio_lore",
+  "advancement": "chromaticarsenal:super_friendly_fire_flower",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This strange flower seems to handle fire much better after being ascended. Not only does it no longer break, it seems to have taken on the ability to create its own fire with magical properties which prevent it from being put out by water.",
+      "item": "chromaticarsenal:super_friendly_fire_flower"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If I understand correctly, this item should be able to be attached to the dominant arm, and when a weapon is swung, the flower will briefly ignite it. It appears to work very similar to Fire Aspect."
+    }
+  ]
+}
