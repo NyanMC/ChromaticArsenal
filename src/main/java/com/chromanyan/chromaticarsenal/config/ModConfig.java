@@ -431,7 +431,7 @@ public class ModConfig {
                             .defineInRange("infernoDuration", 100, 0, Integer.MAX_VALUE);
                     viciousFireDamageMultplier = builder
                             .comment("The damage multiplier against enemies which have been set on fire.")
-                            .defineInRange("viciousFireDamageMultiplier", 1.2, 0, Double.MAX_VALUE);
+                            .defineInRange("viciousFireDamageMultiplier", 1.1, 0, Double.MAX_VALUE);
                 builder.pop();
 
                 builder.push("SuperLunarCrystalSettings");
