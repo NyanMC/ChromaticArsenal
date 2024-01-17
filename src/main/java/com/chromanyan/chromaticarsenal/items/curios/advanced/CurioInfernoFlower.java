@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios.advanced;
 import com.chromanyan.chromaticarsenal.init.ModEffects;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -28,6 +29,7 @@ public class CurioInfernoFlower extends BaseSuperCurio {
         super.appendHoverText(stack, level, list, flag);
         list.add(Component.translatable("tooltip.chromaticarsenal.super_friendly_fire_flower.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_friendly_fire_flower.2"));
+        list.add(Component.translatable("tooltip.chromaticarsenal.super_friendly_fire_flower.3", TooltipHelper.multiplierAsPercentTooltip(config.viciousFireDamageMultplier.get())));
     }
 
     @Override

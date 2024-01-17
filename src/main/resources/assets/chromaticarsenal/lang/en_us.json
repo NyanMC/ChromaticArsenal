@@ -127,6 +127,7 @@
   "item.chromaticarsenal.super_friendly_fire_flower": "Vicious Inferno Flower",
   "tooltip.chromaticarsenal.super_friendly_fire_flower.1": "§2Grants permanent Fire Resistance",
   "tooltip.chromaticarsenal.super_friendly_fire_flower.2": "§6Attacks engulf the target in flames which cannot be extinguished",
+  "tooltip.chromaticarsenal.super_friendly_fire_flower.3": "§6Damage dealt to burning mobs is increased by %1$s§b%%",
 
   "item.chromaticarsenal.super_lunar_crystal": "Prismatic Crystal",
   "tooltip.chromaticarsenal.super_lunar_crystal.1": "§2Grants immunity to fall damage and Levitation",
