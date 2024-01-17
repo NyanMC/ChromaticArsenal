@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The Vicious Inferno Flower grants permanent fire resistance. Additionally, attacking a mob will inflict the Inferno potion effect, which engulfs them in flames which cannot be extinguished by water. When attacking a mob on fire, damage is increased."
+      "text": "The Vicious Inferno Flower grants permanent fire resistance. Additionally, attacking a mob with a non-projectile attack will inflict the Inferno potion effect, which engulfs them in flames which cannot be extinguished by water. When attacking a mob on fire, damage is increased."
     },
     {
       "type": "patchouli:text",

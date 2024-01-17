@@ -45,7 +45,9 @@ public class CurioInfernoFlower extends BaseSuperCurio {
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
-        target.addEffect(new MobEffectInstance(ModEffects.INFERNO.get(), config.infernoDuration.get()));
+        if (!event.getSource().isProjectile()) {
+            target.addEffect(new MobEffectInstance(ModEffects.INFERNO.get(), config.infernoDuration.get()));
+        }
 
         if (target.isOnFire()) {
             event.setAmount(event.getAmount() * config.viciousFireDamageMultplier.get().floatValue());
