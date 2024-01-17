@@ -64,6 +64,7 @@ public class ChromaticArsenal {
         ModBlocks.BLOCKS_REGISTRY.register(bus);
         ModItems.ITEMS_REGISTRY.register(bus);
         ModEffects.EFFECTS_REGISTRY.register(bus);
+        ModPotions.POTIONS_REGISTRY.register(bus);
         ModEnchantments.ENCHANTMENTS_REGISTRY.register(bus);
         ModLoadingContext.get().registerConfig(Type.COMMON, ModConfig.commonSpec);
         ModLoadingContext.get().registerConfig(Type.CLIENT, ModConfig.clientSpec);
@@ -94,6 +95,7 @@ public class ChromaticArsenal {
         Registry.register(Registry.CUSTOM_STAT, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION);
         Registry.register(Registry.CUSTOM_STAT, ModStats.CHROMA_SALVAGER_USES_LOCATION, ModStats.CHROMA_SALVAGER_USES_LOCATION);
         Stats.CUSTOM.get(ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, StatFormatter.DIVIDE_BY_TEN);
+        ModPotions.doRecipes();
         ModStats.load();
     }
 
