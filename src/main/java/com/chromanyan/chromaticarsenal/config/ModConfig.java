@@ -512,15 +512,11 @@ public class ModConfig {
 
     public static class Client {
 
-        public final BooleanValue suppressMissingModNotices;
         public final BooleanValue suppressEnchantedSuperCurioWarning;
         public final IntValue tooltipDecimalThreshold;
 
         Client(ForgeConfigSpec.Builder builder) {
             builder.push("TooltipSettings");
-            suppressMissingModNotices = builder
-                    .comment("Disables tooltip notices mentioning that certain items are unobtainable without a certain mod present.")
-                    .define("suppressMissingModNotices", false);
             suppressEnchantedSuperCurioWarning = builder
                     .comment("Disables the extra tooltip lines which are displayed when a super curio is enchanted with a non-curse enchantment.")
                     .define("suppressEnchantedSuperCurioWarning", false);

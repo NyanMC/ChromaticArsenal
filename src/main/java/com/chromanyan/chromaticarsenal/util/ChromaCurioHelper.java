@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.items.IItemHandler;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -38,7 +39,7 @@ public class ChromaCurioHelper {
     }
 
     public static boolean isChromaticTwisted(ItemStack stack, @Nullable LivingEntity player) {
-        if (player != null)
+        if (player != null && ModList.get().isLoaded("band_of_gigantism"))
             return ChromaCurioHelper.getCurio(player, ModItems.MARK_TWISTED.get()).isPresent() || stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0;
         else
             return stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0;

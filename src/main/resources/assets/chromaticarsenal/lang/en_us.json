@@ -165,13 +165,9 @@
   "tooltip.chromaticarsenal.viewer_item.2": "This item's functionality may change in a later version, don't rely on it!",
 
   "item.chromaticarsenal.mark_twisted": "§dMark of the Twisted",
-  "tooltip.chromaticarsenal.void": "",
-  "tooltip.chromaticarsenal.shift": "§5Hold §6Shift§5 to see details.",
-  "tooltip.chromaticarsenal.mark_generic_description": "§5Take §6severe damage §5upon unequipping.",
-  "tooltip.chromaticarsenal.mark_twisted_description_flavor": "§d§oCan you tolerate everything you know being deformed senselessly?",
-  "tooltip.chromaticarsenal.mark_twisted_description_0": "§5All equipped §6Chromatic Curios§5 will function as if they had the §6Curse of Chromatic Twisting§5.",
-  "tooltip.chromaticarsenal.missing_bog": "§cYou will not be able to obtain this item because Band of Gigantism is not installed.",
-  "tooltip.chromaticarsenal.missing_bog2": "§c(You can hide this message in the client config.)",
+  "tooltip.chromaticarsenal.mark_twisted_description_flavor": "§d§oEverything you know will change forever.",
+  "tooltip.chromaticarsenal.mark_twisted_description_0": "§5Allows for equipping §6an additional curio§5 of nearly any type.",
+  "tooltip.chromaticarsenal.mark_twisted_description_1": "§5All equipped §6Chromatic Curios§5 will function as if they had the §6Curse of Chromatic Twisting§5.",
   "death.attack.mark_twisted": "%1$s§d's soul was twisted beyond recognition",
 
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",

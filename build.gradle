@@ -187,7 +187,7 @@ dependencies {
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77")
 
-    implementation fg.deobf("curse.maven:band-of-gigantism-615965:4688205")
+    implementation fg.deobf("curse.maven:band-of-gigantism-615965:5064009")
 
     implementation fg.deobf("curse.maven:pehkui-319596:4684376")
 }

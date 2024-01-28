@@ -70,6 +70,8 @@ public class ChromaticArsenal {
         ModLoadingContext.get().registerConfig(Type.CLIENT, ModConfig.clientSpec);
         bus.register(ModConfig.class);
 
+        ModItems.tryBOGCompat();
+
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }

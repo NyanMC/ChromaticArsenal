@@ -16,6 +16,7 @@ import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -71,9 +72,16 @@ public class ModItems {
     public static final RegistryObject<Item> DEBUG = ITEMS_REGISTRY.register("viewer_item", CurioDebug::new);
 
     // compatibility
-    public static final RegistryObject<Item> MARK_TWISTED = ITEMS_REGISTRY.register("mark_twisted", MarkTwisted::new);
+    public static RegistryObject<Item> MARK_TWISTED = null;
 
     // block items
     public static final RegistryObject<BlockItem> CHROMA_BLOCK_ITEM = ITEMS_REGISTRY.register("chroma_block", () -> new BlockItem(ModBlocks.CHROMA_BLOCK.get(), new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON)));
+
+    public static void tryBOGCompat() {
+        if (!ModList.get().isLoaded("band_of_gigantism")) {
+            return;
+        }
+        MARK_TWISTED = ITEMS_REGISTRY.register("mark_twisted", MarkTwisted::new);
+    }
 
 }

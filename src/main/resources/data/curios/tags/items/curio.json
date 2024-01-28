@@ -4,6 +4,6 @@
     "chromaticarsenal:ascended_star",
     "chromaticarsenal:harpy_feather",
     "chromaticarsenal:viewer_item",
-    "chromaticarsenal:mark_twisted"
+    {"id": "chromaticarsenal:mark_twisted", "required": false}
   ]
 }
