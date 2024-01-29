@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
@@ -19,5 +20,13 @@ public class MixinPlayer {
                 cir.setReturnValue(false);
             }
         }
+    }
+
+    @Redirect(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;setSprinting(Z)V"))
+    private void setSprinting(Player instance, boolean b) {
+        if (ChromaCurioHelper.getCurio(instance, ModItems.MOMENTUM_STONE.get()).isPresent()) {
+            return; // don't actually stop sprinting
+        }
+        setSprinting(instance, false); // continue as normal
     }
 }
