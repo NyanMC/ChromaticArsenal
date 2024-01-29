@@ -67,6 +67,10 @@
   "tooltip.chromaticarsenal.bubble_amulet.twisted": "§cChromatic Twisting:§5 Grants indefinite Water Breathing, however movement speed on land is greatly reduced",
   "tooltip.chromaticarsenal.bubble_amulet.cooldown": "Cooldown only ticks with a full air supply",
 
+  "item.chromaticarsenal.momentum_stone": "Momentum Stone",
+  "tooltip.chromaticarsenal.momentum_stone.1": "§6Allows sprinting to continue after an attack or on an empty stomach",
+  "tooltip.chromaticarsenal.momentum_stone.2": "§cStopping may be difficult",
+
   "item.chromaticarsenal.gravity_stone": "Gravity Stone",
   "tooltip.chromaticarsenal.gravity_stone.1": "§6Prevents gravity from being reduced below the base value",
   "tooltip.chromaticarsenal.gravity_stone.2": "§6Prevents the floatiness from Slow Falling (the effect will still negate fall damage)",
