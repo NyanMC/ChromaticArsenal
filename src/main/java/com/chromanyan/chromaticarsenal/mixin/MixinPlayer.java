@@ -1,10 +1,12 @@
 package com.chromanyan.chromaticarsenal.mixin;
 
+import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -15,6 +17,9 @@ import java.util.Optional;
 
 @Mixin(Player.class)
 public abstract class MixinPlayer {
+
+    @Unique
+    private static final ModConfig.Common chromatic_workspace_19$config = ModConfig.COMMON;
 
     @Inject(method = "isStayingOnGroundSurface", at = @At("RETURN"), cancellable = true)
     private void isStayingOnGroundSurface(CallbackInfoReturnable<Boolean> cir) {
@@ -48,6 +53,6 @@ public abstract class MixinPlayer {
             return;
         }
 
-        instance.causeFoodExhaustion(p_36400_ * 1.5F); //TODO configurability
+        instance.causeFoodExhaustion(p_36400_ * chromatic_workspace_19$config.twistedMomentumStoneExhaustion.get().floatValue());
     }
 }

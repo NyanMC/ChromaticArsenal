@@ -81,6 +81,9 @@ public class ModConfig {
         public final IntValue amuletDropChance;
         public final IntValue amuletDropLootingModifier;
 
+        public final DoubleValue momentumStoneFriction;
+        public final DoubleValue twistedMomentumStoneExhaustion;
+
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
         public final DoubleValue anchorKnockbackResistanceMultiplier;
@@ -337,6 +340,15 @@ public class ModConfig {
                     amuletDropLootingModifier = builder
                             .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Bubble Amulet to drop when killing a Drowned. This is Y.")
                             .defineInRange("amuletDropLootingModifier", 2, 0, Integer.MAX_VALUE);
+                builder.pop();
+
+                builder.push("MomentumStoneSettings");
+                    momentumStoneFriction = builder
+                            .comment("The amount of friction added to the player while not sprinting and wearing a Momentum Stone. Stacks with block friction, caps at 0.989.")
+                            .defineInRange("momentumStoneFriction", 0.3, 0, 0.989);
+                    twistedMomentumStoneExhaustion = builder
+                            .comment("The multiplier given to exhaustion when sprinting with a chromatically twisted Momentum Stone.")
+                            .defineInRange("twistedMomentumStoneExhaustion", 1.5, 1, Double.MAX_VALUE);
                 builder.pop();
 
                 builder.push("WorldAnchorSettings");

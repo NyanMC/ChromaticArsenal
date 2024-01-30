@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.mixin;
 
+import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.core.BlockPos;
@@ -19,6 +20,9 @@ import java.util.Optional;
 
 @Mixin(LivingEntity.class)
 public class MixinLivingEntity {
+
+    @Unique
+    private static final ModConfig.Common chromatic_workspace_19$config = ModConfig.COMMON;
 
     @Unique
     private static final float BLUE_ICE_FRICTION = 0.989F; // the most slippery block in vanilla
@@ -46,7 +50,7 @@ public class MixinLivingEntity {
         Optional<SlotResult> slotResult = ChromaCurioHelper.getCurio(livingEntity, ModItems.MOMENTUM_STONE.get());
         if (slotResult.isEmpty() || ChromaCurioHelper.isChromaticTwisted(slotResult.get().stack(), livingEntity)) return originalReturn;
 
-        float newFriction = originalReturn + 0.3F; //TODO configurability
+        float newFriction = originalReturn + chromatic_workspace_19$config.momentumStoneFriction.get().floatValue();
 
         return Math.min(newFriction, BLUE_ICE_FRICTION); // high levels of friction are buggy
     }
