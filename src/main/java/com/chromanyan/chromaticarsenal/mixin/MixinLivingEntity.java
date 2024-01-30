@@ -13,6 +13,9 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import top.theillusivec4.curios.api.SlotResult;
+
+import java.util.Optional;
 
 @Mixin(LivingEntity.class)
 public class MixinLivingEntity {
@@ -39,9 +42,11 @@ public class MixinLivingEntity {
 
         if (!(entity instanceof LivingEntity livingEntity)) return originalReturn;
         if (livingEntity.getBlockSpeedFactor() > 1 || livingEntity.isSprinting()) return originalReturn; // never combine friction and >1 speed factor
-        if (ChromaCurioHelper.getCurio(livingEntity, ModItems.MOMENTUM_STONE.get()).isEmpty()) return originalReturn;
 
-        float newFriction = originalReturn + 0.3F;
+        Optional<SlotResult> slotResult = ChromaCurioHelper.getCurio(livingEntity, ModItems.MOMENTUM_STONE.get());
+        if (slotResult.isEmpty() || ChromaCurioHelper.isChromaticTwisted(slotResult.get().stack(), livingEntity)) return originalReturn;
+
+        float newFriction = originalReturn + 0.3F; //TODO configurability
 
         return Math.min(newFriction, BLUE_ICE_FRICTION); // high levels of friction are buggy
     }

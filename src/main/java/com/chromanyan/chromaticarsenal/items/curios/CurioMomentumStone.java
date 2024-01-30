@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
@@ -26,6 +27,11 @@ public class CurioMomentumStone extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.2"));
+        if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
+            list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.twisted"));
+        } else {
+            list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.3"));
+        }
     }
 
     @Override

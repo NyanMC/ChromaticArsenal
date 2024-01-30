@@ -9,9 +9,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import top.theillusivec4.curios.api.SlotResult;
+
+import java.util.Optional;
 
 @Mixin(Player.class)
-public class MixinPlayer {
+public abstract class MixinPlayer {
+
     @Inject(method = "isStayingOnGroundSurface", at = @At("RETURN"), cancellable = true)
     private void isStayingOnGroundSurface(CallbackInfoReturnable<Boolean> cir) {
         if (ChromaCurioHelper.getCurio((Player)(Object)this, ModItems.VERTICAL_STASIS.get()).isPresent()) {
@@ -27,6 +31,23 @@ public class MixinPlayer {
         if (ChromaCurioHelper.getCurio(instance, ModItems.MOMENTUM_STONE.get()).isPresent()) {
             return; // don't actually stop sprinting
         }
-        setSprinting(instance, false); // continue as normal
+        instance.setSprinting(false); // continue as normal
+    }
+
+    @Redirect(method = "checkMovementStatistics", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;causeFoodExhaustion(F)V"))
+    private void causeFoodExhaustion(Player instance, float p_36400_) {
+        if (!instance.isSprinting()) {
+            instance.causeFoodExhaustion(p_36400_);
+            return;
+        }
+
+        Optional<SlotResult> slotResult = ChromaCurioHelper.getCurio(instance, ModItems.MOMENTUM_STONE.get());
+
+        if (slotResult.isEmpty() || !ChromaCurioHelper.isChromaticTwisted(slotResult.get().stack(), instance)) {
+            instance.causeFoodExhaustion(p_36400_);
+            return;
+        }
+
+        instance.causeFoodExhaustion(p_36400_ * 1.5F); //TODO configurability
     }
 }
