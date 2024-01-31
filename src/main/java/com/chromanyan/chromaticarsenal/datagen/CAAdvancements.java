@@ -89,6 +89,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement lunarCrystal = displayedHasItem(ModItems.LUNAR_CRYSTAL.get(), consumer, fileHelper, FrameType.GOAL, new ResourceLocation("end/find_end_city"));
         Advancement cryoRing = displayedHasItem(ModItems.CRYO_RING.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/walk_on_powder_snow_with_leather_boots"));
         Advancement bubbleAmulet = displayedHasItem(ModItems.BUBBLE_AMULET.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/kill_a_mob"));
+        Advancement momentumStone = displayedHasItem(ModItems.MOMENTUM_STONE.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/trade"));
 
         Advancement ascendedStar = displayedHasItem(ModItems.ASCENDED_STAR.get(), consumer, fileHelper, FrameType.GOAL, ascensionEssence);
         Advancement worldAnchor = simpleHasItemRecipe(ModItems.WORLD_ANCHOR.get(), consumer, fileHelper);
@@ -97,7 +98,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement gravityStone = simpleHasItemRecipe(ModItems.GRAVITY_STONE.get(), consumer, fileHelper);
         Advancement verticalStasis = simpleHasItemRecipe(ModItems.VERTICAL_STASIS.get(), consumer, fileHelper);
         Advancement harpyFeather = simpleHasItemRecipe(ModItems.HARPY_FEATHER.get(), consumer, fileHelper);
-        Advancement blahaj = displayedHasItem(ModItems.BLAHAJ.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/sleep_in_bed"));
+        Advancement blahaj = displayedHasItem(ModItems.BLAHAJ.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/trade"));
 
         Advancement superGoldenHeart = simpleHasItemRecipe(ModItems.SUPER_GOLDEN_HEART.get(), consumer, fileHelper);
         Advancement superGlassShield = simpleHasItemRecipe(ModItems.SUPER_GLASS_SHIELD.get(), consumer, fileHelper);

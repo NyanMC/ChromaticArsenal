@@ -17,8 +17,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -30,6 +32,7 @@ import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.VanillaGameEvent;
 import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -211,10 +214,14 @@ public class EventClassInstance {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get())
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(10).build());
             case "chests/village/village_shepherd" ->
-                    injectInto(event, "main", LootItem.lootTableItem(ModItems.BLAHAJ.get())
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.BLAHAJ.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(4).build());
+            case "chests/village/village_armorer" ->
+                    injectInto(event, "main", LootItem.lootTableItem(ModItems.MOMENTUM_STONE.get())
                             .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(4).build());
         }
 
+        // without the second check, chroma shards generate in jungle temple dispensers
         if (event.getName().getPath().contains("chests") && !event.getName().getPath().contains("dispenser")) {
             //noinspection ConstantConditions
             if (event.getTable().getPool("main") != null) {
@@ -235,6 +242,30 @@ public class EventClassInstance {
                 3,
                 3
         ));
+    }
+
+    @SubscribeEvent
+    public void villagerTrades(VillagerTradesEvent event) {
+        if (event.getType() == VillagerProfession.SHEPHERD) {
+            event.getTrades().get(5).add(new BasicItemListing(
+                    new ItemStack(Items.EMERALD, 24),
+                    new ItemStack(ModItems.CHROMA_SHARD.get()),
+                    new ItemStack(ModItems.BLAHAJ.get()),
+                    2,
+                    0,
+                    0.2F
+            ));
+        }
+        if (event.getType() == VillagerProfession.ARMORER) {
+            event.getTrades().get(3).add(new BasicItemListing(
+                    new ItemStack(Items.EMERALD, 8),
+                    new ItemStack(ModItems.CHROMA_SHARD.get()),
+                    new ItemStack(ModItems.MOMENTUM_STONE.get()),
+                    2,
+                    16,
+                    0.2F
+            ));
+        }
     }
 
     @SubscribeEvent

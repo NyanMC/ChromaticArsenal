@@ -247,6 +247,8 @@
   "advancement.chromaticarsenal.bubble_amulet.title": "I Wanna Breathe",
   "advancement.chromaticarsenal.bubble_amulet.description": "Pick up a Bubble Amulet, which rarely drops from slain Drowned",
   "advancement.chromaticarsenal.blahaj.title": "Love This Animal",
-  "advancement.chromaticarsenal.blahaj.description": "Find a Blåhaj in a Shepherd's chest"
+  "advancement.chromaticarsenal.blahaj.description": "Obtain a Blåhaj by trading with a Shepherd, or stealing from their chest",
+  "advancement.chromaticarsenal.momentum_stone.title": "Fool's Cobalt Shield",
+  "advancement.chromaticarsenal.momentum_stone.description": "Obtain a Momentum Stone by trading with an Armorer, or stealing from their chest"
 
 }

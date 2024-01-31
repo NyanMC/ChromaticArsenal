@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "chromaticarsenal:blahaj"
+              "chromaticarsenal:momentum_stone"
             ]
           }
         ]
@@ -17,16 +17,16 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancement.chromaticarsenal.blahaj.description"
+      "translate": "advancement.chromaticarsenal.momentum_stone.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "chromaticarsenal:blahaj"
+      "item": "chromaticarsenal:momentum_stone"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancement.chromaticarsenal.blahaj.title"
+      "translate": "advancement.chromaticarsenal.momentum_stone.title"
     }
   },
   "requirements": [
