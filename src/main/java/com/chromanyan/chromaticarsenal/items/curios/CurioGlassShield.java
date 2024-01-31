@@ -2,12 +2,14 @@ package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.triggers.GlassShieldBlockTrigger;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -121,6 +123,12 @@ public class CurioGlassShield extends BaseCurioItem {
             int hitDamage = Math.round(event.getAmount() * 10.0F); // we need to multiply this by 10, for some reason
             playerEntity.awardStat(ModStats.GSHIELD_TOTAL_BLOCK, hitDamage);
         }
+
+        // grant advancement if the player is a server player (they should be?)
+        if (player instanceof ServerPlayer serverPlayer) {
+            GlassShieldBlockTrigger.INSTANCE.trigger(serverPlayer, Math.round(event.getAmount()));
+        }
+
         event.setAmount(0);
         event.setCanceled(true);
     }

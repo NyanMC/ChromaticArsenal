@@ -249,6 +249,8 @@
   "advancement.chromaticarsenal.blahaj.title": "Love This Animal",
   "advancement.chromaticarsenal.blahaj.description": "Obtain a Blåhaj by trading with a Shepherd, or stealing from their chest",
   "advancement.chromaticarsenal.momentum_stone.title": "Fool's Cobalt Shield",
-  "advancement.chromaticarsenal.momentum_stone.description": "Obtain a Momentum Stone by trading with an Armorer, or stealing from their chest"
+  "advancement.chromaticarsenal.momentum_stone.description": "Obtain a Momentum Stone by trading with an Armorer, or stealing from their chest",
+  "advancement.chromaticarsenal.block_100.title": "Live to Die Another Day",
+  "advancement.chromaticarsenal.block_100.description": "Block one hundred or more damage with the Glass Shield in a single attack"
 
 }

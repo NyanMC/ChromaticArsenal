@@ -2,10 +2,12 @@ package com.chromanyan.chromaticarsenal.datagen;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
+import com.chromanyan.chromaticarsenal.triggers.GlassShieldBlockTrigger;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.FrameType;
+import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.DataGenerator;
@@ -124,6 +126,22 @@ public class CAAdvancements extends AdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(100))
                 .parent(ascendedStar)
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "arsenal_accumulated"), fileHelper);
+
+        Advancement blockOneHundred = Advancement.Builder.advancement()
+                .addCriterion("blocked_100", new GlassShieldBlockTrigger.TriggerInstance(EntityPredicate.Composite.ANY, 100))
+                .display(
+                        ModItems.GLASS_SHIELD.get(),
+                        Component.translatable("advancement.chromaticarsenal.block_100.title"),
+                        Component.translatable("advancement.chromaticarsenal.block_100.description"),
+                        null,
+                        FrameType.CHALLENGE,
+                        true,
+                        true,
+                        false
+                )
+                .rewards(AdvancementRewards.Builder.experience(100))
+                .parent(chromaShard)
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "block_100"), fileHelper);
     }
 
     private Advancement.Builder addCurios(Advancement.Builder advancement) {

@@ -11,6 +11,8 @@ import com.chromanyan.chromaticarsenal.events.EventClassInstance;
 import com.chromanyan.chromaticarsenal.init.*;
 import com.chromanyan.chromaticarsenal.items.curios.CurioGoldenHeart;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioIlluminatedSoul;
+import com.chromanyan.chromaticarsenal.triggers.GlassShieldBlockTrigger;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -94,11 +96,15 @@ public class ChromaticArsenal {
 
     private void setup(final FMLCommonSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new EventClassInstance());
+
         Registry.register(Registry.CUSTOM_STAT, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION);
         Registry.register(Registry.CUSTOM_STAT, ModStats.CHROMA_SALVAGER_USES_LOCATION, ModStats.CHROMA_SALVAGER_USES_LOCATION);
         Stats.CUSTOM.get(ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, StatFormatter.DIVIDE_BY_TEN);
-        ModPotions.doRecipes();
         ModStats.load();
+
+        CriteriaTriggers.register(GlassShieldBlockTrigger.INSTANCE);
+
+        ModPotions.doRecipes();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
