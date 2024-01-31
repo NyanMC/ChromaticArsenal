@@ -82,6 +82,7 @@ public class ModConfig {
         public final IntValue amuletDropLootingModifier;
 
         public final DoubleValue momentumStoneFriction;
+        public final DoubleValue momentumStoneProtectionToughness;
         public final DoubleValue twistedMomentumStoneExhaustion;
 
         public final DoubleValue anchorGravityMultiplier;
@@ -346,6 +347,9 @@ public class ModConfig {
                     momentumStoneFriction = builder
                             .comment("The amount of friction added to the player while not sprinting and wearing a Momentum Stone. Stacks with block friction, caps at 0.989.")
                             .defineInRange("momentumStoneFriction", 0.3, 0, 0.989);
+                    momentumStoneProtectionToughness = builder
+                            .comment("The amount of armor toughness added per level of Protection.")
+                            .defineInRange("momentumStoneProtectionToughness", 0.5, 1, Double.MAX_VALUE);
                     twistedMomentumStoneExhaustion = builder
                             .comment("The multiplier given to exhaustion when sprinting with a chromatically twisted Momentum Stone.")
                             .defineInRange("twistedMomentumStoneExhaustion", 1.5, 1, Double.MAX_VALUE);
