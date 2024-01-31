@@ -1,0 +1,17 @@
+{
+  "name": "Momentum Stone",
+  "icon": "chromaticarsenal:momentum_stone",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:momentum_stone",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "A rather interesting discovery by the Village Armorers, this stone seems to connect with the wearer's armor, bulking it up to make it more difficult to move. Strangely, in doing so, it also reduces traction with the ground.",
+      "item": "chromaticarsenal:momentum_stone"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Legends say this very same type of stone was used in the creation of an armor for a heroic $(thing)knight of shovels$(), or something. I wouldn't know, I've never seen a knight like that in action. It could just be a fairy tale."
+    }
+  ]
+}

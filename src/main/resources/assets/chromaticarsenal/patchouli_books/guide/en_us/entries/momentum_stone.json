@@ -1,0 +1,20 @@
+{
+  "name": "Momentum Stone",
+  "icon": "chromaticarsenal:momentum_stone",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Momentum Stone grants complete knockback resistance, allows its wearer to perform repeated knockback attacks, and allows its wearer to sprint on an empty stomach. However, while not sprinting, the wearer will slide around more, as if they were on ice. This item can be found by trading with Armorers, or in Armorer chests in villages.",
+      "item": "chromaticarsenal:momentum_stone"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+100%$() Knockback Resistance$(br)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Momentum Stone supports the following enchantments:$(br2)$(l)Protection$(): Armor Toughness given by this curio is increased slightly per level$(br2)$(l)Curse of Chromatic Twisting$(): No longer slide around, however sprinting is more exhausting"
+    }
+  ]
+}

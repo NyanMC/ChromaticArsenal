@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:spotlight",
-      "text": "The Blåhaj is a $(9)utility curio$() found in Shepherd's chests in villages. While it is equipped, the wearer is immune to insomnia and phantoms will completely ignore them. The wearer will also be able to sleep even if monsters are nearby. The Blåhaj can also be placed, however this is merely cosmetic.",
+      "text": "The Blåhaj is a $(9)utility curio$() found by trading with Shepherds, or in Shepherd's chests in villages. While it is equipped, the wearer is immune to insomnia and phantoms will completely ignore them. The wearer will also be able to sleep even if monsters are nearby. The Blåhaj can also be placed, however this is merely cosmetic.",
       "item": "chromaticarsenal:blahaj"
     }
   ]
