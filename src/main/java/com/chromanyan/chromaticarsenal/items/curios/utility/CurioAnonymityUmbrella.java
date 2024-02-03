@@ -23,6 +23,7 @@ public class CurioAnonymityUmbrella extends BaseCurioItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.utility"));
+        list.add(Component.translatable("tooltip.chromaticarsenal.anonymity_umbrella.1"));
     }
 
     @Override
