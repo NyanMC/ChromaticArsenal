@@ -27,7 +27,7 @@ public class CAAdvancements extends AdvancementProvider {
     private static final Item[] CURIOS = new Item[] {
             ModItems.GOLDEN_HEART.get(), ModItems.GLASS_SHIELD.get(), ModItems.WARD_CRYSTAL.get(), ModItems.SHADOW_TREADS.get(), ModItems.DUALITY_RINGS.get(), ModItems.FRIENDLY_FIRE_FLOWER.get(), ModItems.LUNAR_CRYSTAL.get(), ModItems.CRYO_RING.get(), ModItems.BUBBLE_AMULET.get(), ModItems.MOMENTUM_STONE.get(),
             ModItems.SUPER_GOLDEN_HEART.get(), ModItems.SUPER_GLASS_SHIELD.get(), ModItems.SUPER_WARD_CRYSTAL.get(), ModItems.SUPER_SHADOW_TREADS.get(), ModItems.SUPER_FRIENDLY_FIRE_FLOWER.get(), ModItems.SUPER_LUNAR_CRYSTAL.get(), ModItems.SUPER_GLOW_RING.get(),
-            ModItems.ASCENDED_STAR.get(), ModItems.WORLD_ANCHOR.get(), ModItems.CURSED_TOTEM.get(), ModItems.GRAVITY_STONE.get(), ModItems.VERTICAL_STASIS.get(), ModItems.HARPY_FEATHER.get(), ModItems.SUPER_HARPY_FEATHER.get(), ModItems.BLAHAJ.get()
+            ModItems.ASCENDED_STAR.get(), ModItems.WORLD_ANCHOR.get(), ModItems.CURSED_TOTEM.get(), ModItems.GRAVITY_STONE.get(), ModItems.VERTICAL_STASIS.get(), ModItems.HARPY_FEATHER.get(), ModItems.SUPER_HARPY_FEATHER.get(), ModItems.BLAHAJ.get(), ModItems.ANONYMITY_UMBRELLA.get()
     };
 
     public CAAdvancements(DataGenerator generatorIn, ExistingFileHelper fileHelperIn) {
@@ -101,6 +101,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement verticalStasis = simpleHasItemRecipe(ModItems.VERTICAL_STASIS.get(), consumer, fileHelper);
         Advancement harpyFeather = simpleHasItemRecipe(ModItems.HARPY_FEATHER.get(), consumer, fileHelper);
         Advancement blahaj = displayedHasItem(ModItems.BLAHAJ.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/trade"));
+        Advancement anonymityUmbrella = simpleHasItemRecipe(ModItems.ANONYMITY_UMBRELLA.get(), consumer, fileHelper);
 
         Advancement superGoldenHeart = simpleHasItemRecipe(ModItems.SUPER_GOLDEN_HEART.get(), consumer, fileHelper);
         Advancement superGlassShield = simpleHasItemRecipe(ModItems.SUPER_GLASS_SHIELD.get(), consumer, fileHelper);
