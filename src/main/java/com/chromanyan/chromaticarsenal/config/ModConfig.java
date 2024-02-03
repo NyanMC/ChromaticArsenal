@@ -530,15 +530,22 @@ public class ModConfig {
 
         public final BooleanValue suppressEnchantedSuperCurioWarning;
         public final IntValue tooltipDecimalThreshold;
+        public final BooleanValue anonymityOptOut;
 
         Client(ForgeConfigSpec.Builder builder) {
             builder.push("TooltipSettings");
-            suppressEnchantedSuperCurioWarning = builder
-                    .comment("Disables the extra tooltip lines which are displayed when a super curio is enchanted with a non-curse enchantment.")
-                    .define("suppressEnchantedSuperCurioWarning", false);
-            tooltipDecimalThreshold = builder
-                    .comment("Whenever ticks are converted to seconds in a tooltip, the decimal is kept if the resulting amount of seconds is under this value.")
-                    .defineInRange("tooltipDecimalThreshold", 10, 0, Integer.MAX_VALUE);
+                suppressEnchantedSuperCurioWarning = builder
+                        .comment("Disables the extra tooltip lines which are displayed when a super curio is enchanted with a non-curse enchantment.")
+                        .define("suppressEnchantedSuperCurioWarning", false);
+                tooltipDecimalThreshold = builder
+                        .comment("Whenever ticks are converted to seconds in a tooltip, the decimal is kept if the resulting amount of seconds is under this value.")
+                        .defineInRange("tooltipDecimalThreshold", 10, 0, Integer.MAX_VALUE);
+            builder.pop();
+
+            builder.push("AnonymityUmbrellaSettings");
+                anonymityOptOut = builder
+                        .comment("The Anonymity Umbrella is meant to be a fun item to cause a bit of mischief in small servers, similar to the Invisibility effect. If it is being misused, you can disable it here. While disabled, you will see the true skins of anonymous players, however nametags will still be hidden.")
+                        .define("anonymityOptOut", false);
             builder.pop();
         }
     }
