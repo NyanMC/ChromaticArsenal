@@ -66,7 +66,8 @@ public class CAItemTags extends ItemTagsProvider {
                 ModItems.VERTICAL_STASIS.get(),
                 ModItems.HARPY_FEATHER.get(),
                 ModItems.SUPER_HARPY_FEATHER.get(),
-                ModItems.BLAHAJ.get()
+                ModItems.BLAHAJ.get(),
+                ModItems.ANONYMITY_UMBRELLA.get()
         );
 
         tag(ModTags.Items.CHROMATIC_CURIOS)
