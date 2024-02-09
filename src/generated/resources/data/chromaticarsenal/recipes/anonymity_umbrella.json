@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "tag": "forge:gems/chroma"
+    },
+    "e": {
+      "item": "minecraft:echo_shard"
+    },
+    "s": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "ece",
+    " s ",
+    " s "
+  ],
+  "result": {
+    "item": "chromaticarsenal:anonymity_umbrella"
+  }
+}

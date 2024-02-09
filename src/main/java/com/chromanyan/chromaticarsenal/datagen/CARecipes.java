@@ -107,6 +107,16 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "vertical_stasis_stone"));
 
+        ShapedRecipeBuilder.shaped(ModItems.ANONYMITY_UMBRELLA.get(), 1)
+                .pattern("ece")
+                .pattern(" s ")
+                .pattern(" s ")
+                .define('c', CHROMA_SHARD)
+                .define('s', Tags.Items.RODS_WOODEN)
+                .define('e', Items.ECHO_SHARD)
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "anonymity_umbrella"));
+
         ShapedRecipeBuilder.shaped(ModItems.SUPER_GOLDEN_HEART.get(), 1)
                 .pattern("d d")
                 .pattern("bhb")
