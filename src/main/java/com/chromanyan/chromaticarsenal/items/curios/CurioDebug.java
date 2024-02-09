@@ -1,9 +1,15 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModSounds;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.PlayerAdvancements;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -14,6 +20,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
+import java.util.Map;
 
 public class CurioDebug extends BaseCurioItem {
 
@@ -29,6 +36,27 @@ public class CurioDebug extends BaseCurioItem {
         if (!living.getCommandSenderWorld().isClientSide) {
             living.setGlowingTag(true);
         }
+
+        if (!(living instanceof ServerPlayer serverPlayer)) return;
+
+        MinecraftServer server = serverPlayer.level.getServer();
+        if (server == null) return;
+
+        PlayerAdvancements playerAdvancements = server.getPlayerList().getPlayerAdvancements(serverPlayer);
+        int completedAdvancements = 0;
+        int totalAdvancements = 0;
+
+        for (Map.Entry<Advancement, AdvancementProgress> advancements : playerAdvancements.advancements.entrySet()) {
+            Advancement advancement = advancements.getKey();
+            if (advancement.getId().toString().contains("recipes")) continue; // don't count recipe advancements, too many
+
+            totalAdvancements++;
+            if (playerAdvancements.getOrStartProgress(advancement).isDone()) {
+                completedAdvancements++;
+            }
+        }
+
+        ChromaticArsenal.LOGGER.debug("Completed " + completedAdvancements + " out of " + totalAdvancements + " advancements");
     }
 
     @Override
