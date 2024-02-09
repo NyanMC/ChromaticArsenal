@@ -1,0 +1,16 @@
+{
+  "name": "Anonymity Umbrella",
+  "icon": "chromaticarsenal:anonymity_umbrella",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Anonymity Umbrella is a utility curio that allows its wearer to hide their identity from other players. While this item is equipped, the wearer's skin is fully covered in black, and their name tag is concealed. The skin concealing effect can be disabled in the client config."
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "$(o)Sunglasses not included. Unless you change the texture, of course. I'm a line of flavor text, not a cop.",
+      "recipe": "chromaticarsenal:anonymity_umbrella"
+    }
+  ]
+}
