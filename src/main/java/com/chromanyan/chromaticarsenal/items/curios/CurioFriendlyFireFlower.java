@@ -8,6 +8,7 @@ import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -26,13 +27,19 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.SlotResult;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CurioFriendlyFireFlower extends BaseCurioItem {
 
     private static final DamageSource UNFRIENDLY_FIRE = new DamageSource("chromaticarsenal.unfriendly_fire").setIsFire();
+
+    public CurioFriendlyFireFlower() {
+        super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(35).fireResistant());
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -54,10 +61,6 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
 
     private boolean isFireImmune(@NotNull LivingEntity living) {
         return living.hasEffect(MobEffects.FIRE_RESISTANCE) || living.fireImmune(); // will fireImmune() ever even trigger for a player? hell if i know
-    }
-
-    public CurioFriendlyFireFlower() {
-        super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(25).fireResistant());
     }
 
     @Override
@@ -106,15 +109,16 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
             }
         }
 
+        if (target == null) return;
+
         if (player == target) {
             event.setAmount(0);
             event.setCanceled(true);
-        } else {
-            if (target != null && !isFireImmune(target)) {
-                if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
-                    target.setSecondsOnFire(100);
-                }
-            }
+            return;
+        }
+
+        if (ChromaCurioHelper.isChromaticTwisted(stack, player) && !isFireImmune(target)) {
+            target.setSecondsOnFire(100);
         }
     }
 
@@ -125,6 +129,20 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
+        if (event.getSource() instanceof EntityDamageSource entityDamageSource) {
+            if (entityDamageSource.isThorns()) {
+                event.setAmount(0);
+                event.setCanceled(true);
+
+                // someday these three lines are going to make someone hate me, i guarantee it
+                Optional<SlotResult> slotResultOptional = ChromaCurioHelper.getCurio(player, this);
+                slotResultOptional.ifPresent(slotResult -> stack.hurtAndBreak(1, player,
+                        damager -> CuriosApi.getCuriosHelper().onBrokenCurio(slotResult.slotContext())));
+
+                return;
+            }
+        }
+
         if (!ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             return;
         }
