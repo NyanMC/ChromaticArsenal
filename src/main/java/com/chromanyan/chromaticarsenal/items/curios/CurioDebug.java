@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModSounds;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.CompletionHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -10,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.PlayerAdvancements;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -39,24 +41,11 @@ public class CurioDebug extends BaseCurioItem {
 
         if (!(living instanceof ServerPlayer serverPlayer)) return;
 
-        MinecraftServer server = serverPlayer.level.getServer();
-        if (server == null) return;
+        Tuple<Integer, Integer> advancementCount = CompletionHelper.getCompletedAndTotalAdvancements(serverPlayer);
 
-        PlayerAdvancements playerAdvancements = server.getPlayerList().getPlayerAdvancements(serverPlayer);
-        int completedAdvancements = 0;
-        int totalAdvancements = 0;
+        if (advancementCount == null) return;
 
-        for (Map.Entry<Advancement, AdvancementProgress> advancements : playerAdvancements.advancements.entrySet()) {
-            Advancement advancement = advancements.getKey();
-            if (advancement.getId().toString().contains("recipes")) continue; // don't count recipe advancements, too many
-
-            totalAdvancements++;
-            if (playerAdvancements.getOrStartProgress(advancement).isDone()) {
-                completedAdvancements++;
-            }
-        }
-
-        ChromaticArsenal.LOGGER.debug("Completed " + completedAdvancements + " out of " + totalAdvancements + " advancements");
+        ChromaticArsenal.LOGGER.debug("Completed " + advancementCount.getA() + " out of " + advancementCount.getB() + " advancements");
     }
 
     @Override
