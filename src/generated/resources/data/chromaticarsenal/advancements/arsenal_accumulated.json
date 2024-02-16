@@ -1,6 +1,18 @@
 {
   "parent": "chromaticarsenal:ascended_star",
   "criteria": {
+    "has_advancing_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:advancing_heart"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_anonymity_umbrella": {
       "conditions": {
         "items": [
@@ -359,6 +371,9 @@
     ],
     [
       "has_momentum_stone"
+    ],
+    [
+      "has_advancing_heart"
     ],
     [
       "has_super_golden_heart"

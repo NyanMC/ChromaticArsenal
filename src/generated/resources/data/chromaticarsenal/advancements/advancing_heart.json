@@ -1,0 +1,37 @@
+{
+  "parent": "chromaticarsenal:golden_heart",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:advancing_heart"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.chromaticarsenal.advancing_heart.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "chromaticarsenal:advancing_heart"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.chromaticarsenal.advancing_heart.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

@@ -25,7 +25,7 @@ public class CAAdvancements extends AdvancementProvider {
     // this class is so fucked
 
     private static final Item[] CURIOS = new Item[] {
-            ModItems.GOLDEN_HEART.get(), ModItems.GLASS_SHIELD.get(), ModItems.WARD_CRYSTAL.get(), ModItems.SHADOW_TREADS.get(), ModItems.DUALITY_RINGS.get(), ModItems.FRIENDLY_FIRE_FLOWER.get(), ModItems.LUNAR_CRYSTAL.get(), ModItems.CRYO_RING.get(), ModItems.BUBBLE_AMULET.get(), ModItems.MOMENTUM_STONE.get(),
+            ModItems.GOLDEN_HEART.get(), ModItems.GLASS_SHIELD.get(), ModItems.WARD_CRYSTAL.get(), ModItems.SHADOW_TREADS.get(), ModItems.DUALITY_RINGS.get(), ModItems.FRIENDLY_FIRE_FLOWER.get(), ModItems.LUNAR_CRYSTAL.get(), ModItems.CRYO_RING.get(), ModItems.BUBBLE_AMULET.get(), ModItems.MOMENTUM_STONE.get(), ModItems.ADVANCING_HEART.get(),
             ModItems.SUPER_GOLDEN_HEART.get(), ModItems.SUPER_GLASS_SHIELD.get(), ModItems.SUPER_WARD_CRYSTAL.get(), ModItems.SUPER_SHADOW_TREADS.get(), ModItems.SUPER_FRIENDLY_FIRE_FLOWER.get(), ModItems.SUPER_LUNAR_CRYSTAL.get(), ModItems.SUPER_GLOW_RING.get(),
             ModItems.ASCENDED_STAR.get(), ModItems.WORLD_ANCHOR.get(), ModItems.CURSED_TOTEM.get(), ModItems.GRAVITY_STONE.get(), ModItems.VERTICAL_STASIS.get(), ModItems.HARPY_FEATHER.get(), ModItems.SUPER_HARPY_FEATHER.get(), ModItems.BLAHAJ.get(), ModItems.ANONYMITY_UMBRELLA.get()
     };
@@ -92,6 +92,7 @@ public class CAAdvancements extends AdvancementProvider {
         Advancement cryoRing = displayedHasItem(ModItems.CRYO_RING.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/walk_on_powder_snow_with_leather_boots"));
         Advancement bubbleAmulet = displayedHasItem(ModItems.BUBBLE_AMULET.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/kill_a_mob"));
         Advancement momentumStone = displayedHasItem(ModItems.MOMENTUM_STONE.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/trade"));
+        Advancement advancingHeart = displayedHasItem(ModItems.ADVANCING_HEART.get(), consumer, fileHelper, FrameType.TASK, goldenHeart);
 
         Advancement ascendedStar = displayedHasItem(ModItems.ASCENDED_STAR.get(), consumer, fileHelper, FrameType.GOAL, ascensionEssence);
         Advancement worldAnchor = simpleHasItemRecipe(ModItems.WORLD_ANCHOR.get(), consumer, fileHelper);

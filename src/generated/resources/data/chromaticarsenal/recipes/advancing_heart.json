@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "minecraft:dragon_breath"
+  },
+  "base": {
+    "item": "chromaticarsenal:golden_heart"
+  },
+  "result": {
+    "item": "chromaticarsenal:advancing_heart"
+  }
+}
