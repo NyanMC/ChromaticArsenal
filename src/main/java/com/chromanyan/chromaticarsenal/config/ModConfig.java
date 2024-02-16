@@ -85,6 +85,9 @@ public class ModConfig {
         public final DoubleValue momentumStoneProtectionToughness;
         public final DoubleValue twistedMomentumStoneExhaustion;
 
+        public final IntValue advancingHealthModifier;
+        public final ForgeConfigSpec.ConfigValue<List<? extends String>> advancementBlacklist;
+
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
         public final DoubleValue anchorKnockbackResistanceMultiplier;
@@ -353,6 +356,15 @@ public class ModConfig {
                     twistedMomentumStoneExhaustion = builder
                             .comment("The multiplier given to exhaustion when sprinting with a chromatically twisted Momentum Stone.")
                             .defineInRange("twistedMomentumStoneExhaustion", 1.5, 1, Double.MAX_VALUE);
+                builder.pop();
+
+                builder.push("AdvancingHeartSettings");
+                    advancingHealthModifier = builder
+                            .comment("The amount of bonus health obtainable with every advancement completed. The health bonus is floored to the nearest even number.")
+                            .defineInRange("advancingHealthModifier", 20, 2, Integer.MAX_VALUE);
+                    advancementBlacklist = builder
+                            .comment("The Advancing Heart will ignore advancements which contain any of these keywords in their name. By default, ignores all recipe advancements.")
+                            .defineList("advancementBlacklist", new ArrayList<>(List.of("recipes")), o -> o instanceof String);
                 builder.pop();
 
                 builder.push("WorldAnchorSettings");

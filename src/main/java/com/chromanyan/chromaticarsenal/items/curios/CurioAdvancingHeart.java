@@ -1,6 +1,7 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.CompletionHelper;
@@ -18,6 +19,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -77,8 +79,7 @@ public class CurioAdvancingHeart extends BaseCurioItem {
         CompoundTag tag = stack.getOrCreateTag();
         float percentage = (float) tag.getInt("completedAdvancements") / tag.getInt("totalAdvancements");
         if (percentage == Float.POSITIVE_INFINITY) percentage = 0; // in case the item's NBT is manually edited or a weird bug happens
-        return (int) (20 * percentage / 2) * 2; // the divide and re-multiply by 2 is to ensure an even number
-        //TODO change 20 from a constant into a configurable value
+        return (int) (config.advancingHealthModifier.get() * percentage / 2) * 2; // the divide and re-multiply by 2 is to ensure an even number
     }
 
     @Override
@@ -88,5 +89,10 @@ public class CurioAdvancingHeart extends BaseCurioItem {
         atts.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":advancing_health_bonus", getHealthModifier(stack), AttributeModifier.Operation.ADDITION));
 
         return atts;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment != ModEnchantments.CHROMATIC_TWISTING.get() && super.canApplyAtEnchantingTable(stack, enchantment);
     }
 }

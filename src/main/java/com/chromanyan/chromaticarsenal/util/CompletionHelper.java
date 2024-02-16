@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.util;
 
+import com.chromanyan.chromaticarsenal.config.ModConfig;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.server.MinecraftServer;
@@ -13,16 +14,18 @@ import java.util.Map;
 
 public class CompletionHelper {
 
+    private static final ModConfig.Common config = ModConfig.COMMON;
+
     private CompletionHelper() {
 
     }
 
     /**
-     * Gets the number of advancements which the provided ServerPlayer has completed, and the total number of
-     * advancements which can be earned. If the ServerPlayer's server is null, this method will also return null.
-     * Ignores advancements containing the string "recipes" in them.
-     * @param serverPlayer A ServerPlayer to check advancements for.
-     * @return A Tuple in which A is the number of completed advancements and B is the number of total advancements.
+     * Gets the number of advancements which the provided {@link ServerPlayer} has completed, and the total number of
+     * advancements which can be earned. If the {@link ServerPlayer}'s {@link MinecraftServer} is null, this method will also return null.
+     * Ignores advancements containing a blacklisted keyword.
+     * @param serverPlayer A {@link ServerPlayer} to check advancements for.
+     * @return A {@link Tuple} in which A is the number of completed advancements and B is the number of total advancements.
      */
     public static @Nullable Tuple<Integer, Integer> getCompletedAndTotalAdvancements(@NotNull ServerPlayer serverPlayer) {
         MinecraftServer server = serverPlayer.level.getServer();
@@ -34,7 +37,8 @@ public class CompletionHelper {
 
         for (Map.Entry<Advancement, AdvancementProgress> advancements : playerAdvancements.advancements.entrySet()) {
             Advancement advancement = advancements.getKey();
-            if (advancement.getId().toString().contains("recipes")) continue; //TODO make this configurable too
+
+            if (isAdvancementIgnored(advancement)) continue;
 
             totalAdvancements++;
             if (playerAdvancements.getOrStartProgress(advancement).isDone()) {
@@ -43,6 +47,20 @@ public class CompletionHelper {
         }
 
         return new Tuple<>(completedAdvancements, totalAdvancements);
+    }
+
+    /**
+     * Returns true if the given {@link Advancement} should be ignored due to containing a blacklisted keyword.
+     * @param advancement The {@link Advancement} to check.
+     * @return Whether the advancement should be ignored.
+     */
+    public static boolean isAdvancementIgnored(Advancement advancement) {
+        for (String keyword : config.advancementBlacklist.get()) {
+            if (advancement.getId().toString().contains(keyword)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
