@@ -1,18 +1,13 @@
 package com.chromanyan.chromaticarsenal.init;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.items.ChampionCatalyst;
-import com.chromanyan.chromaticarsenal.items.ChromaSalvager;
-import com.chromanyan.chromaticarsenal.items.SpicyCoal;
-import com.chromanyan.chromaticarsenal.items.compat.MarkTwisted;
+import com.chromanyan.chromaticarsenal.items.*;
+import com.chromanyan.chromaticarsenal.items.compat.*;
 import com.chromanyan.chromaticarsenal.items.curios.*;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.*;
-import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioCursedTotem;
-import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioLimitBreak;
-import com.chromanyan.chromaticarsenal.items.curios.challenge.CurioWorldAnchor;
+import com.chromanyan.chromaticarsenal.items.curios.challenge.*;
 import com.chromanyan.chromaticarsenal.items.curios.utility.*;
-import com.chromanyan.chromaticarsenal.items.food.Cosmicola;
-import com.chromanyan.chromaticarsenal.items.food.MagicGarlicBread;
+import com.chromanyan.chromaticarsenal.items.food.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -43,6 +38,7 @@ public class ModItems {
     public static final RegistryObject<Item> CRYO_RING = ITEMS_REGISTRY.register("cryo_ring", CurioCryoRing::new);
     public static final RegistryObject<Item> BUBBLE_AMULET = ITEMS_REGISTRY.register("bubble_amulet", CurioBubbleAmulet::new);
     public static final RegistryObject<Item> MOMENTUM_STONE = ITEMS_REGISTRY.register("momentum_stone", CurioMomentumStone::new);
+    public static final RegistryObject<Item> ADVANCING_HEART = ITEMS_REGISTRY.register("advancing_heart", CurioAdvancingHeart::new);
 
     // super curios
     public static final RegistryObject<Item> SUPER_GOLDEN_HEART = ITEMS_REGISTRY.register("super_golden_heart", CurioDiamondHeart::new);

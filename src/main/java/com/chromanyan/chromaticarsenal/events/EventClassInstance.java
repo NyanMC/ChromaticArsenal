@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModEffects;
+import com.chromanyan.chromaticarsenal.items.curios.CurioAdvancingHeart;
 import com.chromanyan.chromaticarsenal.items.curios.CurioBubbleAmulet;
 import com.chromanyan.chromaticarsenal.items.curios.CurioLunarCrystal;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
@@ -32,13 +33,16 @@ import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.VanillaGameEvent;
 import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.player.AdvancementEvent.AdvancementEarnEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Random;
 
 public class EventClassInstance {
@@ -96,6 +100,16 @@ public class EventClassInstance {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public void playerGotAdvancement(AdvancementEarnEvent event) {
+        Player player = event.getEntity();
+
+        Optional<SlotResult> slotResult = ChromaCurioHelper.getCurio(player, ModItems.ADVANCING_HEART.get());
+        if (slotResult.isEmpty()) return;
+
+        CurioAdvancingHeart.updateNBTForStack(slotResult.get().slotContext(), slotResult.get().stack());
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

@@ -73,6 +73,11 @@
   "tooltip.chromaticarsenal.momentum_stone.3": "§cStopping may be a problem",
   "tooltip.chromaticarsenal.momentum_stone.twisted": "§cChromatic Twisting:§5 Stopping is no longer difficult, however sprinting is more exhausting",
 
+  "item.chromaticarsenal.advancing_heart": "Advancing Heart",
+  "tooltip.chromaticarsenal.advancing_heart.1": "§6This curio's power is scaled by how many advancements have been earned",
+  "tooltip.chromaticarsenal.advancing_heart.progresstracker": "§eCurrently, you have completed %1$s§e of %2$s§e advancements",
+  "tooltip.chromaticarsenal.advancing_heart.progresstracker.equipfirst": "§eEquip this item to see your advancement count",
+
   "item.chromaticarsenal.gravity_stone": "Gravity Stone",
   "tooltip.chromaticarsenal.gravity_stone.1": "§6Prevents gravity from being reduced below the base value",
   "tooltip.chromaticarsenal.gravity_stone.2": "§6Prevents the floatiness from Slow Falling (the effect will still negate fall damage)",
