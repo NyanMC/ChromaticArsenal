@@ -1,9 +1,7 @@
 package com.chromanyan.chromaticarsenal.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
-import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
-import net.minecraftforge.common.ForgeConfigSpec.IntValue;
+import net.minecraftforge.common.ForgeConfigSpec.*;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
@@ -30,7 +28,7 @@ public class ModConfig {
         public final DoubleValue antiMagicMultiplierOutgoing;
         public final IntValue twistedWeaknessDuration;
         public final DoubleValue antiMagicProtectionModifier;
-        public final ForgeConfigSpec.ConfigValue<List<? extends String>> damageSourceBlacklist;
+        public final ConfigValue<List<? extends String>> damageSourceBlacklist;
 
         public final IntValue darkspeedPotency;
         public final DoubleValue enchantmentSpeedMultiplier;
@@ -86,7 +84,7 @@ public class ModConfig {
         public final DoubleValue twistedMomentumStoneExhaustion;
 
         public final IntValue advancingHealthModifier;
-        public final ForgeConfigSpec.ConfigValue<List<? extends String>> advancementBlacklist;
+        public final ConfigValue<List<? extends String>> advancementBlacklist;
 
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
@@ -142,7 +140,7 @@ public class ModConfig {
         public final BooleanValue lootTableInsertion;
         public final BooleanValue superCuriosOnlyInRespectiveSlot;
 
-        Common(ForgeConfigSpec.Builder builder) {
+        Common(Builder builder) {
             builder.push("CurioSettings");
                 builder.push("GoldenHeartSettings");
                     maxHealthBoost = builder
@@ -528,6 +526,7 @@ public class ModConfig {
 
             lootTableInsertion = builder
                     .comment("Set to false to prevent Chromatic Arsenal from injecting its own items into loot tables. This will cause items only found as loot (such as the Golden Heart) to become unobtainable, and it will be up to the modpack to add a method to obtain them. This setting also affects the Wandering Trader trade for Chroma Shards.")
+                    .worldRestart()
                     .define("lootTableInsertion", true);
             superCuriosOnlyInRespectiveSlot = builder
                     .comment("Whether super curios are allowed in slots other than super curio slots. Prevents equipping super curios in general purpose curio slots.")
@@ -540,7 +539,7 @@ public class ModConfig {
     public static final Common COMMON;
 
     static {
-        final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
+        final Pair<Common, ForgeConfigSpec> specPair = new Builder().configure(Common::new);
         commonSpec = specPair.getRight();
         COMMON = specPair.getLeft();
     }
@@ -551,7 +550,7 @@ public class ModConfig {
         public final IntValue tooltipDecimalThreshold;
         public final BooleanValue anonymityOptOut;
 
-        Client(ForgeConfigSpec.Builder builder) {
+        Client(Builder builder) {
             builder.push("TooltipSettings");
                 suppressEnchantedSuperCurioWarning = builder
                         .comment("Disables the extra tooltip lines which are displayed when a super curio is enchanted with a non-curse enchantment.")
@@ -573,7 +572,7 @@ public class ModConfig {
     public static final Client CLIENT;
 
     static {
-        final Pair<Client, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Client::new);
+        final Pair<Client, ForgeConfigSpec> specPair = new Builder().configure(Client::new);
         clientSpec = specPair.getRight();
         CLIENT = specPair.getLeft();
     }
