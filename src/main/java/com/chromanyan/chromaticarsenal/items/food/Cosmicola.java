@@ -2,12 +2,12 @@ package com.chromanyan.chromaticarsenal.items.food;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModEffects;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.UseAnim;
 import org.jetbrains.annotations.NotNull;
 
 public class Cosmicola extends Item {
@@ -26,7 +26,7 @@ public class Cosmicola extends Item {
     }
 
     @Override
-    public @NotNull SoundEvent getEatingSound() {
-        return SoundEvents.GENERIC_DRINK;
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack stack) {
+        return UseAnim.DRINK;
     }
 }
