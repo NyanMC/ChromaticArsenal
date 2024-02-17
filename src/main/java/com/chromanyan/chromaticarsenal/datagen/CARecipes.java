@@ -108,11 +108,12 @@ public class CARecipes extends RecipeProvider {
 
         ShapedRecipeBuilder.shaped(ModItems.DUALITY_RINGS.get(), 1)
                 .pattern("awm")
-                .pattern("wcb")
+                .pattern("rcr")
                 .pattern("mba")
                 .define('a', Items.ARROW)
                 .define('w', Items.WHITE_WOOL)
                 .define('m', ModItems.MAGIC_GARLIC_BREAD.get())
+                .define('r', ModItems.AMETHYST_RING.get())
                 .define('c', CHROMA_SHARD)
                 .define('b', Items.BLACK_WOOL)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))

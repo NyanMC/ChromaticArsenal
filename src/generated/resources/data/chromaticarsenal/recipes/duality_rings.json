@@ -13,13 +13,16 @@
     "m": {
       "item": "chromaticarsenal:magic_garlic_bread"
     },
+    "r": {
+      "item": "chromaticarsenal:amethyst_ring"
+    },
     "w": {
       "item": "minecraft:white_wool"
     }
   },
   "pattern": [
     "awm",
-    "wcb",
+    "rcr",
     "mba"
   ],
   "result": {
