@@ -47,7 +47,7 @@ public class MiscEvents {
 
     @SubscribeEvent
     public void playerDeathEvent(LivingDeathEvent event) {
-        if (event.isCanceled()) {
+        if (event.isCanceled() || event.getSource().isBypassInvul()) {
             return;
         }
         LivingEntity entity = event.getEntity();
