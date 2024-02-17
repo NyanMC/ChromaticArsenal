@@ -3,7 +3,6 @@ package com.chromanyan.chromaticarsenal.util;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModItems;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -51,7 +50,7 @@ public class ChromaCurioHelper {
 
     // thanks flux networks
     @Nonnull
-    public static Iterable<ItemStack> getFlatStacks(ServerPlayer player) {
+    public static Iterable<ItemStack> getFlatStacks(LivingEntity player) {
         final LazyOptional<ICuriosItemHandler> curios = CuriosApi.getCuriosHelper().getCuriosHandler(player);
         if (curios.isPresent()) {
             // we can cache the ICuriosItemHandler atm, but cannot for getEquippedCurios()

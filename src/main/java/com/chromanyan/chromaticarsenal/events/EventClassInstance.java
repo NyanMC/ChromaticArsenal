@@ -9,7 +9,6 @@ import com.chromanyan.chromaticarsenal.items.curios.CurioBubbleAmulet;
 import com.chromanyan.chromaticarsenal.items.curios.CurioLunarCrystal;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -63,22 +62,18 @@ public class EventClassInstance {
                 return; // the rest of the effects should only fire if they're even applicable
             }
 
-            if (player instanceof ServerPlayer serverPlayer) {
-                for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
-                    if (stack.getItem() instanceof IChromaCurio chromaStack) {
-                        chromaStack.onWearerHurt(event, stack, player);
-                    }
+            for (ItemStack stack : ChromaCurioHelper.getFlatStacks(player)) {
+                if (stack.getItem() instanceof IChromaCurio chromaStack) {
+                    chromaStack.onWearerHurt(event, stack, player);
                 }
             }
 
             // attacker events
             Entity possibleAttacker = event.getSource().getEntity();
-            if (possibleAttacker instanceof LivingEntity livingAttacker) { // you can never be too safe
-                if (livingAttacker instanceof ServerPlayer serverPlayer) {
-                    for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
-                        if (stack.getItem() instanceof IChromaCurio chromaStack) {
-                            chromaStack.onWearerAttack(event, stack, livingAttacker, player);
-                        }
+            if (possibleAttacker instanceof LivingEntity livingAttacker) {
+                for (ItemStack stack : ChromaCurioHelper.getFlatStacks(livingAttacker)) {
+                    if (stack.getItem() instanceof IChromaCurio chromaStack) {
+                        chromaStack.onWearerAttack(event, stack, livingAttacker, player);
                     }
                 }
             }
@@ -88,16 +83,12 @@ public class EventClassInstance {
     @SubscribeEvent
     public void potionImmunityEvent(MobEffectEvent.Applicable event) {
         LivingEntity player = event.getEntity();
-        if (!player.getCommandSenderWorld().isClientSide()) {
-            if (event.getResult() == Result.DENY) {
-                return;
-            }
-            if (player instanceof ServerPlayer serverPlayer) {
-                for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
-                    if (stack.getItem() instanceof IChromaCurio chromaStack) {
-                        chromaStack.onGetImmunities(event, stack, event.getEffectInstance().getEffect());
-                    }
-                }
+        if (player.getCommandSenderWorld().isClientSide() || !config.potionImmunitySideCheck.get()) return;
+        if (event.getResult() == Result.DENY) return;
+
+        for (ItemStack stack : ChromaCurioHelper.getFlatStacks(player)) {
+            if (stack.getItem() instanceof IChromaCurio chromaStack) {
+                chromaStack.onGetImmunities(event, stack, event.getEffectInstance().getEffect());
             }
         }
     }
@@ -134,11 +125,9 @@ public class EventClassInstance {
             entity.getCommandSenderWorld().playSound(null, entity.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundSource.HOSTILE, 0.5F, 1.0F);
         }
 
-        if (entity instanceof ServerPlayer serverPlayer) {
-            for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
-                if (stack.getItem() instanceof IChromaCurio chromaStack) {
-                    chromaStack.onWearerDied(event, stack, entity);
-                }
+        for (ItemStack stack : ChromaCurioHelper.getFlatStacks(entity)) {
+            if (stack.getItem() instanceof IChromaCurio chromaStack) {
+                chromaStack.onWearerDied(event, stack, entity);
             }
         }
     }
@@ -148,11 +137,9 @@ public class EventClassInstance {
         LivingEntity player = event.getEntity();
 
         if (!player.getCommandSenderWorld().isClientSide()) {
-            if (player instanceof ServerPlayer serverPlayer) {
-                for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
-                    if (stack.getItem() instanceof IChromaCurio chromaStack) {
-                        chromaStack.onGetVisibility(event, stack);
-                    }
+            for (ItemStack stack : ChromaCurioHelper.getFlatStacks(player)) {
+                if (stack.getItem() instanceof IChromaCurio chromaStack) {
+                    chromaStack.onGetVisibility(event, stack);
                 }
             }
         }
@@ -163,11 +150,9 @@ public class EventClassInstance {
         LivingEntity player = event.getEntity();
 
         if (!player.getCommandSenderWorld().isClientSide()) {
-            if (player instanceof ServerPlayer serverPlayer) {
-                for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
-                    if (stack.getItem() instanceof IChromaCurio chromaStack) {
-                        chromaStack.onPotionApplied(event);
-                    }
+            for (ItemStack stack : ChromaCurioHelper.getFlatStacks(player)) {
+                if (stack.getItem() instanceof IChromaCurio chromaStack) {
+                    chromaStack.onPotionApplied(event);
                 }
             }
         }
@@ -181,11 +166,9 @@ public class EventClassInstance {
         Entity entity = event.getCause();
         if (entity instanceof LivingEntity player) {
             if (!player.getCommandSenderWorld().isClientSide()) {
-                if (player instanceof ServerPlayer serverPlayer) {
-                    for (ItemStack stack : ChromaCurioHelper.getFlatStacks(serverPlayer)) {
-                        if (stack.getItem() instanceof IChromaCurio chromaStack) {
-                            chromaStack.onVanillaEvent(event, stack, player);
-                        }
+                for (ItemStack stack : ChromaCurioHelper.getFlatStacks(player)) {
+                    if (stack.getItem() instanceof IChromaCurio chromaStack) {
+                        chromaStack.onVanillaEvent(event, stack, player);
                     }
                 }
             }

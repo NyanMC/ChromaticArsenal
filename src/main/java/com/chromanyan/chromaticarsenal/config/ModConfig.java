@@ -137,6 +137,8 @@ public class ModConfig {
         public final BooleanValue canDamageSalvager;
         public final BooleanValue returnInferiorVariant;
 
+        public final BooleanValue potionImmunitySideCheck;
+
         public final BooleanValue lootTableInsertion;
         public final BooleanValue superCuriosOnlyInRespectiveSlot;
 
@@ -517,7 +519,12 @@ public class ModConfig {
                         .define("returnInferiorVaruant", true);
             builder.pop();
 
-
+            builder.push("ExperimentalSettings");
+                builder.comment("WARNING: These settings could have unintended side effects. You are less likely to receive help with issues if any of these settings are on.");
+                potionImmunitySideCheck = builder
+                        .comment("Whether curios that hook into MobEffectEvent.Applicable should impose a serverside check before running. May fix compatibility issues with mods such as Oh the Biomes You'll Go, but could lead to other issues in the process.")
+                        .define("potionImmunitySideCheck", true);
+            builder.pop();
 
             lootTableInsertion = builder
                     .comment("Set to false to prevent Chromatic Arsenal from injecting its own items into loot tables. This will cause items only found as loot (such as the Golden Heart) to become unobtainable, and it will be up to the modpack to add a method to obtain them. This setting also affects the Wandering Trader trade for Chroma Shards.")
