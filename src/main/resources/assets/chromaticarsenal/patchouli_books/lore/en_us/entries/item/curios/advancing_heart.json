@@ -1,0 +1,13 @@
+{
+  "name": "Advancing Heart",
+  "icon": "chromaticarsenal:advancing_heart",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:advancing_heart",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "This item seems to know your accomplishments of past and present. I have not yet figured out why, but it could be tied to the entities that tried to contact you as you left the End. Use this item with caution.",
+      "item": "chromaticarsenal:advancing_heart"
+    }
+  ]
+}

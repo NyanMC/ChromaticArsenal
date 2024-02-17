@@ -1,0 +1,16 @@
+{
+  "name": "Advancing Heart",
+  "icon": "chromaticarsenal:advancing_heart",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Advancing Heart is a curio created by combining a Golden Heart with Dragon's Breath. This item increases maximum health by X multiplied by the percentage of completed advancements, rounded down to an even number. X is configurable, 20 by default.",
+      "item": "chromaticarsenal:advancing_heart"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default Attribute modifiers:$()$(br)$(2)+0-20$() Max Health (depending on advancement completion)$(br)"
+    }
+  ]
+}
