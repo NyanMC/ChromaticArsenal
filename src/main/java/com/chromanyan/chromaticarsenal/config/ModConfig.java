@@ -517,8 +517,8 @@ public class ModConfig {
                         .define("returnInferiorVaruant", true);
             builder.pop();
 
+            builder.comment("WARNING: These settings could have unintended side effects. You are less likely to receive help with issues if any of these settings are on.");
             builder.push("ExperimentalSettings");
-                builder.comment("WARNING: These settings could have unintended side effects. You are less likely to receive help with issues if any of these settings are on.");
                 potionImmunitySideCheck = builder
                         .comment("Whether curios that hook into MobEffectEvent.Applicable should impose a serverside check before running. May fix compatibility issues with mods such as Oh the Biomes You'll Go, but could lead to other issues in the process.")
                         .define("potionImmunitySideCheck", true);
