@@ -52,6 +52,21 @@ public class CARecipes extends RecipeProvider {
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, name));
     }
 
+    @SuppressWarnings("SameParameterValue")
+    private void packAndUnpack(@NotNull Consumer<FinishedRecipe> consumer, ItemLike unpacked, ItemLike packed, String name, String name2) {
+        ShapelessRecipeBuilder.shapeless(unpacked, 9)
+                .requires(packed)
+                .unlockedBy("has_unpackable", has(unpacked))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, name + "_unpack"));
+        ShapedRecipeBuilder.shaped(packed, 1)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', unpacked)
+                .unlockedBy("has_unpackable", has(unpacked))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, name2));
+    }
+
     @Override
     public void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
         ShapelessRecipeBuilder.shapeless(ModItems.CHAMPION_CATALYST.get(), 1)
@@ -68,6 +83,15 @@ public class CARecipes extends RecipeProvider {
                 .requires(CHROMA_SHARD)
                 .unlockedBy("has_lunar_crystal", has(ModItems.LUNAR_CRYSTAL.get()))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "ascension_essence"));
+
+        ShapelessRecipeBuilder.shapeless(ModItems.MAGIC_GARLIC_BREAD.get(), 4)
+                .requires(CHROMA_SHARD)
+                .requires(Items.BREAD)
+                .requires(Items.BREAD)
+                .requires(Items.BREAD)
+                .requires(Items.BREAD)
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "magic_garlic_bread"));
 
         ShapedRecipeBuilder.shaped(ModItems.GLASS_SHIELD.get(), 1)
                 .pattern("pcp")
@@ -213,6 +237,8 @@ public class CARecipes extends RecipeProvider {
                 .define('e', Tags.Items.GEMS_EMERALD)
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "cursed_totem"));
+
+        packAndUnpack(consumer, ModItems.CHROMA_SHARD.get(), ModItems.CHROMA_BLOCK_ITEM.get(), "chroma_shard", "chroma_block");
 
         chromaUpgrade(consumer, ModItems.GOLDEN_HEART.get(), Items.DRAGON_BREATH, ModItems.ADVANCING_HEART.get(), "advancing_heart");
         chromaUpgrade(consumer, Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");

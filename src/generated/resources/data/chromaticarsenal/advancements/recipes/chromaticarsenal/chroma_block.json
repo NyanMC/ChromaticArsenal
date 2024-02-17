@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "chromaticarsenal:chroma_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unpackable": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:chroma_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_unpackable",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "chromaticarsenal:chroma_block"
+    ]
+  }
+}
