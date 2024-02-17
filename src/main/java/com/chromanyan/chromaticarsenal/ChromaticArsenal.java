@@ -2,13 +2,9 @@ package com.chromanyan.chromaticarsenal;
 
 import com.chromanyan.chromaticarsenal.client.renderer.CuriosRenderers;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
-import com.chromanyan.chromaticarsenal.datagen.CAAdvancements;
-import com.chromanyan.chromaticarsenal.datagen.CAModels;
-import com.chromanyan.chromaticarsenal.datagen.CARecipes;
-import com.chromanyan.chromaticarsenal.datagen.tags.CABlockTags;
-import com.chromanyan.chromaticarsenal.datagen.tags.CAItemTags;
-import com.chromanyan.chromaticarsenal.events.EventClassInstance;
-import com.chromanyan.chromaticarsenal.events.LootEvents;
+import com.chromanyan.chromaticarsenal.datagen.*;
+import com.chromanyan.chromaticarsenal.datagen.tags.*;
+import com.chromanyan.chromaticarsenal.events.*;
 import com.chromanyan.chromaticarsenal.init.*;
 import com.chromanyan.chromaticarsenal.items.curios.CurioGoldenHeart;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioIlluminatedSoul;
@@ -96,7 +92,8 @@ public class ChromaticArsenal {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        MinecraftForge.EVENT_BUS.register(new EventClassInstance());
+        MinecraftForge.EVENT_BUS.register(new MiscEvents());
+        MinecraftForge.EVENT_BUS.register(new CurioEvents());
         MinecraftForge.EVENT_BUS.register(new LootEvents());
 
         Registry.register(Registry.CUSTOM_STAT, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION);
