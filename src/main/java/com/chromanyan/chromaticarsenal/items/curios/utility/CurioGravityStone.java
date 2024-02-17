@@ -10,7 +10,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -25,6 +24,11 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioGravityStone extends BaseCurioItem {
+
+    public CurioGravityStone() {
+        super(ModRarities.UTILITY);
+    }
+
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.utility"));
@@ -53,10 +57,5 @@ public class CurioGravityStone extends BaseCurioItem {
     @Override
     public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
         return new ICurio.SoundInfo(SoundEvents.DEEPSLATE_FALL, 0.5F, 1);
-    }
-
-    @Override
-    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        return ModRarities.UTILITY;
     }
 }

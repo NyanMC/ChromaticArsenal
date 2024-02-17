@@ -14,7 +14,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -32,6 +31,10 @@ import java.util.UUID;
 
 public class CurioLimitBreak extends BaseCurioItem {
     private static final DamageSource ASCENDED = new DamageSource("chromaticarsenal.ascended").bypassArmor().bypassInvul();
+
+    public CurioLimitBreak() {
+        super(ModRarities.CHALLENGE);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
@@ -94,10 +97,5 @@ public class CurioLimitBreak extends BaseCurioItem {
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         event.setAmount((float) (event.getAmount() * config.damageMultiplier.get()));
-    }
-
-    @Override
-    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        return ModRarities.CHALLENGE;
     }
 }

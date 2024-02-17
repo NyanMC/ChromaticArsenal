@@ -19,7 +19,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -34,6 +33,10 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioHarpyFeather extends BaseCurioItem {
+
+    public CurioHarpyFeather() {
+        super(ModRarities.UTILITY);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -114,14 +117,6 @@ public class CurioHarpyFeather extends BaseCurioItem {
         }
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
-    }
-
-    @Override
-    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
-            return ModRarities.TWISTED;
-        else
-            return ModRarities.UTILITY;
     }
 
     @NotNull

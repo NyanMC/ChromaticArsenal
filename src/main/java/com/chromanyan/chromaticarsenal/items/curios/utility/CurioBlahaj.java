@@ -30,7 +30,7 @@ public class CurioBlahaj extends BlockItem implements IChromaCurio, ICurioItem {
         super(ModBlocks.BLAHAJ.get(), new Item.Properties()
                 .tab(ChromaticArsenal.GROUP)
                 .stacksTo(1)
-                .rarity(Rarity.RARE)
+                .rarity(ModRarities.UTILITY)
                 .defaultDurability(0));
     }
 
@@ -85,10 +85,5 @@ public class CurioBlahaj extends BlockItem implements IChromaCurio, ICurioItem {
     @Override
     public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
         return new ICurio.SoundInfo(SoundEvents.WOOL_PLACE, 0.5F, 1);
-    }
-
-    @Override
-    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        return ModRarities.UTILITY;
     }
 }

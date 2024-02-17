@@ -11,7 +11,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -25,6 +24,10 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import java.util.List;
 
 public class CurioCursedTotem extends BaseCurioItem {
+
+    public CurioCursedTotem() {
+        super(ModRarities.CHALLENGE);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
@@ -67,10 +70,5 @@ public class CurioCursedTotem extends BaseCurioItem {
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return enchantment == Enchantments.BINDING_CURSE || enchantment == Enchantments.VANISHING_CURSE;
-    }
-
-    @Override
-    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        return ModRarities.CHALLENGE;
     }
 }

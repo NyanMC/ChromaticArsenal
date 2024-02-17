@@ -21,12 +21,16 @@ public class BaseCurioItem extends Item implements ICurioItem, IChromaCurio {
     protected static final ModConfig.Common config = ModConfig.COMMON;
     protected static final ModConfig.Client clientConfig = ModConfig.CLIENT;
 
-    public BaseCurioItem() {
+    public BaseCurioItem(Rarity rarity) {
         super(new Item.Properties()
                 .tab(ChromaticArsenal.GROUP)
                 .stacksTo(1)
-                .rarity(Rarity.RARE)
+                .rarity(rarity)
                 .defaultDurability(0));
+    }
+
+    public BaseCurioItem() {
+        this(Rarity.RARE);
     }
 
     public BaseCurioItem(Item.Properties properties) {

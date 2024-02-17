@@ -10,7 +10,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
@@ -23,6 +22,10 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioAnonymityUmbrella extends BaseCurioItem {
+
+    public CurioAnonymityUmbrella() {
+        super(ModRarities.UTILITY);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -43,10 +46,5 @@ public class CurioAnonymityUmbrella extends BaseCurioItem {
     @Override
     public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
         return new ICurio.SoundInfo(SoundEvents.WOOL_PLACE, 0.5F, 1);
-    }
-
-    @Override
-    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        return ModRarities.UTILITY;
     }
 }

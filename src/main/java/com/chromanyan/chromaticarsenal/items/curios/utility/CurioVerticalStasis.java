@@ -10,7 +10,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -22,6 +21,10 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import java.util.List;
 
 public class CurioVerticalStasis extends BaseCurioItem {
+
+    public CurioVerticalStasis() {
+        super(ModRarities.UTILITY);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -65,9 +68,5 @@ public class CurioVerticalStasis extends BaseCurioItem {
     @Override
     public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
         return new ICurio.SoundInfo(SoundEvents.SHULKER_BULLET_HIT, 0.5F, 1);
-    }
-    @Override
-    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        return ModRarities.UTILITY;
     }
 }

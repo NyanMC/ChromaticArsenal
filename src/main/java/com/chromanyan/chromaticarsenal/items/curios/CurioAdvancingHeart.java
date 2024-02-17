@@ -11,6 +11,7 @@ import com.google.common.collect.Multimap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,6 +25,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.UUID;
@@ -94,5 +96,11 @@ public class CurioAdvancingHeart extends BaseCurioItem {
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return enchantment != ModEnchantments.CHROMATIC_TWISTING.get() && super.canApplyAtEnchantingTable(stack, enchantment);
+    }
+
+    @NotNull
+    @Override
+    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
+        return new ICurio.SoundInfo(SoundEvents.UI_TOAST_IN, 0.5F, 1);
     }
 }

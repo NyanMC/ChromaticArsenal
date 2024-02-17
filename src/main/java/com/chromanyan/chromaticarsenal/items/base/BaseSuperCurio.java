@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -31,11 +30,7 @@ public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
     private final RegistryObject<Item> inferiorVariant;
 
     public BaseSuperCurio(@Nullable RegistryObject<Item> upgradeTo) {
-        super(new Item.Properties()
-                .tab(ChromaticArsenal.GROUP)
-                .stacksTo(1)
-                .rarity(Rarity.EPIC)
-                .defaultDurability(0));
+        super(Rarity.EPIC);
         this.inferiorVariant = upgradeTo;
     }
 

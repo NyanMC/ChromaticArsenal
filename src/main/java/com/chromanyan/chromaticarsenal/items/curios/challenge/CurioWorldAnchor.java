@@ -15,7 +15,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -30,6 +29,10 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioWorldAnchor extends BaseCurioItem {
+
+    public CurioWorldAnchor() {
+        super(ModRarities.CHALLENGE);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, List<Component> list, @NotNull TooltipFlag flag) {
@@ -105,10 +108,5 @@ public class CurioWorldAnchor extends BaseCurioItem {
     @Override
     public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
         return new ICurio.SoundInfo(SoundEvents.ANVIL_LAND, 0.5F, 1);
-    }
-
-    @Override
-    public @NotNull Rarity getRarity(@NotNull ItemStack stack) {
-        return ModRarities.CHALLENGE;
     }
 }
