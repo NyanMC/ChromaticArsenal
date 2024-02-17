@@ -34,7 +34,7 @@ import java.util.Optional;
 public class CurioIlluminatedSoul extends BaseSuperCurio {
 
     public CurioIlluminatedSoul() {
-        super(null);
+        super(null, SoundEvents.RESPAWN_ANCHOR_CHARGE);
     }
 
     @Override
@@ -97,11 +97,5 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
 
                     return 0;
                 });
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.RESPAWN_ANCHOR_CHARGE, 0.5F, 1);
     }
 }

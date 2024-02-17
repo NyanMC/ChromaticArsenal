@@ -33,7 +33,7 @@ public class CurioLimitBreak extends BaseCurioItem {
     private static final DamageSource ASCENDED = new DamageSource("chromaticarsenal.ascended").bypassArmor().bypassInvul();
 
     public CurioLimitBreak() {
-        super(ModRarities.CHALLENGE);
+        super(ModRarities.CHALLENGE, SoundEvents.BEACON_DEACTIVATE);
     }
 
     @Override
@@ -42,12 +42,6 @@ public class CurioLimitBreak extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.ascended_star.1", TooltipHelper.valueTooltip(config.bonusFortune.get()), TooltipHelper.valueTooltip(config.bonusLooting.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.ascended_star.2", TooltipHelper.valueTooltip(config.damageMultiplier.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.cursed").withStyle(ChatFormatting.RED));
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.BEACON_DEACTIVATE, 0.5F, 1);
     }
 
     @Override

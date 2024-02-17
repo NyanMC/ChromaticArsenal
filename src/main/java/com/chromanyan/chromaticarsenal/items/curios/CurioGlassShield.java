@@ -24,7 +24,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.Random;
@@ -34,6 +33,10 @@ public class CurioGlassShield extends BaseCurioItem {
 
     private final Random rand = new Random();
     private static final DamageSource GLASS_SHRAPNEL = new DamageSource("chromaticarsenal.glass_shrapnel");
+
+    public CurioGlassShield() {
+        super(SoundEvents.GLASS_PLACE);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -131,11 +134,5 @@ public class CurioGlassShield extends BaseCurioItem {
 
         event.setAmount(0);
         event.setCanceled(true);
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.GLASS_PLACE, 0.5F, 1);
     }
 }

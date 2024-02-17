@@ -20,14 +20,13 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 
 public class CurioDiamondHeart extends BaseSuperCurio {
 
     public CurioDiamondHeart() {
-        super(ModItems.GOLDEN_HEART);
+        super(ModItems.GOLDEN_HEART, SoundEvents.ARMOR_EQUIP_DIAMOND);
     }
 
     @Override
@@ -60,24 +59,17 @@ public class CurioDiamondHeart extends BaseSuperCurio {
 
     @Override
     public void onWearerDied(LivingDeathEvent event, ItemStack stack, LivingEntity player) {
-        if (!player.hasEffect(ModEffects.FRACTURED.get())) {
-            if (!event.getSource().isBypassInvul()) {
-                CompoundTag nbt = stack.getOrCreateTag();
-                if (CooldownHelper.isCooldownFinished(nbt)) {
-                    CooldownHelper.updateCounter(nbt, config.revivalCooldown.get());
-                    event.setCanceled(true);
-                    player.setHealth(player.getMaxHealth());
-                    player.addEffect(new MobEffectInstance(ModEffects.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()), player);
-                    player.setHealth(player.getMaxHealth()); // lazy max health correction, just set the value twice lol
-                    player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundSource.PLAYERS, 0.5F, 1.0F);
-                }
-            }
-        }
-    }
+        if (player.hasEffect(ModEffects.FRACTURED.get())) return;
+        if (event.getSource().isBypassInvul()) return;
 
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.ARMOR_EQUIP_DIAMOND, 0.5F, 1);
+        CompoundTag nbt = stack.getOrCreateTag();
+        if (!CooldownHelper.isCooldownFinished(nbt)) return;
+
+        CooldownHelper.updateCounter(nbt, config.revivalCooldown.get());
+        event.setCanceled(true);
+        player.setHealth(player.getMaxHealth());
+        player.addEffect(new MobEffectInstance(ModEffects.FRACTURED.get(), config.fracturedDuration.get(), config.fracturedPotency.get()), player);
+        player.setHealth(player.getMaxHealth()); // lazy max health correction, just set the value twice lol
+        player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.IRON_GOLEM_DAMAGE, SoundSource.PLAYERS, 0.5F, 1.0F);
     }
 }

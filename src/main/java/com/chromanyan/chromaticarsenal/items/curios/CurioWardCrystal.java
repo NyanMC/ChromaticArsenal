@@ -16,12 +16,14 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 
 public class CurioWardCrystal extends BaseCurioItem {
+
+    public CurioWardCrystal() {
+        super(SoundEvents.AMETHYST_BLOCK_PLACE);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -73,11 +75,5 @@ public class CurioWardCrystal extends BaseCurioItem {
         } else {
             return super.canApplyAtEnchantingTable(stack, enchantment);
         }
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.AMETHYST_BLOCK_PLACE, 0.5F, 1);
     }
 }

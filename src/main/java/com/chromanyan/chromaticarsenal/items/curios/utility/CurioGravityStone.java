@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,7 +25,7 @@ import java.util.UUID;
 public class CurioGravityStone extends BaseCurioItem {
 
     public CurioGravityStone() {
-        super(ModRarities.UTILITY);
+        super(ModRarities.UTILITY, SoundEvents.DEEPSLATE_FALL);
     }
 
     @Override
@@ -51,11 +50,5 @@ public class CurioGravityStone extends BaseCurioItem {
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return enchantment == Enchantments.BINDING_CURSE || enchantment == Enchantments.VANISHING_CURSE;
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.DEEPSLATE_FALL, 0.5F, 1);
     }
 }

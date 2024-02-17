@@ -30,7 +30,6 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.Random;
@@ -38,6 +37,10 @@ import java.util.UUID;
 
 public class CurioBubbleAmulet extends BaseCurioItem {
     private static final Random rand = new Random();
+
+    public CurioBubbleAmulet() {
+        super(SoundEvents.BUCKET_FILL);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -133,11 +136,5 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         } else {
             return super.canApplyAtEnchantingTable(stack, enchantment);
         }
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.BUCKET_FILL, 0.5F, 1);
     }
 }

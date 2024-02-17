@@ -31,7 +31,7 @@ import java.util.UUID;
 public class CurioWorldAnchor extends BaseCurioItem {
 
     public CurioWorldAnchor() {
-        super(ModRarities.CHALLENGE);
+        super(ModRarities.CHALLENGE, SoundEvents.ANVIL_LAND);
     }
 
     @Override
@@ -102,11 +102,5 @@ public class CurioWorldAnchor extends BaseCurioItem {
 
     private static int getFortuneLevel(ItemStack stack) {
         return stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) + stack.getEnchantmentLevel(Enchantments.BINDING_CURSE);
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.ANVIL_LAND, 0.5F, 1);
     }
 }

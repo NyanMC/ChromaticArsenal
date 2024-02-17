@@ -26,7 +26,7 @@ import java.util.List;
 public class CurioCursedTotem extends BaseCurioItem {
 
     public CurioCursedTotem() {
-        super(ModRarities.CHALLENGE);
+        super(ModRarities.CHALLENGE, SoundEvents.TOTEM_USE);
     }
 
     @Override
@@ -59,12 +59,6 @@ public class CurioCursedTotem extends BaseCurioItem {
         if (target.hasEffect(ModEffects.FRACTURED.get()))
             return baseCount + config.cursedTotemBonusLooting.get();
         return baseCount;
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.TOTEM_USE, 0.5F, 1);
     }
 
     @Override

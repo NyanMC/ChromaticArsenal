@@ -18,12 +18,15 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.UUID;
 
 public class CurioMomentumStone extends BaseCurioItem {
+
+    public CurioMomentumStone() {
+        super(SoundEvents.PLAYER_ATTACK_KNOCKBACK);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -57,11 +60,5 @@ public class CurioMomentumStone extends BaseCurioItem {
         } else {
             return super.canApplyAtEnchantingTable(stack, enchantment);
         }
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.PLAYER_ATTACK_KNOCKBACK, 0.5F, 1);
     }
 }

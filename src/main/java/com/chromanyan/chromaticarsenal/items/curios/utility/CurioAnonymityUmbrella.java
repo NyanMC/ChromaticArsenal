@@ -16,7 +16,6 @@ import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,7 +23,7 @@ import java.util.UUID;
 public class CurioAnonymityUmbrella extends BaseCurioItem {
 
     public CurioAnonymityUmbrella() {
-        super(ModRarities.UTILITY);
+        super(ModRarities.UTILITY, SoundEvents.WOOL_PLACE);
     }
 
     @Override
@@ -40,11 +39,5 @@ public class CurioAnonymityUmbrella extends BaseCurioItem {
         atts.put(ForgeMod.NAMETAG_DISTANCE.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":anonymity", -1, AttributeModifier.Operation.MULTIPLY_TOTAL));
 
         return atts;
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.WOOL_PLACE, 0.5F, 1);
     }
 }

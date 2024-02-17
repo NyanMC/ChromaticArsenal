@@ -29,7 +29,6 @@ import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.UUID;
@@ -37,7 +36,7 @@ import java.util.UUID;
 public class CurioPrismaticCrystal extends BaseSuperCurio {
 
     public CurioPrismaticCrystal() {
-        super(ModItems.LUNAR_CRYSTAL);
+        super(ModItems.LUNAR_CRYSTAL, SoundEvents.END_PORTAL_FRAME_FILL);
     }
 
     @Override
@@ -89,11 +88,5 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
     @Override
     public boolean isEnderMask(SlotContext slotContext, EnderMan enderMan, ItemStack stack) {
         return true;
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.END_PORTAL_FRAME_FILL, 0.5F, 1);
     }
 }

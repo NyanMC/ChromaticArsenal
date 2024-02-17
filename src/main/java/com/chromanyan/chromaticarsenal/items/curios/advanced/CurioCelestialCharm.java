@@ -17,7 +17,6 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,7 +24,7 @@ import java.util.UUID;
 public class CurioCelestialCharm extends BaseSuperCurio {
 
     public CurioCelestialCharm() {
-        super(ModItems.SHADOW_TREADS);
+        super(ModItems.SHADOW_TREADS, SoundEvents.GENERIC_EXTINGUISH_FIRE);
     }
 
     @Override
@@ -64,11 +63,5 @@ public class CurioCelestialCharm extends BaseSuperCurio {
             atts.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":celestial_damage_bonus", config.damageModifierMax.get() * ((float) compareTime / 12000F), AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
         return atts;
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.GENERIC_EXTINGUISH_FIRE, 0.5F, 1);
     }
 }

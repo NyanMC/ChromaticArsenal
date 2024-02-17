@@ -28,13 +28,16 @@ import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 public class CurioCryoRing extends BaseCurioItem {
+
+    public CurioCryoRing() {
+        super(SoundEvents.PLAYER_HURT_FREEZE);
+    }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -127,11 +130,5 @@ public class CurioCryoRing extends BaseCurioItem {
         if (event.getEffectInstance().getEffect() == ModEffects.CHILLED.get()) {
             event.setResult(Event.Result.DENY);
         }
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.PLAYER_HURT_FREEZE, 0.5F, 1);
     }
 }

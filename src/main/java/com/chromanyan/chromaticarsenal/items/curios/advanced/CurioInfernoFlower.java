@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,7 +22,7 @@ import java.util.List;
 public class CurioInfernoFlower extends BaseSuperCurio {
 
     public CurioInfernoFlower() {
-        super(ModItems.FRIENDLY_FIRE_FLOWER);
+        super(ModItems.FRIENDLY_FIRE_FLOWER, SoundEvents.FIRECHARGE_USE);
     }
 
     @Override

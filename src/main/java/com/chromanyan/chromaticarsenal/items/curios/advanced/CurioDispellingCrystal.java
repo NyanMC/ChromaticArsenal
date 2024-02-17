@@ -18,15 +18,13 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 
 public class CurioDispellingCrystal extends BaseSuperCurio {
 
     public CurioDispellingCrystal() {
-        super(ModItems.WARD_CRYSTAL);
+        super(ModItems.WARD_CRYSTAL, SoundEvents.AMETHYST_BLOCK_PLACE);
     }
 
     @Override
@@ -78,11 +76,5 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
             }
         }
         event.getEffectInstance().duration *= config.potionDurationMultiplier.get(); // because why should forge let you set the duration of a potion effect without an access transformer?
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.AMETHYST_BLOCK_PLACE, 0.5F, 1);
     }
 }

@@ -28,7 +28,6 @@ import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.SlotResult;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +37,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
     private static final DamageSource UNFRIENDLY_FIRE = new DamageSource("chromaticarsenal.unfriendly_fire").setIsFire();
 
     public CurioFriendlyFireFlower() {
-        super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(35).fireResistant());
+        super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(35).fireResistant(), SoundEvents.FIRECHARGE_USE);
     }
 
     @Override
@@ -152,11 +151,5 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
                 livingAttacker.setSecondsOnFire(100);
             }
         }
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.FIRECHARGE_USE, 0.5F, 0.5F);
     }
 }

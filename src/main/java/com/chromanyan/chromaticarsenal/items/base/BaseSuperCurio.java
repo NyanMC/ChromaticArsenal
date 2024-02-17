@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -29,9 +30,13 @@ public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
 
     private final RegistryObject<Item> inferiorVariant;
 
-    public BaseSuperCurio(@Nullable RegistryObject<Item> upgradeTo) {
-        super(Rarity.EPIC);
+    public BaseSuperCurio(@Nullable RegistryObject<Item> upgradeTo, @Nullable SoundEvent soundEvent) {
+        super(Rarity.EPIC, soundEvent);
         this.inferiorVariant = upgradeTo;
+    }
+
+    public BaseSuperCurio(@Nullable RegistryObject<Item> upgradeTo) {
+        this(upgradeTo, null);
     }
 
     @Nullable

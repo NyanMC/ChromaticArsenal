@@ -16,14 +16,13 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 
 public class CurioVerticalStasis extends BaseCurioItem {
 
     public CurioVerticalStasis() {
-        super(ModRarities.UTILITY);
+        super(ModRarities.UTILITY, SoundEvents.SHULKER_BULLET_HIT);
     }
 
     @Override
@@ -62,11 +61,5 @@ public class CurioVerticalStasis extends BaseCurioItem {
             nbt.putBoolean("active", false);
             context.entity().setNoGravity(false);
         }
-    }
-
-    @NotNull
-    @Override
-    public ICurio.SoundInfo getEquipSound(SlotContext slotContext, ItemStack stack) {
-        return new ICurio.SoundInfo(SoundEvents.SHULKER_BULLET_HIT, 0.5F, 1);
     }
 }
