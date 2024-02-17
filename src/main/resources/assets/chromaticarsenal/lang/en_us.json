@@ -174,6 +174,8 @@
   "tooltip.chromaticarsenal.cursed_totem.2": "§cMobs which revive this way have %1$s§b%%§c reduced maximum health",
   "tooltip.chromaticarsenal.cursed_totem.3": "§6Grants %1$s§6 looting level(s) against mobs that have revived this way",
 
+  "item.chromaticarsenal.amethyst_ring": "Amethyst Ring",
+
   "item.chromaticarsenal.viewer_item": "Viewer Item",
   "tooltip.chromaticarsenal.viewer_item.1": "Even after several Minecraft version updates, it's still a Debug Item",
   "tooltip.chromaticarsenal.viewer_item.2": "This item's functionality may change in a later version, don't rely on it!",

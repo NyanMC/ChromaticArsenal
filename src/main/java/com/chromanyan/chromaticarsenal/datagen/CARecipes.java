@@ -238,6 +238,14 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "cursed_totem"));
 
+        ShapedRecipeBuilder.shaped(ModItems.AMETHYST_RING.get(), 1)
+                .pattern(" a ")
+                .pattern("a a")
+                .pattern(" a ")
+                .define('a', Tags.Items.GEMS_AMETHYST)
+                .unlockedBy("has_amethyst", has(Tags.Items.GEMS_AMETHYST))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "amethyst_ring"));
+
         packAndUnpack(consumer, ModItems.CHROMA_SHARD.get(), ModItems.CHROMA_BLOCK_ITEM.get(), "chroma_shard", "chroma_block");
 
         chromaUpgrade(consumer, ModItems.GOLDEN_HEART.get(), Items.DRAGON_BREATH, ModItems.ADVANCING_HEART.get(), "advancing_heart");

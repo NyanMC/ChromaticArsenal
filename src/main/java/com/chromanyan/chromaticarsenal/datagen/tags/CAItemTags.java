@@ -71,12 +71,16 @@ public class CAItemTags extends ItemTagsProvider {
                 ModItems.ANONYMITY_UMBRELLA.get()
         );
 
+        tag(ModTags.Items.BASIC_CURIOS).add(
+                ModItems.AMETHYST_RING.get()
+        );
+
         tag(ModTags.Items.CHROMATIC_CURIOS)
                 .addTag(ModTags.Items.STANDARD_CURIOS)
                 .addTag(ModTags.Items.SUPER_CURIOS)
                 .addTag(ModTags.Items.CHALLENGE_CURIOS)
                 .addTag(ModTags.Items.UTILITY_CURIOS);
 
-        tag(ModTags.Items.NO_SALVAGE).add(ModItems.ASCENDED_STAR.get());
+        tag(ModTags.Items.NO_SALVAGE).add(ModItems.ASCENDED_STAR.get(), ModItems.BUBBLE_AMULET.get(), ModItems.LUNAR_CRYSTAL.get());
     }
 }

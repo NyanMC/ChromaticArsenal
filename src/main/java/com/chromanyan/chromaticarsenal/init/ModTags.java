@@ -25,6 +25,7 @@ public class ModTags {
         public static final TagKey<Item> SUPER_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "super_curios"));
         public static final TagKey<Item> CHALLENGE_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "challenge_curios"));
         public static final TagKey<Item> UTILITY_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "utility_curios"));
+        public static final TagKey<Item> BASIC_CURIOS = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "basic_curios"));
 
         public static final TagKey<Item> NO_SALVAGE = ItemTags.create(new ResourceLocation(ChromaticArsenal.MODID, "no_salvage"));
     }

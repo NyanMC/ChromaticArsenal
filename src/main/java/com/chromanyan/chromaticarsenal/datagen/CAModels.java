@@ -56,6 +56,9 @@ public class CAModels extends ItemModelProvider {
         basicModel("vertical_stasis_stone");
         basicModel("anonymity_umbrella");
 
+        // basic curios
+        basicModel("amethyst_ring");
+
         // other stuff
         basicModel("magic_garlic_bread");
         basicModel("cosmicola");

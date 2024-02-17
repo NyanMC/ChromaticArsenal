@@ -11,6 +11,14 @@
     {
       "type": "patchouli:spotlight",
       "item": {
+        "tag": "chromaticarsenal:basic_curios"
+      },
+      "title": "Basic Curios",
+      "text": "$(5)Basic Curios$() are simple curios. They are typically weaker and less complex than the standard arsenal, have a common or uncommon rarity, do not support enchantments, and cannot be salvaged by the Chroma Salvager. However, these curios are typically easier to obtain than other curios, and are occasionally used as components for them."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
         "tag": "chromaticarsenal:super_curios"
       },
       "title": "Super Curios",

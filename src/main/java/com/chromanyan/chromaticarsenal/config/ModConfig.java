@@ -132,6 +132,8 @@ public class ModConfig {
         public final IntValue bonusLooting;
         public final IntValue bonusFortune;
 
+        public final DoubleValue amethystRingReachModifier;
+
         public final BooleanValue canDamageSalvager;
         public final BooleanValue returnInferiorVariant;
 
@@ -505,6 +507,13 @@ public class ModConfig {
                     bonusLooting = builder
                             .comment("The amount of additional looting levels granted upon equipping the star.")
                             .defineInRange("bonusLooting", 1, 0, Integer.MAX_VALUE);
+                builder.pop();
+
+            builder.comment("Because basic curios are simple and typically only have one or two config values, they are all tacked on here.");
+                builder.push("BasicCurioSettings");
+                    amethystRingReachModifier = builder
+                            .comment("The amount of additional reach granted by the Amethyst Ring. Additive.")
+                            .defineInRange("amethystRingReachModifier", 1F, 0F, Double.MAX_VALUE);
                 builder.pop();
             builder.pop();
 

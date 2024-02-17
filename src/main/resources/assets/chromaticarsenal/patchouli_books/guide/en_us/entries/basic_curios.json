@@ -1,0 +1,16 @@
+{
+  "name": "Basic Curios",
+  "icon": "chromaticarsenal:amethyst_ring",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Because Basic Curios are less complex, they are all listed on this page, instead of getting their own pages."
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "The Amethyst Ring increases reach distance.$(br2)$(o)Because we needed more of these.",
+      "recipe": "chromaticarsenal:amethyst_ring"
+    }
+  ]
+}
