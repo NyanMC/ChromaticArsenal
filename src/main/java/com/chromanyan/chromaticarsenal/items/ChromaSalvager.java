@@ -55,13 +55,22 @@ public class ChromaSalvager extends Item {
             list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.3.alt"));
     }
 
+    private void handleSuperCurioSalvage(Item salvageItem, Player player) {
+        if (salvageItem instanceof ISuperCurio superSalvage) { // is this ACTUALLY a super curio, or is the modpack fucking with our tags?
+            if (config.returnInferiorVariant.get() && superSalvage.getInferiorVariant() != null) {
+                ItemStack inferiorReturn = new ItemStack(superSalvage.getInferiorVariant().get());
+                if (!player.getInventory().add(inferiorReturn)) {
+                    player.drop(inferiorReturn, false);
+                }
+            }
+        }
+    }
+
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
 
-        if (player.level.isClientSide) {
-            return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
-        }
+        if (player.level.isClientSide) return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 
         ItemStack salvageTarget;
 
@@ -70,46 +79,37 @@ public class ChromaSalvager extends Item {
         else
             salvageTarget = player.getItemInHand(InteractionHand.MAIN_HAND);
 
-        Item salvageReturn = null;
-
-        if (!salvageTarget.isEmpty()) {
-            if (!salvageTarget.is(ModTags.Items.NO_SALVAGE)) {
-                Item salvageItem = salvageTarget.getItem();
-                if (salvageTarget.is(ModTags.Items.SUPER_CURIOS)) {
-                    if (salvageItem instanceof ISuperCurio superSalvage) { // is this ACTUALLY a super curio, or is the modpack fucking with our tags?
-                        if (config.returnInferiorVariant.get() && superSalvage.getInferiorVariant() != null) {
-                            ItemStack inferiorReturn = new ItemStack(superSalvage.getInferiorVariant().get());
-                            if (!player.getInventory().add(inferiorReturn)) {
-                                player.drop(inferiorReturn, false);
-                            }
-                        }
-                    }
-
-                    salvageReturn = ModItems.ASCENSION_ESSENCE.get();
-                } else if (salvageTarget.is(ModTags.Items.CHROMATIC_CURIOS)) {
-                    salvageReturn = ModItems.CHROMA_SHARD.get();
-                } else {
-                    player.displayClientMessage(Component.translatable("message.chromaticarsenal.invalid_salvage"), true);
-                }
-            } else {
-                player.displayClientMessage(Component.translatable("message.chromaticarsenal.salvage_blacklisted"), true);
-            }
-        } else {
+        if (salvageTarget.isEmpty()) {
             player.displayClientMessage(Component.translatable("message.chromaticarsenal.cannot_salvage_air"), true);
+            return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
+        }
+        if (salvageTarget.is(ModTags.Items.NO_SALVAGE)) {
+            player.displayClientMessage(Component.translatable("message.chromaticarsenal.salvage_blacklisted"), true);
+            return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
         }
 
-        if (salvageReturn != null) {
-            ItemStack returnedItem = new ItemStack(salvageReturn);
-            if (!player.getInventory().add(returnedItem)) { // thanks farmer's delight
-                player.drop(returnedItem, false);
-            }
-            salvageTarget.shrink(1);
-            player.awardStat(Stats.ITEM_USED.get(this));
-            player.awardStat(ModStats.CHROMA_SALVAGER_USES);
-            player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 0.8f, 1f);
-            if (config.canDamageSalvager.get())
-                itemstack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
+        Item salvageReturn;
+
+        if (salvageTarget.is(ModTags.Items.SUPER_CURIOS)) {
+            handleSuperCurioSalvage(salvageTarget.getItem(), player);
+            salvageReturn = ModItems.ASCENSION_ESSENCE.get();
+        } else if (salvageTarget.is(ModTags.Items.CHROMATIC_CURIOS)) {
+            salvageReturn = ModItems.CHROMA_SHARD.get();
+        } else {
+            player.displayClientMessage(Component.translatable("message.chromaticarsenal.invalid_salvage"), true);
+            return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
         }
+
+        ItemStack returnedItem = new ItemStack(salvageReturn);
+        if (!player.getInventory().add(returnedItem)) { // thanks farmer's delight
+            player.drop(returnedItem, false);
+        }
+        salvageTarget.shrink(1);
+        player.awardStat(Stats.ITEM_USED.get(this));
+        player.awardStat(ModStats.CHROMA_SALVAGER_USES);
+        player.getCommandSenderWorld().playSound(null, player.blockPosition(), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 0.8f, 1f);
+        if (config.canDamageSalvager.get())
+            itemstack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
 
         return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
     }
