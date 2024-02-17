@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "tag": "forge:ingots/copper"
+    }
+  },
+  "pattern": [
+    " c ",
+    "c c",
+    " c "
+  ],
+  "result": {
+    "item": "chromaticarsenal:copper_ring"
+  }
+}

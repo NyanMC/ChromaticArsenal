@@ -58,6 +58,7 @@ public class CAModels extends ItemModelProvider {
 
         // basic curios
         basicModel("amethyst_ring");
+        basicModel("copper_ring");
 
         // other stuff
         basicModel("magic_garlic_bread");

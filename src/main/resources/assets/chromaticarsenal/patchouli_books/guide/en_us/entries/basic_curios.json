@@ -11,6 +11,11 @@
       "type": "patchouli:crafting",
       "text": "The Amethyst Ring increases reach distance.$(br2)$(o)Because we needed more of these.",
       "recipe": "chromaticarsenal:amethyst_ring"
+    },
+    {
+      "type": "patchouli:crafting",
+      "text": "The Copper Ring adds a slight chance for any breakable item to not take damage when used.$(br2)$(o)To complement the Iron and Gold rings, of course.",
+      "recipe": "chromaticarsenal:copper_ring"
     }
   ]
 }

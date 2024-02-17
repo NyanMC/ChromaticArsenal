@@ -239,11 +239,20 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "cursed_totem"));
 
+        ShapedRecipeBuilder.shaped(ModItems.COPPER_RING.get(), 1)
+                .pattern(" c ")
+                .pattern("c c")
+                .pattern(" c ")
+                .define('c', Tags.Items.INGOTS_COPPER)
+                .unlockedBy("has_copper", has(Tags.Items.INGOTS_COPPER))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "copper_ring"));
+
         ShapedRecipeBuilder.shaped(ModItems.AMETHYST_RING.get(), 1)
                 .pattern(" a ")
-                .pattern("a a")
+                .pattern("aca")
                 .pattern(" a ")
                 .define('a', Tags.Items.GEMS_AMETHYST)
+                .define('c', ModItems.COPPER_RING.get())
                 .unlockedBy("has_amethyst", has(Tags.Items.GEMS_AMETHYST))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "amethyst_ring"));
 

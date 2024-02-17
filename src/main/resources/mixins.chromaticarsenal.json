@@ -5,6 +5,7 @@
   "refmap": "mixins.chromaticarsenal.refmap.json",
   "mixins": [
     "MixinEntity",
+    "MixinItemStack",
     "MixinLivingEntity",
     "MixinPlayer",
     "MixinServerPlayer"

@@ -6,6 +6,7 @@ import com.chromanyan.chromaticarsenal.items.compat.*;
 import com.chromanyan.chromaticarsenal.items.curios.*;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.*;
 import com.chromanyan.chromaticarsenal.items.curios.basic.CurioAmethystRing;
+import com.chromanyan.chromaticarsenal.items.curios.basic.CurioCopperRing;
 import com.chromanyan.chromaticarsenal.items.curios.challenge.*;
 import com.chromanyan.chromaticarsenal.items.curios.utility.*;
 import com.chromanyan.chromaticarsenal.items.food.*;
@@ -65,6 +66,7 @@ public class ModItems {
 
     // basic curios
     public static final RegistryObject<Item> AMETHYST_RING = ITEMS_REGISTRY.register("amethyst_ring", CurioAmethystRing::new);
+    public static final RegistryObject<Item> COPPER_RING = ITEMS_REGISTRY.register("copper_ring", CurioCopperRing::new);
 
     // misc. items
     public static final RegistryObject<Item> MAGIC_GARLIC_BREAD = ITEMS_REGISTRY.register("magic_garlic_bread", MagicGarlicBread::new);

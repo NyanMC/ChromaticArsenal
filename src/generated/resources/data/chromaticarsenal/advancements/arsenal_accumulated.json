@@ -73,6 +73,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_copper_ring": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:copper_ring"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_cryo_ring": {
       "conditions": {
         "items": [
@@ -437,6 +449,9 @@
     ],
     [
       "has_amethyst_ring"
+    ],
+    [
+      "has_copper_ring"
     ]
   ],
   "rewards": {

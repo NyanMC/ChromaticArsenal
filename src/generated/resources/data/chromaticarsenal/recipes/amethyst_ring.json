@@ -3,11 +3,14 @@
   "key": {
     "a": {
       "tag": "forge:gems/amethyst"
+    },
+    "c": {
+      "item": "chromaticarsenal:copper_ring"
     }
   },
   "pattern": [
     " a ",
-    "a a",
+    "aca",
     " a "
   ],
   "result": {

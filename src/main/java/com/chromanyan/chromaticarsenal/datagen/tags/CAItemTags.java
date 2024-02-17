@@ -72,7 +72,8 @@ public class CAItemTags extends ItemTagsProvider {
         );
 
         tag(ModTags.Items.BASIC_CURIOS).add(
-                ModItems.AMETHYST_RING.get()
+                ModItems.AMETHYST_RING.get(),
+                ModItems.COPPER_RING.get()
         );
 
         tag(ModTags.Items.CHROMATIC_CURIOS)

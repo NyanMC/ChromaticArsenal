@@ -133,6 +133,7 @@ public class ModConfig {
         public final IntValue bonusFortune;
 
         public final DoubleValue amethystRingReachModifier;
+        public final DoubleValue copperRingUnbreakingChance;
 
         public final BooleanValue canDamageSalvager;
         public final BooleanValue returnInferiorVariant;
@@ -514,6 +515,9 @@ public class ModConfig {
                     amethystRingReachModifier = builder
                             .comment("The amount of additional reach granted by the Amethyst Ring. Additive.")
                             .defineInRange("amethystRingReachModifier", 1F, 0F, Double.MAX_VALUE);
+                    copperRingUnbreakingChance = builder
+                            .comment("The chance for an item to not use durability with the Copper Ring equipped. Stacks multiplicatively with Unbreaking.")
+                            .defineInRange("copperRingUnbreakingChance", 0.1F, 0F, 1F);
                 builder.pop();
             builder.pop();
 
