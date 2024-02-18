@@ -22,10 +22,6 @@ public class EnchantmentChromaticTwisting extends Enchantment {
         return 50;
     }
 
-    public int getMaxLevel() {
-        return 1;
-    }
-
     public boolean isTreasureOnly() {
         return true;
     }
