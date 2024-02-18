@@ -188,8 +188,10 @@ dependencies {
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77")
 
     implementation fg.deobf("curse.maven:band-of-gigantism-615965:5064009")
-
     implementation fg.deobf("curse.maven:pehkui-319596:4684376")
+
+    implementation fg.deobf("curse.maven:enigmatic-legacy-336184:4392950") // 2.26.5
+    implementation fg.deobf("top.theillusivec4.caelus:caelus-forge:1.19.2-3.0.0.6")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
