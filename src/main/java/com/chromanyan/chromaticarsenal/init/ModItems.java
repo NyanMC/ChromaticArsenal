@@ -75,17 +75,23 @@ public class ModItems {
     public static final RegistryObject<Item> CHROMANYAN = ITEMS_REGISTRY.register("chromanyan_plush", CurioChromaNyan::new);
     public static final RegistryObject<Item> DEBUG = ITEMS_REGISTRY.register("viewer_item", CurioDebug::new);
 
-    // compatibility
+    // bog compatibility
     public static RegistryObject<Item> MARK_TWISTED = null;
+
+    // enigmaticlegacy compatibility
+    public static RegistryObject<Item> OMNI_RING = null;
 
     // block items
     public static final RegistryObject<BlockItem> CHROMA_BLOCK_ITEM = ITEMS_REGISTRY.register("chroma_block", () -> new BlockItem(ModBlocks.CHROMA_BLOCK.get(), new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.UNCOMMON)));
 
     public static void tryBOGCompat() {
-        if (!ModList.get().isLoaded("band_of_gigantism")) {
-            return;
-        }
+        if (!ModList.get().isLoaded("band_of_gigantism")) return;
         MARK_TWISTED = ITEMS_REGISTRY.register("mark_twisted", MarkTwisted::new);
+    }
+
+    public static void tryEnigmaticLegacyCompat() {
+        if (!ModList.get().isLoaded("enigmaticlegacy")) return;
+        OMNI_RING = ITEMS_REGISTRY.register("omni_ring", CurioOmniRing::new);
     }
 
 }

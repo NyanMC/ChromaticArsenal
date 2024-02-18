@@ -188,6 +188,9 @@
   "tooltip.chromaticarsenal.mark_twisted_description_1": "§5All equipped §6Chromatic Curios§5 will function as if they had the §6Curse of Chromatic Twisting§5.",
   "death.attack.mark_twisted": "%1$s§d's soul was twisted beyond recognition",
 
+  "item.chromaticarsenal.omni_ring": "Omni-Ring",
+  "tooltip.chromaticarsenal.omni_ring_copper": "§5Equipment has a §6%1$s §6chance§5 to not lose durability when used.",
+
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",
   "tooltip.chromaticarsenal.cursed": "Once equipped, unequipping may prove to be fatal.",
   "tooltip.chromaticarsenal.can_place": "Can be placed",

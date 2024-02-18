@@ -4,6 +4,7 @@
     "chromaticarsenal:duality_rings",
     "chromaticarsenal:cryo_ring",
     "chromaticarsenal:amethyst_ring",
-    "chromaticarsenal:copper_ring"
+    "chromaticarsenal:copper_ring",
+    {"id": "chromaticarsenal:omni_ring", "required": false}
   ]
 }

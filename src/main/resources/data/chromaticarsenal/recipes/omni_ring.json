@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "modid": "enigmaticlegacy",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "key": {
+    "a": {
+      "item": "chromaticarsenal:amethyst_ring"
+    },
+    "c": {
+      "item": "chromaticarsenal:copper_ring"
+    },
+    "g": {
+      "item": "enigmaticlegacy:golden_ring"
+    },
+    "i": {
+      "item": "enigmaticlegacy:iron_ring"
+    },
+    "s": {
+      "item": "chromaticarsenal:chroma_shard"
+    }
+  },
+  "pattern": [
+    "a c",
+    " s ",
+    "i g"
+  ],
+  "result": {
+    "item": "chromaticarsenal:omni_ring"
+  }
+}
