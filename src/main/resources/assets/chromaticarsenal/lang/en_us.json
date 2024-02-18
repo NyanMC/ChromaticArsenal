@@ -7,6 +7,7 @@
 
   "item.chromaticarsenal.golden_heart": "Golden Heart",
   "tooltip.chromaticarsenal.golden_heart.3": "§2Functions as gold armor for Piglins",
+  "tooltip.chromaticarsenal.golden_heart.3.cursed": "§2§mFunctions as gold armor for Piglins",
   "tooltip.chromaticarsenal.golden_heart.1": "§6Grants the Absorption effect at level %1$s",
   "tooltip.chromaticarsenal.golden_heart.2": "§6This effect is re-applied every %1$s§6 second(s)",
   "tooltip.chromaticarsenal.golden_heart.twisted": "§cChromatic Twisting:§5 Taking damage from a mob inflicts Wither on both the wearer and the attacker for %1$s§5 second(s)",
@@ -97,6 +98,7 @@
 
   "block.chromaticarsenal.blahaj": "Blåhaj",
   "tooltip.chromaticarsenal.blahaj.1": "§6Prevents Phantoms from targeting or spawning near the wearer",
+  "tooltip.chromaticarsenal.blahaj.1.cursed": "§6Prevents Phantoms from targeting §mor spawning near§6 the wearer",
   "tooltip.chromaticarsenal.blahaj.2": "§6Prevents restlessness from nearby monsters",
 
   "item.chromaticarsenal.anonymity_umbrella": "Anonymity Umbrella",
@@ -146,6 +148,7 @@
   "item.chromaticarsenal.super_lunar_crystal": "Prismatic Crystal",
   "tooltip.chromaticarsenal.super_lunar_crystal.1": "§2Grants immunity to fall damage and Levitation",
   "tooltip.chromaticarsenal.super_lunar_crystal.3": "§2Functions as a Pumpkin for Endermen",
+  "tooltip.chromaticarsenal.super_lunar_crystal.3.cursed": "§2§mFunctions as a Pumpkin for Endermen",
   "tooltip.chromaticarsenal.super_lunar_crystal.2": "§6Allows for bouncing out of the void, taking %1$s§6 damage in the process",
 
   "item.chromaticarsenal.super_harpy_feather": "Polychromatic Feather",

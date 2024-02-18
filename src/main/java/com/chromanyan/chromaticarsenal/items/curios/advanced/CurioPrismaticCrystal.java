@@ -5,9 +5,11 @@ import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModSounds;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
+import com.chromanyan.chromaticarsenal.util.EnigmaticLegacyHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -43,7 +45,10 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.3"));
+        if (EnigmaticLegacyHelper.isTheCursedOne(Minecraft.getInstance().player))
+            list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.3.cursed"));
+        else
+            list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.3"));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.2", TooltipHelper.valueTooltip(config.voidBounceDamage.get())));
     }
 

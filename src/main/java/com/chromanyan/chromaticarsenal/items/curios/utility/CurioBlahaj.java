@@ -4,6 +4,8 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModBlocks;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
+import com.chromanyan.chromaticarsenal.util.EnigmaticLegacyHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -38,7 +40,10 @@ public class CurioBlahaj extends BlockItem implements IChromaCurio, ICurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.utility"));
         list.add(Component.translatable("tooltip.chromaticarsenal.can_place"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.blahaj.1"));
+        if (EnigmaticLegacyHelper.isTheCursedOne(Minecraft.getInstance().player))
+            list.add(Component.translatable("tooltip.chromaticarsenal.blahaj.1.cursed"));
+        else
+            list.add(Component.translatable("tooltip.chromaticarsenal.blahaj.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.blahaj.2"));
     }
 

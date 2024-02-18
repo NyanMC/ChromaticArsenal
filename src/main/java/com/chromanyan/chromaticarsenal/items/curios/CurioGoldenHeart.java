@@ -4,9 +4,11 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.EnigmaticLegacyHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -41,8 +43,12 @@ public class CurioGoldenHeart extends BaseCurioItem {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3"));
+        if (EnigmaticLegacyHelper.isTheCursedOne(Minecraft.getInstance().player))
+            list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3.cursed"));
+        else
+            list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3"));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.1", TooltipHelper.potionAmplifierTooltip(config.absorptionLevel.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.2", TooltipHelper.ticksToSecondsTooltip(getEffectCooldown(stack))));
         if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
