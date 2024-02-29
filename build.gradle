@@ -5,7 +5,7 @@ plugins {
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
-version = '1.17.0'
+version = '1.17.1'
 group = 'com.chromanyan.chromaticarsenal' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'chromaticarsenal-1.19.2'
 
@@ -200,7 +200,7 @@ jar {
         attributes([
                 "Specification-Title"     : "chromaticarsenal",
                 "Specification-Vendor"    : "chromanyan",
-                "Specification-Version"   : "1.17.0", // We are version 1 of ourselves
+                "Specification-Version"   : "1.17.1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "chromanyan",
