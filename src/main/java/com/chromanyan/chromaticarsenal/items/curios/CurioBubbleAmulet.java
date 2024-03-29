@@ -10,6 +10,7 @@ import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -50,7 +51,7 @@ public class CurioBubbleAmulet extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.twisted"));
             return;
         }

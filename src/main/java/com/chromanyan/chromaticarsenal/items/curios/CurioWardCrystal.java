@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -34,7 +35,7 @@ public class CurioWardCrystal extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.1", TooltipHelper.multiplierAsPercentTooltip(getIncomingMultiplier(stack))));
-        if (!ChromaCurioHelper.isChromaticTwisted(stack, null))
+        if (!ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
             list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.2", TooltipHelper.multiplierAsPercentTooltip(getOutgoingMultiplier(stack))));
         else
             list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.twisted", TooltipHelper.ticksToSecondsTooltip(config.twistedWeaknessDuration.get())));

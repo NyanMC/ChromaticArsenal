@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -56,7 +57,7 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
         if (stack.isDamageableItem()) // this check includes when the item has the unbreakable tag
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.3"));
 
-        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
             list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.twisted", TooltipHelper.percentTooltip(config.twistedUnbreakingChance.get())));
     }
 

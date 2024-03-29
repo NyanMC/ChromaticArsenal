@@ -6,6 +6,7 @@ import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -51,7 +52,7 @@ public class CurioShadowTreads extends BaseCurioItem {
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.3"));
         if (stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) > 0 && config.swiftSneakDetectionReduction.get() > 0)
             list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.swift_sneak", TooltipHelper.percentTooltip(stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) * config.swiftSneakDetectionReduction.get())));
-        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
             list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", TooltipHelper.percentTooltip(config.twistedShadowDodgeChance.get())));
     }
 

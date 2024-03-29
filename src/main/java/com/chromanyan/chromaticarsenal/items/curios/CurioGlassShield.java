@@ -7,6 +7,7 @@ import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -51,7 +52,7 @@ public class CurioGlassShield extends BaseCurioItem {
         if (getFreeBlockChance(stack) > 0) {
             list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.3", TooltipHelper.valueTooltip(getFreeBlockChance(stack))));
         }
-        if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.twisted", TooltipHelper.valueTooltip(config.twistedShatterDamageMultiplier.get())));
         }
         CompoundTag nbt = stack.getOrCreateTag();

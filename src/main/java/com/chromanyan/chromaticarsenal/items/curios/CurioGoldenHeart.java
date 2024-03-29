@@ -54,7 +54,7 @@ public class CurioGoldenHeart extends BaseCurioItem {
             list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3"));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.1", TooltipHelper.potionAmplifierTooltip(config.absorptionLevel.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.2", TooltipHelper.ticksToSecondsTooltip(getEffectCooldown(stack))));
-        if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.twisted", TooltipHelper.ticksToSecondsTooltip((config.twistedWitherDuration.get()))));
         }
     }

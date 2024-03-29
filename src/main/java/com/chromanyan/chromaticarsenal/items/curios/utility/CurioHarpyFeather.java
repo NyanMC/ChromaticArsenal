@@ -7,6 +7,7 @@ import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -46,7 +47,7 @@ public class CurioHarpyFeather extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        if (!ChromaCurioHelper.isChromaticTwisted(stack, null)) {
+        if (!ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.1"));
             list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.2", TooltipHelper.multiplierAsPercentTooltip(config.featherFallDamageReduction.get())));
         } else {

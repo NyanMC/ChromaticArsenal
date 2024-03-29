@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -34,7 +35,7 @@ public class CurioDualityRings extends BaseCurioItem {
         if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", TooltipHelper.multiplierAsPercentTooltip(config.aroOfClubsMultiplier.get())));
-        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
             list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.twisted", TooltipHelper.ticksToSecondsTooltip(config.twistedSaturationDuration.get()), TooltipHelper.potionAmplifierTooltip(config.twistedHungerLevel.get())));
     }
 

@@ -7,6 +7,7 @@ import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -52,7 +53,7 @@ public class CurioCryoRing extends BaseCurioItem {
         if (!Objects.equals(config.chilledTicks.get(), config.chilledTicksVulnerable.get())) {
             list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.3", TooltipHelper.ticksToSecondsTooltip(config.chilledTicksVulnerable.get())));
         }
-        if (ChromaCurioHelper.isChromaticTwisted(stack, null))
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
             list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.twisted", TooltipHelper.valueTooltip(config.twistedCryoFireDamageMultiplier.get())));
     }
 

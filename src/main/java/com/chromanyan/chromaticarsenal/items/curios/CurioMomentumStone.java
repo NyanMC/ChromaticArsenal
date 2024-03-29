@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -38,7 +39,7 @@ public class CurioMomentumStone extends BaseCurioItem {
         if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.2"));
-        if (ChromaCurioHelper.isChromaticTwisted(stack, null)) {
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.twisted"));
         } else {
             list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.3"));

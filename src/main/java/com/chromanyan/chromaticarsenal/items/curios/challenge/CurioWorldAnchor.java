@@ -4,9 +4,11 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -47,7 +49,7 @@ public class CurioWorldAnchor extends BaseCurioItem {
             list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2", TooltipHelper.valueTooltip(getFortuneLevel(stack))));
         else
             list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2alt"));
-        if (stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0)
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
             list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.twisted", TooltipHelper.valueTooltip(config.twistedAnchorGravityMultiplier.get())));
     }
 
