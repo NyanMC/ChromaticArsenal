@@ -7,6 +7,7 @@ import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.EntityTypeTags;
@@ -22,6 +23,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -40,7 +43,10 @@ public class CurioCryoRing extends BaseCurioItem {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.2", TooltipHelper.valueTooltip(config.cryoDamage.get()), "§b" + TooltipHelper.ticksToSecondsTooltip(config.chilledTicks.get())));
         if (!Objects.equals(config.chilledTicks.get(), config.chilledTicksVulnerable.get())) {

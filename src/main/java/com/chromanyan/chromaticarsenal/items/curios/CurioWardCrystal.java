@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -13,6 +14,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -26,7 +29,10 @@ public class CurioWardCrystal extends BaseCurioItem {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.1", TooltipHelper.multiplierAsPercentTooltip(getIncomingMultiplier(stack))));
         if (!ChromaCurioHelper.isChromaticTwisted(stack, null))
             list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.2", TooltipHelper.multiplierAsPercentTooltip(getOutgoingMultiplier(stack))));

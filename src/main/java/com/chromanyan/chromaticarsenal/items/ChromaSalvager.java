@@ -6,6 +6,7 @@ import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.init.ModTags;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -18,6 +19,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -46,7 +49,12 @@ public class ChromaSalvager extends Item {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        if (!Screen.hasShiftDown()) {
+            list.add(Component.translatable("tooltip.chromaticarsenal.shift"));
+            return;
+        }
         list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.2"));
         if (config.returnInferiorVariant.get())

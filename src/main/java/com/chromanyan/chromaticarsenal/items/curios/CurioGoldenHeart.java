@@ -9,6 +9,7 @@ import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -45,6 +46,8 @@ public class CurioGoldenHeart extends BaseCurioItem {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
         if (EnigmaticLegacyHelper.isTheCursedOne(Minecraft.getInstance().player))
             list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3.cursed"));
         else

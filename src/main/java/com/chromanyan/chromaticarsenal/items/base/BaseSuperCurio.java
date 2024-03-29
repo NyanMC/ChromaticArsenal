@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +16,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,8 +48,11 @@ public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         list.add(Component.translatable("tooltip.chromaticarsenal.super"));
+        super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
 
         if (!clientConfig.suppressEnchantedSuperCurioWarning.get() && hasIncompatibleEnchantments(stack)) {
             list.add(Component.translatable("tooltip.chromaticarsenal.enchanted_super_curio_warning.1").withStyle(ChatFormatting.YELLOW));

@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -12,6 +13,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -27,8 +30,10 @@ public class CurioAnonymityUmbrella extends BaseCurioItem {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("tooltip.chromaticarsenal.utility"));
+        super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.anonymity_umbrella.1"));
     }
 

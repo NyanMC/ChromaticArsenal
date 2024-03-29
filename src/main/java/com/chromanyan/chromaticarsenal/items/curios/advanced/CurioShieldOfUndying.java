@@ -8,6 +8,7 @@ import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -19,6 +20,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -34,8 +37,10 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.2", TooltipHelper.valueTooltip(config.shatterRevivalCooldown.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.3", TooltipHelper.valueTooltip(config.revivalLimit.get())));

@@ -6,6 +6,7 @@ import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -23,6 +24,8 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.VanillaGameEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -39,7 +42,10 @@ import java.util.UUID;
 public class CurioShadowTreads extends BaseCurioItem {
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.2", TooltipHelper.potionAmplifierTooltip(config.darkspeedPotency.get()), TooltipHelper.valueTooltip(config.maxLightLevel.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.3"));

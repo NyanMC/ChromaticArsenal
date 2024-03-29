@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -11,6 +12,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,7 +28,10 @@ public class CurioDualityRings extends BaseCurioItem {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", TooltipHelper.multiplierAsPercentTooltip(config.aroOfClubsMultiplier.get())));
         if (ChromaCurioHelper.isChromaticTwisted(stack, null))

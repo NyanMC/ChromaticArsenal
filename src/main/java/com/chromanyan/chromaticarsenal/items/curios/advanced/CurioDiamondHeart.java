@@ -6,6 +6,7 @@ import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -16,6 +17,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,8 +33,10 @@ public class CurioDiamondHeart extends BaseSuperCurio {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.2", TooltipHelper.valueTooltip((config.fracturedPotency.get() + 1) * 10), TooltipHelper.ticksToSecondsTooltip(config.fracturedDuration.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.3", TooltipHelper.ticksToSecondsTooltip(config.revivalCooldown.get())));
