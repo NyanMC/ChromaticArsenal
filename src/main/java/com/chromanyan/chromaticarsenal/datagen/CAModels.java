@@ -42,6 +42,7 @@ public class CAModels extends ItemModelProvider {
         basicModel("bubble_amulet");
         basicModel("momentum_stone");
         basicModel("advancing_heart");
+        basicModel("thunderguard");
 
         // super curios
         basicModel("super_golden_heart"); // can't datagen the regular golden heart because it does special stuff

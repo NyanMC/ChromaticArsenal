@@ -41,6 +41,7 @@ public class ModItems {
     public static final RegistryObject<Item> BUBBLE_AMULET = ITEMS_REGISTRY.register("bubble_amulet", CurioBubbleAmulet::new);
     public static final RegistryObject<Item> MOMENTUM_STONE = ITEMS_REGISTRY.register("momentum_stone", CurioMomentumStone::new);
     public static final RegistryObject<Item> ADVANCING_HEART = ITEMS_REGISTRY.register("advancing_heart", CurioAdvancingHeart::new);
+    public static final RegistryObject<Item> THUNDERGUARD = ITEMS_REGISTRY.register("thunderguard", CurioThunderguard::new);
 
     // super curios
     public static final RegistryObject<Item> SUPER_GOLDEN_HEART = ITEMS_REGISTRY.register("super_golden_heart", CurioDiamondHeart::new);

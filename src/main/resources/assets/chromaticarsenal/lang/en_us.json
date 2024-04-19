@@ -79,6 +79,8 @@
   "tooltip.chromaticarsenal.advancing_heart.progresstracker": "§eCurrently, you have completed %1$s§e of %2$s§e advancements",
   "tooltip.chromaticarsenal.advancing_heart.progresstracker.equipfirst": "§eEquip this item to see your advancement count",
 
+  "item.chromaticarsenal.thunderguard": "Thunderguard",
+
   "item.chromaticarsenal.gravity_stone": "Gravity Stone",
   "tooltip.chromaticarsenal.gravity_stone.1": "§6Prevents gravity from being reduced below the base value",
   "tooltip.chromaticarsenal.gravity_stone.2": "§6Prevents the floatiness from Slow Falling (the effect will still negate fall damage)",
