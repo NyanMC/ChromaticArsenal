@@ -218,9 +218,11 @@
   "effect.chromaticarsenal.chilled": "Chilled",
   "effect.chromaticarsenal.chilled.description": "Reduces movement speed by 30% and causes the target entity to freeze as if they were standing in Powder Snow",
   "effect.chromaticarsenal.bubble_panic": "Bubble Panic!",
-  "effect.chromaticarsenal.bubble_panic.description": "Increases swimming speed by 50%",
+  "effect.chromaticarsenal.bubble_panic.description": "Increases swimming speed by 30%",
   "effect.chromaticarsenal.cursed_revival": "Cursed Revival",
   "effect.chromaticarsenal.cursed_revival.description": "When killed, resurrects the target and applies Fractured; Does nothing if the target is a player or already has Fractured",
+  "effect.chromaticarsenal.thundercharged": "Thundercharged",
+  "effect.chromaticarsenal.thundercharged.description": "Increases movement and attack speed",
 
   "effect.chromaticarsenal.inferno": "Inferno",
   "effect.chromaticarsenal.inferno.description": "Sets the target on fire until the effect ends, cannot be extinguished by water",

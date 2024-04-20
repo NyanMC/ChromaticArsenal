@@ -16,5 +16,6 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> BUBBLE_PANIC = EFFECTS_REGISTRY.register("bubble_panic", EffectBubblePanic::new);
     public static final RegistryObject<MobEffect> CURSED_REVIVAL = EFFECTS_REGISTRY.register("cursed_revival", EffectCursedRevival::new);
     public static final RegistryObject<MobEffect> INFERNO = EFFECTS_REGISTRY.register("inferno", EffectInferno::new);
+    public static final RegistryObject<MobEffect> THUNDERCHARGED = EFFECTS_REGISTRY.register("thundercharged", EffectThundercharged::new);
 
 }
