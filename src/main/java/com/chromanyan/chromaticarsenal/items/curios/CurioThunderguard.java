@@ -3,12 +3,17 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModEffects;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -39,14 +44,17 @@ public class CurioThunderguard extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.1"));
+        if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
+            list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.twisted"));
+        else
+            list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.2", TooltipHelper.valueTooltip(config.thunderguardZapDamage.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.3"));
     }
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource() == DamageSource.LIGHTNING_BOLT) {
+        if (event.getSource() == DamageSource.LIGHTNING_BOLT && !(ChromaCurioHelper.isChromaticTwisted(stack, player))) {
             player.addEffect(new MobEffectInstance(ModEffects.THUNDERCHARGED.get(), (int) (event.getAmount() * config.thunderchargedDuration.get())));
             event.setCanceled(true);
             return; // otherwise it might be possible for two thunderguard users to create an infinite recursive loop? not sure but just to be safe
@@ -56,6 +64,23 @@ public class CurioThunderguard extends BaseCurioItem {
         if (event.getSource().getDirectEntity() instanceof LivingEntity livingEntity) {
             livingEntity.hurt(DamageSource.LIGHTNING_BOLT, config.thunderguardZapDamage.get().floatValue());
         }
+    }
+
+    @Override
+    public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
+        if (event.getSource().isProjectile() || !(ChromaCurioHelper.isChromaticTwisted(stack, player))) return;
+        Level level = player.level;
+        if (level.isClientSide || !(level.isThundering() && level.canSeeSky(target.blockPosition()))) return;
+
+        LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(level);
+        if (lightningBolt == null) return;
+
+        if (player instanceof ServerPlayer serverPlayer) {
+            lightningBolt.setCause(serverPlayer);
+        }
+
+        lightningBolt.setPos(target.position());
+        level.addFreshEntity(lightningBolt);
     }
 
     @Override

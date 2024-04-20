@@ -81,8 +81,9 @@
 
   "item.chromaticarsenal.thunderguard": "Thunderguard",
   "tooltip.chromaticarsenal.thunderguard.1": "§2Grants immunity to Lightning damage and converts it into a movement buff",
-  "tooltip.chromaticarsenal.thunderguard.2": "§6Deals %1$s§6 Lightning damage to direct attackers",
+  "tooltip.chromaticarsenal.thunderguard.2": "§6Deals %1$s§6 lightning damage to direct attackers",
   "tooltip.chromaticarsenal.thunderguard.3": "§6Allows for the use of Channeling on entities without thundering weather",
+  "tooltip.chromaticarsenal.thunderguard.twisted": "§cChromatic Twisting:§5 Melee attacks exposed to thundering weather cause lightning to strike, but removes lightning damage immunity",
 
   "item.chromaticarsenal.gravity_stone": "Gravity Stone",
   "tooltip.chromaticarsenal.gravity_stone.1": "§6Prevents gravity from being reduced below the base value",
