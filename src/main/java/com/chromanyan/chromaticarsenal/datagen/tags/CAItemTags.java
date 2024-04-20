@@ -42,7 +42,8 @@ public class CAItemTags extends ItemTagsProvider {
                 ModItems.CRYO_RING.get(),
                 ModItems.BUBBLE_AMULET.get(),
                 ModItems.MOMENTUM_STONE.get(),
-                ModItems.ADVANCING_HEART.get()
+                ModItems.ADVANCING_HEART.get(),
+                ModItems.THUNDERGUARD.get()
         );
 
         tag(ModTags.Items.SUPER_CURIOS).add(
