@@ -3,6 +3,9 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModEffects;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -10,8 +13,15 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class CurioThunderguard extends BaseCurioItem {
 
@@ -22,6 +32,16 @@ public class CurioThunderguard extends BaseCurioItem {
                 .rarity(Rarity.RARE)
                 .defaultDurability(0)
                 .fireResistant(), SoundEvents.LIGHTNING_BOLT_THUNDER); // lightning places fire. we don't want to instantly destroy the thunderguard when it gets created
+    }
+
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
+        super.appendHoverText(stack, level, list, flag);
+        if (!Screen.hasShiftDown()) return;
+        list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.1"));
+        list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.2", TooltipHelper.valueTooltip(3)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.3"));
     }
 
     @Override
