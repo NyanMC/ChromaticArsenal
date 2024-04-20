@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing",
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "addition": {
+    "item": "thermal:blitz_rod"
+  },
+  "base": {
+    "item": "chromaticarsenal:glass_shield"
+  },
+  "result": {
+    "item": "chromaticarsenal:thunderguard"
+  }
+}

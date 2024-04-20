@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing",
+  "conditions": [
+    {
+      "modid": "reliquary",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "addition": {
+    "item": "reliquary:eye_of_the_storm"
+  },
+  "base": {
+    "item": "chromaticarsenal:glass_shield"
+  },
+  "result": {
+    "item": "chromaticarsenal:thunderguard"
+  }
+}
