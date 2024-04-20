@@ -99,7 +99,7 @@ public class CurioGlassShield extends BaseCurioItem {
 
     @Override
     public void onDestroyed(ItemEntity itemEntity, DamageSource damageSource) {
-        if (damageSource != DamageSource.LIGHTNING_BOLT) return;
+        if (damageSource != DamageSource.LIGHTNING_BOLT || !config.thunderguardDefaultRecipe.get()) return;
         ItemEntity newEntity = new ItemEntity(itemEntity.level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), new ItemStack(ModItems.THUNDERGUARD.get(), 1));
         itemEntity.level.addFreshEntity(newEntity);
     }

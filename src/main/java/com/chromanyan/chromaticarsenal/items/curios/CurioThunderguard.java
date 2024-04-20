@@ -40,21 +40,21 @@ public class CurioThunderguard extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.2", TooltipHelper.valueTooltip(3)));
+        list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.2", TooltipHelper.valueTooltip(config.thunderguardZapDamage.get())));
         list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.3"));
     }
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
         if (event.getSource() == DamageSource.LIGHTNING_BOLT) {
-            player.addEffect(new MobEffectInstance(ModEffects.THUNDERCHARGED.get(), (int) (event.getAmount() * 60)));
+            player.addEffect(new MobEffectInstance(ModEffects.THUNDERCHARGED.get(), (int) (event.getAmount() * config.thunderchargedDuration.get())));
             event.setCanceled(true);
             return; // otherwise it might be possible for two thunderguard users to create an infinite recursive loop? not sure but just to be safe
         }
 
         // we get the direct entity because it wouldn't make sense to be able to zap ranged attackers
         if (event.getSource().getDirectEntity() instanceof LivingEntity livingEntity) {
-            livingEntity.hurt(DamageSource.LIGHTNING_BOLT, 3);
+            livingEntity.hurt(DamageSource.LIGHTNING_BOLT, config.thunderguardZapDamage.get().floatValue());
         }
     }
 

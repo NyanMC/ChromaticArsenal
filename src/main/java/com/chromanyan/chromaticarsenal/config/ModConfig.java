@@ -86,6 +86,10 @@ public class ModConfig {
         public final IntValue advancingHealthModifier;
         public final ConfigValue<List<? extends String>> advancementBlacklist;
 
+        public final IntValue thunderchargedDuration;
+        public final DoubleValue thunderguardZapDamage;
+        public final BooleanValue thunderguardDefaultRecipe;
+
         public final DoubleValue anchorGravityMultiplier;
         public final DoubleValue anchorSpeedMultiplier;
         public final DoubleValue anchorKnockbackResistanceMultiplier;
@@ -368,6 +372,18 @@ public class ModConfig {
                     advancementBlacklist = builder
                             .comment("The Advancing Heart will ignore advancements which contain any of these keywords in their name. By default, ignores all recipe advancements.")
                             .defineList("advancementBlacklist", new ArrayList<>(List.of("recipes")), o -> o instanceof String);
+                builder.pop();
+
+                builder.push("ThunderguardSettings");
+                    thunderchargedDuration = builder
+                            .comment("The duration, in ticks, of the received Thundercharged effect when absorbing lightning damage. Multiplied by the damage of the attack, which is 5 for lightning bolts.")
+                            .defineInRange("thunderchargedDuration", 60, 0, Integer.MAX_VALUE);
+                    thunderguardZapDamage = builder
+                            .comment("The amount of damage dealt to an entity that directly attacks the wearer.")
+                            .defineInRange("thunderguardZapDamage", 3, 0, Double.MAX_VALUE);
+                    thunderguardDefaultRecipe = builder
+                            .comment("If set to false, the Glass Shield will not turn into a Thunderguard when destroyed by lightning damage.")
+                            .define("thunderguardDefaultRecipe", true);
                 builder.pop();
 
                 builder.push("WorldAnchorSettings");
