@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
+import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.triggers.GlassShieldBlockTrigger;
@@ -16,6 +17,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -93,6 +95,13 @@ public class CurioGlassShield extends BaseCurioItem {
         } else {
             return super.canApplyAtEnchantingTable(stack, enchantment);
         }
+    }
+
+    @Override
+    public void onDestroyed(ItemEntity itemEntity, DamageSource damageSource) {
+        if (damageSource != DamageSource.LIGHTNING_BOLT) return;
+        ItemEntity newEntity = new ItemEntity(itemEntity.level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), new ItemStack(ModItems.THUNDERGUARD.get(), 1));
+        itemEntity.level.addFreshEntity(newEntity);
     }
 
     @Override
