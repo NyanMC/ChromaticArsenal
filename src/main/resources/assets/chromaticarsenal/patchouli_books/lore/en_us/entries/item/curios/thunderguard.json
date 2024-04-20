@@ -1,0 +1,17 @@
+{
+  "name": "Thunderguard",
+  "icon": "chromaticarsenal:thunderguard",
+  "category": "chromaticarsenal:curio_lore",
+  "advancement": "chromaticarsenal:thunderguard",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "It seems the Glass Shield was capable of absorbing a lightning strike without a wearer. It no longer seems capable of protecting against all forms of damage, but being charged with lightning might make it better at absorbing it.",
+      "item": "chromaticarsenal:thunderguard"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Additionally, being charged with lightning is sure to be painful to anyone looking to attack you directly. It still tries (and fails) to absorb the blow itself, and in turn the attacker gets a bit of a shock."
+    }
+  ]
+}

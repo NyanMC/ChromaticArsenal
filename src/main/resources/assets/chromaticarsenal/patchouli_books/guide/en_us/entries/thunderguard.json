@@ -1,0 +1,20 @@
+{
+  "name": "Thunderguard",
+  "icon": "chromaticarsenal:thunderguard",
+  "category": "chromaticarsenal:main",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Thunderguard is a curio created by striking a $(l:glass_shield)Glass Shield$(/l) with lightning. This is easiest to do using a Channeling trident and Copper Rod. While equipped, lightning damage is converted into a movement and attack speed buff, with a duration based on the damage of the attack.",
+      "item": "chromaticarsenal:thunderguard"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Additionally, enemies which attack the wearer take lightning damage, and the wearer can use the effects of the Channeling enchantment without the need for thundering weather."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Thunderguard supports the following enchantments:$(br2)$(l)Curse of Chromatic Twisting$(): Melee attacks cause the target to be struck by lightning during thundering weather, if the target is exposed to the sky. Removes lightning immunity."
+    }
+  ]
+}
