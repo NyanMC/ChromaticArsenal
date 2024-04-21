@@ -3,6 +3,7 @@
   "values": [
     "chromaticarsenal:ascended_star",
     "chromaticarsenal:harpy_feather",
+    "chromaticarsenal:vital_stone",
     "chromaticarsenal:viewer_item",
     {"id": "chromaticarsenal:mark_twisted", "required": false}
   ]

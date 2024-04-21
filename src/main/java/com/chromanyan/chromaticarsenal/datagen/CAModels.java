@@ -60,6 +60,7 @@ public class CAModels extends ItemModelProvider {
         // basic curios
         basicModel("amethyst_ring");
         basicModel("copper_ring");
+        basicModel("vital_stone");
 
         // compatibility
         basicModel("omni_ring");

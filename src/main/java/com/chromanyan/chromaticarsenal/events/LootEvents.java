@@ -4,6 +4,7 @@ import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.curios.CurioBubbleAmulet;
 import com.chromanyan.chromaticarsenal.items.curios.CurioLunarCrystal;
+import com.chromanyan.chromaticarsenal.items.curios.basic.CurioVitalStone;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -140,6 +141,10 @@ public class LootEvents {
 
         if (dying instanceof EnderMan && dying.level.dimension() == Level.END) {
             CurioLunarCrystal.handleDrop(event, dying);
+        }
+
+        if (dying.level.dimension() == Level.OVERWORLD && dying.blockPosition().getY() < 0) {
+            CurioVitalStone.handleDrop(event, dying);
         }
     }
 }

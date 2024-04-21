@@ -337,6 +337,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_vital_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:vital_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_ward_crystal": {
       "conditions": {
         "items": [
@@ -467,6 +479,9 @@
     ],
     [
       "has_copper_ring"
+    ],
+    [
+      "has_vital_stone"
     ]
   ],
   "rewards": {

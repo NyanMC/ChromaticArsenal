@@ -139,6 +139,9 @@ public class ModConfig {
 
         public final DoubleValue amethystRingReachModifier;
         public final DoubleValue copperRingUnbreakingChance;
+        public final IntValue vitalStoneFrequency;
+        public final IntValue vitalStoneDropChance;
+        public final IntValue vitalStoneDropLootingModifier;
 
         public final BooleanValue canDamageSalvager;
         public final BooleanValue returnInferiorVariant;
@@ -538,6 +541,15 @@ public class ModConfig {
                     copperRingUnbreakingChance = builder
                             .comment("The chance for an item to not use durability with the Copper Ring equipped. Stacks multiplicatively with Unbreaking.")
                             .defineInRange("copperRingUnbreakingChance", 0.1F, 0F, 1F);
+                    vitalStoneFrequency = builder
+                            .comment("How many ticks it takes to heal 1 health.")
+                            .defineInRange("vitalStoneFrequency", 60, 1, Integer.MAX_VALUE);
+                    vitalStoneDropChance = builder
+                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Bubble Amulet to drop when killing a Drowned. This is X.")
+                            .defineInRange("vitalStoneDropChance", 100, 1, Integer.MAX_VALUE);
+                    vitalStoneDropLootingModifier = builder
+                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Bubble Amulet to drop when killing a Drowned. This is Y.")
+                            .defineInRange("vitalStoneDropLootingModifier", 3, 0, Integer.MAX_VALUE);
                 builder.pop();
             builder.pop();
 

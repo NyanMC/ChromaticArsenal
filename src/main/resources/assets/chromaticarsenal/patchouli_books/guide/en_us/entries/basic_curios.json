@@ -16,6 +16,11 @@
       "type": "patchouli:crafting",
       "text": "The Copper Ring adds a slight chance for any breakable item to not take damage when used.$(br2)$(o)To complement the Iron and Gold rings, of course.",
       "recipe": "chromaticarsenal:copper_ring"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "text": "The Vital Stone causes its wearer to regenerate 1 health every few seconds. It drops from mobs slain below y=0 in the Overworld.$(br2)$(o)The Life Crystal's long lost cousin.",
+      "item": "chromaticarsenal:vital_stone"
     }
   ]
 }
