@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.basic;
 
+import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
@@ -12,6 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -65,5 +67,10 @@ public class CurioVitalStone extends BaseCurioItem {
         if (chance <= 0 || rand.nextInt(chance) == 0) {
             event.getDrops().add(dying.spawnAtLocation(new ItemStack(ModItems.VITAL_STONE.get())));
         }
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment != ModEnchantments.CHROMATIC_TWISTING.get() && super.canApplyAtEnchantingTable(stack, enchantment);
     }
 }
