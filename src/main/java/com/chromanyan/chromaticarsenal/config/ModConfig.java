@@ -85,6 +85,7 @@ public class ModConfig {
 
         public final IntValue advancingHealthModifier;
         public final ConfigValue<List<? extends String>> advancementBlacklist;
+        public final BooleanValue onlyDisplayedAdvancements;
 
         public final IntValue thunderchargedDuration;
         public final DoubleValue thunderguardZapDamage;
@@ -370,8 +371,11 @@ public class ModConfig {
                             .comment("The amount of bonus health obtainable with every advancement completed. The health bonus is floored to the nearest even number.")
                             .defineInRange("advancingHealthModifier", 20, 2, Integer.MAX_VALUE);
                     advancementBlacklist = builder
-                            .comment("The Advancing Heart will ignore advancements which contain any of these keywords in their name. By default, ignores all recipe advancements.")
-                            .defineList("advancementBlacklist", new ArrayList<>(List.of("recipes")), o -> o instanceof String);
+                            .comment("The Advancing Heart will ignore advancements which contain any of these keywords in their name. By default, ignores the impossible Architect's Favor advancement from Enigmatic Legacy.")
+                            .defineList("advancementBlacklist", new ArrayList<>(List.of("cosmic_scroll")), o -> o instanceof String);
+                    onlyDisplayedAdvancements = builder
+                            .comment("If the Advancing Heart should only account for advancements that are set to show up in the advancement list. Less confusing for the player, and fixes issues with mods such as Enigmatic Legacy.")
+                            .define("onlyDisplayedAdvancements", true);
                 builder.pop();
 
                 builder.push("ThunderguardSettings");

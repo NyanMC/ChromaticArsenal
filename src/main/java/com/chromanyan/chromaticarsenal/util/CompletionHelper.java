@@ -38,7 +38,7 @@ public class CompletionHelper {
         for (Map.Entry<Advancement, AdvancementProgress> advancements : playerAdvancements.advancements.entrySet()) {
             Advancement advancement = advancements.getKey();
 
-            if (isAdvancementIgnored(advancement)) continue;
+            if (isAdvancementIgnored(advancement) || (config.onlyDisplayedAdvancements.get() && advancement.getDisplay() == null)) continue;
 
             totalAdvancements++;
             if (playerAdvancements.getOrStartProgress(advancement).isDone()) {
