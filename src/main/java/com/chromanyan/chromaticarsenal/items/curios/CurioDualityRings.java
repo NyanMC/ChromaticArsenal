@@ -12,6 +12,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -34,15 +36,19 @@ public class CurioDualityRings extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", TooltipHelper.multiplierAsPercentTooltip(config.aroOfClubsMultiplier.get())));
+        list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", TooltipHelper.multiplierAsPercentTooltip(getProjectileMultiplier(stack))));
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
             list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.twisted", TooltipHelper.ticksToSecondsTooltip(config.twistedSaturationDuration.get()), TooltipHelper.potionAmplifierTooltip(config.twistedHungerLevel.get())));
+    }
+
+    private double getProjectileMultiplier(ItemStack stack) {
+        return config.aroOfClubsMultiplier.get() + (config.powerArrowsMultiplierBonus.get() * stack.getEnchantmentLevel(Enchantments.POWER_ARROWS));
     }
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
         if (event.getSource().isProjectile()) {
-            event.setAmount((float) (event.getAmount() * config.aroOfClubsMultiplier.get()));
+            event.setAmount((float) (event.getAmount() * getProjectileMultiplier(stack)));
         }
     }
 
@@ -55,6 +61,15 @@ public class CurioDualityRings extends BaseCurioItem {
             if (!entity.hasEffect(MobEffects.SATURATION)) {
                 entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 25, config.twistedHungerLevel.get()), entity);
             }
+        }
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        if (enchantment == Enchantments.POWER_ARROWS) {
+            return true;
+        } else {
+            return super.canApplyAtEnchantingTable(stack, enchantment);
         }
     }
 }

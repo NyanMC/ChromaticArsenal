@@ -43,6 +43,7 @@ public class ModConfig {
         public final IntValue healthBoostDuration;
         public final IntValue twistedSaturationDuration;
         public final IntValue twistedHungerLevel;
+        public final DoubleValue powerArrowsMultiplierBonus;
 
         public final IntValue fireResistanceDuration;
         public final IntValue fireResistanceProtectionDuration;
@@ -232,6 +233,9 @@ public class ModConfig {
                     aroOfClubsMultiplier = builder
                             .comment("The damage multiplier of arrow projectiles while the Duality Rings are equipped. Values above 1.0 increase the damage, while values below 1.0 decrease the damage.")
                             .defineInRange("aroOfClubsMultiplier", 1.25, 0.0, Double.MAX_VALUE);
+                    powerArrowsMultiplierBonus = builder
+                            .comment("The added projectile damage multiplier for every level of the Power enchantment on the item.")
+                            .defineInRange("powerArrowsMultiplierBonus", 0.02, 0.0, Double.MAX_VALUE);
                     strengthLevel = builder
                             .comment("The level of the strength effect applied to the player when consuming Magic Garlic Bread while the Duality Rings are equipped.")
                             .defineInRange("strengthLevel", 0, 0, 255);
