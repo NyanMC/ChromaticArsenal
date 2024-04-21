@@ -424,7 +424,7 @@ public class ModConfig {
                             .defineInRange("cursedTotemFracturedLevel", 4, 0, 8);
                     cursedTotemBonusLooting = builder
                             .comment("The amount of looting levels added when killing an enemy which has revived from Cursed Revival.")
-                                    .defineInRange("cursedTotemBonusLooting", 2, 0, Integer.MAX_VALUE);
+                            .defineInRange("cursedTotemBonusLooting", 2, 0, Integer.MAX_VALUE);
                 builder.pop();
 
                 builder.push("HarpyFeatherSettings");
