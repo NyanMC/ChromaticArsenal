@@ -549,10 +549,10 @@ public class ModConfig {
                             .comment("How many ticks it takes to heal 1 health.")
                             .defineInRange("vitalStoneFrequency", 60, 1, Integer.MAX_VALUE);
                     vitalStoneDropChance = builder
-                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Bubble Amulet to drop when killing a Drowned. This is X.")
+                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Vital Stone to drop when killing any mob under y=0 in the Overworld. This is X.")
                             .defineInRange("vitalStoneDropChance", 100, 1, Integer.MAX_VALUE);
                     vitalStoneDropLootingModifier = builder
-                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Bubble Amulet to drop when killing a Drowned. This is Y.")
+                            .comment("There is a 1 in (X - (Looting Level * Y)) chance for a Vital Stone to drop when killing any mob under y=0 in the Overworld. This is Y.")
                             .defineInRange("vitalStoneDropLootingModifier", 3, 0, Integer.MAX_VALUE);
                 builder.pop();
             builder.pop();
