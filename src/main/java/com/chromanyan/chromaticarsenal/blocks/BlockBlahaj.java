@@ -11,8 +11,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -28,7 +27,8 @@ public class BlockBlahaj extends Block {
     protected static final VoxelShape EAST_AABB = Shapes.box(0.078125D, 0.0D, 0.375D, 0.953125D, 0.25D, 0.625D);
 
     public BlockBlahaj() {
-        super(BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_LIGHT_BLUE)
+        super(BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_LIGHT_BLUE)
                 .strength(0.8F)
                 .sound(SoundType.WOOL)
                 .noOcclusion()
