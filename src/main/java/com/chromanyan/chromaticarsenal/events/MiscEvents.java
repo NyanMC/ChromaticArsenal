@@ -8,7 +8,7 @@ import com.chromanyan.chromaticarsenal.items.curios.CurioAdvancingHeart;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -29,7 +29,7 @@ public class MiscEvents {
         if (player.getCommandSenderWorld().isClientSide()) return;
 
         // spatial: block fall damage
-        if (player.hasEffect(ModEffects.SPATIAL.get()) && event.getSource() == DamageSource.FALL) {
+        if (player.hasEffect(ModEffects.SPATIAL.get()) && event.getSource().is(DamageTypeTags.IS_FALL)) {
             event.setAmount(0); // just in case, you know?
             event.setCanceled(true);
         }
@@ -47,7 +47,7 @@ public class MiscEvents {
 
     @SubscribeEvent
     public void playerDeathEvent(LivingDeathEvent event) {
-        if (event.isCanceled() || event.getSource().isBypassInvul()) {
+        if (event.isCanceled() || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return;
         }
         LivingEntity entity = event.getEntity();

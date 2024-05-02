@@ -139,11 +139,11 @@ public class LootEvents {
             CurioBubbleAmulet.handleDrop(event, dying);
         }
 
-        if (dying instanceof EnderMan && dying.level.dimension() == Level.END) {
+        if (dying instanceof EnderMan && dying.getCommandSenderWorld().dimension() == Level.END) {
             CurioLunarCrystal.handleDrop(event, dying);
         }
 
-        if (dying.level.dimension() == Level.OVERWORLD && dying.blockPosition().getY() < 0) {
+        if (dying.getCommandSenderWorld().dimension() == Level.OVERWORLD && dying.blockPosition().getY() < 0) {
             CurioVitalStone.handleDrop(event, dying);
         }
     }
