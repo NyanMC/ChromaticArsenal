@@ -10,8 +10,10 @@ import com.chromanyan.chromaticarsenal.items.curios.CurioGoldenHeart;
 import com.chromanyan.chromaticarsenal.items.curios.advanced.CurioIlluminatedSoul;
 import com.chromanyan.chromaticarsenal.triggers.GlassShieldBlockTrigger;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.StatFormatter;
 import net.minecraft.stats.Stats;
@@ -36,6 +38,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.theillusivec4.curios.api.SlotTypeMessage;
+
+import java.util.concurrent.CompletableFuture;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ChromaticArsenal.MODID)
@@ -80,15 +84,17 @@ public class ChromaticArsenal {
     public void gatherData(final GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper efh = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        PackOutput output = gen.getPackOutput();
         if (event.includeClient()) {
-            gen.addProvider(true, new CAModels(gen, efh));
+            gen.addProvider(true, new CAModels(output, efh));
         }
         if (event.includeServer()) {
-            gen.addProvider(true, new CARecipes(gen));
-            gen.addProvider(true, new CAAdvancements(gen, efh));
-            CABlockTags blockTags = new CABlockTags(gen, event.getExistingFileHelper());
+            gen.addProvider(true, new CARecipes(output));
+            gen.addProvider(true, new CAAdvancements(output, lookupProvider, efh));
+            CABlockTags blockTags = new CABlockTags(output, lookupProvider, efh);
             gen.addProvider(true, blockTags);
-            gen.addProvider(true, new CAItemTags(gen, blockTags, efh));
+            gen.addProvider(true, new CAItemTags(output, lookupProvider, blockTags.contentsGetter(), efh));
     }
     }
 
@@ -126,7 +132,7 @@ public class ChromaticArsenal {
 
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
-    public static void onStitch(TextureStitchEvent.Pre event) {
+    public static void onStitch(TextureStitchEvent event) {
         event.addSprite(SUPER_CURIO_ICON);
     }
 
