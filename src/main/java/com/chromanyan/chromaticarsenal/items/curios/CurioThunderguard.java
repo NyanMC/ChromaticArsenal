@@ -85,7 +85,7 @@ public class CurioThunderguard extends BaseCurioItem {
 
     @Override
     public boolean canBeHurtBy(@NotNull DamageSource damageSource) {
-        return damageSource.is(DamageTypes.LIGHTNING_BOLT) && super.canBeHurtBy(damageSource);
+        return !damageSource.is(DamageTypes.LIGHTNING_BOLT) && super.canBeHurtBy(damageSource);
         // the lightning protection item itself should be immune to lightning
     }
 }
