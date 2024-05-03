@@ -17,7 +17,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.StatFormatter;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -48,7 +47,6 @@ public class ChromaticArsenal {
 
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "chromaticarsenal";
-    public static final CreativeModeTab GROUP = new CAGroup(MODID);
     private static final ResourceLocation SUPER_CURIO_ICON = new ResourceLocation("curios", "slot/empty_super_curio_slot"); // 1.19.2 curios is stupid and requires slot textures to be registered under its own namespace
 
     public ChromaticArsenal() {
