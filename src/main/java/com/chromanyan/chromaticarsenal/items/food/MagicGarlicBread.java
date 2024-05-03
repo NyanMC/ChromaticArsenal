@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.food;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.config.ModConfig.Common;
 import com.chromanyan.chromaticarsenal.init.ModItems;
@@ -23,7 +22,6 @@ public class MagicGarlicBread extends Item {
 
     public MagicGarlicBread() {
         super(new Item.Properties()
-                .tab(ChromaticArsenal.GROUP)
                 .stacksTo(64)
                 .rarity(Rarity.RARE)
                 .food(new FoodProperties.Builder()

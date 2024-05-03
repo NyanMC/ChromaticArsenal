@@ -11,7 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -90,7 +90,7 @@ public class CurioLunarCrystal extends BaseCurioItem {
                 stack.getOrCreateTag().putString("crafter.id", entity.getUUID().toString());
             }
         } else {
-            final Player player = entity.level.getPlayerByUUID(UUID.fromString(stack.getOrCreateTag().getString("crafter.id")));
+            final Player player = entity.getCommandSenderWorld().getPlayerByUUID(UUID.fromString(stack.getOrCreateTag().getString("crafter.id")));
             if ((player != null) && stack.getOrCreateTag().getString("crafter.name").isEmpty()) {
                 stack.getOrCreateTag().putString("crafter.name", player.getDisplayName().getString());
             }
@@ -129,7 +129,7 @@ public class CurioLunarCrystal extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource() == DamageSource.FALL) {
+        if (event.getSource().is(DamageTypeTags.IS_FALL)) {
             event.setAmount(event.getAmount() * getFallMultiplier(stack));
         }
     }

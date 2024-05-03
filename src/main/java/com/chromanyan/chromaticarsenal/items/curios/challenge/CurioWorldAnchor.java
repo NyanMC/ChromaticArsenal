@@ -77,7 +77,7 @@ public class CurioWorldAnchor extends BaseCurioItem {
             ChromaticArsenal.LOGGER.warn("Tried to get attribute modifiers for world anchor but entity was null");
             return atts; // should hopefully fix a NPE when reloading resources with F3+T
         }
-        Level level = entity.getLevel();
+        Level level = entity.getCommandSenderWorld();
         double relativeY = entity.getY() - level.getMinBuildHeight(); // the entity's y position relative to the bottom of the world, e.g. y position + 64 in the overworld
         int worldHeight = level.getMaxBuildHeight() - level.getMinBuildHeight();
         double gravityMod;

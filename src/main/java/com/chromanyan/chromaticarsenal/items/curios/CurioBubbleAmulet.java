@@ -74,7 +74,7 @@ public class CurioBubbleAmulet extends BaseCurioItem {
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity living = context.entity();
 
-        if (living.level.isClientSide) {
+        if (living.getCommandSenderWorld().isClientSide) {
             return; // the server will replicate our changes to the client for us
         }
 

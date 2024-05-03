@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class ChampionCatalyst extends Item {
     public ChampionCatalyst() {
-        super(new Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.RARE).stacksTo(1));
+        super(new Properties().rarity(Rarity.RARE).stacksTo(1));
     }
 
     @Override

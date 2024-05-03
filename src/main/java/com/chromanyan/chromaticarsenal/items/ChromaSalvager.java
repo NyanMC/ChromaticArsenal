@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModStats;
@@ -32,7 +31,6 @@ public class ChromaSalvager extends Item {
 
     public ChromaSalvager() {
         super(new Item.Properties()
-                .tab(ChromaticArsenal.GROUP)
                 .stacksTo(1)
                 .defaultDurability(8)
                 .rarity(Rarity.UNCOMMON));
@@ -78,7 +76,7 @@ public class ChromaSalvager extends Item {
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
 
-        if (player.level.isClientSide) return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
+        if (player.getCommandSenderWorld().isClientSide) return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 
         ItemStack salvageTarget;
 

@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.food;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
@@ -14,7 +13,6 @@ public class Cosmicola extends Item {
 
     public Cosmicola() {
         super(new Item.Properties()
-                .tab(ChromaticArsenal.GROUP)
                 .stacksTo(16)
                 .rarity(Rarity.EPIC)
                 .food(new FoodProperties.Builder()

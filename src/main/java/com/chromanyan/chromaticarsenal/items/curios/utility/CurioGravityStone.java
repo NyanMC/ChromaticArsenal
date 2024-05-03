@@ -45,7 +45,7 @@ public class CurioGravityStone extends BaseCurioItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> attributes = HashMultimap.create();
         if (slotContext.entity() instanceof Player) {
-            CuriosApi.getCuriosHelper().addSlotModifier(attributes, "charm",
+            CuriosApi.addSlotModifier(attributes, "charm",
                     UUID.fromString("d020cd5d-c050-49e4-a0ea-ef27adf7e6d0"), 1, AttributeModifier.Operation.ADDITION);
         }
 

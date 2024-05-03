@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -9,8 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.EntityDamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -38,10 +36,8 @@ import java.util.Optional;
 
 public class CurioFriendlyFireFlower extends BaseCurioItem {
 
-    private static final DamageSource UNFRIENDLY_FIRE = new DamageSource("chromaticarsenal.unfriendly_fire").setIsFire();
-
     public CurioFriendlyFireFlower() {
-        super(new Item.Properties().tab(ChromaticArsenal.GROUP).stacksTo(1).rarity(Rarity.RARE).defaultDurability(35).fireResistant(), SoundEvents.FIRECHARGE_USE);
+        super(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).defaultDurability(35).fireResistant(), SoundEvents.FIRECHARGE_USE);
     }
 
     @Override
@@ -83,12 +79,12 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
 
                 // we no longer have to check canBeDamaged here because hurtAndBreak checks isDamageable
                 if (!ChromaCurioHelper.isChromaticTwisted(stack, context.entity()) || Math.random() > config.twistedUnbreakingChance.get()) {
-                    stack.hurtAndBreak(1, living, damager -> CuriosApi.getCuriosHelper().onBrokenCurio(context));
+                    stack.hurtAndBreak(1, living, damager -> CuriosApi.broadcastCurioBreakEvent(context));
                 }
             } else {
                 if (ChromaCurioHelper.isChromaticTwisted(stack, context.entity())) {
                     if (!living.getCommandSenderWorld().isClientSide && living.tickCount % config.twistedFireDamageTicks.get() == 0) {
-                        living.hurt(UNFRIENDLY_FIRE, config.twistedFireDamageValue.get().floatValue());
+                        living.hurt(living.getCommandSenderWorld().damageSources().onFire(), config.twistedFireDamageValue.get().floatValue());
                     }
                 }
             }
@@ -135,18 +131,16 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource() instanceof EntityDamageSource entityDamageSource) {
-            if (entityDamageSource.isThorns()) {
-                event.setAmount(0);
-                event.setCanceled(true);
+        if (event.getSource().is(DamageTypes.THORNS)) {
+            event.setAmount(0);
+            event.setCanceled(true);
 
-                // someday these three lines are going to make someone hate me, i guarantee it
-                Optional<SlotResult> slotResultOptional = ChromaCurioHelper.getCurio(player, this);
-                slotResultOptional.ifPresent(slotResult -> stack.hurtAndBreak(1, player,
-                        damager -> CuriosApi.getCuriosHelper().onBrokenCurio(slotResult.slotContext())));
+            // someday these three lines are going to make someone hate me, i guarantee it
+            Optional<SlotResult> slotResultOptional = ChromaCurioHelper.getCurio(player, this);
+            slotResultOptional.ifPresent(slotResult -> stack.hurtAndBreak(1, player,
+                    damager -> CuriosApi.broadcastCurioBreakEvent(slotResult.slotContext())));
 
-                return;
-            }
+            return;
         }
 
         if (!ChromaCurioHelper.isChromaticTwisted(stack, player)) {

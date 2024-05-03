@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModEffects;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
@@ -10,7 +9,9 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
@@ -32,7 +33,6 @@ public class CurioThunderguard extends BaseCurioItem {
 
     public CurioThunderguard() {
         super(new Item.Properties()
-                .tab(ChromaticArsenal.GROUP)
                 .stacksTo(1)
                 .rarity(Rarity.RARE)
                 .defaultDurability(0)
@@ -54,7 +54,7 @@ public class CurioThunderguard extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource() == DamageSource.LIGHTNING_BOLT && !(ChromaCurioHelper.isChromaticTwisted(stack, player))) {
+        if (event.getSource().is(DamageTypes.LIGHTNING_BOLT) && !(ChromaCurioHelper.isChromaticTwisted(stack, player))) {
             player.addEffect(new MobEffectInstance(ModEffects.THUNDERCHARGED.get(), (int) (event.getAmount() * config.thunderchargedDuration.get())));
             event.setCanceled(true);
             return; // otherwise it might be possible for two thunderguard users to create an infinite recursive loop? not sure but just to be safe
@@ -62,14 +62,14 @@ public class CurioThunderguard extends BaseCurioItem {
 
         // we get the direct entity because it wouldn't make sense to be able to zap ranged attackers
         if (event.getSource().getDirectEntity() instanceof LivingEntity livingEntity) {
-            livingEntity.hurt(DamageSource.LIGHTNING_BOLT, config.thunderguardZapDamage.get().floatValue());
+            livingEntity.hurt(livingEntity.getCommandSenderWorld().damageSources().lightningBolt(), config.thunderguardZapDamage.get().floatValue());
         }
     }
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
-        if (event.getSource().isProjectile() || !(ChromaCurioHelper.isChromaticTwisted(stack, player))) return;
-        Level level = player.level;
+        if (event.getSource().is(DamageTypeTags.IS_PROJECTILE) || !(ChromaCurioHelper.isChromaticTwisted(stack, player))) return;
+        Level level = player.getCommandSenderWorld();
         if (level.isClientSide || !(level.isThundering() && level.canSeeSky(target.blockPosition()))) return;
 
         LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(level);
@@ -85,7 +85,7 @@ public class CurioThunderguard extends BaseCurioItem {
 
     @Override
     public boolean canBeHurtBy(@NotNull DamageSource damageSource) {
-        return damageSource != DamageSource.LIGHTNING_BOLT && super.canBeHurtBy(damageSource);
+        return damageSource.is(DamageTypes.LIGHTNING_BOLT) && super.canBeHurtBy(damageSource);
         // the lightning protection item itself should be immune to lightning
     }
 }

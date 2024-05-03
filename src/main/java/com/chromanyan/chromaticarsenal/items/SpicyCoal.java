@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -13,7 +12,6 @@ public class SpicyCoal extends Item {
     */
     public SpicyCoal() {
         super(new Item.Properties()
-                .tab(ChromaticArsenal.GROUP)
                 .fireResistant()
                 .rarity(Rarity.UNCOMMON));
     }

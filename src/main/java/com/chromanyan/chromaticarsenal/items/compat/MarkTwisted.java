@@ -1,6 +1,16 @@
 package com.chromanyan.chromaticarsenal.items.compat;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import net.minecraft.world.item.Item;
+
+@SuppressWarnings("unused")
+public class MarkTwisted extends Item {
+    public MarkTwisted() throws Exception {
+        super(new Properties());
+        throw new Exception("Band of Gigantism compatibility is not supported on 1.20.1. This class is only still around for when compatibility is re-added. Do not reference this class.");
+    }
+}
+
+/*
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
@@ -15,7 +25,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.textstack.band_of_gigantism.item.base.MarkItem;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -28,7 +37,7 @@ public class MarkTwisted extends MarkItem {
     private static final DamageSource TWISTED = new DamageSource("mark_twisted").bypassArmor().bypassMagic();
 
     public MarkTwisted() {
-        super(new Item.Properties().tab(ChromaticArsenal.GROUP).rarity(Rarity.RARE).stacksTo(1).defaultDurability(0),
+        super(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).defaultDurability(0),
                 TWISTED,
                 ChatFormatting.LIGHT_PURPLE
         );
@@ -60,3 +69,4 @@ public class MarkTwisted extends MarkItem {
         return attributes;
     }
 }
+*/

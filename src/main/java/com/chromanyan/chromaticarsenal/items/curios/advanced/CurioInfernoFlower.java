@@ -7,6 +7,7 @@ import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -51,7 +52,7 @@ public class CurioInfernoFlower extends BaseSuperCurio {
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
-        if (!event.getSource().isProjectile()) {
+        if (!event.getSource().is(DamageTypeTags.IS_PROJECTILE)) {
             target.addEffect(new MobEffectInstance(ModEffects.INFERNO.get(), config.infernoDuration.get()));
         }
 

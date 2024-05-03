@@ -11,6 +11,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -23,7 +25,6 @@ import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -58,8 +59,7 @@ public class CurioCryoRing extends BaseCurioItem {
     }
 
     private static boolean shouldDoTwistedPenalty(LivingEntity entity, ItemStack stack) {
-        Biome biome = entity.getLevel().getBiome(entity.blockPosition()).get();
-        return biome.shouldSnowGolemBurn(entity.blockPosition()) && ChromaCurioHelper.isChromaticTwisted(stack, entity);
+        return entity.getCommandSenderWorld().getBiome(entity.blockPosition()).is(BiomeTags.SNOW_GOLEM_MELTS) && ChromaCurioHelper.isChromaticTwisted(stack, entity);
     }
 
     @Override
@@ -115,19 +115,19 @@ public class CurioCryoRing extends BaseCurioItem {
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
-        if (event.getSource().isProjectile() && event.getSource().getDirectEntity() != null) { // because of course getDirectEntity can be null
+        if (event.getSource().is(DamageTypeTags.IS_PROJECTILE) && event.getSource().getDirectEntity() != null) { // because of course getDirectEntity can be null
             if (event.getSource().getDirectEntity() instanceof Snowball) {
                 doCryoEffects(event, target);
             }
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, player)
-                && !(event.getSource().isProjectile() || event.getSource().isExplosion() || event.getSource().isMagic() || event.getSource().isFire()))
+                && !(event.getSource().is(DamageTypeTags.IS_PROJECTILE) || event.getSource().is(DamageTypeTags.IS_EXPLOSION) || event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) || event.getSource().is(DamageTypeTags.IS_FIRE)))
             doCryoPotionEffects(target, player);
     }
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource().isFire() && ChromaCurioHelper.isChromaticTwisted(stack, player)) {
+        if (event.getSource().is(DamageTypeTags.IS_FIRE) && ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             event.setAmount(event.getAmount() * config.twistedCryoFireDamageMultiplier.get().floatValue());
         }
     }

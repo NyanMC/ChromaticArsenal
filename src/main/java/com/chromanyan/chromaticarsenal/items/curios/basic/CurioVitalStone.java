@@ -50,7 +50,7 @@ public class CurioVitalStone extends BaseCurioItem {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if (slotContext.entity().level.isClientSide) return;
+        if (slotContext.entity().getCommandSenderWorld().isClientSide) return;
         LivingEntity livingEntity = slotContext.entity();
 
         CompoundTag nbt = stack.getOrCreateTag();

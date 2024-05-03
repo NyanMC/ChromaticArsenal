@@ -33,7 +33,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class CurioLimitBreak extends BaseCurioItem {
-    private static final DamageSource ASCENDED = new DamageSource("chromaticarsenal.ascended").bypassArmor().bypassInvul();
 
     public CurioLimitBreak() {
         super(ModRarities.CHALLENGE, SoundEvents.BEACON_DEACTIVATE);
@@ -58,7 +57,7 @@ public class CurioLimitBreak extends BaseCurioItem {
                 return;
             }
         }
-        entity.hurt(ASCENDED, 10000F); // if 10000 isn't enough to kill, i don't know what is
+        entity.hurt(entity.getCommandSenderWorld().damageSources().fellOutOfWorld(), 10000F); // if 10000 isn't enough to kill, i don't know what is
     }
 
     @NotNull
@@ -81,7 +80,7 @@ public class CurioLimitBreak extends BaseCurioItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> attributes = HashMultimap.create();
         if (slotContext.entity() instanceof Player) {
-            CuriosApi.getCuriosHelper().addSlotModifier(attributes, "super_curio",
+            CuriosApi.addSlotModifier(attributes, "super_curio",
                     UUID.fromString("d020cd5d-c050-49e4-a0ea-ef27adf7e6d0"), config.bonusSlots.get(), AttributeModifier.Operation.ADDITION);
         }
 

@@ -13,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -59,7 +60,7 @@ public class CurioHarpyFeather extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource().isFall()) {
+        if (event.getSource().is(DamageTypeTags.IS_FALL)) {
             event.setAmount(event.getAmount() * config.featherFallDamageReduction.get().floatValue());
         }
     }
@@ -80,13 +81,13 @@ public class CurioHarpyFeather extends BaseCurioItem {
         if (entity instanceof Player player) {
             if (player.getCooldowns().isOnCooldown(this)) {
                 if (player.getVehicle() == null) {
-                    if (player.isOnGround()) {
+                    if (player.onGround()) {
                         player.getCooldowns().removeCooldown(this);
                     } else {
                         player.getCooldowns().addCooldown(this, 60);
                     }
                 } else {
-                    if (player.getVehicle().isOnGround()) {
+                    if (player.getVehicle().onGround()) {
                         player.getCooldowns().removeCooldown(this);
                     } else {
                         player.getCooldowns().addCooldown(this, 60);

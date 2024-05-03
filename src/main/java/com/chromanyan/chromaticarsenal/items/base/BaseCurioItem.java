@@ -1,6 +1,5 @@
 package com.chromanyan.chromaticarsenal.items.base;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
@@ -20,7 +19,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -37,7 +35,6 @@ public class BaseCurioItem extends Item implements ICurioItem, IChromaCurio {
 
     public BaseCurioItem(Rarity rarity, @Nullable SoundEvent soundEvent) {
         super(new Item.Properties()
-                .tab(ChromaticArsenal.GROUP)
                 .stacksTo(1)
                 .rarity(rarity)
                 .defaultDurability(0));
@@ -67,7 +64,7 @@ public class BaseCurioItem extends Item implements ICurioItem, IChromaCurio {
 
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty();
+        return ChromaCurioHelper.getCurio(slotContext.entity(), this).isEmpty();
     }
 
     @Override

@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -55,7 +56,7 @@ public class CurioWardCrystal extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource().isMagic() && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
+        if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             if (!config.damageSourceBlacklist.get().isEmpty()) {
                 for (String blacklisted : config.damageSourceBlacklist.get()) {
                     if (event.getSource().getMsgId().equals(blacklisted))
@@ -70,7 +71,7 @@ public class CurioWardCrystal extends BaseCurioItem {
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
-        if (event.getSource().isMagic() && !ChromaCurioHelper.shouldIgnoreDamageEvent(event) && !ChromaCurioHelper.isChromaticTwisted(stack, player)) {
+        if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event) && !ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             event.setAmount(event.getAmount() * getOutgoingMultiplier(stack));
         }
     }

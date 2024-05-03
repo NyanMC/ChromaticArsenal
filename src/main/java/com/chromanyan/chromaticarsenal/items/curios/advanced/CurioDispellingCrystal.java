@@ -9,6 +9,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -42,7 +43,7 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource().isMagic() && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
+        if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             if (!config.damageSourceBlacklist.get().isEmpty()) {
                 for (String blacklisted : config.damageSourceBlacklist.get()) {
                     if (event.getSource().getMsgId().equals(blacklisted))
@@ -55,7 +56,7 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
-        if (event.getSource().isMagic() && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
+        if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierOutgoing.get()));
         }
     }

@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items.curios.utility;
 
 import com.chromanyan.chromaticarsenal.init.ModBlocks;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
@@ -12,7 +13,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -37,7 +37,7 @@ public class CurioChromaNyan extends BlockItem implements IChromaCurio, ICurioIt
 
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty();
+        return ChromaCurioHelper.getCurio(slotContext.entity(), this).isEmpty();
     }
 
     public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {

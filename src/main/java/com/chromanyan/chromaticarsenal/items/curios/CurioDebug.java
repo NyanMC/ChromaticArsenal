@@ -24,7 +24,7 @@ import java.util.List;
 public class CurioDebug extends BaseCurioItem {
 
     public CurioDebug() {
-        super(ModSounds.DIAL_UP.get());
+        super(ModSounds.DIAL_UP);
     }
 
     @Override

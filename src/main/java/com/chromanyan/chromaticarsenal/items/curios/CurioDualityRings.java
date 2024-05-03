@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -47,7 +48,7 @@ public class CurioDualityRings extends BaseCurioItem {
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
-        if (event.getSource().isProjectile()) {
+        if (event.getSource().is(DamageTypeTags.IS_PROJECTILE)) {
             event.setAmount((float) (event.getAmount() * getProjectileMultiplier(stack)));
         }
     }

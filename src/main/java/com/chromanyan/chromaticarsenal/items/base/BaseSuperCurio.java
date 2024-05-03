@@ -21,7 +21,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.SlotResult;
 
@@ -72,7 +71,7 @@ public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
 
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty() && ChromaCurioHelper.isValidSuperCurioSlot(slotContext);
+        return ChromaCurioHelper.getCurio(slotContext.entity(), this).isEmpty() && ChromaCurioHelper.isValidSuperCurioSlot(slotContext);
     }
 
     @Override
@@ -83,10 +82,10 @@ public class BaseSuperCurio extends BaseCurioItem implements ISuperCurio {
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity livingEntity = context.entity();
-        if (livingEntity.level.isClientSide || inferiorVariant == null) {
+        if (livingEntity.getCommandSenderWorld().isClientSide || inferiorVariant == null) {
             return;
         }
-        Optional<SlotResult> inferiorInstance = CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, inferiorVariant.get());
+        Optional<SlotResult> inferiorInstance = ChromaCurioHelper.getCurio(livingEntity, inferiorVariant.get());
         if (inferiorInstance.isPresent()) {
             ItemStack s = inferiorInstance.get().stack();
             if (livingEntity instanceof Player player) {

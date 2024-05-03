@@ -46,7 +46,7 @@ public class CurioVerticalStasis extends BaseCurioItem {
     public void curioTick(SlotContext context, ItemStack stack) {
         CompoundTag nbt = stack.getOrCreateTag();
         LivingEntity entity = context.entity();
-        nbt.putBoolean("active", entity.isDiscrete() && (entity.isOnGround() || nbt.getBoolean("active")));
+        nbt.putBoolean("active", entity.isDiscrete() && (entity.onGround() || nbt.getBoolean("active")));
         if (ChromaCurioHelper.isChromaticTwisted(stack, entity)) {
             if (nbt.getBoolean("active")) {
                 entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 10, 2), entity);

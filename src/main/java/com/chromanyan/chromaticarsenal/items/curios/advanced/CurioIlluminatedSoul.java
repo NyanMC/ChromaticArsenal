@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios.advanced;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -24,7 +25,6 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.SlotResult;
 
@@ -91,7 +91,7 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
                         return 0;
                     }
 
-                    Optional<SlotResult> result = CuriosApi.getCuriosHelper().findFirstCurio(entity, stack.getItem());
+                    Optional<SlotResult> result = ChromaCurioHelper.getCurio(entity, stack.getItem());
 
                     if (result.isPresent() && result.get().stack() != null && result.get().stack() == stack) {
                         return 1;

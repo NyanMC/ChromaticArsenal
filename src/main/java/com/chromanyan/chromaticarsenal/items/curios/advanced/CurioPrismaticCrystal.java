@@ -14,7 +14,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -62,11 +62,11 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
         super.curioTick(context, stack);
         LivingEntity living = context.entity();
         Vec3 vec3 = living.getDeltaMovement();
-        if (living.blockPosition().getY() < living.getLevel().getMinBuildHeight() && vec3.y < 0) {
+        if (living.blockPosition().getY() < living.getCommandSenderWorld().getMinBuildHeight() && vec3.y < 0) {
             living.setDeltaMovement(vec3.x, vec3.y * -config.voidBounceMultiplier.get(), vec3.z);
-            living.hurt(DamageSource.OUT_OF_WORLD, config.voidBounceDamage.get().floatValue());
+            living.hurt(living.getCommandSenderWorld().damageSources().fellOutOfWorld(), config.voidBounceDamage.get().floatValue());
             if (stack.getHoverName().getString().toLowerCase().contains("spring")) {
-                living.getCommandSenderWorld().playSound(null, living.blockPosition(), ModSounds.SPRING.get(), SoundSource.PLAYERS, 0.5F, 1.0F);
+                living.getCommandSenderWorld().playSound(null, living.blockPosition(), ModSounds.SPRING, SoundSource.PLAYERS, 0.5F, 1.0F);
             }
         }
         living.resetFallDistance();
@@ -90,7 +90,7 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
-        if (event.getSource() == DamageSource.FALL) {
+        if (event.getSource().is(DamageTypeTags.IS_FALL)) {
             event.setCanceled(true);
         }
     }

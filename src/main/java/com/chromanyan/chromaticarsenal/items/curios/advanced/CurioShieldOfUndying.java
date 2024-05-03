@@ -13,6 +13,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -54,7 +55,7 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
     public void curioTick(SlotContext context, ItemStack stack) {
         super.curioTick(context, stack);
         LivingEntity livingEntity = context.entity();
-        if (livingEntity.level.isClientSide) {
+        if (livingEntity.getCommandSenderWorld().isClientSide) {
             return;
         }
         CompoundTag nbt = stack.getOrCreateTag();
@@ -79,7 +80,7 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
 
     @Override
     public void onWearerDied(LivingDeathEvent event, ItemStack stack, LivingEntity player) {
-        if (!event.getSource().isBypassInvul()) {
+        if (!event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             CompoundTag nbt = stack.getOrCreateTag();
             if (CooldownHelper.getCounter(nbt) < config.revivalLimit.get()) {
                 CooldownHelper.addToCounter(nbt, config.shatterRevivalCooldown.get());

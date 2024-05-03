@@ -53,13 +53,13 @@ public class CurioPolychromaticFeather extends BaseSuperCurio {
             if (player.getCooldowns().isOnCooldown(this)) {
                 player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 5, 0), player);
                 if (player.getVehicle() == null) {
-                    if (player.isOnGround()) {
+                    if (player.onGround()) {
                         player.getCooldowns().removeCooldown(this);
                     } else {
                         player.getCooldowns().addCooldown(this, 60);
                     }
                 } else {
-                    if (player.getVehicle().isOnGround()) {
+                    if (player.getVehicle().onGround()) {
                         player.getCooldowns().removeCooldown(this);
                     } else {
                         player.getCooldowns().addCooldown(this, 60);

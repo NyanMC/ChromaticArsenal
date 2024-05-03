@@ -52,7 +52,7 @@ public class CurioCelestialCharm extends BaseSuperCurio {
             ChromaticArsenal.LOGGER.warn("Tried to get attribute modifiers for celestial charm but entity was null");
             return atts; // should hopefully fix a NPE when reloading resources with F3+T
         }
-        long time = entity.level.getDayTime() % 24000; // no see
+        long time = entity.getCommandSenderWorld().getDayTime() % 24000; // no see
         if (time <= 6000) {
             long compareTime = time + 6000;
             atts.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":celestial_speed_bonus", config.speedModifierMax.get() * (1 - ((float) compareTime / 12000F)), AttributeModifier.Operation.MULTIPLY_TOTAL));

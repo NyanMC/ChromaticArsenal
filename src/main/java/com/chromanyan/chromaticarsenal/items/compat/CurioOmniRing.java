@@ -33,7 +33,6 @@ public class CurioOmniRing extends ItemBaseCurio {
 
     public CurioOmniRing() {
         super(new Properties()
-                .tab(ChromaticArsenal.GROUP)
                 .stacksTo(1)
                 .rarity(Rarity.RARE)
                 .defaultDurability(0));
@@ -58,7 +57,8 @@ public class CurioOmniRing extends ItemBaseCurio {
         Multimap<Attribute, AttributeModifier> attributes = HashMultimap.create();
         attributes.put(Attributes.ARMOR, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":armor_bonus", 1.0, AttributeModifier.Operation.ADDITION));
         attributes.put(Attributes.LUCK, new AttributeModifier(uuid, ChromaticArsenal.MODID + ":luck_bonus", 1.0, AttributeModifier.Operation.ADDITION));
-        attributes.put(ForgeMod.REACH_DISTANCE.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":reach_bonus", config.amethystRingReachModifier.get(), AttributeModifier.Operation.ADDITION));
+        attributes.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":block_reach_bonus", config.amethystRingReachModifier.get(), AttributeModifier.Operation.ADDITION));
+        attributes.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":entity_reach_bonus", config.amethystRingReachModifier.get(), AttributeModifier.Operation.ADDITION));
         return attributes;
     }
 

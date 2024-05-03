@@ -1,9 +1,9 @@
 package com.chromanyan.chromaticarsenal.items.curios.utility;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModBlocks;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.EnigmaticLegacyHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -22,7 +22,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -33,7 +32,6 @@ public class CurioBlahaj extends BlockItem implements IChromaCurio, ICurioItem {
 
     public CurioBlahaj() {
         super(ModBlocks.BLAHAJ.get(), new Item.Properties()
-                .tab(ChromaticArsenal.GROUP)
                 .stacksTo(1)
                 .rarity(ModRarities.UTILITY)
                 .defaultDurability(0));
@@ -72,7 +70,7 @@ public class CurioBlahaj extends BlockItem implements IChromaCurio, ICurioItem {
 
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), this).isEmpty();
+        return ChromaCurioHelper.getCurio(slotContext.entity(), this).isEmpty();
     }
 
     @Override

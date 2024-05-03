@@ -11,6 +11,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -51,7 +52,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
         LivingEntity livingEntity = context.entity();
         super.curioTick(context, stack);
         CompoundTag nbt = stack.getOrCreateTag();
-        if (livingEntity.level.isClientSide) {
+        if (livingEntity.getCommandSenderWorld().isClientSide) {
             if (CooldownHelper.getCounter(nbt) == 1) {
                 if (livingEntity instanceof Player playerEntity) {
                     playerEntity.displayClientMessage(Component.translatable("message.chromaticarsenal.revival_cooldown_finished"), false);
@@ -65,7 +66,7 @@ public class CurioDiamondHeart extends BaseSuperCurio {
     @Override
     public void onWearerDied(LivingDeathEvent event, ItemStack stack, LivingEntity player) {
         if (player.hasEffect(ModEffects.FRACTURED.get())) return;
-        if (event.getSource().isBypassInvul()) return;
+        if (event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return;
 
         CompoundTag nbt = stack.getOrCreateTag();
         if (!CooldownHelper.isCooldownFinished(nbt)) return;

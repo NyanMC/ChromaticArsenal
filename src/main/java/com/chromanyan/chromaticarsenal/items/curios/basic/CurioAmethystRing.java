@@ -26,7 +26,8 @@ public class CurioAmethystRing extends BaseCurioItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
         Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
 
-        atts.put(ForgeMod.REACH_DISTANCE.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":reach_bonus", config.amethystRingReachModifier.get(), AttributeModifier.Operation.ADDITION));
+        atts.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":block_reach_bonus", config.amethystRingReachModifier.get(), AttributeModifier.Operation.ADDITION));
+        atts.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":entity_reach_bonus", config.amethystRingReachModifier.get(), AttributeModifier.Operation.ADDITION));
 
         return atts;
     }

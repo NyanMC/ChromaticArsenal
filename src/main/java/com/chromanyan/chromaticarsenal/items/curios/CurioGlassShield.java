@@ -16,6 +16,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -38,7 +39,6 @@ import java.util.Random;
 public class CurioGlassShield extends BaseCurioItem {
 
     private final Random rand = new Random();
-    private static final DamageSource GLASS_SHRAPNEL = new DamageSource("chromaticarsenal.glass_shrapnel");
 
     public CurioGlassShield() {
         super(SoundEvents.GLASS_PLACE);
@@ -66,7 +66,7 @@ public class CurioGlassShield extends BaseCurioItem {
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity livingEntity = context.entity();
-        if (livingEntity.level.isClientSide) {
+        if (livingEntity.getCommandSenderWorld().isClientSide) {
             return;
         }
         CompoundTag nbt = stack.getOrCreateTag();
@@ -99,9 +99,9 @@ public class CurioGlassShield extends BaseCurioItem {
 
     @Override
     public void onDestroyed(ItemEntity itemEntity, DamageSource damageSource) {
-        if (damageSource != DamageSource.LIGHTNING_BOLT || !config.thunderguardDefaultRecipe.get()) return;
-        ItemEntity newEntity = new ItemEntity(itemEntity.level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), new ItemStack(ModItems.THUNDERGUARD.get(), 1));
-        itemEntity.level.addFreshEntity(newEntity);
+        if (!damageSource.is(DamageTypes.LIGHTNING_BOLT) || !config.thunderguardDefaultRecipe.get()) return;
+        ItemEntity newEntity = new ItemEntity(itemEntity.getCommandSenderWorld(), itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), new ItemStack(ModItems.THUNDERGUARD.get(), 1));
+        itemEntity.getCommandSenderWorld().addFreshEntity(newEntity);
     }
 
     @Override
@@ -133,7 +133,7 @@ public class CurioGlassShield extends BaseCurioItem {
         // if the shield is twisted, return the damage to the attacker if it exists
         if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             if (event.getSource().getEntity() instanceof LivingEntity livingAttacker) {
-                livingAttacker.hurt(GLASS_SHRAPNEL, event.getAmount());
+                livingAttacker.hurt(livingAttacker.getCommandSenderWorld().damageSources().thorns(event.getEntity()), event.getAmount());
             }
         }
 
