@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios.challenge;
 
+import com.chromanyan.chromaticarsenal.init.ModDamageTypes;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -57,7 +58,7 @@ public class CurioLimitBreak extends BaseCurioItem {
                 return;
             }
         }
-        entity.hurt(entity.getCommandSenderWorld().damageSources().fellOutOfWorld(), 10000F); // if 10000 isn't enough to kill, i don't know what is
+        entity.hurt(entity.damageSources().source(ModDamageTypes.ASCENDED), 10000F); // if 10000 isn't enough to kill, i don't know what is
     }
 
     @NotNull

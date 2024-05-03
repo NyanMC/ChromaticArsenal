@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
+import com.chromanyan.chromaticarsenal.init.ModDamageTypes;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
@@ -133,7 +134,7 @@ public class CurioGlassShield extends BaseCurioItem {
         // if the shield is twisted, return the damage to the attacker if it exists
         if (ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             if (event.getSource().getEntity() instanceof LivingEntity livingAttacker) {
-                livingAttacker.hurt(livingAttacker.getCommandSenderWorld().damageSources().thorns(event.getEntity()), event.getAmount());
+                livingAttacker.hurt(livingAttacker.damageSources().source(ModDamageTypes.GLASS_SHRAPNEL), event.getAmount());
             }
         }
 

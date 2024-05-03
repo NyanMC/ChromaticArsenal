@@ -19,8 +19,8 @@
   "tooltip.chromaticarsenal.glass_shield.twisted": "§cChromatic Twisting:§5 Blocked damage is returned to the attacker, however damage taken is multiplied by %1$s§5 while the shield is broken",
   "stat.chromaticarsenal.glass_shield_total_block": "Damage Blocked by Glass Shield",
   "stat.chromaticarsenal.glass_shield_highest_block": "Hardest Hit Blocked by Glass Shield",
-  "death.attack.chromaticarsenal.glass_shrapnel": "%1$s was impaled by magic glass shards",
-  "death.attack.chromaticarsenal.glass_shrapnel.player": "%1$s was impaled by magic glass shards whilst fighting %2$s",
+  "death.attack.glass_shrapnel": "%1$s was impaled by magic glass shards",
+  "death.attack.glass_shrapnel.player": "%1$s was impaled by magic glass shards whilst fighting %2$s",
 
   "item.chromaticarsenal.ward_crystal": "Ward Crystal",
   "tooltip.chromaticarsenal.ward_crystal.1": "§aReduces magic damage taken by %1$s§b%%",
@@ -45,8 +45,6 @@
   "tooltip.chromaticarsenal.friendly_fire_flower.3": "§cUses durability when applying Fire Resistance or nullifying thorns",
   "tooltip.chromaticarsenal.friendly_fire_flower.twisted": "§cChromatic Twisting:§5 Attacked mobs and attackers are set on fire, and %1$s§b%%§5 chance to not use durability, however causes constant fire damage",
   "tooltip.chromaticarsenal.friendly_fire_flower.silktouch": "§aDamage dealt to other players or tamed mobs is also nullified",
-  "death.attack.chromaticarsenal.unfriendly_fire": "%1$s discovered their Friendly Fire Flower wasn't as friendly as they thought",
-  "death.attack.chromaticarsenal.unfriendly_fire.player": "%1$s was incinerated by their \"Friendly\" Fire Flower whilst fighting %2$s",
 
   "item.chromaticarsenal.lunar_crystal": "Lunar Crystal",
   "item.chromaticarsenal.lunar_crystal.luna": "Luna's Crystal",
@@ -169,8 +167,8 @@
   "item.chromaticarsenal.ascended_star": "Ascended Star",
   "tooltip.chromaticarsenal.ascended_star.1": "§6Grants %1$s§6 extra fortune level(s) and %2$s§6 extra looting level(s)",
   "tooltip.chromaticarsenal.ascended_star.2": "§cMultiplies ALL damage taken by %1$s",
-  "death.attack.chromaticarsenal.ascended": "%1$s ascended to a higher plane of reality",
-  "death.attack.chromaticarsenal.ascended.player": "%1$s ascended to a higher plane of reality whilst fighting %2$s",
+  "death.attack.ascended": "%1$s ascended to a higher plane of reality",
+  "death.attack.ascended.player": "%1$s ascended to a higher plane of reality whilst fighting %2$s",
 
   "item.chromaticarsenal.world_anchor": "World Anchor",
   "tooltip.chromaticarsenal.world_anchor.1": "§6The effects of this curio are more severe the further you are from the bottom of the world",
