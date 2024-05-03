@@ -23,8 +23,10 @@ public abstract class MixinPlayer {
 
     @Inject(method = "isStayingOnGroundSurface", at = @At("RETURN"), cancellable = true)
     private void isStayingOnGroundSurface(CallbackInfoReturnable<Boolean> cir) {
-        if (ChromaCurioHelper.getCurio((Player)(Object)this, ModItems.VERTICAL_STASIS.get()).isPresent()) {
-            ItemStack stack = ChromaCurioHelper.getCurio((Player)(Object)this, ModItems.VERTICAL_STASIS.get()).get().stack();
+        Player trueThis = (Player)(Object)this;
+
+        if (ChromaCurioHelper.getCurio(trueThis, ModItems.VERTICAL_STASIS.get()).isPresent()) {
+            ItemStack stack = ChromaCurioHelper.getCurio(trueThis, ModItems.VERTICAL_STASIS.get()).get().stack();
             if (stack.getOrCreateTag().contains("active") && stack.getOrCreateTag().getBoolean("active")) {
                 cir.setReturnValue(false);
             }
