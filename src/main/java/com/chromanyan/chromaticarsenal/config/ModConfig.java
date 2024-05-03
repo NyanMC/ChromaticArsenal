@@ -477,10 +477,10 @@ public class ModConfig {
                 builder.push("SuperShadowTreadsSettings");
                     damageModifierMax = builder
                             .comment("The damage boost applied at noon (time 6000). This is always operation 2.")
-                            .defineInRange("damageModifierMax", 0.2D, 0D, Double.MAX_VALUE);
+                            .defineInRange("damageModifierMax", 0.4D, 0D, Double.MAX_VALUE);
                     speedModifierMax = builder
                             .comment("The speed boost applied at midnight (time 18000). This is always operation 2.")
-                            .defineInRange("speedModifierMax", 0.2D, 0D, Double.MAX_VALUE);
+                            .defineInRange("speedModifierMax", 0.4D, 0D, Double.MAX_VALUE);
                 builder.pop();
 
                 builder.push("SuperFriendlyFireFlowerSettings");
