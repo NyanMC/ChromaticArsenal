@@ -84,6 +84,8 @@ public class LootEvents {
             if (event.getTable().getPool("main") != null) {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMA_SHARD.get())
                         .apply(exactlyOne()).setWeight(2).build());
+                injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get())
+                        .apply(exactlyOne()).setWeight(1).build());
             }
         }
     }

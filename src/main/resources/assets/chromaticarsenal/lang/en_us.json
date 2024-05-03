@@ -1,8 +1,7 @@
 {
   "item.chromaticarsenal.chroma_shard": "Chroma Shard",
   "item.chromaticarsenal.ascension_essence": "Essence of Ascension",
-  "item.chromaticarsenal.spicy_coal": "Spicy Coal",
-  "item.chromaticarsenal.magmatic_scrap": "Magmatic Scrap",
+  "item.chromaticarsenal.chromatic_upgrade_smithing_template": "Essence of Ascension",
   "item.chromaticarsenal.champion_catalyst": "Champion's Catalyst",
 
   "item.chromaticarsenal.golden_heart": "Golden Heart",
@@ -248,6 +247,8 @@
   "advancement.chromaticarsenal.chroma_shard.description": "Obtain a Chroma Shard from a loot chest or Wandering Trader",
   "advancement.chromaticarsenal.ascension_essence.title": "The Ultimate Ingredient",
   "advancement.chromaticarsenal.ascension_essence.description": "Obtain Essence of Ascension by combining a Nether Star and Lunar Crystal with some Chroma Shards",
+  "advancement.chromaticarsenal.chromatic_upgrade_smithing_template.title": "Chromatic Smithing",
+  "advancement.chromaticarsenal.chromatic_upgrade_smithing_template.description": "Obtain a Chromatic Upgrade Smithing Template from a loot chest",
   "advancement.chromaticarsenal.golden_heart.title": "Heart of the Bastion",
   "advancement.chromaticarsenal.golden_heart.description": "Loot a Golden Heart from a Bastion Remnant, or barter with Piglins to get one",
   "advancement.chromaticarsenal.lunar_crystal.title": "Forgotten Past",
@@ -271,6 +272,11 @@
   "advancement.chromaticarsenal.thunderguard.title": "Zap Tapped",
   "advancement.chromaticarsenal.thunderguard.description": "Turn a Glass Shield into a Thunderguard by striking it with lightning",
   "advancement.chromaticarsenal.block_100.title": "Live to Die Another Day",
-  "advancement.chromaticarsenal.block_100.description": "Block one hundred or more damage with the Glass Shield in a single attack"
+  "advancement.chromaticarsenal.block_100.description": "Block one hundred or more damage with the Glass Shield in a single attack",
 
+  "upgrade.chromaticarsenal.chromatic_upgrade": "Chromatic Upgrade",
+  "item.chromaticarsenal.smithing_template.chromatic_upgrade.additions_slot_description": "Add Item",
+  "item.chromaticarsenal.smithing_template.chromatic_upgrade.applies_to": "Check for uses in JEI",
+  "item.chromaticarsenal.smithing_template.chromatic_upgrade.base_slot_description": "Add Item",
+  "item.chromaticarsenal.smithing_template.chromatic_upgrade.ingredients": "???"
 }

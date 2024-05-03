@@ -5,8 +5,13 @@
   "pages": [
     {
       "type": "patchouli:spotlight",
-      "text": "The Chroma Shard is a basic item in the mod, used to make most of the other items. It can be found in a majority of vanilla loot chests.",
+      "text": "The Chroma Shard is a basic item in the mod, used to make most of the other items. It can be found in a majority of vanilla loot chests, or rarely sold by a Wandering Trader.",
       "item": "chromaticarsenal:chroma_shard"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "text": "Items with smithing recipes typically require this smithing template. It can also be found in a majority of vanilla loot chests.",
+      "item": "chromaticarsenal:chromatic_upgrade_smithing_template"
     }
   ]
 }

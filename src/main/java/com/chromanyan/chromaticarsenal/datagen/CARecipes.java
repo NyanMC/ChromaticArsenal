@@ -255,13 +255,23 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_amethyst", has(Tags.Items.GEMS_AMETHYST))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "amethyst_ring"));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), 1)
+                .pattern("dud")
+                .pattern("dcd")
+                .pattern("ddd")
+                .define('d', Tags.Items.GEMS_DIAMOND)
+                .define('c', ModItems.CHROMA_SHARD.get())
+                .define('u', ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get())
+                .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
+                .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "chromatic_upgrade_smithing_template"));
+
         packAndUnpack(consumer, ModItems.CHROMA_SHARD.get(), ModItems.CHROMA_BLOCK_ITEM.get(), "chroma_shard", "chroma_block");
 
         //TODO NETHERITE SMITHING UPGRADES ARE TEMPORARY CHANGE THEM LATER
-        chromaUpgrade(consumer, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItems.GOLDEN_HEART.get(), Items.DRAGON_BREATH, ModItems.ADVANCING_HEART.get(), "advancing_heart");
-        chromaUpgrade(consumer, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");
-        chromaUpgrade(consumer, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, Items.ANVIL, ModItems.CHROMA_SHARD.get(), ModItems.WORLD_ANCHOR.get(), "world_anchor");
-        chromaUpgrade(consumer, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, Items.END_STONE, ModItems.CHROMA_SHARD.get(), ModItems.GRAVITY_STONE.get(), "gravity_stone");
-        chromaUpgrade(consumer, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItems.HARPY_FEATHER.get(), ModItems.ASCENSION_ESSENCE.get(), ModItems.SUPER_HARPY_FEATHER.get(), "super_harpy_feather");
+        chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), ModItems.GOLDEN_HEART.get(), Items.DRAGON_BREATH, ModItems.ADVANCING_HEART.get(), "advancing_heart");
+        chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");
+        chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), Items.ANVIL, ModItems.CHROMA_SHARD.get(), ModItems.WORLD_ANCHOR.get(), "world_anchor");
+        chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), Items.END_STONE, ModItems.CHROMA_SHARD.get(), ModItems.GRAVITY_STONE.get(), "gravity_stone");
+        chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), ModItems.HARPY_FEATHER.get(), ModItems.ASCENSION_ESSENCE.get(), ModItems.SUPER_HARPY_FEATHER.get(), "super_harpy_feather");
     }
 }

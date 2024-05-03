@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "c": {
+      "item": "chromaticarsenal:chroma_shard"
+    },
+    "d": {
+      "tag": "forge:gems/diamond"
+    },
+    "u": {
+      "item": "chromaticarsenal:chromatic_upgrade_smithing_template"
+    }
+  },
+  "pattern": [
+    "dud",
+    "dcd",
+    "ddd"
+  ],
+  "result": {
+    "item": "chromaticarsenal:chromatic_upgrade_smithing_template"
+  },
+  "show_notification": true
+}

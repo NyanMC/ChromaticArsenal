@@ -10,6 +10,6 @@
     "item": "chromaticarsenal:gravity_stone"
   },
   "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
+    "item": "chromaticarsenal:chromatic_upgrade_smithing_template"
   }
 }

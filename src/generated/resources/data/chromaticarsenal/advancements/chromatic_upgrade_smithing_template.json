@@ -1,0 +1,38 @@
+{
+  "parent": "chromaticarsenal:chroma_shard",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "chromaticarsenal:chromatic_upgrade_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.chromaticarsenal.chromatic_upgrade_smithing_template.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "chromaticarsenal:chromatic_upgrade_smithing_template"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.chromaticarsenal.chromatic_upgrade_smithing_template.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

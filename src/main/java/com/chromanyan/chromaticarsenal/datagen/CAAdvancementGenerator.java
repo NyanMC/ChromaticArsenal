@@ -71,6 +71,7 @@ public class CAAdvancementGenerator implements ForgeAdvancementProvider.Advancem
     public void generate(HolderLookup.@NotNull Provider provider, @NotNull Consumer<Advancement> consumer, @NotNull ExistingFileHelper fileHelper) {
         Advancement chromaShard = displayedHasItem(ModItems.CHROMA_SHARD.get(), consumer, fileHelper, FrameType.TASK, new ResourceLocation("adventure/root"));
         Advancement ascensionEssence = displayedHasItem(ModItems.ASCENSION_ESSENCE.get(), consumer, fileHelper, FrameType.TASK, chromaShard);
+        Advancement chromaticUpgrade = displayedHasItem(ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), consumer, fileHelper, FrameType.TASK, chromaShard);
         Advancement magicGarlicBread = simpleHasItemRecipe(ModItems.MAGIC_GARLIC_BREAD.get(), consumer, fileHelper);
         Advancement cosmicola = simpleHasItemRecipe(ModItems.COSMICOLA.get(), consumer, fileHelper);
         Advancement championCatalyst = simpleHasItemRecipe(ModItems.CHAMPION_CATALYST.get(), consumer, fileHelper);
