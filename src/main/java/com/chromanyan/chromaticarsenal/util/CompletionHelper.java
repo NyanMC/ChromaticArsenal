@@ -28,14 +28,14 @@ public class CompletionHelper {
      * @return A {@link Tuple} in which A is the number of completed advancements and B is the number of total advancements.
      */
     public static @Nullable Tuple<Integer, Integer> getCompletedAndTotalAdvancements(@NotNull ServerPlayer serverPlayer) {
-        MinecraftServer server = serverPlayer.level.getServer();
+        MinecraftServer server = serverPlayer.getCommandSenderWorld().getServer();
         if (server == null) return null;
 
         PlayerAdvancements playerAdvancements = server.getPlayerList().getPlayerAdvancements(serverPlayer);
         int completedAdvancements = 0;
         int totalAdvancements = 0;
 
-        for (Map.Entry<Advancement, AdvancementProgress> advancements : playerAdvancements.advancements.entrySet()) {
+        for (Map.Entry<Advancement, AdvancementProgress> advancements : playerAdvancements.progress.entrySet()) {
             Advancement advancement = advancements.getKey();
 
             if (isAdvancementIgnored(advancement) || (config.onlyDisplayedAdvancements.get() && advancement.getDisplay() == null)) continue;

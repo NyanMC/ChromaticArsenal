@@ -3,12 +3,12 @@ package com.chromanyan.chromaticarsenal.util;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModItems;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.items.IItemHandler;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -38,20 +38,20 @@ public class ChromaCurioHelper {
     }
 
     public static boolean isChromaticTwisted(ItemStack stack, @Nullable LivingEntity player) {
-        if (player != null && ModList.get().isLoaded("band_of_gigantism"))
+        if (player != null && ModItems.MARK_TWISTED != null)
             return ChromaCurioHelper.getCurio(player, ModItems.MARK_TWISTED.get()).isPresent() || stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0;
         else
             return stack.getEnchantmentLevel(ModEnchantments.CHROMATIC_TWISTING.get()) > 0;
     }
 
     public static boolean shouldIgnoreDamageEvent(LivingHurtEvent event) {
-        return event.getAmount() == 0 || event.isCanceled() || event.getSource().isBypassInvul();
+        return event.getAmount() == 0 || event.isCanceled() || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY);
     }
 
     // thanks flux networks
     @Nonnull
     public static Iterable<ItemStack> getFlatStacks(LivingEntity player) {
-        final LazyOptional<ICuriosItemHandler> curios = CuriosApi.getCuriosHelper().getCuriosHandler(player);
+        final LazyOptional<ICuriosItemHandler> curios = CuriosApi.getCuriosInventory(player);
         if (curios.isPresent()) {
             // we can cache the ICuriosItemHandler atm, but cannot for getEquippedCurios()
             final ICuriosItemHandler peek = curios.orElseThrow(RuntimeException::new);
@@ -61,7 +61,7 @@ public class ChromaCurioHelper {
     }
 
     public static Optional<SlotResult> getCurio(LivingEntity livingEntity, Item item) {
-        return CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, item);
+        return CuriosApi.getCuriosInventory(livingEntity).map(inv -> inv.findFirstCurio(item)).orElse(Optional.empty());
     }
 
     // again, thanks flux networks
