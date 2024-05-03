@@ -13,7 +13,6 @@ import com.chromanyan.chromaticarsenal.items.curios.utility.*;
 import com.chromanyan.chromaticarsenal.items.food.*;
 import com.google.common.collect.Sets;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
