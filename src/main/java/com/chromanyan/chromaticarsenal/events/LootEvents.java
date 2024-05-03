@@ -24,6 +24,7 @@ import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.Arrays;
@@ -48,7 +49,7 @@ public class LootEvents {
         return SetItemCountFunction.setCount(ConstantValue.exactly(1));
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOW)
     public void insertLoot(LootTableLoadEvent event) {
         if (!config.lootTableInsertion.get()) {
             return;
@@ -56,7 +57,7 @@ public class LootEvents {
 
         switch (event.getName().getPath()) {
             case "chests/bastion_treasure", "gameplay/piglin_bartering" ->
-                    injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(6)
+                    injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(8)
                             .apply(exactlyOne()).build());
             case "chests/end_city_treasure" -> {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL.get()).setWeight(4)
