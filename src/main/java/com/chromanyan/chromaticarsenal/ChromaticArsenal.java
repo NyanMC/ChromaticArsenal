@@ -12,6 +12,7 @@ import com.chromanyan.chromaticarsenal.triggers.GlassShieldBlockTrigger;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.stats.StatFormatter;
@@ -93,8 +94,8 @@ public class ChromaticArsenal {
         MinecraftForge.EVENT_BUS.register(new CurioEvents());
         MinecraftForge.EVENT_BUS.register(new LootEvents());
 
-        Registry.register(Registry.CUSTOM_STAT, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION);
-        Registry.register(Registry.CUSTOM_STAT, ModStats.CHROMA_SALVAGER_USES_LOCATION, ModStats.CHROMA_SALVAGER_USES_LOCATION);
+        Registry.register(BuiltInRegistries.CUSTOM_STAT, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, ModStats.GSHIELD_TOTAL_BLOCK_LOCATION);
+        Registry.register(BuiltInRegistries.CUSTOM_STAT, ModStats.CHROMA_SALVAGER_USES_LOCATION, ModStats.CHROMA_SALVAGER_USES_LOCATION);
         Stats.CUSTOM.get(ModStats.GSHIELD_TOTAL_BLOCK_LOCATION, StatFormatter.DIVIDE_BY_TEN);
         ModStats.load();
 
