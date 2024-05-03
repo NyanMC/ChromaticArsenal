@@ -66,9 +66,6 @@ public class LootEvents {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD.get()).setWeight(5)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 5))).build());
             }
-            case "chests/ruined_portal", "chests/nether_bridge" ->
-                    injectInto(event, "main", LootItem.lootTableItem(ModItems.SPICY_COAL.get())
-                            .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4))).setWeight(6).build());
             case "chests/igloo_chest" ->
                     injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get())
                             .apply(exactlyOne()).setWeight(10).build());

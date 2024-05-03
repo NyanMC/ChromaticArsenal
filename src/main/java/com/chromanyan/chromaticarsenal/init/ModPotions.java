@@ -23,7 +23,7 @@ public class ModPotions {
 
     public static void doRecipes() {
         // the best way to go about this is using an access transformer, god save us all
-        PotionBrewing.addMix(Potions.AWKWARD, ModItems.SPICY_COAL.get(), INFERNO.get());
+        PotionBrewing.addMix(Potions.AWKWARD, Items.TORCHFLOWER, INFERNO.get());
         PotionBrewing.addMix(INFERNO.get(), Items.REDSTONE, LONG_INFERNO.get());
         PotionBrewing.addMix(Potions.AWKWARD, ModItems.VITAL_STONE.get(), Potions.HEALING);
     }

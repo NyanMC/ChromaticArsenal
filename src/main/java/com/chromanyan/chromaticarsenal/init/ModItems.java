@@ -37,8 +37,6 @@ public class ModItems {
     // materials
     public static final RegistryObject<Item> CHROMA_SHARD = registerWithTab("chroma_shard", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> ASCENSION_ESSENCE = registerWithTab("ascension_essence", () -> new Item(new Item.Properties().rarity(Rarity.RARE)));
-    public static final RegistryObject<Item> SPICY_COAL = registerWithTab("spicy_coal", SpicyCoal::new);
-    public static final RegistryObject<Item> MAGMATIC_SCRAP = registerWithTab("magmatic_scrap", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final RegistryObject<Item> CHAMPION_CATALYST = registerWithTab("champion_catalyst", ChampionCatalyst::new);
 
     // standard curios
