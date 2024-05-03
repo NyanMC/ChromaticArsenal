@@ -3,10 +3,10 @@
   "category": "equipment",
   "key": {
     "a": {
-      "item": "chromaticarsenal:magmatic_scrap"
+      "item": "minecraft:netherite_scrap"
     },
     "b": {
-      "item": "minecraft:orange_tulip"
+      "item": "minecraft:torchflower"
     },
     "c": {
       "tag": "forge:gems/chroma"
