@@ -14,29 +14,23 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.StatFormatter;
 import net.minecraft.stats.Stats;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import top.theillusivec4.curios.api.SlotTypeMessage;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -47,15 +41,12 @@ public class ChromaticArsenal {
 
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "chromaticarsenal";
-    private static final ResourceLocation SUPER_CURIO_ICON = new ResourceLocation("curios", "slot/empty_super_curio_slot"); // 1.19.2 curios is stupid and requires slot textures to be registered under its own namespace
 
     public ChromaticArsenal() {
         final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         // Register the setup method for modloading
         bus.addListener(this::setup);
         bus.addListener(this::clientSetup);
-        // Register the enqueueIMC method for modloading
-        bus.addListener(this::enqueueIMC);
         bus.addListener(this::gatherData);
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
@@ -118,22 +109,4 @@ public class ChromaticArsenal {
 
         CuriosRenderers.register();
     }
-
-    private void enqueueIMC(final InterModEnqueueEvent event) {
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("body").size(1).build());
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("charm").size(2).build());
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("ring").size(1).build());
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("necklace").size(1).build());
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("head").size(1).cosmetic().build());
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("super_curio").icon(SUPER_CURIO_ICON).size(1).build());
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("curio").size(0).build()); // for mark of the twisted
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    @SubscribeEvent
-    public static void onStitch(TextureStitchEvent event) {
-        event.addSprite(SUPER_CURIO_ICON);
-    }
-
-
 }

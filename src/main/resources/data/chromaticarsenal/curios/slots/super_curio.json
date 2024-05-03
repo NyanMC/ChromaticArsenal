@@ -1,0 +1,6 @@
+{
+  "order": 100,
+  "size": 1,
+  "icon": "chromaticarsenal:slot/empty_super_curio_slot",
+  "validators": ["curios:tag"]
+}
