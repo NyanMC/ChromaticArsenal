@@ -8,7 +8,7 @@
   "progress_bar_color": "AA55FF",
   "progress_bar_background": "333333",
   "use_resource_pack": true,
-  "creative_tab": "chromaticarsenal",
+  "creative_tab": "chromaticarsenal:chromaticarsenal",
   "model": "chromaticarsenal:lore_book",
   "book_texture": "chromaticarsenal:textures/gui/book_cosmic.png",
   "filler_texture": "chromaticarsenal:textures/gui/page_filler_cosmic.png"

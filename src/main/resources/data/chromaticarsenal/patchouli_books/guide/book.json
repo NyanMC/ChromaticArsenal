@@ -4,7 +4,7 @@
   "landing_text": "A guide for obtaining and using the items in Chromatic Arsenal.",
   "show_progress": false,
   "use_resource_pack": true,
-  "creative_tab": "chromaticarsenal",
+  "creative_tab": "chromaticarsenal:chromaticarsenal",
   "model": "chromaticarsenal:ca_book",
   "book_texture": "chromaticarsenal:textures/gui/book_chroma.png"
 }
