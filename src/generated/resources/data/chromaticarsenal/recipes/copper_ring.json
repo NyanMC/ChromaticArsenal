@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "c": {
       "tag": "forge:ingots/copper"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "chromaticarsenal:copper_ring"
-  }
+  },
+  "show_notification": true
 }

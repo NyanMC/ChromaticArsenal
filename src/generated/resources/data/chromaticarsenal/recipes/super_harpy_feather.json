@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "chromaticarsenal:ascension_essence"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "chromaticarsenal:super_harpy_feather"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/vital_stone"
+    "layer0": "chromaticarsenal:item/vital_stone"
   }
 }

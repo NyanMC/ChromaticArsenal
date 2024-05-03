@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/magmatic_scrap"
+    "layer0": "chromaticarsenal:item/magmatic_scrap"
   }
 }

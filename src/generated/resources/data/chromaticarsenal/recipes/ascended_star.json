@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "a": {
       "tag": "forge:dusts/ascension"
@@ -30,5 +31,6 @@
   ],
   "result": {
     "item": "chromaticarsenal:ascended_star"
-  }
+  },
+  "show_notification": true
 }

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/mark_twisted"
+    "layer0": "chromaticarsenal:item/mark_twisted"
   },
   "display": {
     "gui": {

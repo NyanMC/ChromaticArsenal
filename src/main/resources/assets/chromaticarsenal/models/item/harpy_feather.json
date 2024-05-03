@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "chromaticarsenal:items/harpy_feather"
+		"layer0": "chromaticarsenal:item/harpy_feather"
 	},
 	"display": {
 		"thirdperson_righthand": {

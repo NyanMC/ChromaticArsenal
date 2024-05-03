@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/viewer_item"
+    "layer0": "chromaticarsenal:item/viewer_item"
   }
 }

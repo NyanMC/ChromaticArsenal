@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/super_shadow_treads"
+    "layer0": "chromaticarsenal:item/super_shadow_treads"
   }
 }

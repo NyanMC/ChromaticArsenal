@@ -3,8 +3,8 @@
   "texture_size": [32, 32],
   "render_type": "minecraft:cutout",
   "textures": {
-    "0": "chromaticarsenal:blocks/blahaj",
-    "particle": "chromaticarsenal:blocks/blahaj"
+    "0": "chromaticarsenal:block/blahaj",
+    "particle": "chromaticarsenal:block/blahaj"
   },
   "elements": [
     {

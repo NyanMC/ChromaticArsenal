@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/lunar_crystal"
+    "layer0": "chromaticarsenal:item/lunar_crystal"
   }
 }

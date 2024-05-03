@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/friendly_fire_flower"
+    "layer0": "chromaticarsenal:item/friendly_fire_flower"
   }
 }

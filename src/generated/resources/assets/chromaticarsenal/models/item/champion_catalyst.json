@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/champion_catalyst"
+    "layer0": "chromaticarsenal:item/champion_catalyst"
   }
 }

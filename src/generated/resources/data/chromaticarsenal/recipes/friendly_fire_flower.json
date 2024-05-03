@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "a": {
       "item": "chromaticarsenal:magmatic_scrap"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "chromaticarsenal:friendly_fire_flower"
-  }
+  },
+  "show_notification": true
 }

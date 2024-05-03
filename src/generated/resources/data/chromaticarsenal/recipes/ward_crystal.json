@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "a": {
       "item": "minecraft:fermented_spider_eye"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "chromaticarsenal:ward_crystal"
-  }
+  },
+  "show_notification": true
 }

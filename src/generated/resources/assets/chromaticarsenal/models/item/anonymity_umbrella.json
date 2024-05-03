@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/anonymity_umbrella"
+    "layer0": "chromaticarsenal:item/anonymity_umbrella"
   }
 }

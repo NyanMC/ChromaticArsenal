@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "c": {
       "tag": "forge:gems/chroma"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "chromaticarsenal:glass_shield"
-  }
+  },
+  "show_notification": true
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/chroma_salvager"
+    "layer0": "chromaticarsenal:item/chroma_salvager"
   }
 }

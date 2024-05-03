@@ -3,8 +3,8 @@
 	"texture_size": [32, 32],
 	"render_type": "minecraft:cutout",
 	"textures": {
-		"1": "chromaticarsenal:blocks/chromanyan_plush",
-		"particle": "chromaticarsenal:blocks/chromanyan_plush"
+		"1": "chromaticarsenal:block/chromanyan_plush",
+		"particle": "chromaticarsenal:block/chromanyan_plush"
 	},
 	"elements": [
 		{

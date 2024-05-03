@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "a": {
       "tag": "forge:dusts/ascension"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "chromaticarsenal:super_lunar_crystal"
-  }
+  },
+  "show_notification": true
 }

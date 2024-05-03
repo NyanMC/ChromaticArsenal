@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/lore_book"
+    "layer0": "chromaticarsenal:item/lore_book"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/copper_ring"
+    "layer0": "chromaticarsenal:item/copper_ring"
   }
 }

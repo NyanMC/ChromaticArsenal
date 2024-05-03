@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "a": {
       "item": "minecraft:arrow"
@@ -27,5 +28,6 @@
   ],
   "result": {
     "item": "chromaticarsenal:duality_rings"
-  }
+  },
+  "show_notification": true
 }

@@ -15,7 +15,7 @@ public class CAModels extends ItemModelProvider {
         this.singleTexture(name,
                 mcLoc("item/generated"),
                 "layer0",
-                modLoc("items/" + name));
+                modLoc("item/" + name));
     }
 
     private void basicModelWithSuper(String name) {

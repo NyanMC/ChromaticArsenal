@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/advancing_heart"
+    "layer0": "chromaticarsenal:item/advancing_heart"
   }
 }

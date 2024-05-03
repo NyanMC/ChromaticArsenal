@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chromaticarsenal:items/ca_book"
+    "layer0": "chromaticarsenal:item/ca_book"
   }
 }
