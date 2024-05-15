@@ -37,7 +37,6 @@ public class LootEvents {
     @SuppressWarnings("SameParameterValue")
     private static void injectInto(LootTableLoadEvent event, String poolName, LootPoolEntryContainer... entries) {
         LootPool pool = event.getTable().getPool(poolName);
-        //noinspection ConstantConditions method is annotated wrongly
         if (pool != null) {
             int oldLength = pool.entries.length;
             pool.entries = Arrays.copyOf(pool.entries, oldLength + entries.length);
@@ -80,13 +79,12 @@ public class LootEvents {
 
         // without the second check, chroma shards generate in jungle temple dispensers
         if (event.getName().getPath().contains("chests") && !event.getName().getPath().contains("dispenser")) {
-            //noinspection ConstantConditions
-            if (event.getTable().getPool("main") != null) {
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMA_SHARD.get())
-                        .apply(exactlyOne()).setWeight(2).build());
-                injectInto(event, "main", LootItem.lootTableItem(ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get())
-                        .apply(exactlyOne()).setWeight(1).build());
-            }
+            LootPool.Builder builder = LootPool.lootPool().setRolls(UniformGenerator.between(-2, 1)).name("chroma_shards");
+
+            builder.add(LootItem.lootTableItem(ModItems.CHROMA_SHARD.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))).setWeight(3));
+            builder.add(LootItem.lootTableItem(ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get()).apply(exactlyOne()).setWeight(1));
+
+            event.getTable().addPool(builder.build());
         }
     }
 
