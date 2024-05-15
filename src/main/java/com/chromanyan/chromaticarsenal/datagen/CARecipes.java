@@ -118,8 +118,6 @@ public class CARecipes extends RecipeProvider {
                 .unlockedBy("has_chroma_shard", has(CHROMA_SHARD))
                 .save(consumer, new ResourceLocation(ChromaticArsenal.MODID, "duality_rings"));
 
-        nyanPatternRecipe(consumer, ModItems.FRIENDLY_FIRE_FLOWER.get(), Items.NETHERITE_SCRAP, Items.TORCHFLOWER, CHROMA_SHARD, "friendly_fire_flower");
-
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.VERTICAL_STASIS.get(), 1)
                 .pattern("pop")
                 .pattern("scs")
@@ -267,8 +265,8 @@ public class CARecipes extends RecipeProvider {
 
         packAndUnpack(consumer, ModItems.CHROMA_SHARD.get(), ModItems.CHROMA_BLOCK_ITEM.get(), "chroma_shard", "chroma_block");
 
-        //TODO NETHERITE SMITHING UPGRADES ARE TEMPORARY CHANGE THEM LATER
         chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), ModItems.GOLDEN_HEART.get(), Items.DRAGON_BREATH, ModItems.ADVANCING_HEART.get(), "advancing_heart");
+        chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), Items.TORCHFLOWER, ModItems.CHROMA_SHARD.get(), ModItems.FRIENDLY_FIRE_FLOWER.get(), "friendly_fire_flower");
         chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), Items.FEATHER, ModItems.CHROMA_SHARD.get(), ModItems.HARPY_FEATHER.get(), "harpy_feather");
         chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), Items.ANVIL, ModItems.CHROMA_SHARD.get(), ModItems.WORLD_ANCHOR.get(), "world_anchor");
         chromaUpgrade(consumer, ModItems.CHROMATIC_UPGRADE_SMITHING_TEMPLATE.get(), Items.END_STONE, ModItems.CHROMA_SHARD.get(), ModItems.GRAVITY_STONE.get(), "gravity_stone");

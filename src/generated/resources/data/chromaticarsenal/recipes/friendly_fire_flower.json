@@ -1,24 +1,15 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "a": {
-      "item": "minecraft:netherite_scrap"
-    },
-    "b": {
-      "item": "minecraft:torchflower"
-    },
-    "c": {
-      "tag": "forge:gems/chroma"
-    }
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "chromaticarsenal:chroma_shard"
   },
-  "pattern": [
-    "aba",
-    "bcb",
-    "aba"
-  ],
+  "base": {
+    "item": "minecraft:torchflower"
+  },
   "result": {
     "item": "chromaticarsenal:friendly_fire_flower"
   },
-  "show_notification": true
+  "template": {
+    "item": "chromaticarsenal:chromatic_upgrade_smithing_template"
+  }
 }
