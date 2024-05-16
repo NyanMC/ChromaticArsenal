@@ -278,5 +278,17 @@
   "item.chromaticarsenal.smithing_template.chromatic_upgrade.additions_slot_description": "Add Item",
   "item.chromaticarsenal.smithing_template.chromatic_upgrade.applies_to": "Check for uses in JEI",
   "item.chromaticarsenal.smithing_template.chromatic_upgrade.base_slot_description": "Add Item",
-  "item.chromaticarsenal.smithing_template.chromatic_upgrade.ingredients": "???"
+  "item.chromaticarsenal.smithing_template.chromatic_upgrade.ingredients": "???",
+
+  "tag.item.chromaticarsenal.chromatic_curios": "Chromatic Curios",
+  "tag.item.chromaticarsenal.basic_curios": "Basic Curios",
+  "tag.item.chromaticarsenal.challenge_curios": "Challenge Curios",
+  "tag.item.chromaticarsenal.utility_curios": "Utility Curios",
+  "tag.item.chromaticarsenal.standard_curios": "Standard Curios",
+  "tag.item.chromaticarsenal.super_curios": "Super Curios",
+  "tag.item.chromaticarsenal.no_salvage": "Chroma Salvager Blacklisted Items",
+  "tag.item.forge.dusts.ascension": "Ascension Essences",
+  "tag.item.forge.gems.chroma": "Chroma Shards",
+  "tag.item.forge.storage_blocks.chroma": "Chroma Blocks",
+  "tag.item.curios.super_curio": "Super Curio Slot Equipables"
 }
