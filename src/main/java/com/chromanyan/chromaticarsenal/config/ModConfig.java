@@ -576,6 +576,7 @@ public class ModConfig {
                     .define("lootTableInsertion", true);
             lootTableBlacklist = builder
                     .comment("Chroma Shards and Chromatic Upgrade Smithing Templates will NOT be added to chest loot tables containing any of these strings. By default, prevents Chroma Shards from being placed inside Jungle Temple dispensers.")
+                    .worldRestart()
                     .defineList("lootTableBlacklist", new ArrayList<>(List.of("dispenser")), o -> o instanceof String);
             superCuriosOnlyInRespectiveSlot = builder
                     .comment("Whether super curios are allowed in slots other than super curio slots. Prevents equipping super curios in general purpose curio slots.")
