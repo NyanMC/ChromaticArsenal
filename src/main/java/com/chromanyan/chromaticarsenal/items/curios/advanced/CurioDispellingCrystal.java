@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
+import com.chromanyan.chromaticarsenal.init.ModTags;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -43,19 +44,17 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
+        if (event.getSource().is(ModTags.DamageTypes.IMMUNE_TO_WARD_CRYSTAL)) return;
+
         if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
-            if (!config.damageSourceBlacklist.get().isEmpty()) {
-                for (String blacklisted : config.damageSourceBlacklist.get()) {
-                    if (event.getSource().getMsgId().equals(blacklisted))
-                        return;
-                }
-            }
             event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierIncoming.get()));
         }
     }
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
+        if (event.getSource().is(ModTags.DamageTypes.IMMUNE_TO_WARD_CRYSTAL)) return;
+
         if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             event.setAmount((float) (event.getAmount() * config.antiMagicMultiplierOutgoing.get()));
         }

@@ -28,7 +28,6 @@ public class ModConfig {
         public final DoubleValue antiMagicMultiplierOutgoing;
         public final IntValue twistedWeaknessDuration;
         public final DoubleValue antiMagicProtectionModifier;
-        public final ConfigValue<List<? extends String>> damageSourceBlacklist;
 
         public final IntValue darkspeedPotency;
         public final DoubleValue enchantmentSpeedMultiplier;
@@ -206,9 +205,6 @@ public class ModConfig {
                     antiMagicProtectionModifier = builder
                             .comment("The additional percentage reduction per level of Protection. Can be negative to increase damage instead, if you want that for whatever reason. If using a mod which changes how many levels of Protection exist, this number should be decreased.")
                             .defineInRange("antiMagicProtectionModifier", 0.05, -1, 1);
-                    damageSourceBlacklist = builder
-                            .comment("A list of damage sources the Ward Crystal should NOT protect against, if they normally would be. To add new blacklisted sources, provide their internal name used for death message lang keys, also known as their msgId. Note that these damage sources still won't trigger the weakness effect from Chromatic Twisting.")
-                            .defineList("damageSourceBlacklist", new ArrayList<>(List.of("sonic_boom")), o -> o instanceof String);
                 builder.pop();
 
                 builder.push("ShadowTreadsSettings");

@@ -1,5 +1,6 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
+import com.chromanyan.chromaticarsenal.init.ModTags;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
@@ -56,13 +57,9 @@ public class CurioWardCrystal extends BaseCurioItem {
 
     @Override
     public void onWearerHurt(LivingHurtEvent event, ItemStack stack, LivingEntity player) {
+        if (event.getSource().is(ModTags.DamageTypes.IMMUNE_TO_WARD_CRYSTAL)) return;
+
         if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
-            if (!config.damageSourceBlacklist.get().isEmpty()) {
-                for (String blacklisted : config.damageSourceBlacklist.get()) {
-                    if (event.getSource().getMsgId().equals(blacklisted))
-                        return;
-                }
-            }
             event.setAmount(event.getAmount() * getIncomingMultiplier(stack));
         } else if (ChromaCurioHelper.isChromaticTwisted(stack, player) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event)) {
             player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, config.twistedWeaknessDuration.get(), 1), player);
@@ -71,6 +68,8 @@ public class CurioWardCrystal extends BaseCurioItem {
 
     @Override
     public void onWearerAttack(LivingHurtEvent event, ItemStack stack, LivingEntity player, LivingEntity target) {
+        if (event.getSource().is(ModTags.DamageTypes.IMMUNE_TO_WARD_CRYSTAL)) return;
+
         if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && !ChromaCurioHelper.shouldIgnoreDamageEvent(event) && !ChromaCurioHelper.isChromaticTwisted(stack, player)) {
             event.setAmount(event.getAmount() * getOutgoingMultiplier(stack));
         }

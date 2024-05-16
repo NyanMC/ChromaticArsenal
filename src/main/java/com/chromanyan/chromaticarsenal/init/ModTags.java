@@ -1,10 +1,12 @@
 package com.chromanyan.chromaticarsenal.init;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
@@ -39,4 +41,7 @@ public class ModTags {
         public static final TagKey<Block> STORAGE_BLOCKS_CHROMA = forgeTag("storage_blocks/chroma");
     }
 
+    public static class DamageTypes {
+        public static final TagKey<DamageType> IMMUNE_TO_WARD_CRYSTAL = TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(ChromaticArsenal.MODID, "immune_to_ward_crystal"));
+    }
 }
