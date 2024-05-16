@@ -149,6 +149,7 @@ public class ModConfig {
         public final BooleanValue potionImmunitySideCheck;
 
         public final BooleanValue lootTableInsertion;
+        public final ForgeConfigSpec.ConfigValue<List<? extends String>> lootTableBlacklist;
         public final BooleanValue superCuriosOnlyInRespectiveSlot;
 
         Common(Builder builder) {
@@ -573,6 +574,9 @@ public class ModConfig {
                     .comment("Set to false to prevent Chromatic Arsenal from injecting its own items into loot tables. This will cause items only found as loot (such as the Golden Heart) to become unobtainable, and it will be up to the modpack to add a method to obtain them. This setting also affects the Wandering Trader trade for Chroma Shards.")
                     .worldRestart()
                     .define("lootTableInsertion", true);
+            lootTableBlacklist = builder
+                    .comment("Chroma Shards and Chromatic Upgrade Smithing Templates will NOT be added to chest loot tables containing any of these strings. By default, prevents Chroma Shards from being placed inside Jungle Temple dispensers.")
+                    .defineList("lootTableBlacklist", new ArrayList<>(List.of("dispenser")), o -> o instanceof String);
             superCuriosOnlyInRespectiveSlot = builder
                     .comment("Whether super curios are allowed in slots other than super curio slots. Prevents equipping super curios in general purpose curio slots.")
                     .define("superCuriosOnlyInRespectiveSlot", true);

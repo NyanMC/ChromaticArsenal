@@ -77,8 +77,11 @@ public class LootEvents {
                             .apply(exactlyOne()).setWeight(4).build());
         }
 
-        // without the second check, chroma shards generate in jungle temple dispensers
-        if (event.getName().getPath().contains("chests") && !event.getName().getPath().contains("dispenser")) {
+        if (event.getName().getPath().contains("chests")) {
+            for (String lootName : config.lootTableBlacklist.get()) {
+                if (event.getName().getPath().contains(lootName)) return;
+            }
+
             LootPool.Builder builder = LootPool.lootPool().setRolls(UniformGenerator.between(-2, 1)).name("chroma_shards");
 
             builder.add(LootItem.lootTableItem(ModItems.CHROMA_SHARD.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))).setWeight(3));
