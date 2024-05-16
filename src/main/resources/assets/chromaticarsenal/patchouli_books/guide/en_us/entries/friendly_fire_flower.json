@@ -4,7 +4,7 @@
   "category": "chromaticarsenal:main",
   "pages": [
     {
-      "type": "patchouli:showcase",
+      "type": "patchouli:spotlight",
       "text": "The Friendly Fire Flower is created by smithing a Torchflower with a Chroma Shard. It causes damage you deal to yourself (e.g. hitting yourself with your own arrows) to be negated for free. Being set on fire will also grant fire resistance at the cost of durability, however this takes a second to activate (it won't save you from the inital burn). It also blocks Thorns damage, however takes durability damage when doing this as well.",
       "item": "chromaticarsenal:friendly_fire_flower"
     },
