@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -57,10 +58,10 @@ public class LootEvents {
         switch (event.getName().getPath()) {
             case "chests/bastion_treasure", "gameplay/piglin_bartering" ->
                     injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(8)
-                            .apply(exactlyOne()).build());
+                            .apply(exactlyOne()).apply(EnchantRandomlyFunction.randomApplicableEnchantment()).build());
             case "chests/end_city_treasure" -> {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL.get()).setWeight(4)
-                        .apply(exactlyOne()).build());
+                        .apply(exactlyOne()).apply(EnchantRandomlyFunction.randomApplicableEnchantment()).build());
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.COSMICOLA.get()).setWeight(4)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))).build());
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD.get()).setWeight(5)
@@ -74,7 +75,7 @@ public class LootEvents {
                             .apply(exactlyOne()).setWeight(4).build());
             case "chests/village/village_armorer" ->
                     injectInto(event, "main", LootItem.lootTableItem(ModItems.MOMENTUM_STONE.get())
-                            .apply(exactlyOne()).setWeight(4).build());
+                            .apply(exactlyOne()).apply(EnchantRandomlyFunction.randomApplicableEnchantment()).setWeight(4).build());
         }
 
         if (event.getName().getPath().contains("chests")) {
