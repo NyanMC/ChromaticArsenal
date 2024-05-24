@@ -12,6 +12,8 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -44,5 +46,10 @@ public class CurioAnonymityUmbrella extends BaseCurioItem {
         atts.put(ForgeMod.NAMETAG_DISTANCE.get(), new AttributeModifier(uuid, ChromaticArsenal.MODID + ":anonymity", -1, AttributeModifier.Operation.MULTIPLY_TOTAL));
 
         return atts;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment == Enchantments.BINDING_CURSE || enchantment == Enchantments.VANISHING_CURSE;
     }
 }
