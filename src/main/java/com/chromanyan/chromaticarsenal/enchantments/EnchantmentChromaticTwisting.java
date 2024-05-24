@@ -34,4 +34,9 @@ public class EnchantmentChromaticTwisting extends Enchantment {
     public boolean canEnchant(@NotNull ItemStack stack) {
         return stack.getItem() instanceof IChromaCurio && stack.getItem().canApplyAtEnchantingTable(stack, this);
     }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(@NotNull ItemStack stack) {
+        return stack.getItem() instanceof IChromaCurio && stack.getItem().canApplyAtEnchantingTable(stack, this);
+    }
 }
