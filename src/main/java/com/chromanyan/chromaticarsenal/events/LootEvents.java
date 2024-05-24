@@ -70,9 +70,11 @@ public class LootEvents {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.MAGIC_GARLIC_BREAD.get()).setWeight(5)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 5))).build());
             }
-            case "chests/igloo_chest" ->
-                    injectInto(event, "main", LootItem.lootTableItem(ModItems.CRYO_RING.get())
-                            .apply(exactlyOne()).setWeight(10).build());
+            case "chests/igloo_chest" -> {
+                LootPool.Builder cryoBuilder = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).name("cryo_ring");
+                cryoBuilder.add(LootItem.lootTableItem(ModItems.CRYO_RING.get()).apply(exactlyOne()));
+                event.getTable().addPool(cryoBuilder.build());
+            }
             case "chests/village/village_shepherd" ->
                     injectInto(event, "main", LootItem.lootTableItem(ModItems.BLAHAJ.get())
                             .apply(exactlyOne()).setWeight(4).build());
