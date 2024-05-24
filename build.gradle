@@ -194,6 +194,10 @@ dependencies {
 
     implementation fg.deobf("curse.maven:enigmatic-legacy-336184:4976252") // 2.29.0
     implementation fg.deobf("curse.maven:caelus-308989:5281700") // 3.2.0
+
+    implementation fg.deobf("curse.maven:placebo-283644:5098182")
+    implementation fg.deobf("curse.maven:apothic-attributes-898963:5340012")
+    implementation fg.deobf("curse.maven:apotheosis-313970:5317303")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
