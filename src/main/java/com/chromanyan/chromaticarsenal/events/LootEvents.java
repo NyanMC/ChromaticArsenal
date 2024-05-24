@@ -56,9 +56,12 @@ public class LootEvents {
         }
 
         switch (event.getName().getPath()) {
-            case "chests/bastion_treasure", "gameplay/piglin_bartering" ->
+            case "chests/bastion_treasure" ->
                     injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(8)
                             .apply(exactlyOne()).apply(EnchantRandomlyFunction.randomApplicableEnchantment()).build());
+            case "gameplay/piglin_bartering" -> // this one doesn't get enchanted randomly
+                    injectInto(event, "main", LootItem.lootTableItem(ModItems.GOLDEN_HEART.get()).setWeight(8)
+                            .apply(exactlyOne()).build());
             case "chests/end_city_treasure" -> {
                 injectInto(event, "main", LootItem.lootTableItem(ModItems.LUNAR_CRYSTAL.get()).setWeight(4)
                         .apply(exactlyOne()).apply(EnchantRandomlyFunction.randomApplicableEnchantment()).build());
