@@ -3,14 +3,15 @@ package com.chromanyan.chromaticarsenal.mixin;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Optional;
@@ -21,40 +22,40 @@ public abstract class MixinPlayer {
     @Unique
     private static final ModConfig.Common chromatic_workspace_19$config = ModConfig.COMMON;
 
-    @Inject(method = "isStayingOnGroundSurface", at = @At("RETURN"), cancellable = true)
-    private void isStayingOnGroundSurface(CallbackInfoReturnable<Boolean> cir) {
+    @ModifyReturnValue(method = "isStayingOnGroundSurface", at = @At("RETURN"))
+    private boolean isStayingOnGroundSurface(boolean original) {
         Player trueThis = (Player)(Object)this;
 
         if (ChromaCurioHelper.getCurio(trueThis, ModItems.VERTICAL_STASIS.get()).isPresent()) {
             ItemStack stack = ChromaCurioHelper.getCurio(trueThis, ModItems.VERTICAL_STASIS.get()).get().stack();
             if (stack.getOrCreateTag().contains("active") && stack.getOrCreateTag().getBoolean("active")) {
-                cir.setReturnValue(false);
+                return false;
             }
         }
+        return original;
     }
 
-    @Redirect(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;setSprinting(Z)V"))
-    private void setSprinting(Player instance, boolean b) {
-        if (ChromaCurioHelper.getCurio(instance, ModItems.MOMENTUM_STONE.get()).isPresent()) {
-            return; // don't actually stop sprinting
+    @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;setSprinting(Z)V"))
+    private void maybeDontStopSprinting(Player instance, boolean b, Operation<Void> original) {
+        if (ChromaCurioHelper.getCurio(instance, ModItems.MOMENTUM_STONE.get()).isEmpty()) {
+            original.call(instance, b);
         }
-        instance.setSprinting(false); // continue as normal
     }
 
-    @Redirect(method = "checkMovementStatistics", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;causeFoodExhaustion(F)V"))
-    private void causeFoodExhaustion(Player instance, float p_36400_) {
+    @WrapOperation(method = "checkMovementStatistics", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;causeFoodExhaustion(F)V"))
+    private void modifyFoodExhaustionRate(Player instance, float f, Operation<Void> original) {
         if (!instance.isSprinting()) {
-            instance.causeFoodExhaustion(p_36400_);
+            original.call(instance, f);
             return;
         }
 
         Optional<SlotResult> slotResult = ChromaCurioHelper.getCurio(instance, ModItems.MOMENTUM_STONE.get());
 
         if (slotResult.isEmpty() || !ChromaCurioHelper.isChromaticTwisted(slotResult.get().stack(), instance)) {
-            instance.causeFoodExhaustion(p_36400_);
+            original.call(instance, f);
             return;
         }
 
-        instance.causeFoodExhaustion(p_36400_ * chromatic_workspace_19$config.twistedMomentumStoneExhaustion.get().floatValue());
+        original.call(instance, f * chromatic_workspace_19$config.twistedMomentumStoneExhaustion.get().floatValue());
     }
 }

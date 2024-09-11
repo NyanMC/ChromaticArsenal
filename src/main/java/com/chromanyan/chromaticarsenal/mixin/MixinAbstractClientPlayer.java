@@ -4,13 +4,13 @@ import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractClientPlayer.class)
 public class MixinAbstractClientPlayer {
@@ -30,18 +30,20 @@ public class MixinAbstractClientPlayer {
     }
 
     // if the curio is equipped, replace their skin with our anonymous one
-    @Inject(method = "getSkinTextureLocation", at = @At("RETURN"), cancellable = true)
-    private void getSkinTextureLocation(CallbackInfoReturnable<ResourceLocation> cir) {
+    @ModifyReturnValue(method = "getSkinTextureLocation", at = @At("RETURN"))
+    private ResourceLocation getSkinTextureLocation(ResourceLocation original) {
         if (chromatic_workspace_19$shouldCloak()) {
-            cir.setReturnValue(ANON_SKIN);
+            return ANON_SKIN;
         }
+        return original;
     }
 
     // effectively, this will mean the player won't be associated with their UUID for *anything* regarding rendering
-    @Inject(method = "getPlayerInfo", at = @At("RETURN"), cancellable = true)
-    private void getPlayerInfo(CallbackInfoReturnable<ResourceLocation> cir) {
+    @ModifyReturnValue(method = "getPlayerInfo", at = @At("RETURN"))
+    private PlayerInfo getPlayerInfo(PlayerInfo original) {
         if (chromatic_workspace_19$shouldCloak()) {
-            cir.setReturnValue(null);
+            return null;
         }
+        return original;
     }
 }

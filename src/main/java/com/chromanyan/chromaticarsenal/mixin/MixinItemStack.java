@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.mixin;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
@@ -31,5 +32,19 @@ public class MixinItemStack {
         if (randomSource.nextDouble() <= chromatic_workspace_19$config.copperRingUnbreakingChance.get()) {
             cir.setReturnValue(false);
         }
+    }
+
+    @ModifyReturnValue(method = "hurt", at = @At("RETURN"))
+    private boolean shouldHurt(boolean original, int amount, RandomSource randomSource, @Nullable ServerPlayer serverPlayer) {
+        if (serverPlayer == null) return original;
+
+        if (ChromaCurioHelper.getCurio(serverPlayer, ModItems.COPPER_RING.get()).isEmpty()) {
+            if (!ModList.get().isLoaded("enigmaticlegacy")) return original;
+            if (ChromaCurioHelper.getCurio(serverPlayer, ModItems.OMNI_RING.get()).isEmpty()) return original;
+        }
+        if (randomSource.nextDouble() <= chromatic_workspace_19$config.copperRingUnbreakingChance.get()) {
+            return false;
+        }
+        return original;
     }
 }

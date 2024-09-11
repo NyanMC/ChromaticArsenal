@@ -3,17 +3,13 @@ package com.chromanyan.chromaticarsenal.mixin;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Optional;
@@ -40,17 +36,16 @@ public class MixinLivingEntity {
         return d0;
     }
 
-    @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getFriction(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/Entity;)F"))
-    private float getFriction(BlockState instance, LevelReader levelReader, BlockPos blockPos, Entity entity) {
-        float originalReturn = instance.getFriction(levelReader, blockPos, entity);
+    @ModifyExpressionValue(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getFriction(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/Entity;)F"))
+    private float getFriction(float original) {
+        LivingEntity trueThis = (LivingEntity)(Object) this;
 
-        if (!(entity instanceof LivingEntity livingEntity)) return originalReturn;
-        if (livingEntity.getBlockSpeedFactor() > 1 || livingEntity.isSprinting()) return originalReturn; // never combine friction and >1 speed factor
+        if (trueThis.getBlockSpeedFactor() > 1 || trueThis.isSprinting()) return original;
 
-        Optional<SlotResult> slotResult = ChromaCurioHelper.getCurio(livingEntity, ModItems.MOMENTUM_STONE.get());
-        if (slotResult.isEmpty() || ChromaCurioHelper.isChromaticTwisted(slotResult.get().stack(), livingEntity)) return originalReturn;
+        Optional<SlotResult> slotResult = ChromaCurioHelper.getCurio(trueThis, ModItems.MOMENTUM_STONE.get());
+        if (slotResult.isEmpty() || ChromaCurioHelper.isChromaticTwisted(slotResult.get().stack(), trueThis)) return original;
 
-        float newFriction = originalReturn + chromatic_workspace_19$config.momentumStoneFriction.get().floatValue();
+        float newFriction = original + chromatic_workspace_19$config.momentumStoneFriction.get().floatValue();
 
         return Math.min(newFriction, BLUE_ICE_FRICTION); // high levels of friction are buggy
     }
