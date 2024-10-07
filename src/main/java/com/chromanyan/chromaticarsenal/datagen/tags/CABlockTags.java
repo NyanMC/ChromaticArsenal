@@ -23,6 +23,7 @@ public class CABlockTags extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.CHROMA_BLOCK.get());
+        tag(BlockTags.NEEDS_STONE_TOOL).add(ModBlocks.CHROMA_BLOCK.get());
         tag(BlockTags.BEACON_BASE_BLOCKS).add(ModBlocks.CHROMA_BLOCK.get());
         tag(ModTags.Blocks.STORAGE_BLOCKS_CHROMA).add(ModBlocks.CHROMA_BLOCK.get());
         tag(Tags.Blocks.STORAGE_BLOCKS).add(ModBlocks.CHROMA_BLOCK.get());
