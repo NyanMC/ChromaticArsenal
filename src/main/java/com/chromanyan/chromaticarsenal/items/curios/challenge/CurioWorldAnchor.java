@@ -66,7 +66,7 @@ public class CurioWorldAnchor extends BaseCurioItem {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         // tricks curios into updating the attribute, as it only does such when NBT updates
-        stack.getOrCreateTag().putDouble("dummy", Math.random());
+        ChromaCurioHelper.forceAttributeUpdate(stack);
     }
 
     @Override

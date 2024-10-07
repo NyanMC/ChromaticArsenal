@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios.advanced;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
+import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.gui.screens.Screen;
@@ -41,7 +42,7 @@ public class CurioCelestialCharm extends BaseSuperCurio {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         // tricks curios into updating the attribute, as it only does such when NBT updates
-        stack.getOrCreateTag().putDouble("dummy", Math.random());
+        ChromaCurioHelper.forceAttributeUpdate(stack);
     }
 
     @Override

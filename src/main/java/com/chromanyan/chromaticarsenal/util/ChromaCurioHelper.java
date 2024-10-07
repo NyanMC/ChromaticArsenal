@@ -48,6 +48,10 @@ public class ChromaCurioHelper {
         return event.getAmount() == 0 || event.isCanceled() || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY);
     }
 
+    public static void forceAttributeUpdate(ItemStack stack) {
+        stack.getOrCreateTag().putDouble("dummy", Math.random());
+    }
+
     // thanks flux networks
     @Nonnull
     public static Iterable<ItemStack> getFlatStacks(LivingEntity player) {

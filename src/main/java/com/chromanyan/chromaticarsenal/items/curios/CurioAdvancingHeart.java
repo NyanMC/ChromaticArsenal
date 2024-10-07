@@ -80,6 +80,11 @@ public class CurioAdvancingHeart extends BaseCurioItem {
     }
 
     @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        ChromaCurioHelper.forceAttributeUpdate(stack); // i really hate doing this but i can't think of another way
+    }
+
+    @Override
     public void inventoryTick(@NotNull ItemStack stack, @NotNull Level level, @NotNull Entity entity, int p_41407_, boolean p_41408_) {
         if (!(entity instanceof LivingEntity livingEntity)) return;
         if (ChromaCurioHelper.getCurio(livingEntity, this).isPresent()) return;
