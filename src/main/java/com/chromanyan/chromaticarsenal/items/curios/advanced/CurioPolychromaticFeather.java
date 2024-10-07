@@ -37,8 +37,8 @@ public class CurioPolychromaticFeather extends BaseSuperCurio {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        super.appendHoverText(stack, level, list, flag);
         list.add(Component.translatable("tooltip.chromaticarsenal.utility"));
+        super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         list.add(Component.translatable("tooltip.chromaticarsenal.super_harpy_feather.1"));
         list.add(Component.translatable("tooltip.chromaticarsenal.super_harpy_feather.2"));
