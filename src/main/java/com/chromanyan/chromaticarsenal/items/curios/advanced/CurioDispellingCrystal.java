@@ -1,17 +1,15 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
-import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModTags;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.ConfigHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -20,7 +18,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -62,24 +59,8 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
 
     @Override
     public void onPotionApplied(MobEffectEvent.Added event) {
-        // why am i like this
-        if (!config.effectBlacklist.get().isEmpty()) {
-            for (String blacklisted : config.effectBlacklist.get()) { // yes, DO THIS WHILE THE SERVER IS RUNNING. i am very sane thank you very much
-                ResourceLocation blacklistedRL = ResourceLocation.tryParse(blacklisted); // null if this doesn't parse as ResourceLocation
-                if (blacklistedRL != null) {
-                    MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(blacklistedRL); // null if this doesn't match a MobEffect
-                    if (effect != null) {
-                        if (event.getEffectInstance().getEffect() == effect) {
-                            return;
-                        }
-                    } else {
-                        ChromaticArsenal.LOGGER.error("CONFIG PARSE ERROR: The resource location \"" + blacklisted + "\" was not recognized as a potion effect, skipping");
-                    }
-                } else {
-                    ChromaticArsenal.LOGGER.error("CONFIG PARSE ERROR: Failed to parse \"" + blacklisted + "\" as ResourceLocation, skipping");
-                }
-            }
-        }
+        if (ConfigHelper.effectInBlacklist(config.effectBlacklist.get(), event.getEffectInstance().getEffect())) return;
+
         event.getEffectInstance().duration *= config.potionDurationMultiplier.get(); // because why should forge let you set the duration of a potion effect without an access transformer?
     }
 }
