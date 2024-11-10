@@ -45,16 +45,16 @@ public class CurioFriendlyFireFlower extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.1"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
         if (stack.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.silktouch"));
+            TooltipHelper.itemTooltipLine(stack, "silktouch", list);
 
-        list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.2", TooltipHelper.ticksToSecondsTooltip(getEffectDuration(stack))));
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.ticksToSecondsTooltip(getEffectDuration(stack)));
         if (stack.isDamageableItem()) // this check includes when the item has the unbreakable tag
-            list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.3"));
+            TooltipHelper.itemTooltipLine(stack, 3, list);
 
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.friendly_fire_flower.twisted", TooltipHelper.percentTooltip(config.twistedUnbreakingChance.get())));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list, TooltipHelper.percentTooltip(config.twistedUnbreakingChance.get()));
     }
 
     private int getEffectDuration(ItemStack stack) {

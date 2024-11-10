@@ -34,9 +34,9 @@ public class CurioInfernoFlower extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_friendly_fire_flower.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_friendly_fire_flower.2"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_friendly_fire_flower.3", TooltipHelper.multiplierAsPercentTooltip(config.viciousFireDamageMultplier.get())));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list);
+        TooltipHelper.itemTooltipLine(stack, 3, list, TooltipHelper.multiplierAsPercentTooltip(config.viciousFireDamageMultplier.get()));
     }
 
     @Override

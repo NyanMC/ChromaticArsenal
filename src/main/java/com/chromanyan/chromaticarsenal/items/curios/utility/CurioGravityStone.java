@@ -2,6 +2,7 @@ package com.chromanyan.chromaticarsenal.items.curios.utility;
 
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.gui.screens.Screen;
@@ -36,9 +37,9 @@ public class CurioGravityStone extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.gravity_stone.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.gravity_stone.2"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.gravity_stone.3"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list);
+        TooltipHelper.itemTooltipLine(stack, 3, list);
     }
 
     @Override

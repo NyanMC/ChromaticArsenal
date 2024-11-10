@@ -49,13 +49,13 @@ public class CurioGoldenHeart extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         if (EnigmaticLegacyHelper.isTheCursedOne(Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3.cursed"));
+            TooltipHelper.itemTooltipLine(stack, "3.cursed", list);
         else
-            list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.3"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.1", TooltipHelper.potionAmplifierTooltip(config.absorptionLevel.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.2", TooltipHelper.ticksToSecondsTooltip(getEffectCooldown(stack))));
+            TooltipHelper.itemTooltipLine(stack, 3, list);
+        TooltipHelper.itemTooltipLine(stack, 1, list, TooltipHelper.potionAmplifierTooltip(config.absorptionLevel.get()));
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.ticksToSecondsTooltip(getEffectCooldown(stack)));
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.golden_heart.twisted", TooltipHelper.ticksToSecondsTooltip((config.twistedWitherDuration.get()))));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list, TooltipHelper.ticksToSecondsTooltip(config.twistedWitherDuration.get()));
         }
     }
 

@@ -210,13 +210,13 @@
 
   "tooltip.chromaticarsenal.shift": "§5Удерживайте §dShift§5, для подробностей",
   "tooltip.chromaticarsenal.cooldown": "Сейчас на перезарядке, ещё %1$s тиков",
-  "tooltip.chromaticarsenal.cursed": "После экипировки снятие может оказаться фатальным.",
+  "tooltip.chromaticarsenal.cursed": "§cПосле экипировки снятие может оказаться фатальным.",
   "tooltip.chromaticarsenal.can_place": "Можно разместить",
   "tooltip.chromaticarsenal.vanity": "Косметический предмет",
-  "tooltip.chromaticarsenal.crafting_reusable": "Не расходуется при использовании в создании",
+  "tooltip.chromaticarsenal.crafting_reusable": "§6Не расходуется при использовании в создании",
   "tooltip.chromaticarsenal.impersonation": "§o\"Отлично подходит для выдачи себя за разработчиков!\"",
-  "tooltip.chromaticarsenal.enchanted_super_curio_warning.1": "Предупреждение: Супер аксессуар не может использовать другие чары, кроме проклятий несъёмности и утраты.",
-  "tooltip.chromaticarsenal.enchanted_super_curio_warning.2": "Подумайте о том, чтобы поместить этот предмет в точильный камень.",
+  "tooltip.chromaticarsenal.enchanted_super_curio_warning.1": "§eПредупреждение: Супер аксессуар не может использовать другие чары, кроме проклятий несъёмности и утраты.",
+  "tooltip.chromaticarsenal.enchanted_super_curio_warning.2": "§eПодумайте о том, чтобы поместить этот предмет в точильный камень.",
 
   "tooltip.chromaticarsenal.super": "§dСупер аксессуар",
   "tooltip.chromaticarsenal.challenge": "§4Испытательный аксессуар",

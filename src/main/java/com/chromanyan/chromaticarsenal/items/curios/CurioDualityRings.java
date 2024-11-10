@@ -36,10 +36,10 @@ public class CurioDualityRings extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.2", TooltipHelper.multiplierAsPercentTooltip(getProjectileMultiplier(stack))));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.multiplierAsPercentTooltip(getProjectileMultiplier(stack)));
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.duality_rings.twisted", TooltipHelper.ticksToSecondsTooltip(config.twistedSaturationDuration.get()), TooltipHelper.potionAmplifierTooltip(config.twistedHungerLevel.get())));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list, TooltipHelper.ticksToSecondsTooltip(config.twistedSaturationDuration.get()), TooltipHelper.potionAmplifierTooltip(config.twistedHungerLevel.get()));
     }
 
     private double getProjectileMultiplier(ItemStack stack) {

@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.init.ModEnchantments;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
@@ -71,13 +72,13 @@ public class BaseCurioItem extends Item implements ICurioItem, IChromaCurio {
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         if (this.getRarity(stack) == ModRarities.CHALLENGE) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.challenge"));
+            TooltipHelper.itemTooltipLine("challenge", list);
         } else if (this.getRarity(stack) == ModRarities.UTILITY) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.utility"));
+            TooltipHelper.itemTooltipLine("utility", list);
         }
 
         if (!Screen.hasShiftDown()) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.shift"));
+            TooltipHelper.itemTooltipLine("shift", list);
         }
     }
 

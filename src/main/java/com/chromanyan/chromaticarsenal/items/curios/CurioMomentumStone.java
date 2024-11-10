@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.Minecraft;
@@ -37,12 +38,12 @@ public class CurioMomentumStone extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.2"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list);
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.twisted"));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list);
         } else {
-            list.add(Component.translatable("tooltip.chromaticarsenal.momentum_stone.3"));
+            TooltipHelper.itemTooltipLine(stack, 3, list);
         }
     }
 

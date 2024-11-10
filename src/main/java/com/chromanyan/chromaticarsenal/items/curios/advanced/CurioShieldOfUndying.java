@@ -7,7 +7,6 @@ import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -42,13 +41,10 @@ public class CurioShieldOfUndying extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.2", TooltipHelper.valueTooltip(config.shatterRevivalCooldown.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_glass_shield.3", TooltipHelper.valueTooltip(config.revivalLimit.get())));
-        CompoundTag nbt = stack.getOrCreateTag();
-        if (!CooldownHelper.isCooldownFinished(nbt)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
-        }
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.valueTooltip(config.shatterRevivalCooldown.get()));
+        TooltipHelper.itemTooltipLine(stack, 3, list, TooltipHelper.valueTooltip(config.revivalLimit.get()));
+        TooltipHelper.cooldownTooltipLine(stack, list);
     }
 
     @Override

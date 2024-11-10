@@ -44,15 +44,15 @@ public class CurioAdvancingHeart extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
 
-        list.add(Component.translatable("tooltip.chromaticarsenal.advancing_heart.1"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
         CompoundTag tag = stack.getOrCreateTag();
 
         int completed = tag.getInt("completedAdvancements");
         int total = tag.getInt("totalAdvancements");
         if (total > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.advancing_heart.progresstracker", TooltipHelper.valueTooltip(completed), TooltipHelper.valueTooltip(total)));
+            TooltipHelper.itemTooltipLine(stack, "progresstracker", list, TooltipHelper.valueTooltip(completed), TooltipHelper.valueTooltip(total));
         else
-            list.add(Component.translatable("tooltip.chromaticarsenal.advancing_heart.progresstracker.equipfirst"));
+            TooltipHelper.itemTooltipLine(stack, "progresstracker.equipfirst", list);
     }
 
     public static void updateNBTForStack(SlotContext slotContext, ItemStack stack) {

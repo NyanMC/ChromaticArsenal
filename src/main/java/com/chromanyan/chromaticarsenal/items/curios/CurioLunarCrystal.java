@@ -54,14 +54,14 @@ public class CurioLunarCrystal extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         if (!ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.1"));
+            TooltipHelper.itemTooltipLine(stack, 1, list);
         }
-        list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.2", TooltipHelper.valueTooltip(config.levitationChance.get()), TooltipHelper.potionAmplifierTooltip(config.levitationPotency.get()), TooltipHelper.ticksToSecondsTooltip(getLevitationDuration(stack, null))));
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.valueTooltip(config.levitationChance.get()), TooltipHelper.potionAmplifierTooltip(config.levitationPotency.get()), TooltipHelper.ticksToSecondsTooltip(getLevitationDuration(stack, null)));
         if (stack.getEnchantmentLevel(Enchantments.FALL_PROTECTION) > 0) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.3", TooltipHelper.multiplierAsPercentTooltip(getFallMultiplier(stack)))); // use Math.round so the tooltip doesn't display it as one more or less than it should be
+            TooltipHelper.itemTooltipLine(stack, 3, list, TooltipHelper.multiplierAsPercentTooltip(getFallMultiplier(stack)));
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.lunar_crystal.twisted"));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list);
         }
     }
 

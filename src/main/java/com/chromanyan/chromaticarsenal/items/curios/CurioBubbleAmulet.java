@@ -1,15 +1,14 @@
 package com.chromanyan.chromaticarsenal.items.curios;
 
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
-import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModEffects;
+import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
@@ -52,17 +51,18 @@ public class CurioBubbleAmulet extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.twisted"));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list);
             return;
         }
         CompoundTag nbt = stack.getOrCreateTag();
-        list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.1"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
         if (config.bubblePanicDuration.get() > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.2", TooltipHelper.ticksToSecondsTooltip(config.bubblePanicDuration.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.3", TooltipHelper.ticksToSecondsTooltip(getCooldownDuration(stack))));
+            TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.ticksToSecondsTooltip(config.bubblePanicDuration.get()));
+        TooltipHelper.itemTooltipLine(stack, 3, list, TooltipHelper.ticksToSecondsTooltip(getCooldownDuration(stack)));
+
+        TooltipHelper.cooldownTooltipLine(stack, list);
         if (!CooldownHelper.isCooldownFinished(nbt)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
-            list.add(Component.translatable("tooltip.chromaticarsenal.bubble_amulet.cooldown"));
+            TooltipHelper.itemTooltipLine(stack, "cooldown", list);
         }
     }
 

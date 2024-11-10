@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios.utility;
 import com.chromanyan.chromaticarsenal.init.ModBlocks;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
@@ -30,9 +31,9 @@ public class CurioChromaNyan extends BlockItem implements IChromaCurio, ICurioIt
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("tooltip.chromaticarsenal.vanity"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.can_place"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.impersonation"));
+        TooltipHelper.itemTooltipLine("vanity", list);
+        TooltipHelper.itemTooltipLine("can_place", list);
+        TooltipHelper.itemTooltipLine("impersonation", list);
     }
 
     @Override

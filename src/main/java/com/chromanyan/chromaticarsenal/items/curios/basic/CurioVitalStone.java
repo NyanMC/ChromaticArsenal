@@ -37,7 +37,7 @@ public class CurioVitalStone extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.vital_stone.1", TooltipHelper.ticksToSecondsTooltip(config.vitalStoneFrequency.get())));
+        TooltipHelper.itemTooltipLine(stack, 1, list, TooltipHelper.ticksToSecondsTooltip(config.vitalStoneFrequency.get()));
     }
 
     @Override

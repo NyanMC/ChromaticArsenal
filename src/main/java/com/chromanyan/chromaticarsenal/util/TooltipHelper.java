@@ -1,6 +1,18 @@
 package com.chromanyan.chromaticarsenal.util;
 
+import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.config.ModConfig;
+import net.minecraft.ChatFormatting;
+import net.minecraft.SharedConstants;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class TooltipHelper {
 
@@ -10,6 +22,40 @@ public class TooltipHelper {
 
     private TooltipHelper() {
 
+    }
+
+    private static String getItemInternalName(Item item) {
+        ResourceLocation resourceLocation = ForgeRegistries.ITEMS.getKey(item);
+
+        if (resourceLocation == null) {
+            if (SharedConstants.IS_RUNNING_IN_IDE) {
+                throw new NullPointerException("Item resource location is null. This should not be happening");
+            } else {
+                ChromaticArsenal.LOGGER.warn("Unknown error when creating tooltips");
+                return "error";
+            }
+        }
+
+        return resourceLocation.getPath();
+    }
+
+    public static void itemTooltipLine(String itemName, Object append, @NotNull List<Component> list, Object... strings) {
+        list.add(Component.translatable("tooltip.chromaticarsenal." + itemName + "." + append, strings));
+    }
+
+    public static void itemTooltipLine(String suffix, @NotNull List<Component> list, Object... strings) {
+        list.add(Component.translatable("tooltip.chromaticarsenal." + suffix, strings));
+    }
+
+    public static void itemTooltipLine(ItemStack stack, Object append, @NotNull List<Component> list, Object... strings) {
+        list.add(Component.translatable("tooltip.chromaticarsenal." + getItemInternalName(stack.getItem()) + "." + append, strings));
+    }
+
+    public static void cooldownTooltipLine(ItemStack stack, @NotNull List<Component> list) {
+        CompoundTag nbt = stack.getOrCreateTag();
+        if (!CooldownHelper.isCooldownFinished(nbt)) {
+            list.add(Component.translatable("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
+        }
     }
 
     public static String valueTooltip(Object object) {

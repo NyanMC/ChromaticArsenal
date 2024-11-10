@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.IChromaCurio;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.EnigmaticLegacyHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -13,7 +14,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Phantom;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -40,17 +44,17 @@ public class CurioBlahaj extends BlockItem implements IChromaCurio, ICurioItem {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("tooltip.chromaticarsenal.utility"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.can_place"));
+        TooltipHelper.itemTooltipLine("utility", list);
+        TooltipHelper.itemTooltipLine("can_place", list);
         if (!Screen.hasShiftDown()) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.shift"));
+            TooltipHelper.itemTooltipLine("shift", list);
             return;
         }
         if (EnigmaticLegacyHelper.isTheCursedOne(Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.blahaj.1.cursed"));
+            TooltipHelper.itemTooltipLine(stack, "1.cursed", list);
         else
-            list.add(Component.translatable("tooltip.chromaticarsenal.blahaj.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.blahaj.2"));
+            TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list);
     }
 
     @Override

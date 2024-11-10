@@ -34,9 +34,9 @@ public class CurioDispellingCrystal extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.1", TooltipHelper.multiplierAsPercentTooltip(config.antiMagicMultiplierIncoming.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.2", TooltipHelper.multiplierAsPercentTooltip(config.antiMagicMultiplierOutgoing.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_ward_crystal.1", TooltipHelper.multiplierAsPercentTooltip(config.potionDurationMultiplier.get())));
+        TooltipHelper.itemTooltipLine("ward_crystal", 1, list, TooltipHelper.multiplierAsPercentTooltip(config.antiMagicMultiplierIncoming.get()));
+        TooltipHelper.itemTooltipLine("ward_crystal", 2, list, TooltipHelper.multiplierAsPercentTooltip(config.antiMagicMultiplierOutgoing.get()));
+        TooltipHelper.itemTooltipLine(stack, 1, list, TooltipHelper.multiplierAsPercentTooltip(config.potionDurationMultiplier.get()));
     }
 
     @Override

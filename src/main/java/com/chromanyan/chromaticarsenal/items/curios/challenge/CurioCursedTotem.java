@@ -37,9 +37,9 @@ public class CurioCursedTotem extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.cursed_totem.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.cursed_totem.2", TooltipHelper.percentTooltip((config.cursedTotemFracturedLevel.get() + 1) * 0.1F)));
-        list.add(Component.translatable("tooltip.chromaticarsenal.cursed_totem.3", TooltipHelper.valueTooltip(config.cursedTotemBonusLooting.get())));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.percentTooltip((config.cursedTotemFracturedLevel.get() + 1) * 0.1F));
+        TooltipHelper.itemTooltipLine(stack, 3, list, TooltipHelper.valueTooltip(config.cursedTotemBonusLooting.get()));
     }
 
     @NotNull

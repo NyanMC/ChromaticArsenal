@@ -44,13 +44,13 @@ public class CurioWorldAnchor extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.1"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
         if (getFortuneLevel(stack) > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2", TooltipHelper.valueTooltip(getFortuneLevel(stack))));
+            TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.valueTooltip(getFortuneLevel(stack)));
         else
-            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.2alt"));
+            TooltipHelper.itemTooltipLine(stack, "2alt", list);
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.world_anchor.twisted", TooltipHelper.valueTooltip(config.twistedAnchorGravityMultiplier.get())));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list, TooltipHelper.valueTooltip(config.twistedAnchorGravityMultiplier.get()));
     }
 
     @NotNull

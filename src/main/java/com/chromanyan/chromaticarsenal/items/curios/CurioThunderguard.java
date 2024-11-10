@@ -45,11 +45,11 @@ public class CurioThunderguard extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.twisted"));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list);
         else
-            list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.2", TooltipHelper.valueTooltip(config.thunderguardZapDamage.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.thunderguard.3"));
+            TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.valueTooltip(config.thunderguardZapDamage.get()));
+        TooltipHelper.itemTooltipLine(stack, 3, list);
     }
 
     @Override

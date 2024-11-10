@@ -5,6 +5,7 @@ import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModStats;
 import com.chromanyan.chromaticarsenal.init.ModTags;
 import com.chromanyan.chromaticarsenal.items.curios.interfaces.ISuperCurio;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -50,15 +51,15 @@ public class ChromaSalvager extends Item {
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         if (!Screen.hasShiftDown()) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.shift"));
+            TooltipHelper.itemTooltipLine("shift", list);
             return;
         }
-        list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.2"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list);
         if (config.returnInferiorVariant.get())
-            list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.3"));
+            TooltipHelper.itemTooltipLine(stack, 3, list);
         else
-            list.add(Component.translatable("tooltip.chromaticarsenal.chroma_salvager.3.alt"));
+            TooltipHelper.itemTooltipLine(stack, "3.alt", list);
     }
 
     private void handleSuperCurioSalvage(Item salvageItem, Player player) {

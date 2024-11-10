@@ -29,7 +29,7 @@ public class CurioCopperRing extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.copper_ring.1", TooltipHelper.percentTooltip(config.copperRingUnbreakingChance.get())));
+        TooltipHelper.itemTooltipLine(stack, 1, list, TooltipHelper.percentTooltip(config.copperRingUnbreakingChance.get()));
     }
 
     @Override

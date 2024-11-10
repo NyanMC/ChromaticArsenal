@@ -49,13 +49,13 @@ public class CurioCryoRing extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.2", TooltipHelper.valueTooltip(config.cryoDamage.get()), "§b" + TooltipHelper.ticksToSecondsTooltip(config.chilledTicks.get())));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.valueTooltip(config.cryoDamage.get()), "§b" + TooltipHelper.ticksToSecondsTooltip(config.chilledTicks.get()));
         if (!Objects.equals(config.chilledTicks.get(), config.chilledTicksVulnerable.get())) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.3", TooltipHelper.ticksToSecondsTooltip(config.chilledTicksVulnerable.get())));
+            TooltipHelper.itemTooltipLine(stack, 3, list, TooltipHelper.ticksToSecondsTooltip(config.chilledTicksVulnerable.get()));
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.cryo_ring.twisted", TooltipHelper.valueTooltip(config.twistedCryoFireDamageMultiplier.get())));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list, TooltipHelper.valueTooltip(config.twistedCryoFireDamageMultiplier.get()));
     }
 
     private static boolean shouldDoTwistedPenalty(LivingEntity entity, ItemStack stack) {

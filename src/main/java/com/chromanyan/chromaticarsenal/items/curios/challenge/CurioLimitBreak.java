@@ -6,7 +6,6 @@ import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -44,9 +43,9 @@ public class CurioLimitBreak extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.ascended_star.1", TooltipHelper.valueTooltip(config.bonusFortune.get()), TooltipHelper.valueTooltip(config.bonusLooting.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.ascended_star.2", TooltipHelper.valueTooltip(config.damageMultiplier.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.cursed").withStyle(ChatFormatting.RED));
+        TooltipHelper.itemTooltipLine(stack, 1, list, TooltipHelper.valueTooltip(config.bonusFortune.get()), TooltipHelper.valueTooltip(config.bonusLooting.get()));
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.valueTooltip(config.damageMultiplier.get()));
+        TooltipHelper.itemTooltipLine("cursed", list);
     }
 
     @Override

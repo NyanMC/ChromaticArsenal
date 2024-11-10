@@ -47,13 +47,13 @@ public class CurioShadowTreads extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.2", TooltipHelper.potionAmplifierTooltip(config.darkspeedPotency.get()), TooltipHelper.valueTooltip(config.maxLightLevel.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.3"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.potionAmplifierTooltip(config.darkspeedPotency.get()), TooltipHelper.valueTooltip(config.maxLightLevel.get()));
+        TooltipHelper.itemTooltipLine(stack, 3, list);
         if (stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) > 0 && config.swiftSneakDetectionReduction.get() > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.swift_sneak", TooltipHelper.percentTooltip(stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) * config.swiftSneakDetectionReduction.get())));
+            TooltipHelper.itemTooltipLine(stack, "swift_sneak", list, TooltipHelper.percentTooltip(stack.getEnchantmentLevel(Enchantments.SWIFT_SNEAK) * config.swiftSneakDetectionReduction.get()));
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.shadow_treads.twisted", TooltipHelper.percentTooltip(config.twistedShadowDodgeChance.get())));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list, TooltipHelper.percentTooltip(config.twistedShadowDodgeChance.get()));
     }
 
     @Override

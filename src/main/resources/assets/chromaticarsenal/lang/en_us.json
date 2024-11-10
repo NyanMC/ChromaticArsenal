@@ -201,13 +201,13 @@
 
   "tooltip.chromaticarsenal.shift": "§5Hold §dShift §5for details",
   "tooltip.chromaticarsenal.cooldown": "Currently on cooldown for %1$s more ticks",
-  "tooltip.chromaticarsenal.cursed": "Once equipped, unequipping may prove to be fatal.",
+  "tooltip.chromaticarsenal.cursed": "§cOnce equipped, unequipping may prove to be fatal.",
   "tooltip.chromaticarsenal.can_place": "Can be placed",
   "tooltip.chromaticarsenal.vanity": "Vanity Item",
-  "tooltip.chromaticarsenal.crafting_reusable": "Not consumed when used in crafting",
+  "tooltip.chromaticarsenal.crafting_reusable": "§6Not consumed when used in crafting",
   "tooltip.chromaticarsenal.impersonation": "§o\"Great for impersonating devs!\"",
-  "tooltip.chromaticarsenal.enchanted_super_curio_warning.1": "Warning: Super Curios cannot utilize enchantments other than the Binding and Vanishing curses.",
-  "tooltip.chromaticarsenal.enchanted_super_curio_warning.2": "Consider putting this item into a Grindstone.",
+  "tooltip.chromaticarsenal.enchanted_super_curio_warning.1": "§eWarning: Super Curios cannot utilize enchantments other than the Binding and Vanishing curses.",
+  "tooltip.chromaticarsenal.enchanted_super_curio_warning.2": "§eConsider putting this item into a Grindstone.",
 
   "tooltip.chromaticarsenal.super": "§dSuper Curio",
   "tooltip.chromaticarsenal.challenge": "§4Challenge Curio",

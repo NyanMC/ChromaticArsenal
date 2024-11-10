@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios.utility;
 import com.chromanyan.chromaticarsenal.ChromaticArsenal;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.gui.screens.Screen;
@@ -36,7 +37,7 @@ public class CurioAnonymityUmbrella extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.anonymity_umbrella.1"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
     }
 
     @Override

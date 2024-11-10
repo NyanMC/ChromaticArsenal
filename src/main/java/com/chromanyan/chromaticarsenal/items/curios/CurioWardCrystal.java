@@ -36,11 +36,11 @@ public class CurioWardCrystal extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.1", TooltipHelper.multiplierAsPercentTooltip(getIncomingMultiplier(stack))));
+        TooltipHelper.itemTooltipLine(stack, 1, list, TooltipHelper.multiplierAsPercentTooltip(getIncomingMultiplier(stack)));
         if (!ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.2", TooltipHelper.multiplierAsPercentTooltip(getOutgoingMultiplier(stack))));
+            TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.multiplierAsPercentTooltip(getOutgoingMultiplier(stack)));
         else
-            list.add(Component.translatable("tooltip.chromaticarsenal.ward_crystal.twisted", TooltipHelper.ticksToSecondsTooltip(config.twistedWeaknessDuration.get())));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list, TooltipHelper.ticksToSecondsTooltip(config.twistedWeaknessDuration.get()));
     }
 
     private float getIncomingMultiplier(ItemStack stack) {

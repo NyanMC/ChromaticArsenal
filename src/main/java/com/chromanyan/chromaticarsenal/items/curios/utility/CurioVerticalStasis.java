@@ -3,6 +3,7 @@ package com.chromanyan.chromaticarsenal.items.curios.utility;
 import com.chromanyan.chromaticarsenal.init.ModRarities;
 import com.chromanyan.chromaticarsenal.items.base.BaseCurioItem;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
@@ -35,11 +36,11 @@ public class CurioVerticalStasis extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.vertical_stasis_stone.twisted"));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list);
             return;
         }
-        list.add(Component.translatable("tooltip.chromaticarsenal.vertical_stasis_stone.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.vertical_stasis_stone.2"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list);
     }
 
     @Override

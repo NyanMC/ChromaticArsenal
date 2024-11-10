@@ -49,13 +49,13 @@ public class CurioHarpyFeather extends BaseCurioItem {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
         if (!ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.1"));
-            list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.2", TooltipHelper.multiplierAsPercentTooltip(config.featherFallDamageReduction.get())));
+            TooltipHelper.itemTooltipLine(stack, 1, list);
+            TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.multiplierAsPercentTooltip(config.featherFallDamageReduction.get()));
         } else {
-            list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.twisted"));
-            list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.twisted2"));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list);
+            TooltipHelper.itemTooltipLine(stack, "twisted2", list);
         }
-        list.add(Component.translatable("tooltip.chromaticarsenal.harpy_feather.3"));
+        TooltipHelper.itemTooltipLine(stack, 3, list);
     }
 
     @Override

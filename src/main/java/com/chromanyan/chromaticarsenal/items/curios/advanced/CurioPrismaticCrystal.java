@@ -49,12 +49,12 @@ public class CurioPrismaticCrystal extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.1"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
         if (EnigmaticLegacyHelper.isTheCursedOne(Minecraft.getInstance().player))
-            list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.3.cursed"));
+            TooltipHelper.itemTooltipLine(stack, "3.cursed", list);
         else
-            list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.3"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_lunar_crystal.2", TooltipHelper.valueTooltip(config.voidBounceDamage.get())));
+            TooltipHelper.itemTooltipLine(stack, 3, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.valueTooltip(config.voidBounceDamage.get()));
     }
 
     @Override

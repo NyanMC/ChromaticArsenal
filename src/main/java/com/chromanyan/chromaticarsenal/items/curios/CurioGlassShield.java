@@ -8,7 +8,6 @@ import com.chromanyan.chromaticarsenal.triggers.GlassShieldBlockTrigger;
 import com.chromanyan.chromaticarsenal.util.ChromaCurioHelper;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
@@ -50,18 +49,15 @@ public class CurioGlassShield extends BaseCurioItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.2", TooltipHelper.ticksToSecondsTooltip(getCooldownDuration(stack))));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.ticksToSecondsTooltip(getCooldownDuration(stack)));
         if (getFreeBlockChance(stack) > 0) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.3", TooltipHelper.valueTooltip(getFreeBlockChance(stack))));
+            TooltipHelper.itemTooltipLine(stack, 3, list, TooltipHelper.valueTooltip(getFreeBlockChance(stack)));
         }
         if (ChromaCurioHelper.isChromaticTwisted(stack, Minecraft.getInstance().player)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.glass_shield.twisted", TooltipHelper.valueTooltip(config.twistedShatterDamageMultiplier.get())));
+            TooltipHelper.itemTooltipLine(stack, "twisted", list, TooltipHelper.valueTooltip(config.twistedShatterDamageMultiplier.get()));
         }
-        CompoundTag nbt = stack.getOrCreateTag();
-        if (!CooldownHelper.isCooldownFinished(nbt)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
-        }
+        TooltipHelper.cooldownTooltipLine(stack, list);
     }
 
     @Override

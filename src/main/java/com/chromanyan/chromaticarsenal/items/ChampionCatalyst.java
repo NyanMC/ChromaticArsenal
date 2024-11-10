@@ -1,6 +1,6 @@
 package com.chromanyan.chromaticarsenal.items;
 
-import net.minecraft.ChatFormatting;
+import com.chromanyan.chromaticarsenal.util.TooltipHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +19,7 @@ public class ChampionCatalyst extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("tooltip.chromaticarsenal.crafting_reusable").withStyle(ChatFormatting.GOLD));
+        TooltipHelper.itemTooltipLine("crafting_reusable", list);
     }
 
     @Override

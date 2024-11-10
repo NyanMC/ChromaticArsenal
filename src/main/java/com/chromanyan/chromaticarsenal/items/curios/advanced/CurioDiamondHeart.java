@@ -1,11 +1,10 @@
 package com.chromanyan.chromaticarsenal.items.curios.advanced;
 
-import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.init.ModEffects;
+import com.chromanyan.chromaticarsenal.init.ModItems;
 import com.chromanyan.chromaticarsenal.items.base.BaseSuperCurio;
 import com.chromanyan.chromaticarsenal.util.CooldownHelper;
 import com.chromanyan.chromaticarsenal.util.TooltipHelper;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -38,13 +37,10 @@ public class CurioDiamondHeart extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.1"));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.2", TooltipHelper.valueTooltip((config.fracturedPotency.get() + 1) * 10), TooltipHelper.ticksToSecondsTooltip(config.fracturedDuration.get())));
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_golden_heart.3", TooltipHelper.ticksToSecondsTooltip(config.revivalCooldown.get())));
-        CompoundTag nbt = stack.getOrCreateTag();
-        if (!CooldownHelper.isCooldownFinished(nbt)) {
-            list.add(Component.translatable("tooltip.chromaticarsenal.cooldown", CooldownHelper.getCounter(nbt)).withStyle(ChatFormatting.GRAY));
-        }
+        TooltipHelper.itemTooltipLine(stack, 1, list);
+        TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.valueTooltip((config.fracturedPotency.get() + 1) * 10), TooltipHelper.ticksToSecondsTooltip(config.fracturedDuration.get()));
+        TooltipHelper.itemTooltipLine(stack, 3, list, TooltipHelper.ticksToSecondsTooltip(config.revivalCooldown.get()));
+        TooltipHelper.cooldownTooltipLine(stack, list);
     }
 
     @Override

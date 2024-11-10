@@ -42,11 +42,11 @@ public class CurioIlluminatedSoul extends BaseSuperCurio {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
         if (!Screen.hasShiftDown()) return;
-        list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.1"));
+        TooltipHelper.itemTooltipLine(stack, 1, list);
         if (config.glowingDuration.get() > 0)
-            list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.2", TooltipHelper.ticksToSecondsTooltip(config.glowingDuration.get())));
+            TooltipHelper.itemTooltipLine(stack, 2, list, TooltipHelper.ticksToSecondsTooltip(config.glowingDuration.get()));
         if (config.illuminatedUndeadMultiplier.get() > 1)
-            list.add(Component.translatable("tooltip.chromaticarsenal.super_glow_ring.3", TooltipHelper.multiplierAsPercentTooltip(config.illuminatedUndeadMultiplier.get())));
+            TooltipHelper.itemTooltipLine(stack, 3, list, TooltipHelper.multiplierAsPercentTooltip(config.illuminatedUndeadMultiplier.get()));
     }
 
     @Override
