@@ -1,5 +1,3 @@
 # Chromatic Arsenal
 
-This is the Chromatic Arsenal source.
-
-If you're here to view the source, most items are stored in the items package. If you are wishing to look at how Chromatic Arsenal handles events such as LivingHurtEvent, you should check out the EventClassInstance class.
+This is the Chromatic Arsenal source code for versions 1.20.1 and below. Due to an impending rewrite, this repository has been archived in order to prevent people from wasting their time trying to PR to it or something. Looking for the rewrite? You can find it [here](https://github.com/NyanMC/NeoChromaticArsenal).
